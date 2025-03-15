@@ -3,25 +3,16 @@ class_name CharacterInstance
 
 
 @onready var state_machine: StateMachine = $StateMachine
-@onready var model_container: Node3D = $"%ModelContainer"
-@onready var hitbox: CollisionShape3D = $"%Hitbox"
+@onready var skin: CharacterSkin = %CharacterSkin
+@onready var camera: MouseFollowCamera = $MouseFollowCamera
+@onready var hitbox: CollisionShape3D = %Hitbox
 
-var model_animation_player: AnimationPlayer = null
+var direction: Vector3 = Vector3.ZERO
+var raw_input: Vector2 = Vector2.ZERO
+var  last_movement_direction: Vector3 = Vector3.BACK
 
 func _ready():
-	get_model_anim_player()
-
-func set_model(model: PackedScene) -> void:
-	if model:
-		var inst = model.instantiate()
-		if inst.has_node("AnimationPlayer"):
-			model_animation_player = inst.get_node("AnimationPlayer")
-		model_container.add_child(inst)
-
-func get_model_anim_player():
-	for model in model_container.get_children():
-		if model.has_node("AnimationPlayer"):
-			model_animation_player = model.get_node("AnimationPlayer")
+	pass
 
 func transition_state(state_name: String, msg: Dictionary = {}):
 	state_machine.transition_to(state_name, msg)
@@ -32,20 +23,17 @@ func has_state(state_name: String) -> bool:
 			return true
 	return false
 
-# func _physics_process(delta):
-# 	print(velocity)
-
-func play_animation(animation_name: String, reverse: bool = false):
-	if model_animation_player == null:
+func play_animation(animation_name: String):
+	if skin == null:
 		return
-	if not model_animation_player.has_animation(animation_name):
-		push_warning(DebugHelper.format_debug_string(self, "WARNING", "Missing Animation [%s]" % animation_name))
-		return
-	if not reverse:
-		model_animation_player.play(animation_name)
-	else:
-		model_animation_player.play_backwards(animation_name)
-	model_animation_player.advance(0)
+	skin.travel(animation_name)
 
 func set_hitbox_shape(shape: Shape3D) -> void:
 	hitbox.shape = shape
+
+## TODO : should be moved at some point in another code
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if event.is_action_pressed("ui_cancel"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

@@ -3,46 +3,70 @@ extends State
 
 var character: CharacterInstance
 
-@export var loop_anim: bool = false
-@export var physics_on: bool = true
-@export var wait_for_animation_end_before_exit: bool = false
-@export var physics: CharacterPhysics = CharacterPhysics.new()
+@export var default_physics: bool = true
+@export var handle_movements_input: bool = true
+@export var handle_camera_input: bool = true
 
-var impulse: Vector3 = Vector3()
+@export_group("Parameters")
+@export var physics_parameters: CharacterPhysics = CharacterPhysics.new()
+@export var camera_parameters: CameraParameters = CameraParameters.new()
 
 func _ready() -> void:
 	character = owner as CharacterInstance
 
 func enter(_msg := {}) -> void:
-	if character.model_animation_player && loop_anim:
-		character.model_animation_player.animation_finished.connect(play_animation)
+	character.camera.parameters = self.camera_parameters
 	play_animation()
 
-func physics_update(_delta: float) -> void:
-	if physics_on:
-		#apply impulse
-		impulse = impulse.normalized()
-		character.velocity += impulse * physics.accel
-		#apply friction
-		character.velocity.x = lerp(character.velocity.x, 0.0, physics.friction)
-		character.velocity.z = lerp(character.velocity.z, 0.0, physics.friction)
+func input(_event: InputEvent) -> void:
+	pass
 
-		if not character.is_on_floor():
-			character.velocity.y += _delta * physics.gravity
-		#character.velocity.x = clampf(character.velocity.x, -physics.max_speed, physics.max_speed)
-		#character.velocity.z = clampf(character.velocity.z, -physics.max_speed, physics.max_speed)
+func unhandled_input(_event: InputEvent) -> void:
+	if handle_movements_input:
+		character.raw_input = Input.get_vector("left", "right", "forward", "back")
+		var forward: Vector3 = character.camera.real_camera.global_basis.z
+		var right: Vector3 = character.camera.real_camera.global_basis.x
+
+		character.direction = forward * character.raw_input.y + right * character.raw_input.x
+		character.direction.y = 0.0
+		character.direction = character.direction.normalized()
+
+func physics_update(_delta: float) -> void:
+	if handle_camera_input:
+		character.camera.rotate_camera(_delta)
+	
+	if default_physics:
+		## Extracting vertical velocity
+		var y_velocity: float = character.velocity.y
+		character.velocity.y = 0.0
+		
+		## Horizontal Movement.
+		## If we have no movement, stop using acceleration and use friction instead.
+		if character.raw_input == Vector2.ZERO:
+			character.velocity = character.velocity.move_toward(character.direction * physics_parameters.MAX_SPEED, physics_parameters.FRICTION * _delta)
+		else:
+			print_debug(character.camera.global_basis.z)
+			character.velocity = character.velocity.move_toward(character.direction * physics_parameters.MAX_SPEED, physics_parameters.ACCELERATION * _delta)
+
+		## Incorporating vertical velocity back into the mix.
+		character.velocity.y = y_velocity + physics_parameters.GRAVITY * _delta
 
 		character.move_and_slide()
-		print(impulse)
-		print_debug(character.velocity)
-		impulse = Vector3.ZERO
+		
+		## Reseting raw input
+		character.raw_input = Vector2.ZERO
+
+		## character angling
+		if character.direction.length() > 0.2:
+			character.last_movement_direction = character.direction
+		var target_angle: float = Vector3.BACK.signed_angle_to(character.last_movement_direction, Vector3.UP)
+		character.skin.global_rotation.y = lerp_angle(character.skin.rotation.y, target_angle, physics_parameters.ROTATION_SPEED * _delta)
 
 func exit() -> void:
-	if character.model_animation_player && character.model_animation_player.animation_finished.is_connected(play_animation):
-		character.model_animation_player.animation_finished.disconnect(play_animation)
+	pass
 
-func play_animation(_anim_name: String = "", reverse: bool = false) -> void:
+func play_animation(_anim_name: String = "") -> void:
 	if _anim_name:
-		character.play_animation(_anim_name, reverse)
+		character.play_animation(_anim_name)
 	else:
-		character.play_animation(self.name, reverse)
+		character.play_animation(self.name)

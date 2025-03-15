@@ -3,7 +3,10 @@ class_name State
 
 var state_machine = null
 
-func handle_input(_event: InputEvent) -> void:
+func input(_event: InputEvent) -> void:
+	pass
+
+func unhandled_input(_event: InputEvent) -> void:
 	pass
 
 func update(_delta: float) -> void:

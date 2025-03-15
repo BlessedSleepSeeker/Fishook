@@ -1,8 +1,12 @@
 extends Resource
 class_name CharacterPhysics
 
-@export var gravity: float = -ProjectSettings.get_setting("physics/3d/default_gravity")
 
-@export var accel: float = 20
-@export var max_speed: float = 50
-@export var friction: float = 0.7
+@export var GRAVITY: float = -30
+@export var JUMP_IMPULSE: float = 12
+
+@export var ACCELERATION: float = 20
+@export var MAX_SPEED: float = 8
+@export var FRICTION: float = 40
+
+@export var ROTATION_SPEED: float = 12.0

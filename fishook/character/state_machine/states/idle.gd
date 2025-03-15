@@ -8,9 +8,8 @@ var current_loop: int = 0
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func enter(_msg := {}) -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	current_loop = 0
-	if character.model_animation_player && loop_anim:
-		character.model_animation_player.animation_finished.connect(roll_for_fidget)
 	play_animation()
 
 func roll_for_fidget(_finished_animation: String):
@@ -21,7 +20,8 @@ func roll_for_fidget(_finished_animation: String):
 		play_animation()
 		current_loop += 1
 
-func handle_input(_event: InputEvent):
+func unhandled_input(_event: InputEvent):
+	super(_event)
 	if Input.is_action_pressed("forward"):
 		state_machine.transition_to("Walk")
 	if Input.is_action_pressed("back"):
@@ -39,5 +39,8 @@ func physics_update(_delta: float) -> void:
 		state_machine.transition_to("Fall")
 
 func exit() -> void:
-	if character.model_animation_player && character.model_animation_player.animation_finished.is_connected(roll_for_fidget):
-		character.model_animation_player.animation_finished.disconnect(roll_for_fidget)
+	pass
+
+func _notification(what: int) -> void:
+	if what == Node.NOTIFICATION_WM_CLOSE_REQUEST || what == Node.NOTIFICATION_WM_GO_BACK_REQUEST:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

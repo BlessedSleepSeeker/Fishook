@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Fishook"
+config/tags=PackedStringArray("3d", "platformer", "third_person")
 run/main_scene="uid://mlts6i18fv7d"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/show_image=false

@@ -1,0 +1,164 @@
+[gd_scene load_steps=29 format=3 uid="uid://uh75ppgcvkw1"]
+
+[ext_resource type="PackedScene" uid="uid://c7qbt24mbmda6" path="res://character/model/fisherman.glb" id="1_fvxr5"]
+[ext_resource type="Script" uid="uid://b2j26iqtb2pjg" path="res://character/model/character_skin.gd" id="1_jn46u"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cxnp0"]
+animation = &"Fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3eod3"]
+animation = &"HookActivate"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jn46u"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bptxp"]
+animation = &"Jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hsogn"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cxnp0"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0f3g0"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kukn0"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d7sat"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tjj8n"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b55dy"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wvacc"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3p1do"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2nge0"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2e0v0"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tw8bg"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jsuwq"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3j8sx"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oe4wl"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ulh3n"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wh50u"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qpp27"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aaohr"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hhkty"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jn46u"]
+states/Fall/node = SubResource("AnimationNodeAnimation_cxnp0")
+states/Fall/position = Vector2(544, 226)
+states/HookActivate/node = SubResource("AnimationNodeAnimation_3eod3")
+states/HookActivate/position = Vector2(740, 184)
+states/Idle/node = SubResource("AnimationNodeAnimation_jn46u")
+states/Idle/position = Vector2(366, 109)
+states/Jump/node = SubResource("AnimationNodeAnimation_bptxp")
+states/Jump/position = Vector2(366, 226)
+states/Start/position = Vector2(230, 109)
+states/Walk/node = SubResource("AnimationNodeAnimation_hsogn")
+states/Walk/position = Vector2(544, 109)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_cxnp0"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_0f3g0"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_kukn0"), "Fall", "Walk", SubResource("AnimationNodeStateMachineTransition_d7sat"), "Walk", "Fall", SubResource("AnimationNodeStateMachineTransition_tjj8n"), "Fall", "Jump", SubResource("AnimationNodeStateMachineTransition_b55dy"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_wvacc"), "Fall", "HookActivate", SubResource("AnimationNodeStateMachineTransition_3p1do"), "HookActivate", "Fall", SubResource("AnimationNodeStateMachineTransition_2nge0"), "HookActivate", "Walk", SubResource("AnimationNodeStateMachineTransition_2e0v0"), "Walk", "HookActivate", SubResource("AnimationNodeStateMachineTransition_tw8bg"), "HookActivate", "Idle", SubResource("AnimationNodeStateMachineTransition_jsuwq"), "Idle", "HookActivate", SubResource("AnimationNodeStateMachineTransition_3j8sx"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_oe4wl"), "Jump", "Idle", SubResource("AnimationNodeStateMachineTransition_ulh3n"), "Jump", "Walk", SubResource("AnimationNodeStateMachineTransition_wh50u"), "Walk", "Jump", SubResource("AnimationNodeStateMachineTransition_qpp27"), "Fall", "Idle", SubResource("AnimationNodeStateMachineTransition_aaohr"), "Idle", "Fall", SubResource("AnimationNodeStateMachineTransition_hhkty")]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cxnp0"]
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_jn46u")
+nodes/StateMachine/position = Vector2(160, 80)
+nodes/output/position = Vector2(520, 100)
+node_connections = [&"output", 0, &"StateMachine"]
+
+[node name="CharacterSkin" type="Node3D"]
+script = ExtResource("1_jn46u")
+
+[node name="blockbench_export" parent="." instance=ExtResource("1_fvxr5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125287)
+
+[node name="torso" parent="blockbench_export/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.984375, 0.09375)
+
+[node name="cuisse" parent="blockbench_export/Skeleton3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 0.34375, 0.09375)
+
+[node name="mollet_2" parent="blockbench_export/Skeleton3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 0.03125, 0.09375)
+
+[node name="boot" parent="blockbench_export/Skeleton3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, -0.015625, 0.09375)
+
+[node name="cuisse_2" parent="blockbench_export/Skeleton3D" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.34375, 0.09375)
+
+[node name="mollet_3" parent="blockbench_export/Skeleton3D" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.03125, 0.09375)
+
+[node name="boot_2" parent="blockbench_export/Skeleton3D" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, -0.015625, 0.09375)
+
+[node name="interior" parent="blockbench_export/Skeleton3D" index="7"]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, -0.50625, 1.16562, 0.084375)
+
+[node name="exterior" parent="blockbench_export/Skeleton3D" index="8"]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, -0.521875, 1.16562, 0.084375)
+
+[node name="interior_2" parent="blockbench_export/Skeleton3D" index="9"]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0.50625, 1.16562, 0.084375)
+
+[node name="exterior_2" parent="blockbench_export/Skeleton3D" index="10"]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0.521875, 1.16562, 0.084375)
+
+[node name="cylinder" parent="blockbench_export/Skeleton3D" index="11"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0.709125, 1.00937, 0.084625)
+
+[node name="guide1" parent="blockbench_export/Skeleton3D" index="12"]
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0.73725, 1.91562, 0.084625)
+
+[node name="guide2" parent="blockbench_export/Skeleton3D" index="13"]
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0.731, 2.35313, 0.084625)
+
+[node name="guide3" parent="blockbench_export/Skeleton3D" index="14"]
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0.721625, 3.10312, 0.084625)
+
+[node name="guide4" parent="blockbench_export/Skeleton3D" index="15"]
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0.726, 2.775, 0.084625)
+
+[node name="cylinder_2" parent="blockbench_export/Skeleton3D" index="16"]
+transform = Transform3D(0, 0, 1, 1, 0, 0, 0, 1, 0, 0.756, 1.65, 0.053375)
+
+[node name="cuboid" parent="blockbench_export/Skeleton3D" index="17"]
+transform = Transform3D(0.642788, -0.766044, -1.19209e-07, 0.766044, 0.642788, 5.96046e-08, 5.96046e-08, -1.19209e-07, 1, 0.756, 1.65, 0.053375)
+
+[node name="cuboid_2" parent="blockbench_export/Skeleton3D" index="18"]
+transform = Transform3D(-0.766044, -0.642788, -1.19209e-07, 0.642788, -0.766044, -2.98023e-08, -2.98023e-08, -1.19209e-07, 1, 0.756, 1.65, 0.115875)
+
+[node name="cranium" parent="blockbench_export/Skeleton3D" index="19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59899, 0.00856723)
+
+[node name="circling" parent="blockbench_export/Skeleton3D" index="20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25514e-17, 1.67188, 0.09375)
+
+[node name="hat_2" parent="blockbench_export/Skeleton3D" index="21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66739, 0.09375)
+
+[node name="circle_selection" parent="blockbench_export/Skeleton3D" index="22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66739, 0.09375)
+
+[node name="fil_2" parent="blockbench_export/Skeleton3D" index="23"]
+transform = Transform3D(1, 0, 0, 0, 0.422618, -0.906308, 0, 0.906308, 0.422618, -5.78241e-19, 1.60375, 0.09375)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("%AnimationTree/../blockbench_export")
+tree_root = SubResource("AnimationNodeBlendTree_cxnp0")
+anim_player = NodePath("../blockbench_export/AnimationPlayer")
+
+[editable path="blockbench_export"]

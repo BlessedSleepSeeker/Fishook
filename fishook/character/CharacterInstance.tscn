@@ -1,85 +1,22 @@
-[gd_scene load_steps=18 format=3 uid="uid://bcvho024kiqga"]
+[gd_scene load_steps=11 format=3 uid="uid://bcvho024kiqga"]
 
 [ext_resource type="Script" uid="uid://dprgwt0j2p82d" path="res://character/character_instance.gd" id="1_vgy44"]
+[ext_resource type="PackedScene" uid="uid://uh75ppgcvkw1" path="res://character/model/CharacterSkin.tscn" id="2_1bt4p"]
 [ext_resource type="Script" uid="uid://bjl81yuriqbdh" path="res://character/state_machine/state_machine.gd" id="2_g3qjf"]
-[ext_resource type="PackedScene" uid="uid://c7qbt24mbmda6" path="res://character/model/fisherman.glb" id="2_l0gsp"]
 [ext_resource type="Script" uid="uid://cu44wt5468u5p" path="res://character/state_machine/states/idle.gd" id="3_gn8po"]
-[ext_resource type="Script" uid="uid://dba7awsrs6b6y" path="res://character/character_physics.gd" id="5_185dw"]
 [ext_resource type="Script" uid="uid://limdfqv1yvnx" path="res://character/state_machine/states/walk.gd" id="5_svu25"]
 [ext_resource type="Script" uid="uid://dlvacdf1noi48" path="res://character/state_machine/states/jump.gd" id="6_j4qiq"]
 [ext_resource type="Script" uid="uid://pdypd0ws2yoi" path="res://character/state_machine/states/fall.gd" id="7_185dw"]
 [ext_resource type="Script" uid="uid://ca5vccpb85csi" path="res://character/state_machine/states/hook_activate.gd" id="8_1bt4p"]
+[ext_resource type="PackedScene" uid="uid://dfvrcp5lrv2hw" path="res://camera/MouseFollowCamera.tscn" id="11_7jo2n"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_l0gsp"]
-height = 1.7
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7jo2n"]
 radius = 0.3
-
-[sub_resource type="Animation" id="Animation_gsina"]
-resource_name = "fade_in"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1srf5"]
-_data = {
-&"fade_in": SubResource("Animation_gsina")
-}
-
-[sub_resource type="Resource" id="Resource_185dw"]
-script = ExtResource("5_185dw")
-gravity = null
-accel = 20.0
-max_speed = 50.0
-friction = 0.7
-metadata/_custom_type_script = "uid://dba7awsrs6b6y"
-
-[sub_resource type="Resource" id="Resource_7jo2n"]
-script = ExtResource("5_185dw")
-gravity = null
-accel = 20.0
-max_speed = 50.0
-friction = 0.7
-metadata/_custom_type_script = "uid://dba7awsrs6b6y"
-
-[sub_resource type="Resource" id="Resource_uip3n"]
-script = ExtResource("5_185dw")
-gravity = null
-accel = 20.0
-max_speed = 50.0
-friction = 0.0
-metadata/_custom_type_script = "uid://dba7awsrs6b6y"
-
-[sub_resource type="Resource" id="Resource_0y2cd"]
-script = ExtResource("5_185dw")
-gravity = null
-accel = 1.0
-max_speed = 50.0
-friction = 0.3
-metadata/_custom_type_script = "uid://dba7awsrs6b6y"
-
-[sub_resource type="Resource" id="Resource_uh5tv"]
-script = ExtResource("5_185dw")
-gravity = null
-accel = 20.0
-max_speed = 50.0
-friction = 0.7
-metadata/_custom_type_script = "uid://dba7awsrs6b6y"
+height = 1.7
 
 [node name="CharacterInstance" type="CharacterBody3D"]
+collision_layer = 2
 script = ExtResource("1_vgy44")
-
-[node name="Hitbox" type="CollisionShape3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83207, -0.113979)
-shape = SubResource("CylinderShape3D_l0gsp")
-
-[node name="ModelContainer" type="Node3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
-
-[node name="blockbench_export" parent="ModelContainer" instance=ExtResource("2_l0gsp")]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_1srf5")
-}
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_g3qjf")
@@ -88,24 +25,28 @@ initial_state = NodePath("Idle")
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("3_gn8po")
 fidget_chance = 0
-loop_anim = true
-physics = SubResource("Resource_185dw")
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("5_svu25")
-loop_anim = true
-physics = SubResource("Resource_7jo2n")
 
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("6_j4qiq")
-physics = SubResource("Resource_uip3n")
 
 [node name="Fall" type="Node" parent="StateMachine"]
 script = ExtResource("7_185dw")
-loop_anim = true
-physics = SubResource("Resource_0y2cd")
 
 [node name="HookActivate" type="Node" parent="StateMachine"]
 script = ExtResource("8_1bt4p")
-loop_anim = true
-physics = SubResource("Resource_uh5tv")
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+shape = SubResource("CapsuleShape3D_7jo2n")
+
+[node name="CharacterSkin" parent="." instance=ExtResource("2_1bt4p")]
+unique_name_in_owner = true
+
+[node name="MouseFollowCamera" parent="." instance=ExtResource("11_7jo2n")]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 1.65, 0)
+
+[editable path="MouseFollowCamera"]

@@ -15,8 +15,11 @@ func _ready() -> void:
 	state.enter()
 
 
+func _input(event: InputEvent) -> void:
+	state.input(event)
+
 func _unhandled_input(event: InputEvent) -> void:
-	state.handle_input(event)
+	state.unhandled_input(event)
 
 
 func _process(delta: float) -> void:
@@ -33,8 +36,6 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 		return
 	msg["PreviousState"] = state.name
 	state.exit()
-	if state.wait_for_animation_end_before_exit:
-		await state.character.model_animation_player.animation_finished
 	state = get_node(target_state_name)
 	print("entering %s" % target_state_name)
 	state.enter(msg)
