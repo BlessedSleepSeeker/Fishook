@@ -16,6 +16,8 @@ func unhandled_input(_event: InputEvent):
 	super(_event)
 	if Input.is_action_just_pressed("jump"):
 		state_machine.transition_to("Jump")
+	if Input.is_action_just_pressed("action1"):
+		state_machine.transition_to("HookThrow")
 	if character.direction == Vector3.ZERO && frame_nbr > 3:
 		state_machine.transition_to("Idle")
 

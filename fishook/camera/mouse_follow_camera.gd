@@ -4,6 +4,12 @@ class_name MouseFollowCamera
 @export var parameters: CameraParameters = CameraParameters.new()
 
 @onready var real_camera: Camera3D = %Camera3D
+@onready var raycast: RayCast3D = %HookRayCast
+
+var raycast_range: float = 10:
+	set(value):
+		raycast_range = value
+		raycast.target_position.z = -value
 
 var _camera_input_direction: Vector2 = Vector2.ZERO
 

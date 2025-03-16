@@ -6,10 +6,13 @@ class_name CharacterInstance
 @onready var skin: CharacterSkin = %CharacterSkin
 @onready var camera: MouseFollowCamera = $MouseFollowCamera
 @onready var hitbox: CollisionShape3D = %Hitbox
+@onready var particles_manager: ParticlesManager = %ParticlesManager
 
 var direction: Vector3 = Vector3.ZERO
 var raw_input: Vector2 = Vector2.ZERO
 var  last_movement_direction: Vector3 = Vector3.BACK
+
+var did_double_jump: bool = false
 
 func _ready():
 	pass

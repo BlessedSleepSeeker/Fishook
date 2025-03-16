@@ -16,6 +16,7 @@ func _ready() -> void:
 
 func enter(_msg := {}) -> void:
 	character.camera.parameters = self.camera_parameters
+	character.camera.raycast_range = physics_parameters.GRAPPLE_MAX_RANGE
 	play_animation()
 
 func input(_event: InputEvent) -> void:
@@ -45,7 +46,6 @@ func physics_update(_delta: float) -> void:
 		if character.raw_input == Vector2.ZERO:
 			character.velocity = character.velocity.move_toward(character.direction * physics_parameters.MAX_SPEED, physics_parameters.FRICTION * _delta)
 		else:
-			print_debug(character.camera.global_basis.z)
 			character.velocity = character.velocity.move_toward(character.direction * physics_parameters.MAX_SPEED, physics_parameters.ACCELERATION * _delta)
 
 		## Incorporating vertical velocity back into the mix.

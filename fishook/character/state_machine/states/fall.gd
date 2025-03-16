@@ -6,8 +6,14 @@ func enter(_msg := {}) -> void:
 
 func unhandled_input(_event: InputEvent):
 	super(_event)
+	if Input.is_action_just_pressed("jump") && not character.did_double_jump:
+		state_machine.transition_to("DoubleJump")
+	if Input.is_action_just_pressed("action1"):
+		state_machine.transition_to("HookThrow")
 
 func physics_update(_delta: float) -> void:
 	super(_delta)
 	if character.is_on_floor():
+		character.did_double_jump = false
+		character.particles_manager.emit("SmokeCloudLanding")
 		state_machine.transition_to("Idle")

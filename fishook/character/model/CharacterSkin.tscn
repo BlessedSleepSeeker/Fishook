@@ -61,7 +61,7 @@ advance_mode = 2
 states/Fall/node = SubResource("AnimationNodeAnimation_cxnp0")
 states/Fall/position = Vector2(544, 226)
 states/HookActivate/node = SubResource("AnimationNodeAnimation_3eod3")
-states/HookActivate/position = Vector2(740, 184)
+states/HookActivate/position = Vector2(724, 180)
 states/Idle/node = SubResource("AnimationNodeAnimation_jn46u")
 states/Idle/position = Vector2(366, 109)
 states/Jump/node = SubResource("AnimationNodeAnimation_bptxp")
@@ -83,77 +83,91 @@ script = ExtResource("1_jn46u")
 [node name="blockbench_export" parent="." instance=ExtResource("1_fvxr5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125287)
 
+[node name="Skeleton3D" parent="blockbench_export" index="0"]
+bones/4/rotation = Quaternion(-0.0435779, -0.00190265, -0.0435779, 0.998097)
+bones/6/rotation = Quaternion(0.0871557, 0, 0, 0.996195)
+bones/11/rotation = Quaternion(-0.0435779, 0.00190265, 0.0435779, 0.998097)
+bones/13/rotation = Quaternion(0.0871557, 0, 0, 0.996195)
+bones/17/rotation = Quaternion(-0.142611, 0.000554733, -0.135984, 0.980393)
+bones/19/rotation = Quaternion(0, 0, 0.130526, 0.991445)
+bones/21/rotation = Quaternion(-0.36192, -0.0973014, 0.279932, 0.883846)
+bones/23/rotation = Quaternion(-0.581119, -0.447662, 0.358204, 0.577572)
+bones/25/rotation = Quaternion(0, 0, 0.19509, 0.980785)
+bones/37/rotation = Quaternion(0.0871557, 0, 0, 0.996195)
+bones/42/position = Vector3(0.547683, -0.0246989, -0.318622)
+bones/44/rotation = Quaternion(-0.0871557, 0, 0, 0.996195)
+
 [node name="torso" parent="blockbench_export/Skeleton3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.984375, 0.09375)
 
 [node name="cuisse" parent="blockbench_export/Skeleton3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 0.34375, 0.09375)
+transform = Transform3D(0.996195, 0.0871557, 2.32831e-10, -0.0868241, 0.992404, 0.0871557, 0.00759612, -0.0868241, 0.996195, -0.152236, 0.346124, 0.120883)
 
 [node name="mollet_2" parent="blockbench_export/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 0.03125, 0.09375)
+transform = Transform3D(0.996195, 0.0858316, -0.0151344, -0.0868241, 0.992461, -0.0864975, 0.00759612, 0.0874824, 0.996137, -0.179059, 0.0359796, 0.0935443)
 
 [node name="boot" parent="blockbench_export/Skeleton3D" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, -0.015625, 0.09375)
+transform = Transform3D(0.996195, 0.0858316, -0.0151344, -0.0868241, 0.992461, -0.0864975, 0.00759612, 0.0874824, 0.996137, -0.183082, -0.010542, 0.0894435)
 
 [node name="cuisse_2" parent="blockbench_export/Skeleton3D" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.34375, 0.09375)
+transform = Transform3D(0.996195, -0.0871557, -2.32831e-10, 0.0868241, 0.992404, 0.0871557, -0.00759612, -0.0868241, 0.996195, 0.152236, 0.346124, 0.120883)
 
 [node name="mollet_3" parent="blockbench_export/Skeleton3D" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.03125, 0.09375)
+transform = Transform3D(0.996195, -0.0858316, 0.0151344, 0.0868241, 0.992461, -0.0864975, -0.00759612, 0.0874824, 0.996137, 0.179059, 0.0359796, 0.0935443)
 
 [node name="boot_2" parent="blockbench_export/Skeleton3D" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, -0.015625, 0.09375)
+transform = Transform3D(0.996195, -0.0858316, 0.0151344, 0.0868241, 0.992461, -0.0864975, -0.00759612, 0.0874824, 0.996137, 0.183082, -0.010542, 0.0894435)
 
 [node name="interior" parent="blockbench_export/Skeleton3D" index="7"]
-transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, -0.50625, 1.16562, 0.084375)
+transform = Transform3D(0.963016, 0.266476, 0.0398733, -0.266793, 0.922341, 0.279479, 0.0376979, -0.279781, 0.959323, -0.311408, 0.920628, 0.158692)
 
 [node name="exterior" parent="blockbench_export/Skeleton3D" index="8"]
-transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, -0.521875, 1.16562, 0.084375)
+transform = Transform3D(0.999171, 0.00814949, 0.0398733, -0.0189827, 0.959964, 0.279479, -0.0359993, -0.280005, 0.959323, -0.315571, 0.906217, 0.163063)
 
 [node name="interior_2" parent="blockbench_export/Skeleton3D" index="9"]
-transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0.50625, 1.16562, 0.084375)
+transform = Transform3D(0.824341, -0.424403, -0.374625, 0.565265, 0.581303, 0.585288, -0.0306275, -0.69424, 0.719092, 0.362351, 1.0203, 0.257935)
 
 [node name="exterior_2" parent="blockbench_export/Skeleton3D" index="10"]
-transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0.521875, 1.16562, 0.084375)
+transform = Transform3D(-0.151782, 0.430575, -0.889701, 0.795618, -0.480871, -0.368451, -0.586477, -0.763786, -0.269585, 0.368982, 1.01122, 0.268782)
 
 [node name="cylinder" parent="blockbench_export/Skeleton3D" index="11"]
-transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0.709125, 1.00937, 0.084625)
+transform = Transform3D(0.889701, 0.0245457, -0.455884, 0.368451, 0.551034, 0.748736, 0.269585, -0.834122, 0.481211, 0.284306, 1.015, 0.542136)
 
 [node name="guide1" parent="blockbench_export/Skeleton3D" index="12"]
-transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0.73725, 1.91562, 0.084625)
+transform = Transform3D(-0.455884, -0.0245457, 0.889701, 0.748736, -0.551034, 0.368451, 0.481211, 0.834122, 0.269585, 0.293728, 1.53543, -0.200253)
 
 [node name="guide2" parent="blockbench_export/Skeleton3D" index="13"]
-transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0.731, 2.35313, 0.084625)
+transform = Transform3D(-0.455884, -0.0245457, 0.889701, 0.748736, -0.551034, 0.368451, 0.481211, 0.834122, 0.269585, 0.307316, 1.77183, -0.568189)
 
 [node name="guide3" parent="blockbench_export/Skeleton3D" index="14"]
-transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0.721625, 3.10312, 0.084625)
+transform = Transform3D(-0.455884, -0.0245457, 0.889701, 0.748736, -0.551034, 0.368451, 0.481211, 0.834122, 0.269585, 0.33, 2.17809, -1.19829)
 
 [node name="guide4" parent="blockbench_export/Skeleton3D" index="15"]
-transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0.726, 2.775, 0.084625)
+transform = Transform3D(-0.455884, -0.0245457, 0.889701, 0.748736, -0.551034, 0.368451, 0.481211, 0.834122, 0.269585, 0.319951, 2.00056, -0.92249)
 
 [node name="cylinder_2" parent="blockbench_export/Skeleton3D" index="16"]
-transform = Transform3D(0, 0, 1, 1, 0, 0, 0, 1, 0, 0.756, 1.65, 0.053375)
+transform = Transform3D(0.0245457, -0.889701, -0.455884, 0.551034, -0.368451, 0.748736, -0.834122, -0.269585, 0.481211, 0.306464, 1.41462, 0.038758)
 
 [node name="cuboid" parent="blockbench_export/Skeleton3D" index="17"]
-transform = Transform3D(0.642788, -0.766044, -1.19209e-07, 0.766044, 0.642788, 5.96046e-08, 5.96046e-08, -1.19209e-07, 1, 0.756, 1.65, 0.053375)
+transform = Transform3D(-0.274233, 0.365005, -0.889701, 0.903395, -0.219368, -0.368451, -0.329658, -0.904792, -0.269585, 0.306464, 1.41462, 0.038758)
 
 [node name="cuboid_2" parent="blockbench_export/Skeleton3D" index="18"]
-transform = Transform3D(-0.766044, -0.642788, -1.19209e-07, 0.642788, -0.766044, -2.98023e-08, -2.98023e-08, -1.19209e-07, 1, 0.756, 1.65, 0.115875)
+transform = Transform3D(0.365005, 0.274233, -0.889701, -0.219368, -0.903395, -0.368451, -0.904792, 0.329658, -0.269585, 0.250858, 1.39159, 0.021909)
 
 [node name="cranium" parent="blockbench_export/Skeleton3D" index="19"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59899, 0.00856723)
+transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 1.59899, 0.00856723)
 
 [node name="circling" parent="blockbench_export/Skeleton3D" index="20"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25514e-17, 1.67188, 0.09375)
+transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 2.25514e-17, 1.65598, 0.105113)
 
 [node name="hat_2" parent="blockbench_export/Skeleton3D" index="21"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66739, 0.09375)
+transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 1.65156, 0.104335)
 
 [node name="circle_selection" parent="blockbench_export/Skeleton3D" index="22"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66739, 0.09375)
+transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 1.64704, 0.103537)
 
 [node name="fil_2" parent="blockbench_export/Skeleton3D" index="23"]
-transform = Transform3D(1, 0, 0, 0, 0.422618, -0.906308, 0, 0.906308, 0.422618, -5.78241e-19, 1.60375, 0.09375)
+transform = Transform3D(1, 0, 0, 0, 0.422618, -0.906308, 0, 0.906308, 0.422618, -5.78241e-19, 1.58761, 0.107826)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 unique_name_in_owner = true

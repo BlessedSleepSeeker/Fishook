@@ -6,13 +6,18 @@
 radius = 0.3
 
 [node name="MouseFollowCamera" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_2r4sw")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+collision_mask = 6
 shape = SubResource("SphereShape3D_2r4sw")
 spring_length = 8.0
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
 unique_name_in_owner = true
+
+[node name="HookRayCast" type="RayCast3D" parent="SpringArm3D/Camera3D"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -10)
+collision_mask = 2

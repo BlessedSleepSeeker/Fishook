@@ -72,6 +72,15 @@ action2={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="player"
+3d_physics/layer_2="environnement_hookable"
+3d_physics/layer_3="environnement_non_hookable"
+3d_physics/layer_4="collectibles"
+3d_physics/layer_5="hazards"
+3d_physics/layer_6="entities"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
