@@ -21,7 +21,7 @@ func unhandled_input(_event: InputEvent):
 	if character.direction == Vector3.ZERO && frame_nbr > 3:
 		state_machine.transition_to("Idle")
 
-func physics_update(_delta: float) -> void:
+func physics_update(_delta: float, _move_character: bool = true) -> void:
 	super(_delta)
 	frame_nbr += 1
 

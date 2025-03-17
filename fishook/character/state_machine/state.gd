@@ -12,7 +12,7 @@ func unhandled_input(_event: InputEvent) -> void:
 func update(_delta: float) -> void:
 	pass
 
-func physics_update(_delta: float) -> void:
+func physics_update(_delta: float, _move_character: bool = true) -> void:
 	pass
 
 func enter(_msg := {}) -> void:

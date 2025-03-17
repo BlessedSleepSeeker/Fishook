@@ -4,6 +4,7 @@ extends State
 var character: CharacterInstance
 
 @export var default_physics: bool = true
+@export var apply_gravity: bool = true
 @export var handle_movements_input: bool = true
 @export var handle_camera_input: bool = true
 
@@ -32,7 +33,7 @@ func unhandled_input(_event: InputEvent) -> void:
 		character.direction.y = 0.0
 		character.direction = character.direction.normalized()
 
-func physics_update(_delta: float) -> void:
+func physics_update(_delta: float, move_character: bool = true) -> void:
 	if handle_camera_input:
 		character.camera.rotate_camera(_delta)
 	
@@ -43,24 +44,28 @@ func physics_update(_delta: float) -> void:
 		
 		## Horizontal Movement.
 		## If we have no movement, stop using acceleration and use friction instead.
-		if character.raw_input == Vector2.ZERO:
-			character.velocity = character.velocity.move_toward(character.direction * physics_parameters.MAX_SPEED, physics_parameters.FRICTION * _delta)
-		else:
-			character.velocity = character.velocity.move_toward(character.direction * physics_parameters.MAX_SPEED, physics_parameters.ACCELERATION * _delta)
+		if handle_movements_input:
+			if character.raw_input == Vector2.ZERO:
+				character.velocity = character.velocity.move_toward(character.direction * physics_parameters.MAX_SPEED, physics_parameters.FRICTION * _delta)
+			else:
+				character.velocity = character.velocity.move_toward(character.direction * physics_parameters.MAX_SPEED, physics_parameters.ACCELERATION * _delta)
 
 		## Incorporating vertical velocity back into the mix.
-		character.velocity.y = y_velocity + physics_parameters.GRAVITY * _delta
+		character.velocity.y = y_velocity
 
-		character.move_and_slide()
-		
-		## Reseting raw input
-		character.raw_input = Vector2.ZERO
+		if apply_gravity:
+			character.velocity.y += physics_parameters.GRAVITY * _delta
 
-		## character angling
-		if character.direction.length() > 0.2:
-			character.last_movement_direction = character.direction
-		var target_angle: float = Vector3.BACK.signed_angle_to(character.last_movement_direction, Vector3.UP)
-		character.skin.global_rotation.y = lerp_angle(character.skin.rotation.y, target_angle, physics_parameters.ROTATION_SPEED * _delta)
+		if move_character:
+			character.move_and_slide()
+	## Reseting raw input
+	character.raw_input = Vector2.ZERO
+
+	## character angling
+	if character.direction.length() > 0.2:
+		character.last_movement_direction = character.direction
+	var target_angle: float = Vector3.BACK.signed_angle_to(character.last_movement_direction, Vector3.UP)
+	character.skin.global_rotation.y = lerp_angle(character.skin.rotation.y, target_angle, physics_parameters.ROTATION_SPEED * _delta)
 
 func exit() -> void:
 	pass
