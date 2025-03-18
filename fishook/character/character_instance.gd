@@ -7,6 +7,13 @@ class_name CharacterInstance
 @onready var camera: MouseFollowCamera = $MouseFollowCamera
 @onready var hitbox: CollisionShape3D = %Hitbox
 @onready var particles_manager: ParticlesManager = %ParticlesManager
+@onready var air_timer: Timer = %AirTime
+@onready var crosshair: TextureRect = %Crosshair
+
+@export_group("Crosshair")
+@export var crosshair_base_texture: Texture2D = preload("res://character/ui_assets/PNG/Outline/crosshair009.png")
+@export var crosshair_base_color: Color = Color("ffffff")
+@export var crosshair_color_on_colliding: Color = Color("70ff7c")
 
 var direction: Vector3 = Vector3.ZERO
 var raw_input: Vector2 = Vector2.ZERO
@@ -15,7 +22,7 @@ var  last_movement_direction: Vector3 = Vector3.BACK
 var did_double_jump: bool = false
 
 func _ready():
-	pass
+	camera.is_colliding.connect(is_colliding)
 
 func transition_state(state_name: String, msg: Dictionary = {}):
 	state_machine.transition_to(state_name, msg)
@@ -40,3 +47,18 @@ func _input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+func is_colliding(is_it: bool) -> void:
+	if is_it:
+		var tween: Tween = get_tree().create_tween()
+		tween.tween_property(crosshair, "modulate", crosshair_color_on_colliding, 0.1).set_ease(Tween.EASE_OUT)
+	else:
+		var tween: Tween = get_tree().create_tween()
+		tween.tween_property(crosshair, "modulate", crosshair_base_color, 0.1).set_ease(Tween.EASE_OUT)
+
+func change_crosshair_to(crosshair_texture: Texture2D) -> void:
+	if crosshair_texture:
+		crosshair.texture = crosshair_texture
+	else:
+		if crosshair.texture != crosshair_base_texture:
+			crosshair.texture = crosshair_base_texture

@@ -12,10 +12,14 @@ var character: CharacterInstance
 @export var physics_parameters: CharacterPhysics = CharacterPhysics.new()
 @export var camera_parameters: CameraParameters = CameraParameters.new()
 
+@export_group("UI Assets")
+@export var crosshair_texture: Texture2D = null
+
 func _ready() -> void:
 	character = owner as CharacterInstance
 
 func enter(_msg := {}) -> void:
+	character.change_crosshair_to(crosshair_texture)
 	character.camera.parameters = self.camera_parameters
 	character.camera.raycast_range = physics_parameters.GRAPPLE_MAX_RANGE
 	play_animation()

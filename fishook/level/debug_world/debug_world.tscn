@@ -1,30 +1,22 @@
-[gd_scene load_steps=11 format=3 uid="uid://mlts6i18fv7d"]
+[gd_scene load_steps=12 format=3 uid="uid://mlts6i18fv7d"]
 
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_qxaj8"]
 [ext_resource type="Material" uid="uid://h0r4shlt6jqo" path="res://level/template_assets/material/dark_grid_texture.tres" id="2_sk6li"]
 [ext_resource type="Material" uid="uid://cm88joxmcriqi" path="res://level/template_assets/material/orange_grid_texture.tres" id="3_qxaj8"]
+[ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="4_howd4"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_owi0r"]
-sky_top_color = Color(0, 1, 0.933333, 1)
-sky_horizon_color = Color(0.9, 0.306, 0.7911, 1)
-ground_bottom_color = Color(0.219915, 0.1269, 0.27, 1)
-ground_horizon_color = Color(0.9, 0.306, 0.7911, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_howd4"]
+sky_top_color = Color(0.1496, 0.88, 0.758267, 1)
+sky_horizon_color = Color(0.793485, 0.591595, 0.641142, 1)
+ground_bottom_color = Color(0.0663, 0.39, 0.33605, 1)
+ground_horizon_color = Color(0.793485, 0.591595, 0.641142, 1)
 
-[sub_resource type="Sky" id="Sky_sk6li"]
-sky_material = SubResource("ProceduralSkyMaterial_owi0r")
+[sub_resource type="Sky" id="Sky_pxsdh"]
+sky_material = SubResource("ProceduralSkyMaterial_howd4")
 
-[sub_resource type="Environment" id="Environment_qxaj8"]
+[sub_resource type="Environment" id="Environment_howd4"]
 background_mode = 2
-sky = SubResource("Sky_sk6li")
-ambient_light_source = 3
-ambient_light_color = Color(0.40875, 0.2625, 0.75, 1)
-ambient_light_sky_contribution = 0.0
-tonemap_mode = 2
-tonemap_exposure = 1.05
-tonemap_white = 0.95
-ssao_enabled = true
-ssao_radius = 2.0
-ssao_intensity = 1.4
+sky = SubResource("Sky_pxsdh")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lwswj"]
 size = Vector3(300, 1, 300)
@@ -38,25 +30,18 @@ size = Vector3(1, 15, 1)
 size = Vector3(15, 1, 1)
 
 [node name="DebugWorld" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 931.742, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_qxaj8")
+environment = SubResource("Environment_howd4")
 
 [node name="CharacterInstance" parent="." instance=ExtResource("2_qxaj8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62359, 0)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 12.7763, 0)
-light_color = Color(0.618675, 0.2847, 0.73, 1)
-light_energy = 0.5
-shadow_enabled = true
-directional_shadow_max_distance = 40.0
-sky_mode = 1
-
 [node name="Geometry" type="Node3D" parent="."]
 
 [node name="GroundPlan" type="StaticBody3D" parent="Geometry"]
-collision_layer = 2
+collision_layer = 4
 collision_mask = 33
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Geometry/GroundPlan"]
@@ -217,3 +202,26 @@ shape = SubResource("BoxShape3D_qxaj8")
 [node name="CSGBox3D" type="CSGBox3D" parent="Geometry/Cube12"]
 size = Vector3(15, 1, 1)
 material = ExtResource("3_qxaj8")
+
+[node name="Collectibles" type="Node3D" parent="."]
+
+[node name="BaseCollectible" parent="Collectibles" instance=ExtResource("4_howd4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.57793, -5.26007)
+
+[node name="BaseCollectible2" parent="Collectibles" instance=ExtResource("4_howd4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.06587, 4.7316)
+
+[node name="BaseCollectible3" parent="Collectibles" instance=ExtResource("4_howd4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.34738, 2.53289, 4.90004)
+
+[node name="BaseCollectible4" parent="Collectibles" instance=ExtResource("4_howd4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0008, 2.95264, -5.69985)
+
+[node name="BaseCollectible5" parent="Collectibles" instance=ExtResource("4_howd4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8009, 7.67071, 0)
+
+[node name="BaseCollectible10" parent="Collectibles" instance=ExtResource("4_howd4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76211, 9.60646, 12.7365)
+
+[node name="BaseCollectible11" parent="Collectibles" instance=ExtResource("4_howd4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, -13)

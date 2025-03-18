@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbqvw8ulit3kj"]
+
+[ext_resource type="Script" uid="uid://ccslxh35nahue" path="res://level/assets/base_checkpoint.gd" id="1_44ggx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_44ggx"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44ggx"]
+resource_local_to_scene = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_20vtb"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_44ggx")
+
+[node name="BaseCheckpoint" type="Marker3D" groups=["Checkpoint"]]
+script = ExtResource("1_44ggx")
+
+[node name="Area3D" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 64
+
+[node name="Hitbox" type="CollisionShape3D" parent="Area3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("BoxShape3D_44ggx")
+debug_color = Color(0.55832, 0.560474, 0.0194275, 0.42)
+
+[node name="ModelContainer" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ModelContainer"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_20vtb")

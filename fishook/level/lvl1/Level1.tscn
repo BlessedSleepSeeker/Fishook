@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctqppdq3quxc2"]
+
+[ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="1_8f7o1"]
+[ext_resource type="Environment" uid="uid://ckid4l4im4nv2" path="res://level/assets/world_env_defautl.tres" id="1_dver8"]
+[ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_v7wdy"]
+[ext_resource type="Material" uid="uid://cm88joxmcriqi" path="res://level/template_assets/material/orange_grid_texture.tres" id="2_4e1gy"]
+[ext_resource type="Material" uid="uid://h0r4shlt6jqo" path="res://level/template_assets/material/dark_grid_texture.tres" id="3_8f7o1"]
+[ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="4_n0yr3"]
+[ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="6_r4h5g"]
+
+[node name="Level1" type="Node3D"]
+script = ExtResource("1_v7wdy")
+
+[node name="CharacterInstance" parent="." instance=ExtResource("1_8f7o1")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 102.172, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+unique_name_in_owner = true
+environment = ExtResource("1_dver8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -8.67946, 100, 8.76321)
+shadow_enabled = true
+
+[node name="FirstCheckpoint" parent="." instance=ExtResource("4_n0yr3")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100.513, 0)
+
+[node name="BaseCheckpoint2" parent="." instance=ExtResource("4_n0yr3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100.513, 30)
+
+[node name="Geometry" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
+
+[node name="CSGGrounds" type="CSGCombiner3D" parent="Geometry"]
+use_collision = true
+collision_layer = 4
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+size = Vector3(10, 1, 10)
+material = ExtResource("3_8f7o1")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
+size = Vector3(10, 1, 10)
+material = ExtResource("3_8f7o1")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 15)
+size = Vector3(10, 1, 10)
+material = ExtResource("3_8f7o1")
+
+[node name="CSGGrabbable" type="CSGCombiner3D" parent="Geometry"]
+use_collision = true
+collision_layer = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Geometry/CSGGrabbable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 15)
+layers = 0
+size = Vector3(2, 2, 2)
+material = ExtResource("2_4e1gy")
+
+[node name="Collectibles" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
+
+[node name="PositionHack" parent="Collectibles" instance=ExtResource("6_r4h5g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 15)
+
+[node name="PositionHack2" parent="Collectibles" instance=ExtResource("6_r4h5g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.723896, 7, 15)
+
+[node name="PositionHack3" parent="Collectibles" instance=ExtResource("6_r4h5g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.723896, 8, 13)
+
+[node name="PositionHack4" parent="Collectibles" instance=ExtResource("6_r4h5g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.723896, 8, 17)
+
+[node name="PositionHack5" parent="Collectibles" instance=ExtResource("6_r4h5g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.723896, 0, 15)
+
+[node name="PositionHack6" parent="Collectibles" instance=ExtResource("6_r4h5g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.723896, 1, 12)
+
+[node name="PositionHack7" parent="Collectibles" instance=ExtResource("6_r4h5g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.723896, 1, 18)

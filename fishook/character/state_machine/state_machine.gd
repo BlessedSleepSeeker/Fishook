@@ -37,6 +37,6 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 	msg["PreviousState"] = state.name
 	state.exit()
 	state = get_node(target_state_name)
-	print("entering %s" % target_state_name)
+	#print("entering %s" % target_state_name)
 	state.enter(msg)
 	transitioned.emit(state.name)

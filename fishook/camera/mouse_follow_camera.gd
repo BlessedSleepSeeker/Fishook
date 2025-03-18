@@ -5,6 +5,9 @@ class_name MouseFollowCamera
 
 @onready var real_camera: Camera3D = %Camera3D
 @onready var raycast: RayCast3D = %HookRayCast
+# @onready var sphere_indicator: Node3D = %ShpereIndicator
+
+signal is_colliding(is_colliding: bool)
 
 var raycast_range: float = 10:
 	set(value):
@@ -31,3 +34,13 @@ func rotate_camera(_delta) -> void:
 	self.rotation.y -= self._camera_input_direction.x * _delta
 	self.rotation.y = wrapf(self.rotation.y, 0.0, deg_to_rad(360))
 	self._camera_input_direction = Vector2.ZERO
+
+func _physics_process(_delta):
+	if raycast.is_colliding():
+		is_colliding.emit(true)
+	else:
+		is_colliding.emit(false)
+	# 	sphere_indicator.global_position = raycast.get_collision_point()
+	# 	sphere_indicator.show()
+	# else:
+	# 	sphere_indicator.hide()

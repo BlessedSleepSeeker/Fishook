@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Fishook"
 config/tags=PackedStringArray("3d", "platformer", "third_person")
-run/main_scene="uid://mlts6i18fv7d"
+run/main_scene="uid://ctqppdq3quxc2"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
@@ -33,6 +33,11 @@ folder_colors={
 "res://level/": "purple",
 "res://ui/": "green"
 }
+
+[global_group]
+
+Collectible="a pickable item"
+Checkpoint=""
 
 [input]
 
@@ -80,6 +85,7 @@ action2={
 3d_physics/layer_4="collectibles"
 3d_physics/layer_5="hazards"
 3d_physics/layer_6="entities"
+3d_physics/layer_7="checkpoints"
 
 [physics]
 

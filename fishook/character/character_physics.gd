@@ -13,6 +13,7 @@ class_name CharacterPhysics
 
 @export_group("Grappling Hook Physics")
 @export var GRAPPLE_MAX_RANGE: float = 30
-@export var GRAPPLE_REST_LENGTH: float = 2
+@export var GRAPPLE_REST_LENGTH: float = 0.1
 @export var GRAPPLE_SWING_SPEED: float = 70
 @export var GRAPPLE_PULLING_SPEED: float = 10
+@export var GRAPPLE_FRICTION: float = 0.99
