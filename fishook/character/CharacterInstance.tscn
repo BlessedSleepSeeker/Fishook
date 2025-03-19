@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bcvho024kiqga"]
+[gd_scene load_steps=67 format=3 uid="uid://bcvho024kiqga"]
 
 [ext_resource type="Script" uid="uid://dprgwt0j2p82d" path="res://character/character_instance.gd" id="1_vgy44"]
 [ext_resource type="PackedScene" uid="uid://uh75ppgcvkw1" path="res://character/model/CharacterSkin.tscn" id="2_1bt4p"]
@@ -8,45 +8,82 @@
 [ext_resource type="Script" uid="uid://limdfqv1yvnx" path="res://character/state_machine/states/walk.gd" id="5_svu25"]
 [ext_resource type="Script" uid="uid://2yki1u1wwicx" path="res://character/state_machine/states/double_jump.gd" id="6_7jo2n"]
 [ext_resource type="Script" uid="uid://dlvacdf1noi48" path="res://character/state_machine/states/jump.gd" id="6_j4qiq"]
+[ext_resource type="PackedScene" uid="uid://co75xjj6oudb4" path="res://sounds_effects/random_stream_player.tscn" id="6_kdfyh"]
 [ext_resource type="Script" uid="uid://dba7awsrs6b6y" path="res://character/character_physics.gd" id="6_uip3n"]
 [ext_resource type="Script" uid="uid://ctp11t6lc7heo" path="res://character/state_machine/states/hook_throw.gd" id="7_1bt4p"]
 [ext_resource type="Script" uid="uid://pdypd0ws2yoi" path="res://character/state_machine/states/fall.gd" id="7_185dw"]
+[ext_resource type="AudioStream" uid="uid://ygdd5xgq30sq" path="res://sounds_effects/kenney_impact-sounds/footstep_grass_000.ogg" id="7_uame8"]
 [ext_resource type="Script" uid="uid://uvu23qv3p1kq" path="res://character/state_machine/states/hook_activated.gd" id="8_7jo2n"]
+[ext_resource type="AudioStream" uid="uid://da837nw2sbout" path="res://sounds_effects/kenney_impact-sounds/footstep_grass_001.ogg" id="8_s53p4"]
+[ext_resource type="AudioStream" uid="uid://epync2hb8e67" path="res://sounds_effects/kenney_impact-sounds/footstep_grass_002.ogg" id="9_x5wc4"]
 [ext_resource type="Script" uid="uid://cprj642p3rkie" path="res://character/state_machine/states/land.gd" id="10_iw8v4"]
+[ext_resource type="AudioStream" uid="uid://cb3fxyov2gyim" path="res://sounds_effects/kenney_impact-sounds/footstep_grass_003.ogg" id="10_jf1sj"]
 [ext_resource type="PackedScene" uid="uid://dfvrcp5lrv2hw" path="res://camera/MouseFollowCamera.tscn" id="11_7jo2n"]
+[ext_resource type="AudioStream" uid="uid://cl8vd6sn58161" path="res://sounds_effects/kenney_impact-sounds/footstep_grass_004.ogg" id="11_wick5"]
 [ext_resource type="Script" uid="uid://bria1y7ivp7ag" path="res://character/particles_manager.gd" id="13_0y2cd"]
 [ext_resource type="Script" uid="uid://c2b5vle648c6o" path="res://character/state_machine/states/hook_aim.gd" id="14_k5qqw"]
+[ext_resource type="AudioStream" uid="uid://b1ykvyjtyaidx" path="res://sounds_effects/personal/shortboop1.mp3" id="14_m6vje"]
 [ext_resource type="Texture2D" uid="uid://t0rb60xjmpwi" path="res://character/ui_assets/PNG/Outline/crosshair145.png" id="14_uh5tv"]
 [ext_resource type="Texture2D" uid="uid://dl5mjfx4al1ot" path="res://character/ui_assets/PNG/Outline/crosshair009.png" id="15_3in86"]
+[ext_resource type="AudioStream" uid="uid://dtm66jtnrrx6r" path="res://sounds_effects/personal/shortboop2.mp3" id="15_bjf1r"]
+[ext_resource type="AudioStream" uid="uid://gksm874m57qf" path="res://sounds_effects/personal/shortboop3.mp3" id="16_2c7bb"]
+[ext_resource type="AudioStream" uid="uid://cqkf41dnsoqia" path="res://sounds_effects/personal/shortboop4.mp3" id="17_8ojuf"]
+[ext_resource type="AudioStream" uid="uid://xcwoy183ycaa" path="res://sounds_effects/kenney_impact-sounds/footstep_concrete_000.ogg" id="17_wick5"]
+[ext_resource type="AudioStream" uid="uid://dvvmxmyhyqw6n" path="res://sounds_effects/kenney_impact-sounds/footstep_concrete_001.ogg" id="18_0cabr"]
+[ext_resource type="AudioStream" uid="uid://bgsvu8t4igd73" path="res://sounds_effects/personal/shortboop5.mp3" id="18_ybyru"]
+[ext_resource type="AudioStream" uid="uid://c70p1fpi3cklb" path="res://sounds_effects/kenney_impact-sounds/footstep_concrete_002.ogg" id="19_l2q03"]
+[ext_resource type="AudioStream" uid="uid://dhrapjgt5xjdw" path="res://sounds_effects/kenney_impact-sounds/footstep_concrete_003.ogg" id="20_c6ppy"]
+[ext_resource type="AudioStream" uid="uid://jjo6qhry1akn" path="res://sounds_effects/kenney_impact-sounds/footstep_concrete_004.ogg" id="21_hdq18"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_m6vje"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_bjf1r"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_2c7bb"]
 
 [sub_resource type="Resource" id="Resource_0y2cd"]
 script = ExtResource("6_uip3n")
 GRAVITY = -30.0
 JUMP_IMPULSE = 12.0
-ACCELERATION = 10.0
-MAX_SPEED = 10.0
+ACCELERATION = 40.0
+MAX_SPEED = 20.0
 FRICTION = 10.0
-ROTATION_SPEED = 12.0
+ROTATION_SPEED = 6.0
 GRAPPLE_MAX_RANGE = 30.0
 GRAPPLE_REST_LENGTH = 0.1
 GRAPPLE_SWING_SPEED = 70.0
 GRAPPLE_PULLING_SPEED = 10.0
-GRAPPLE_FRICTION = 0.99
+GRAPPLE_FRICTION = 0.995
 metadata/_custom_type_script = "uid://dba7awsrs6b6y"
 
 [sub_resource type="Resource" id="Resource_uip3n"]
 script = ExtResource("6_uip3n")
 GRAVITY = -30.0
-JUMP_IMPULSE = 15.0
-ACCELERATION = 5.0
-MAX_SPEED = 12.0
-FRICTION = 5.0
-ROTATION_SPEED = 12.0
+JUMP_IMPULSE = 20.0
+ACCELERATION = 40.0
+MAX_SPEED = 20.0
+FRICTION = 10.0
+ROTATION_SPEED = 6.0
 GRAPPLE_MAX_RANGE = 30.0
 GRAPPLE_REST_LENGTH = 0.1
 GRAPPLE_SWING_SPEED = 70.0
 GRAPPLE_PULLING_SPEED = 10.0
-GRAPPLE_FRICTION = 0.99
+GRAPPLE_FRICTION = 0.995
+metadata/_custom_type_script = "uid://dba7awsrs6b6y"
+
+[sub_resource type="Resource" id="Resource_m6vje"]
+script = ExtResource("6_uip3n")
+GRAVITY = -30.0
+JUMP_IMPULSE = 12.0
+ACCELERATION = 40.0
+MAX_SPEED = 8.0
+FRICTION = 10.0
+ROTATION_SPEED = 6.0
+GRAPPLE_MAX_RANGE = 30.0
+GRAPPLE_REST_LENGTH = 0.1
+GRAPPLE_SWING_SPEED = 70.0
+GRAPPLE_PULLING_SPEED = 10.0
+GRAPPLE_FRICTION = 0.995
 metadata/_custom_type_script = "uid://dba7awsrs6b6y"
 
 [sub_resource type="Resource" id="Resource_uh5tv"]
@@ -56,27 +93,27 @@ JUMP_IMPULSE = 12.0
 ACCELERATION = 20.0
 MAX_SPEED = 8.0
 FRICTION = 40.0
-ROTATION_SPEED = 12.0
+ROTATION_SPEED = 6.0
 GRAPPLE_MAX_RANGE = 30.0
 GRAPPLE_REST_LENGTH = 0.1
 GRAPPLE_SWING_SPEED = 70.0
 GRAPPLE_PULLING_SPEED = 10.0
-GRAPPLE_FRICTION = 0.99
+GRAPPLE_FRICTION = 0.995
 metadata/_custom_type_script = "uid://dba7awsrs6b6y"
 
 [sub_resource type="Resource" id="Resource_3in86"]
 script = ExtResource("6_uip3n")
 GRAVITY = -30.0
 JUMP_IMPULSE = 12.0
-ACCELERATION = 5.0
-MAX_SPEED = 8.0
-FRICTION = 5.0
-ROTATION_SPEED = 12.0
+ACCELERATION = 20.0
+MAX_SPEED = 50.0
+FRICTION = 0.0
+ROTATION_SPEED = 6.0
 GRAPPLE_MAX_RANGE = 30.0
 GRAPPLE_REST_LENGTH = 0.1
 GRAPPLE_SWING_SPEED = 70.0
-GRAPPLE_PULLING_SPEED = 1.0
-GRAPPLE_FRICTION = 0.99
+GRAPPLE_PULLING_SPEED = 10.0
+GRAPPLE_FRICTION = 0.995
 metadata/_custom_type_script = "uid://dba7awsrs6b6y"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7jo2n"]
@@ -209,26 +246,53 @@ initial_state = NodePath("Idle")
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("3_gn8po")
 fidget_chance = 0
+crosshair_texture = SubResource("ImageTexture_m6vje")
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("5_svu25")
+crosshair_texture = SubResource("ImageTexture_bjf1r")
 
 [node name="Run" type="Node" parent="StateMachine"]
 script = ExtResource("5_6r8ug")
+crosshair_texture = SubResource("ImageTexture_2c7bb")
+
+[node name="RandomStreamPlayer" parent="StateMachine/Run" instance=ExtResource("6_kdfyh")]
+volume_db = -20.0
+bus = &"Sound Effect"
+streams = Array[AudioStream]([ExtResource("7_uame8"), ExtResource("8_s53p4"), ExtResource("9_x5wc4"), ExtResource("10_jf1sj"), ExtResource("11_wick5")])
+
+[node name="AnimationLoopingTimer" type="Timer" parent="StateMachine/Run"]
 
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("6_j4qiq")
 physics_parameters = SubResource("Resource_0y2cd")
 
+[node name="RandomStreamPlayer" parent="StateMachine/Jump" instance=ExtResource("6_kdfyh")]
+volume_db = -10.0
+bus = &"Sound Effect"
+streams = Array[AudioStream]([ExtResource("14_m6vje"), ExtResource("15_bjf1r"), ExtResource("16_2c7bb"), ExtResource("17_8ojuf"), ExtResource("18_ybyru")])
+no_repeat = false
+
 [node name="DoubleJump" type="Node" parent="StateMachine"]
 script = ExtResource("6_7jo2n")
 physics_parameters = SubResource("Resource_uip3n")
 
+[node name="RandomStreamPlayer" parent="StateMachine/DoubleJump" instance=ExtResource("6_kdfyh")]
+volume_db = -10.0
+bus = &"Sound Effect"
+streams = Array[AudioStream]([ExtResource("14_m6vje"), ExtResource("15_bjf1r"), ExtResource("16_2c7bb"), ExtResource("17_8ojuf"), ExtResource("18_ybyru")])
+no_repeat = false
+
 [node name="Fall" type="Node" parent="StateMachine"]
 script = ExtResource("7_185dw")
+physics_parameters = SubResource("Resource_m6vje")
 
 [node name="Land" type="Node" parent="StateMachine"]
 script = ExtResource("10_iw8v4")
+
+[node name="RandomStreamPlayer" parent="StateMachine/Land" instance=ExtResource("6_kdfyh")]
+volume_db = -20.0
+streams = Array[AudioStream]([ExtResource("17_wick5"), ExtResource("18_0cabr"), ExtResource("19_l2q03"), ExtResource("20_c6ppy"), ExtResource("21_hdq18")])
 
 [node name="HookAiming" type="Node" parent="StateMachine"]
 script = ExtResource("14_k5qqw")
@@ -301,5 +365,28 @@ texture = ExtResource("15_3in86")
 [node name="AirTime" type="Timer" parent="Timers"]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="DebugCanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="MarginContainer" type="MarginContainer" parent="DebugCanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugCanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="DebugLabel" type="Label" parent="DebugCanvasLayer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 
 [editable path="MouseFollowCamera"]

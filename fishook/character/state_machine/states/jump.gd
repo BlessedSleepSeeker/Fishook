@@ -1,8 +1,11 @@
 extends CharacterState
 class_name JumpState
 
+@onready var rdm_stream_player: RandomStreamPlayer = $RandomStreamPlayer
+
 func enter(_msg := {}) -> void:
 	character.velocity.y += physics_parameters.JUMP_IMPULSE
+	rdm_stream_player.play_random()
 	super()
 
 func unhandled_input(_event: InputEvent):

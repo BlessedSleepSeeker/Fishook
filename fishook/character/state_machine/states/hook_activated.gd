@@ -63,8 +63,8 @@ func swing(_delta: float) -> void:
 	## Find the position where your character should be when being attached to the hookshot.
 	var new_point = hookshot_point + (hookshot_point.direction_to(future_pos) * distance)
 	## Update velocity to go in the direction of the new_point.
-	character.velocity += (new_point - character.global_position)
-	character.velocity *= physics_parameters.GRAPPLE_FRICTION
+	character.velocity = (new_point - character.global_position) / _delta
+	#character.velocity *= 1.01
 
 	if spawn_debug:
 		var inst: StaticBody3D = debug_ball.instantiate()

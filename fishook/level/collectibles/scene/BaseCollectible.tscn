@@ -1,12 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://squnuur682wi"]
+[gd_scene load_steps=11 format=3 uid="uid://squnuur682wi"]
 
 [ext_resource type="Script" uid="uid://crve62qlkejvs" path="res://level/collectibles/scene/base_collectible.gd" id="1_8ycso"]
 [ext_resource type="PackedScene" uid="uid://dlowoj1ptc3wl" path="res://level/collectibles/assets/base/godot_plushV2.glb" id="2_38j43"]
 [ext_resource type="AnimationLibrary" uid="uid://btn4pfm4gfehs" path="res://level/collectibles/assets/base/collectible_base_animations.res" id="2_dhkau"]
+[ext_resource type="AudioStream" uid="uid://linrxtfh38hx" path="res://sounds_effects/kenney_impact-sounds/impactGlass_medium_000.ogg" id="3_f734n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_isqua"]
 resource_local_to_scene = true
-size = Vector3(0.5, 0.5, 0.5)
+size = Vector3(0.8, 0.8, 0.8)
+
+[sub_resource type="Curve" id="Curve_f734n"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_i6ltm"]
+curve = SubResource("Curve_f734n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f734n"]
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -5.0
+linear_accel_max = -1.0
+alpha_curve = SubResource("CurveTexture_i6ltm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6ltm"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_y40sa"]
+material = SubResource("StandardMaterial3D_i6ltm")
+radius = 0.1
+height = 0.2
+radial_segments = 6
+rings = 6
 
 [node name="BaseCollectiblePositionHack" type="Node3D" groups=["Collectible"]]
 script = ExtResource("1_8ycso")
@@ -15,7 +46,8 @@ script = ExtResource("1_8ycso")
 unique_name_in_owner = true
 collision_layer = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="Hitbox" type="CollisionShape3D" parent="Area3D"]
+unique_name_in_owner = true
 shape = SubResource("BoxShape3D_isqua")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Area3D"]
@@ -23,9 +55,13 @@ unique_name_in_owner = true
 libraries = {
 &"": ExtResource("2_dhkau")
 }
+autoplay = "Spin"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Area3D"]
 unique_name_in_owner = true
+stream = ExtResource("3_f734n")
+volume_db = -10.0
+bus = &"Sound Effect"
 
 [node name="godot_plushV2" parent="Area3D" instance=ExtResource("2_38j43")]
 
@@ -37,5 +73,14 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.14658, 0)
 
 [node name="godot_plush_02" parent="Area3D/godot_plushV2" index="2"]
 visible = false
+
+[node name="PickedUpParticles" type="GPUParticles3D" parent="Area3D"]
+unique_name_in_owner = true
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_f734n")
+draw_pass_1 = SubResource("SphereMesh_y40sa")
 
 [editable path="Area3D/godot_plushV2"]

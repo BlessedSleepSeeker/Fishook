@@ -15,6 +15,8 @@ var character: CharacterInstance
 @export_group("UI Assets")
 @export var crosshair_texture: Texture2D = null
 
+var anim_duration: float = 10
+
 func _ready() -> void:
 	character = owner as CharacterInstance
 
@@ -23,11 +25,14 @@ func enter(_msg := {}) -> void:
 	character.camera.parameters = self.camera_parameters
 	character.camera.raycast_range = physics_parameters.GRAPPLE_MAX_RANGE
 	play_animation()
+	character.debug_label.text = self.name
 
 func input(_event: InputEvent) -> void:
 	pass
 
 func unhandled_input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_debug_toggle"):
+		character.debug_canvas.visible = !character.debug_canvas.visible
 	if handle_movements_input:
 		character.raw_input = Input.get_vector("left", "right", "forward", "back")
 		var forward: Vector3 = character.camera.real_camera.global_basis.z

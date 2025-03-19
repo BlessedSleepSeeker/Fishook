@@ -3,6 +3,9 @@ class_name BaseLevel
 
 @onready var character: CharacterInstance = %CharacterInstance
 @onready var current_checkpoint = %FirstCheckpoint
+@onready var hud: LevelHUD = %LevelHud
+
+var collected_amount: int = 0
 
 func _ready():
 	register_collectibles()
@@ -10,10 +13,11 @@ func _ready():
 
 func register_collectibles() -> void:
 	for collectible: BaseCollectible in get_tree().get_nodes_in_group("Collectible"):
-		collectible.collected.emit(picked_up_collectible)
+		collectible.collected.connect(picked_up_collectible)
 
-func picked_up_collectible(collectible: BaseCollectible) -> void:
-	pass
+func picked_up_collectible(_collectible: BaseCollectible) -> void:
+	collected_amount += 1
+	hud.update_collectible(collected_amount)
 
 func register_checkpoints() -> void:
 	for checkpoint: BaseCheckpoint in get_tree().get_nodes_in_group("Checkpoint"):

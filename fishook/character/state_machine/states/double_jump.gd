@@ -1,9 +1,12 @@
 extends CharacterState
 class_name DoubleJumpState
 
+@onready var rdm_stream_player: RandomStreamPlayer = $RandomStreamPlayer
+
 func enter(_msg := {}) -> void:
 	character.did_double_jump = true
 	character.velocity.y = physics_parameters.JUMP_IMPULSE
+	rdm_stream_player.play_random()
 	character.particles_manager.emit("SmokeCloudDJ")
 	super()
 	play_animation("Jump")

@@ -10,7 +10,7 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 func enter(_msg := {}) -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	current_loop = 0
-	play_animation()
+	super()
 
 func roll_for_fidget(_finished_animation: String):
 	if current_loop >= min_loop_before_fidget && fidget_chance >= rng.randi_range(1, 100):
