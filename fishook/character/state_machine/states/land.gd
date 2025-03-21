@@ -24,8 +24,11 @@ func unhandled_input(_event: InputEvent):
 	if Input.is_action_just_pressed("jump"):
 		state_machine.transition_to("Jump")
 
+## actually : if we jump while landing, we get a second DJ because we go here thanks to the connection to here from the timer.
+## FUNNY, DO NO FIX FOR NOW
 func land_finished() -> void:
-	state_machine.transition_to("Idle")
+	if state_machine.state == self:
+		state_machine.transition_to("Idle")
 
 func physics_update(_delta: float, _move_character: bool = true) -> void:
 	super(_delta)
