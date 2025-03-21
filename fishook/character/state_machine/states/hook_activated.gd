@@ -36,6 +36,7 @@ func unhandled_input(event: InputEvent) -> void:
 
 
 func physics_update(_delta: float, _move_character: bool = true):
+	character.debug_canvas.set_hookshot_distance(distance)
 	var direction: Vector3 = character.global_position.direction_to(hookshot_point)
 	super(_delta, false)
 	if is_pulling:
@@ -47,8 +48,6 @@ func physics_update(_delta: float, _move_character: bool = true):
 	if can_reset_dj && character.velocity.y > 0:
 		character.did_double_jump = false
 	character.move_and_slide()
-	if is_pulling:
-		distance = character.global_position.distance_to(hookshot_point)
 	if character.is_on_floor():
 		state_machine.transition_to("Land")
 
@@ -71,10 +70,10 @@ func swing(_delta: float) -> void:
 		add_child(inst)
 		inst.global_position = new_point
 
-func pull(_delta: float, direction: Vector3) -> void:
+func pull(_delta: float, _direction: Vector3) -> void:
 	var displacement = distance - physics_parameters.GRAPPLE_REST_LENGTH
 	if displacement > 0:
-		character.velocity += direction * physics_parameters.GRAPPLE_PULLING_SPEED
+		distance = character.global_position.distance_to(hookshot_point) - (physics_parameters.GRAPPLE_PULLING_SPEED * _delta)
 
 func exit():
 	character.particles_manager.stop("HookTrail")

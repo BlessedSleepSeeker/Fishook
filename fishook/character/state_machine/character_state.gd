@@ -25,7 +25,7 @@ func enter(_msg := {}) -> void:
 	character.camera.parameters = self.camera_parameters
 	character.camera.raycast_range = physics_parameters.GRAPPLE_MAX_RANGE
 	play_animation()
-	character.debug_label.text = self.name
+	character.debug_canvas.set_state(self.name)
 
 func input(_event: InputEvent) -> void:
 	pass

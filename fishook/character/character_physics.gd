@@ -15,5 +15,5 @@ class_name CharacterPhysics
 @export var GRAPPLE_MAX_RANGE: float = 30
 @export var GRAPPLE_REST_LENGTH: float = 0.1
 @export var GRAPPLE_SWING_SPEED: float = 70
-@export var GRAPPLE_PULLING_SPEED: float = 10
+@export var GRAPPLE_PULLING_SPEED: float = 3
 @export var GRAPPLE_FRICTION: float = 0.995

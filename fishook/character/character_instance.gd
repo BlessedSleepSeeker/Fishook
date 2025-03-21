@@ -10,8 +10,7 @@ class_name CharacterInstance
 @onready var air_timer: Timer = %AirTime
 @onready var crosshair: TextureRect = %Crosshair
 
-@onready var debug_canvas: CanvasLayer = %DebugCanvasLayer
-@onready var debug_label: Label = %DebugLabel
+@onready var debug_canvas: CharacterDebugCanvas = %DebugCanvasLayer
 
 @export_group("Crosshair")
 @export var crosshair_base_texture: Texture2D = preload("res://character/ui_assets/PNG/Outline/crosshair009.png")
