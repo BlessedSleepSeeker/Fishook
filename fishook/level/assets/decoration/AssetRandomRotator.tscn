@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7pg5cdosq1p1"]
+
+[ext_resource type="Script" uid="uid://b11its0pee6m0" path="res://level/assets/decoration/asset_random_rotator.gd" id="1_xfpps"]
+
+[node name="AssetRandomRotator" type="Node"]
+script = ExtResource("1_xfpps")
+models = null
+rotation_x_min = -360.0
+rotation_x_max = 360.0
+rotation_y_min = -360.0
+rotation_z_min = -360.0
+rotation_z_max = 360.0

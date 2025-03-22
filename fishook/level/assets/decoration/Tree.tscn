@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://donkxcqkw68d4"]
 
-[ext_resource type="PackedScene" uid="uid://e3v4w5akncfy" path="res://level/assets/decoration/models/Tree.glb" id="1_7sxfi"]
+[ext_resource type="PackedScene" uid="uid://e3v4w5akncfy" path="res://level/assets/decoration/models/trees/Tree.glb" id="1_7sxfi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7sxfi"]
 height = 4.4816

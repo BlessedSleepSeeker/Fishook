@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://e3v4w5akncfy"
-path="res://.godot/imported/Tree.glb-84d3ea0786363008b937c63757689ad5.scn"
+uid="uid://bufgfitu7r2tc"
+path="res://.godot/imported/Rock.glb-2cd04742fd46d65465e7ecac7a612de1.scn"
 
 [deps]
 
-source_file="res://level/assets/decoration/models/Tree.glb"
-dest_files=["res://.godot/imported/Tree.glb-84d3ea0786363008b937c63757689ad5.scn"]
+source_file="res://level/assets/decoration/models/rocks/Rock.glb"
+dest_files=["res://.godot/imported/Rock.glb-2cd04742fd46d65465e7ecac7a612de1.scn"]
 
 [params]
 
-nodes/root_type="Node3D"
-nodes/root_name="Tree"
+nodes/root_type=""
+nodes/root_name="Rock"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
