@@ -7,6 +7,8 @@ var character: CharacterInstance
 @export var apply_gravity: bool = true
 @export var handle_movements_input: bool = true
 @export var handle_camera_input: bool = true
+@export var allow_bullet_time = true
+@export var should_play_animation_on_enter: bool = true
 
 @export_group("Parameters")
 @export var physics_parameters: CharacterPhysics = CharacterPhysics.new()
@@ -21,10 +23,11 @@ func _ready() -> void:
 	character = owner as CharacterInstance
 
 func enter(_msg := {}) -> void:
-	character.change_crosshair_to(crosshair_texture)
+	if should_play_animation_on_enter:
+		play_animation()
+	character.hud_canvas.change_crosshair_to(crosshair_texture)
 	character.camera.parameters = self.camera_parameters
 	character.camera.raycast_range = physics_parameters.GRAPPLE_MAX_RANGE
-	play_animation()
 	character.debug_canvas.set_state(self.name)
 
 func input(_event: InputEvent) -> void:
@@ -41,6 +44,11 @@ func unhandled_input(_event: InputEvent) -> void:
 		character.direction = forward * character.raw_input.y + right * character.raw_input.x
 		character.direction.y = 0.0
 		character.direction = character.direction.normalized()
+	if allow_bullet_time:
+		if Input.is_action_just_pressed("bullet_time"):
+			toggle_bullet_time(true)
+		if Input.is_action_just_released("bullet_time"):
+			toggle_bullet_time(false)
 
 func physics_update(_delta: float, move_character: bool = true) -> void:
 	if handle_camera_input:
@@ -84,3 +92,25 @@ func play_animation(_anim_name: String = "") -> void:
 		character.play_animation(_anim_name)
 	else:
 		character.play_animation(self.name)
+
+func fade_crosshair(direction: bool):
+	character.hud_canvas.fade_crosshair(direction)
+
+func toggle_bullet_time(toggle: bool) -> void:
+	#print("toggled : %s" % toggle)
+	if toggle:
+		if character.bullet_time_cooldown.is_stopped():
+			character.bullet_time_on = true
+			character.bullet_time_stopwatch.pause = false
+			character.hud_canvas.tween_bullet_time(0, 1, 0.3)
+			var tween: Tween = get_tree().create_tween()
+			tween.tween_property(Engine, "time_scale", physics_parameters.BULLET_TIME_STRENGHT, physics_parameters.BULLET_TIME_TRANSITION_SPEED)
+	else:
+		if character.bullet_time_stopwatch.current_time > 0.0:
+			character.bullet_time_on = false
+			character.bullet_time_cooldown.wait_time = max(character.bullet_time_stopwatch.current_time, physics_parameters.BULLET_TIME_TRANSITION_SPEED)
+			character.hud_canvas.tween_bullet_time(1, 1, character.bullet_time_cooldown.wait_time)
+			character.bullet_time_cooldown.start()
+			character.bullet_time_stopwatch.reset()
+			var tween: Tween = get_tree().create_tween()
+			tween.tween_property(Engine, "time_scale", 1, physics_parameters.BULLET_TIME_TRANSITION_SPEED)

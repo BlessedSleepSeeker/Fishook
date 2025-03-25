@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://bcvho024kiqga"]
+[gd_scene load_steps=66 format=3 uid="uid://bcvho024kiqga"]
 
 [ext_resource type="Script" uid="uid://dprgwt0j2p82d" path="res://character/character_instance.gd" id="1_vgy44"]
 [ext_resource type="PackedScene" uid="uid://uh75ppgcvkw1" path="res://character/model/CharacterSkin.tscn" id="2_1bt4p"]
@@ -24,7 +24,6 @@
 [ext_resource type="Script" uid="uid://c2b5vle648c6o" path="res://character/state_machine/states/hook_aim.gd" id="14_k5qqw"]
 [ext_resource type="AudioStream" uid="uid://b1ykvyjtyaidx" path="res://sounds_effects/personal/shortboop1.mp3" id="14_m6vje"]
 [ext_resource type="Texture2D" uid="uid://t0rb60xjmpwi" path="res://character/ui_assets/PNG/Outline/crosshair145.png" id="14_uh5tv"]
-[ext_resource type="Texture2D" uid="uid://dl5mjfx4al1ot" path="res://character/ui_assets/PNG/Outline/crosshair009.png" id="15_3in86"]
 [ext_resource type="AudioStream" uid="uid://dtm66jtnrrx6r" path="res://sounds_effects/personal/shortboop2.mp3" id="15_bjf1r"]
 [ext_resource type="AudioStream" uid="uid://gksm874m57qf" path="res://sounds_effects/personal/shortboop3.mp3" id="16_2c7bb"]
 [ext_resource type="AudioStream" uid="uid://cqkf41dnsoqia" path="res://sounds_effects/personal/shortboop4.mp3" id="17_8ojuf"]
@@ -34,16 +33,14 @@
 [ext_resource type="AudioStream" uid="uid://c70p1fpi3cklb" path="res://sounds_effects/kenney_impact-sounds/footstep_concrete_002.ogg" id="19_l2q03"]
 [ext_resource type="AudioStream" uid="uid://dhrapjgt5xjdw" path="res://sounds_effects/kenney_impact-sounds/footstep_concrete_003.ogg" id="20_c6ppy"]
 [ext_resource type="AudioStream" uid="uid://jjo6qhry1akn" path="res://sounds_effects/kenney_impact-sounds/footstep_concrete_004.ogg" id="21_hdq18"]
+[ext_resource type="PackedScene" uid="uid://bn8hn6umnjoeb" path="res://character/CharacterUICanvas.tscn" id="34_bjf1r"]
+[ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/Stopwatch.tscn" id="35_2c7bb"]
 [ext_resource type="PackedScene" uid="uid://khpkfqnos2o" path="res://character/CharacterDebugCanvas.tscn" id="35_bjf1r"]
-
-[sub_resource type="ImageTexture" id="ImageTexture_m6vje"]
-
-[sub_resource type="ImageTexture" id="ImageTexture_bjf1r"]
-
-[sub_resource type="ImageTexture" id="ImageTexture_2c7bb"]
 
 [sub_resource type="Resource" id="Resource_0y2cd"]
 script = ExtResource("6_uip3n")
+BULLET_TIME_STRENGHT = 0.2
+BULLET_TIME_TRANSITION_SPEED = 0.3
 GRAVITY = -30.0
 JUMP_IMPULSE = 12.0
 ACCELERATION = 20.0
@@ -59,6 +56,8 @@ metadata/_custom_type_script = "uid://dba7awsrs6b6y"
 
 [sub_resource type="Resource" id="Resource_uip3n"]
 script = ExtResource("6_uip3n")
+BULLET_TIME_STRENGHT = 0.2
+BULLET_TIME_TRANSITION_SPEED = 0.3
 GRAVITY = -30.0
 JUMP_IMPULSE = 15.0
 ACCELERATION = 20.0
@@ -74,6 +73,8 @@ metadata/_custom_type_script = "uid://dba7awsrs6b6y"
 
 [sub_resource type="Resource" id="Resource_m6vje"]
 script = ExtResource("6_uip3n")
+BULLET_TIME_STRENGHT = 0.2
+BULLET_TIME_TRANSITION_SPEED = 0.3
 GRAVITY = -30.0
 JUMP_IMPULSE = 12.0
 ACCELERATION = 40.0
@@ -89,6 +90,8 @@ metadata/_custom_type_script = "uid://dba7awsrs6b6y"
 
 [sub_resource type="Resource" id="Resource_uh5tv"]
 script = ExtResource("6_uip3n")
+BULLET_TIME_STRENGHT = 0.2
+BULLET_TIME_TRANSITION_SPEED = 0.3
 GRAVITY = -30.0
 JUMP_IMPULSE = 12.0
 ACCELERATION = 20.0
@@ -104,6 +107,8 @@ metadata/_custom_type_script = "uid://dba7awsrs6b6y"
 
 [sub_resource type="Resource" id="Resource_3in86"]
 script = ExtResource("6_uip3n")
+BULLET_TIME_STRENGHT = 0.2
+BULLET_TIME_TRANSITION_SPEED = 0.3
 GRAVITY = -30.0
 JUMP_IMPULSE = 12.0
 ACCELERATION = 20.0
@@ -247,15 +252,16 @@ initial_state = NodePath("Idle")
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("3_gn8po")
 fidget_chance = 0
-crosshair_texture = SubResource("ImageTexture_m6vje")
+
+[node name="FadeCrosshairTimer" type="Timer" parent="StateMachine/Idle"]
+wait_time = 3.0
+one_shot = true
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("5_svu25")
-crosshair_texture = SubResource("ImageTexture_bjf1r")
 
 [node name="Run" type="Node" parent="StateMachine"]
 script = ExtResource("5_6r8ug")
-crosshair_texture = SubResource("ImageTexture_2c7bb")
 
 [node name="RandomStreamPlayer" parent="StateMachine/Run" instance=ExtResource("6_kdfyh")]
 volume_db = -20.0
@@ -304,6 +310,7 @@ physics_parameters = SubResource("Resource_uh5tv")
 
 [node name="HookActivated" type="Node" parent="StateMachine"]
 script = ExtResource("8_7jo2n")
+should_play_animation_on_enter = false
 physics_parameters = SubResource("Resource_3in86")
 crosshair_texture = ExtResource("14_uh5tv")
 
@@ -347,19 +354,8 @@ amount = 60
 process_material = SubResource("ParticleProcessMaterial_k5qqw")
 draw_pass_1 = SubResource("TubeTrailMesh_uh5tv")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Crosshair" type="TextureRect" parent="CanvasLayer/CenterContainer"]
+[node name="HUDCanvasLayer" parent="." instance=ExtResource("34_bjf1r")]
 unique_name_in_owner = true
-layout_mode = 2
-texture = ExtResource("15_3in86")
 
 [node name="Timers" type="Node" parent="."]
 
@@ -367,7 +363,19 @@ texture = ExtResource("15_3in86")
 unique_name_in_owner = true
 one_shot = true
 
+[node name="BulletTimeCooldown" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+process_callback = 0
+wait_time = 5.0
+one_shot = true
+ignore_time_scale = true
+
+[node name="BulletTimeStopwatch" parent="Timers" instance=ExtResource("35_2c7bb")]
+unique_name_in_owner = true
+paused_at_load = true
+
 [node name="DebugCanvasLayer" parent="." instance=ExtResource("35_bjf1r")]
 unique_name_in_owner = true
+visible = false
 
 [editable path="MouseFollowCamera"]

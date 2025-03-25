@@ -7,10 +7,14 @@ var current_loop: int = 0
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
+@onready var crosshair_timer: Timer = $FadeCrosshairTimer
+
 func enter(_msg := {}) -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	current_loop = 0
 	super()
+	crosshair_timer.start()
+	crosshair_timer.timeout.connect(fade_crosshair.bind(false))
 
 func roll_for_fidget(_finished_animation: String):
 	if current_loop >= min_loop_before_fidget && fidget_chance >= rng.randi_range(1, 100):
@@ -39,7 +43,7 @@ func physics_update(_delta: float, _move_character: bool = true) -> void:
 		state_machine.transition_to("Fall")
 
 func exit() -> void:
-	pass
+	crosshair_timer.timeout.disconnect(fade_crosshair.bind(false))
 
 func _notification(what: int) -> void:
 	if what == Node.NOTIFICATION_WM_CLOSE_REQUEST || what == Node.NOTIFICATION_WM_GO_BACK_REQUEST:

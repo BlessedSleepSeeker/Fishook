@@ -22,14 +22,18 @@ func enter(_msg := {}) -> void:
 	else:
 		state_machine.transition_to("Fall")
 	character.particles_manager.emit("HookTrail")
+	if character.skin.animation_tree.active:
+		character.skin.animation_tree.animation_finished.connect(play_animation)
+	else:
+		play_animation()
 
 func unhandled_input(event: InputEvent) -> void:
 	super(event)
-	if Input.is_action_just_pressed("jump") && not character.did_double_jump:
-		state_machine.transition_to("DoubleJump")
-	if Input.is_action_just_pressed("action1"):
+	if Input.is_action_just_pressed("jump"):
 		state_machine.transition_to("Fall")
-	if Input.is_action_pressed("action2"):
+	if Input.is_action_just_pressed("throw_hook"):
+		state_machine.transition_to("Fall")
+	if Input.is_action_pressed("reel_in"):
 		is_pulling = true
 	else:
 		is_pulling = false
@@ -77,3 +81,4 @@ func pull(_delta: float, _direction: Vector3) -> void:
 
 func exit():
 	character.particles_manager.stop("HookTrail")
+	character.skin.animation_tree.animation_finished.disconnect(play_animation)

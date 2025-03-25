@@ -29,6 +29,8 @@ func physics_update(_delta: float, _move_character: bool = true) -> void:
 	super(_delta)
 	if character.velocity.length() < walk_treshold:
 		state_machine.transition_to("Walk")
+	if not character.is_on_floor():
+		state_machine.transition_to("Fall")
 
 func exit() -> void:
 	animation_looping_timer.stop()

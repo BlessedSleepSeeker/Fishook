@@ -16,6 +16,11 @@ var raycast_range: float = 10:
 
 var _camera_input_direction: Vector2 = Vector2.ZERO
 
+var character: CharacterInstance
+
+func _ready():
+	character = owner as CharacterInstance
+
 func _unhandled_input(_event: InputEvent):
 	# Make mouse aiming speed resolution-independent
 	# (required when using the `canvas_items` stretch mode).
@@ -28,10 +33,18 @@ func _unhandled_input(_event: InputEvent):
 		_camera_input_direction = _event.screen_relative * parameters.CAMERA_MOUSE_SENSIBILITY * scale_factor
 
 func rotate_camera(_delta) -> void:
-	self.rotation.x += self._camera_input_direction.y * _delta
+	#print(character.bullet_time_on)
+	if character.bullet_time_on:
+		self.rotation.x += self._camera_input_direction.y * (_delta * 5)
+	else:
+		self.rotation.x += self._camera_input_direction.y * _delta
 	self.rotation.x = clampf(self.rotation.x, parameters.CAMERA_X_ROT_MIN, parameters.CAMERA_X_ROT_MAX)
 
 	self.rotation.y -= self._camera_input_direction.x * _delta
+	if character.bullet_time_on:
+		self.rotation.y -= self._camera_input_direction.x * (_delta * 5) 
+	else:
+		self.rotation.y -= self._camera_input_direction.x * _delta
 	self.rotation.y = wrapf(self.rotation.y, 0.0, deg_to_rad(360))
 	self._camera_input_direction = Vector2.ZERO
 

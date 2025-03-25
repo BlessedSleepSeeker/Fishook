@@ -1,6 +1,9 @@
 extends Resource
 class_name CharacterPhysics
 
+## Bigger number has less effect
+@export_range(0.01, 1, 0.01) var BULLET_TIME_STRENGHT: float = 0.2
+@export_range(0.01, 1, 0.01) var BULLET_TIME_TRANSITION_SPEED: float = 0.3
 
 @export var GRAVITY: float = -30
 @export var JUMP_IMPULSE: float = 12

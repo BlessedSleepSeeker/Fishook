@@ -209,9 +209,6 @@ transform = Transform3D(0.230554, 0.0920718, -0.968694, -0.0499254, 0.995321, 0.
 [node name="Tree6" parent="Geometry/Decoration" instance=ExtResource("7_i36al")]
 transform = Transform3D(0.943719, -0.0491438, -0.327077, 0.0490345, 0.99876, -0.00858516, 0.327093, -0.00793607, 0.944959, 40.4112, -3.14613, 18.3956)
 
-[node name="Tree7" parent="Geometry/Decoration" instance=ExtResource("7_i36al")]
-transform = Transform3D(-0.914499, 0.00146592, -0.404586, 0.017329, 0.999218, -0.0355489, 0.404217, -0.0395205, -0.913809, 38.613, 24.0156, 11.8855)
-
 [node name="Flower22" parent="Geometry/Decoration" instance=ExtResource("10_jiek2")]
 transform = Transform3D(-0.541612, 0.0670835, -0.837948, 0.00669641, 0.997123, 0.0754984, 0.840602, 0.0352796, -0.540503, 39.4751, 0.5, -2.06596)
 
@@ -343,6 +340,6 @@ rotation_z_max = 0.174533
 models = Array[NodePath]([NodePath("../Geometry/Decoration/Rock"), NodePath("../Geometry/Decoration/Rock2"), NodePath("../Geometry/Decoration/Rock3"), NodePath("../Geometry/Decoration/Rock4")])
 
 [node name="TreeRandomRotator" parent="." instance=ExtResource("11_jiek2")]
-models = Array[NodePath]([NodePath("../Geometry/Decoration/Tree"), NodePath("../Geometry/Decoration/Tree2"), NodePath("../Geometry/Decoration/Tree3"), NodePath("../Geometry/Decoration/Tree4"), NodePath("../Geometry/Decoration/Tree5"), NodePath("../Geometry/Decoration/Tree6"), NodePath("../Geometry/Decoration/Tree7")])
+models = Array[NodePath]([NodePath("../Geometry/Decoration/Tree"), NodePath("../Geometry/Decoration/Tree2"), NodePath("../Geometry/Decoration/Tree3"), NodePath("../Geometry/Decoration/Tree4"), NodePath("../Geometry/Decoration/Tree5"), NodePath("../Geometry/Decoration/Tree6")])
 rotation_x_max = 0.0872665
 rotation_z_max = 0.0872665

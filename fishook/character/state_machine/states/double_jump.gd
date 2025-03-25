@@ -13,7 +13,7 @@ func enter(_msg := {}) -> void:
 
 func unhandled_input(_event: InputEvent):
 	super(_event)
-	if Input.is_action_just_pressed("action1"):
+	if Input.is_action_just_pressed("throw_hook"):
 		state_machine.transition_to("HookThrow")
 
 func physics_update(_delta: float, _move_character: bool = true) -> void:
