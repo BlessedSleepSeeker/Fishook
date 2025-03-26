@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dnjlgjvt7ta5o" path="res://character/hookshot/hookshot_line.gd" id="1_hloci"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_hloci"]
-radius = 0.1
+radius = 0.01
 height = 0.2
 radial_segments = 4
 rings = 1

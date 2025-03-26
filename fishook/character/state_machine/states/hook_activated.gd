@@ -5,8 +5,6 @@ var hookshot_raycast: RayCast3D = null
 var hookshot_point: Vector3 = Vector3.ZERO
 var distance: float
 
-var is_pulling: bool = false
-
 var can_reset_dj: bool = false
 
 @export var fishook_scene: PackedScene = preload("res://character/hookshot/HookshotFishook.tscn")
@@ -39,20 +37,17 @@ func unhandled_input(event: InputEvent) -> void:
 	super(event)
 	if Input.is_action_just_pressed("jump"):
 		state_machine.transition_to("Fall")
-	if Input.is_action_just_pressed("throw_hook"):
-		state_machine.transition_to("Fall")
-	if Input.is_action_pressed("reel_in"):
-		is_pulling = true
-	else:
-		is_pulling = false
 
 
 func physics_update(_delta: float, _move_character: bool = true):
 	character.debug_canvas.set_hookshot_distance(distance)
-	var direction: Vector3 = character.global_position.direction_to(hookshot_point)
+	#var direction: Vector3 = character.global_position.direction_to(hookshot_point)
 	super(_delta, false)
-	if is_pulling:
-		pull(_delta, direction)
+	if Input.is_action_pressed("reel_in"):
+		reel_in(_delta)
+	if Input.is_action_pressed("reel_out"):
+		reel_out(_delta)
+
 	swing(_delta)
 	## reset double jump only if you've gone downward once
 	if character.velocity.y < 0:
@@ -82,16 +77,20 @@ func swing(_delta: float) -> void:
 		add_child(inst)
 		inst.global_position = new_point
 
-func pull(_delta: float, _direction: Vector3) -> void:
+func reel_in(_delta: float) -> void:
 	var displacement = distance - physics_parameters.GRAPPLE_REST_LENGTH
 	if displacement > 0:
-		distance = character.global_position.distance_to(hookshot_point) - (physics_parameters.GRAPPLE_PULLING_SPEED * _delta)
+		distance = character.global_position.distance_to(hookshot_point) - (physics_parameters.GRAPPLE_REELING_SPEED * _delta)
+
+func reel_out(_delta: float) -> void:
+	var displacement = physics_parameters.GRAPPLE_MAX_RANGE - distance
+	if displacement > 0:
+		distance = character.global_position.distance_to(hookshot_point) + (physics_parameters.GRAPPLE_REELING_SPEED * _delta)
 
 func spawn_fishook() -> void:
 	var inst = fishook_scene.instantiate()
 	add_child(inst)
 	inst.global_position = hookshot_point
-
 	fishook = inst
 
 func exit():
