@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bj1rl070ft2mt"]
+
+[node name="HookshotFishook" type="RigidBody3D"]
+gravity_scale = 0.0
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+radius = 0.2

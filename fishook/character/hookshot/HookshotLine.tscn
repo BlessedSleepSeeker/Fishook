@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwt2mpqchi1uh"]
+
+[ext_resource type="Script" uid="uid://dnjlgjvt7ta5o" path="res://character/hookshot/hookshot_line.gd" id="1_hloci"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_hloci"]
+radius = 0.1
+height = 0.2
+radial_segments = 4
+rings = 1
+
+[node name="HookshotLine" type="Node3D" node_paths=PackedStringArray("hook_source", "fishook")]
+top_level = true
+script = ExtResource("1_hloci")
+hook_source = NodePath("start")
+fishook = NodePath("end")
+point_mesh = SubResource("SphereMesh_hloci")
+
+[node name="start" type="Node3D" parent="."]
+
+[node name="end" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0672, 6.53349, -5.53991)

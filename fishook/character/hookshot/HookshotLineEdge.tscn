@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://b628e06fprp7n"]
+
+[ext_resource type="Script" uid="uid://bq6q03n6qjwlj" path="res://character/hookshot/hookshot_line_part.gd" id="1_d64ok"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_d64ok"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.0
+radial_segments = 6
+
+[sub_resource type="SphereMesh" id="SphereMesh_acrtg"]
+
+[node name="HookshotLineEdge" type="StaticBody3D"]
+script = ExtResource("1_d64ok")
+
+[node name="Offset" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Offset"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_d64ok")
+skeleton = NodePath("../..")
+
+[node name="Start" type="Marker3D" parent="Offset"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+gizmo_extents = 2.88
+
+[node name="End" type="Marker3D" parent="Offset"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Offset/End"]
+visible = false
+mesh = SubResource("SphereMesh_acrtg")

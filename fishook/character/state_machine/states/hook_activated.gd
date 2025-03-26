@@ -9,8 +9,13 @@ var is_pulling: bool = false
 
 var can_reset_dj: bool = false
 
+@export var fishook_scene: PackedScene = preload("res://character/hookshot/HookshotFishook.tscn")
+var fishook: Node3D = null
+
+@export_group("Debug")
 @export var spawn_debug: bool = false
 @export var debug_ball: PackedScene = preload("res://debug/DebugBall.tscn")
+
 
 func enter(_msg := {}) -> void:
 	super()
@@ -19,8 +24,11 @@ func enter(_msg := {}) -> void:
 	if hookshot_raycast.is_colliding():
 		hookshot_point = hookshot_raycast.get_collision_point()
 		distance = character.global_position.distance_to(hookshot_point)
+		spawn_fishook()
 	else:
 		state_machine.transition_to("Fall")
+		return
+	character.skin.toggle_hookline(true, fishook)
 	character.particles_manager.emit("HookTrail")
 	if character.skin.animation_tree.active:
 		character.skin.animation_tree.animation_finished.connect(play_animation)
@@ -79,6 +87,17 @@ func pull(_delta: float, _direction: Vector3) -> void:
 	if displacement > 0:
 		distance = character.global_position.distance_to(hookshot_point) - (physics_parameters.GRAPPLE_PULLING_SPEED * _delta)
 
+func spawn_fishook() -> void:
+	var inst = fishook_scene.instantiate()
+	add_child(inst)
+	inst.global_position = hookshot_point
+
+	fishook = inst
+
 func exit():
 	character.particles_manager.stop("HookTrail")
 	character.skin.animation_tree.animation_finished.disconnect(play_animation)
+	if fishook:
+		fishook.queue_free()
+		fishook = null
+	character.skin.toggle_hookline(false, null)
