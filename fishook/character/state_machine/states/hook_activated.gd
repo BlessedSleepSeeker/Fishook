@@ -5,6 +5,8 @@ var hookshot_raycast: RayCast3D = null
 var hookshot_point: Vector3 = Vector3.ZERO
 var distance: float
 
+var frame_nbr: int = 0
+
 var can_reset_dj: bool = false
 
 @export var fishook_scene: PackedScene = preload("res://character/hookshot/HookshotFishook.tscn")
@@ -55,6 +57,12 @@ func physics_update(_delta: float, _move_character: bool = true):
 	if can_reset_dj && character.velocity.y > 0:
 		character.did_double_jump = false
 	character.move_and_slide()
+	if frame_nbr == 0:
+		character.skin.swing_with_hookshot(character.velocity, character.velocity.length() * physics_parameters.GRAPPLE_ROTATION_SPEED, _delta)
+	elif frame_nbr > 10:
+		frame_nbr = 0
+	else:
+		frame_nbr += 1
 	if character.is_on_floor():
 		state_machine.transition_to("Land")
 
@@ -70,7 +78,6 @@ func swing(_delta: float) -> void:
 	var new_point = hookshot_point + (hookshot_point.direction_to(future_pos) * distance)
 	## Update velocity to go in the direction of the new_point.
 	character.velocity = (new_point - character.global_position) / _delta
-	#character.velocity *= 1.01
 
 	if spawn_debug:
 		var inst: StaticBody3D = debug_ball.instantiate()
@@ -100,3 +107,4 @@ func exit():
 		fishook.queue_free()
 		fishook = null
 	character.skin.toggle_hookline(false, null)
+	character.skin.reset_swing_orientation()

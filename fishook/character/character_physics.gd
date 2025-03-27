@@ -20,3 +20,4 @@ class_name CharacterPhysics
 @export var GRAPPLE_SWING_SPEED: float = 70
 @export var GRAPPLE_REELING_SPEED: float = 3
 @export var GRAPPLE_FRICTION: float = 0.995
+@export var GRAPPLE_ROTATION_SPEED: float = 0.1

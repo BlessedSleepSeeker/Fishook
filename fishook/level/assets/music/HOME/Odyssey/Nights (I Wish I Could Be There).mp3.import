@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://147phmaymdcy"
+path="res://.godot/imported/Nights (I Wish I Could Be There).mp3-01947f20cecf4012d81899ed1ee9105a.mp3str"
+
+[deps]
+
+source_file="res://level/assets/music/HOME/Odyssey/Nights (I Wish I Could Be There).mp3"
+dest_files=["res://.godot/imported/Nights (I Wish I Could Be There).mp3-01947f20cecf4012d81899ed1ee9105a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

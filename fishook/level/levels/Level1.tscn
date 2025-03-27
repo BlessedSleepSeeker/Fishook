@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctqppdq3quxc2"]
+[gd_scene load_steps=15 format=3 uid="uid://ctqppdq3quxc2"]
 
 [ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_tx13k"]
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_8twdg"]
@@ -11,8 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://donkxcqkw68d4" path="res://level/assets/decoration/Tree.tscn" id="9_rmv8o"]
 [ext_resource type="PackedScene" uid="uid://br70t0g51amx8" path="res://level/assets/decoration/models/flowers/flower1.glb" id="10_08kpg"]
 [ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="11_8ynym"]
-[ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/Stopwatch.tscn" id="12_iaemi"]
+[ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="12_iaemi"]
 [ext_resource type="PackedScene" uid="uid://c7pg5cdosq1p1" path="res://level/assets/decoration/AssetRandomRotator.tscn" id="13_t73ws"]
+[ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="14_8twdg"]
 
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_tx13k")
@@ -28,6 +29,8 @@ environment = ExtResource("3_x4civ")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.67946, 100, 8.76321)
 shadow_enabled = true
+
+[node name="LevelMusicPlayer" parent="." instance=ExtResource("14_8twdg")]
 
 [node name="LevelHud" parent="." instance=ExtResource("4_xkbpo")]
 unique_name_in_owner = true

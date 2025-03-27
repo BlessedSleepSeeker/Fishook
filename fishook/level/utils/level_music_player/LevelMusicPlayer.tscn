@@ -1,0 +1,35 @@
+[gd_scene load_steps=22 format=3 uid="uid://cvbkcnravdnej"]
+
+[ext_resource type="Script" uid="uid://c5fdi5b6v0iko" path="res://level/utils/level_music_player/level_music_player.gd" id="1_4q0oc"]
+[ext_resource type="AudioStream" uid="uid://cis4ksv5yd2ly" path="res://level/assets/music/HOME/Odyssey/Intro.mp3" id="2_2j07f"]
+[ext_resource type="AudioStream" uid="uid://beb6754d4agsj" path="res://level/assets/music/HOME/Odyssey/Native.mp3" id="3_rscnc"]
+[ext_resource type="AudioStream" uid="uid://ciuhw4x8qnrko" path="res://level/assets/music/HOME/Odyssey/Decay.mp3" id="4_3jgvj"]
+[ext_resource type="AudioStream" uid="uid://wpuy68apxbyu" path="res://level/assets/music/HOME/Odyssey/Oort Cloud.mp3" id="5_t81vm"]
+[ext_resource type="AudioStream" uid="uid://cqvx6qik3nb15" path="res://level/assets/music/HOME/Odyssey/Tides.mp3" id="6_g2q4r"]
+[ext_resource type="AudioStream" uid="uid://147phmaymdcy" path="res://level/assets/music/HOME/Odyssey/Nights (I Wish I Could Be There).mp3" id="7_wh40x"]
+[ext_resource type="AudioStream" uid="uid://bacisynjxg6by" path="res://level/assets/music/HOME/Odyssey/New Machines.mp3" id="8_2hvq5"]
+[ext_resource type="AudioStream" uid="uid://cmf8wis2l734q" path="res://level/assets/music/HOME/Odyssey/Odyssey.mp3" id="9_68poa"]
+[ext_resource type="AudioStream" uid="uid://cdv2fvx4pm4pp" path="res://level/assets/music/HOME/Odyssey/Resonance.mp3" id="10_fifmh"]
+[ext_resource type="AudioStream" uid="uid://twdd60gwpmog" path="res://level/assets/music/HOME/Odyssey/Half Moon.mp3" id="11_rqaa5"]
+[ext_resource type="AudioStream" uid="uid://djg6xk8aj03f2" path="res://level/assets/music/HOME/Odyssey/Come Back Down.mp3" id="12_b2ge8"]
+[ext_resource type="AudioStream" uid="uid://l611pmspotad" path="res://level/assets/music/HOME/Odyssey/On The Way Out.mp3" id="13_fbhnj"]
+[ext_resource type="AudioStream" uid="uid://cr505351t6j4i" path="res://level/assets/music/HOME/Before The Night/We're Finally Landing.mp3" id="14_k8cb4"]
+[ext_resource type="AudioStream" uid="uid://nci5axi0170n" path="res://level/assets/music/HOME/Before The Night/Overflow.mp3" id="15_0o8xl"]
+[ext_resource type="AudioStream" uid="uid://8beiopvx7nnx" path="res://level/assets/music/HOME/Before The Night/Without A Sound.mp3" id="16_rmwuj"]
+[ext_resource type="AudioStream" uid="uid://w2kjbfefey3s" path="res://level/assets/music/HOME/Before The Night/Above All.mp3" id="17_8s45k"]
+[ext_resource type="AudioStream" uid="uid://org2ciudv5t8" path="res://level/assets/music/HOME/Before The Night/Pyxis.mp3" id="18_80xav"]
+[ext_resource type="AudioStream" uid="uid://doptmxvghuhm6" path="res://level/assets/music/HOME/Before The Night/If I'm Wrong.mp3" id="19_21wtu"]
+[ext_resource type="AudioStream" uid="uid://bhs306bw8gs40" path="res://level/assets/music/HOME/Before The Night/Nosebleed.mp3" id="20_xh8a0"]
+[ext_resource type="AudioStream" uid="uid://bdkiq0tr1r6a7" path="res://level/assets/music/HOME/Before The Night/Sun.mp3" id="21_e2ddo"]
+
+[node name="LevelMusicPlayer" type="Node"]
+script = ExtResource("1_4q0oc")
+musics = Array[AudioStream]([ExtResource("12_b2ge8"), ExtResource("4_3jgvj"), ExtResource("11_rqaa5"), ExtResource("2_2j07f"), ExtResource("3_rscnc"), ExtResource("8_2hvq5"), ExtResource("7_wh40x"), ExtResource("9_68poa"), ExtResource("13_fbhnj"), ExtResource("5_t81vm"), ExtResource("10_fifmh"), ExtResource("6_g2q4r"), ExtResource("17_8s45k"), ExtResource("19_21wtu"), ExtResource("20_xh8a0"), ExtResource("15_0o8xl"), ExtResource("18_80xav"), ExtResource("21_e2ddo"), ExtResource("14_k8cb4"), ExtResource("16_rmwuj")])
+
+[node name="AudioStreamPlayer1" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+bus = &"Music"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+bus = &"Music"

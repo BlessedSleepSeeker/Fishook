@@ -7,6 +7,7 @@ var character: CharacterInstance
 @export var apply_gravity: bool = true
 @export var handle_movements_input: bool = true
 @export var handle_camera_input: bool = true
+@export var rotate_player_skin: bool = true
 @export var allow_bullet_time = true
 @export var should_play_animation_on_enter: bool = true
 
@@ -79,10 +80,11 @@ func physics_update(_delta: float, move_character: bool = true) -> void:
 	character.raw_input = Vector2.ZERO
 
 	## character angling
-	if character.direction.length() > 0.2:
-		character.last_movement_direction = character.direction
-	var target_angle: float = Vector3.BACK.signed_angle_to(character.last_movement_direction, Vector3.UP)
-	character.skin.global_rotation.y = lerp_angle(character.skin.rotation.y, target_angle, physics_parameters.ROTATION_SPEED * _delta)
+	if rotate_player_skin:
+		if character.direction.length() > 0.2:
+			character.last_movement_direction = character.direction
+		var target_angle: float = Vector3.BACK.signed_angle_to(character.last_movement_direction, Vector3.UP)
+		character.skin.global_rotation.y = lerp_angle(character.skin.rotation.y, target_angle, physics_parameters.ROTATION_SPEED * _delta)
 
 func exit() -> void:
 	pass
@@ -102,15 +104,15 @@ func toggle_bullet_time(toggle: bool) -> void:
 		if character.bullet_time_cooldown.is_stopped():
 			character.bullet_time_on = true
 			character.bullet_time_stopwatch.pause = false
-			character.hud_canvas.tween_bullet_time(0, 1, 0.3)
+			character.hud_canvas.tween_bullet_time(0, 1, physics_parameters.BULLET_TIME_TRANSITION_SPEED)
 			var tween: Tween = get_tree().create_tween()
-			tween.tween_property(Engine, "time_scale", physics_parameters.BULLET_TIME_STRENGHT, physics_parameters.BULLET_TIME_TRANSITION_SPEED)
+			tween.tween_property(Engine, "time_scale", physics_parameters.BULLET_TIME_STRENGHT, physics_parameters.BULLET_TIME_TRANSITION_SPEED).set_trans(Tween.TRANS_CUBIC)
 	else:
 		if character.bullet_time_stopwatch.current_time > 0.0:
 			character.bullet_time_on = false
 			character.bullet_time_cooldown.wait_time = max(character.bullet_time_stopwatch.current_time, physics_parameters.BULLET_TIME_TRANSITION_SPEED)
-			character.hud_canvas.tween_bullet_time(1, 1, character.bullet_time_cooldown.wait_time)
 			character.bullet_time_cooldown.start()
 			character.bullet_time_stopwatch.reset()
+			character.hud_canvas.tween_bullet_time(1, 1, character.bullet_time_cooldown.wait_time)
 			var tween: Tween = get_tree().create_tween()
-			tween.tween_property(Engine, "time_scale", 1, physics_parameters.BULLET_TIME_TRANSITION_SPEED)
+			tween.tween_property(Engine, "time_scale", 1, physics_parameters.BULLET_TIME_TRANSITION_SPEED).set_trans(Tween.TRANS_CUBIC)

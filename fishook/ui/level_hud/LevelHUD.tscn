@@ -2,10 +2,9 @@
 
 [ext_resource type="Script" uid="uid://ve25t5t7lumb" path="res://ui/level_hud/level_hud.gd" id="1_o1pp8"]
 
-[sub_resource type="Environment" id="Environment_sdvmq"]
-
 [sub_resource type="World3D" id="World3D_sdvmq"]
-environment = SubResource("Environment_sdvmq")
+
+[sub_resource type="Environment" id="Environment_sdvmq"]
 
 [node name="LevelHud" type="CanvasLayer"]
 script = ExtResource("1_o1pp8")

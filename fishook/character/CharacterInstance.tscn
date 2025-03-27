@@ -34,7 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://dhrapjgt5xjdw" path="res://sounds_effects/kenney_impact-sounds/footstep_concrete_003.ogg" id="20_c6ppy"]
 [ext_resource type="AudioStream" uid="uid://jjo6qhry1akn" path="res://sounds_effects/kenney_impact-sounds/footstep_concrete_004.ogg" id="21_hdq18"]
 [ext_resource type="PackedScene" uid="uid://bn8hn6umnjoeb" path="res://character/CharacterUICanvas.tscn" id="34_bjf1r"]
-[ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/Stopwatch.tscn" id="35_2c7bb"]
+[ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="35_2c7bb"]
 [ext_resource type="PackedScene" uid="uid://khpkfqnos2o" path="res://character/CharacterDebugCanvas.tscn" id="35_bjf1r"]
 
 [sub_resource type="Resource" id="Resource_0y2cd"]
@@ -52,6 +52,7 @@ GRAPPLE_REST_LENGTH = 0.1
 GRAPPLE_SWING_SPEED = 70.0
 GRAPPLE_REELING_SPEED = 3.0
 GRAPPLE_FRICTION = 0.995
+GRAPPLE_ROTATION_SPEED = 0.1
 metadata/_custom_type_script = "uid://dba7awsrs6b6y"
 
 [sub_resource type="Resource" id="Resource_uip3n"]
@@ -69,6 +70,7 @@ GRAPPLE_REST_LENGTH = 0.1
 GRAPPLE_SWING_SPEED = 70.0
 GRAPPLE_REELING_SPEED = 3.0
 GRAPPLE_FRICTION = 0.995
+GRAPPLE_ROTATION_SPEED = 0.1
 metadata/_custom_type_script = "uid://dba7awsrs6b6y"
 
 [sub_resource type="Resource" id="Resource_m6vje"]
@@ -86,6 +88,7 @@ GRAPPLE_REST_LENGTH = 0.1
 GRAPPLE_SWING_SPEED = 70.0
 GRAPPLE_REELING_SPEED = 3.0
 GRAPPLE_FRICTION = 0.995
+GRAPPLE_ROTATION_SPEED = 0.1
 metadata/_custom_type_script = "uid://dba7awsrs6b6y"
 
 [sub_resource type="Resource" id="Resource_uh5tv"]
@@ -103,6 +106,7 @@ GRAPPLE_REST_LENGTH = 0.1
 GRAPPLE_SWING_SPEED = 70.0
 GRAPPLE_REELING_SPEED = 3.0
 GRAPPLE_FRICTION = 0.995
+GRAPPLE_ROTATION_SPEED = 0.1
 metadata/_custom_type_script = "uid://dba7awsrs6b6y"
 
 [sub_resource type="Resource" id="Resource_3in86"]
@@ -120,6 +124,7 @@ GRAPPLE_REST_LENGTH = 0.1
 GRAPPLE_SWING_SPEED = 70.0
 GRAPPLE_REELING_SPEED = 3.0
 GRAPPLE_FRICTION = 0.995
+GRAPPLE_ROTATION_SPEED = 0.1
 metadata/_custom_type_script = "uid://dba7awsrs6b6y"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7jo2n"]
@@ -310,6 +315,7 @@ physics_parameters = SubResource("Resource_uh5tv")
 
 [node name="HookActivated" type="Node" parent="StateMachine"]
 script = ExtResource("8_7jo2n")
+rotate_player_skin = false
 should_play_animation_on_enter = false
 physics_parameters = SubResource("Resource_3in86")
 crosshair_texture = ExtResource("14_uh5tv")
@@ -362,11 +368,10 @@ unique_name_in_owner = true
 [node name="AirTime" type="Timer" parent="Timers"]
 unique_name_in_owner = true
 one_shot = true
+ignore_time_scale = true
 
 [node name="BulletTimeCooldown" type="Timer" parent="Timers"]
 unique_name_in_owner = true
-process_callback = 0
-wait_time = 5.0
 one_shot = true
 ignore_time_scale = true
 

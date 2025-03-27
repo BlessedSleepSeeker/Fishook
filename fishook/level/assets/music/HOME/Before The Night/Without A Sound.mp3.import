@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://8beiopvx7nnx"
+path="res://.godot/imported/Without A Sound.mp3-c58065be1511c9b8a6a3d587b9d05c3f.mp3str"
+
+[deps]
+
+source_file="res://level/assets/music/HOME/Before The Night/Without A Sound.mp3"
+dest_files=["res://.godot/imported/Without A Sound.mp3-c58065be1511c9b8a6a3d587b9d05c3f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
