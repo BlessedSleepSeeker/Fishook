@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Fishook"
 config/tags=PackedStringArray("3d", "platformer", "third_person")
-run/main_scene="uid://ctqppdq3quxc2"
+run/main_scene="uid://kr5ol3w1cldd"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"

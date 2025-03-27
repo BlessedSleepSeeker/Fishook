@@ -10828,6 +10828,60 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": 0
 }
+},
+"materials": {
+"material_0": {
+"use_external/enabled": true,
+"use_external/path": "res://character/model/materials/material_0.tres"
+},
+"material_1": {
+"use_external/enabled": true,
+"use_external/path": "res://character/model/materials/material_1.tres"
+},
+"material_10": {
+"use_external/enabled": true,
+"use_external/path": "res://character/model/materials/material_10.tres"
+},
+"material_11": {
+"use_external/enabled": true,
+"use_external/path": "res://character/model/materials/material_11.tres"
+},
+"material_12": {
+"use_external/enabled": true,
+"use_external/path": "res://character/model/materials/material_12.tres"
+},
+"material_2": {
+"use_external/enabled": true,
+"use_external/path": "res://character/model/materials/material_2.tres"
+},
+"material_3": {
+"use_external/enabled": true,
+"use_external/path": "res://character/model/materials/material_3.tres"
+},
+"material_4": {
+"use_external/enabled": true,
+"use_external/path": "res://character/model/materials/material_4.tres"
+},
+"material_5": {
+"use_external/enabled": true,
+"use_external/path": "res://character/model/materials/material_5.tres"
+},
+"material_6": {
+"use_external/enabled": true,
+"use_external/path": "res://character/model/materials/material_6.tres"
+},
+"material_7": {
+"use_external/enabled": true,
+"use_external/path": "res://character/model/materials/material_7.tres"
+},
+"material_8": {
+"use_external/enabled": true,
+"use_external/path": "res://character/model/materials/material_8.tres"
+},
+"material_9": {
+"use_external/enabled": true,
+"use_external/path": "res://character/model/materials/material_9.tres"
+}
 }
 }
 gltf/naming_version=1

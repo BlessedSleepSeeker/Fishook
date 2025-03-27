@@ -61,7 +61,6 @@ func spawn_parts() -> void:
 		add_child(inst)
 		inst.mesh = point_mesh
 		line_parts.append(inst)
-		inst.global_position = points[i]
 		#inst.look_at(fishook.global_position, Vector3.UP)
 
 func move_parts() -> void:

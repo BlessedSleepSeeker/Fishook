@@ -5,9 +5,9 @@ A 3D Platformer with a fishing hookshot.
 ## Tasks
 
 - [x] Remove HookThrow Delay.
-- [ ] Display where the hook is attached (line)
+- [x] Display where the hook is attached (line)
 - [x] Make jump input the same as left click when attached.
-- [ ] Add the reel in/out feature.
+- [x] Add the reel in/out feature.
 - [ ] Allow to shot hookshot from the ground and let the hookshot attached when landing.
 - [x] Tweak crosshairs : fade out after a time in idle instead of being invisible all the time.
 - [x] Double Jump indicator

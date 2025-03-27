@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://kr5ol3w1cldd"]
+
+[ext_resource type="Script" uid="uid://c13ivktf4i7yh" path="res://level/level_manager.gd" id="1_6k05x"]
+
+[node name="LevelManager" type="Node"]
+script = ExtResource("1_6k05x")
+
+[node name="LevelHolder" type="Node3D" parent="."]
+unique_name_in_owner = true

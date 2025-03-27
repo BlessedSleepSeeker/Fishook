@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c6wr0fmuhcpw3"]
+
+[ext_resource type="Texture2D" uid="uid://b57k4yf6y0cbp" path="res://character/model/fisherman_4.png" id="1_e08r8"]
+
+[resource]
+resource_name = "material_4"
+transparency = 2
+alpha_scissor_threshold = 0.05
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_e08r8")
+texture_filter = 0
+texture_repeat = false
