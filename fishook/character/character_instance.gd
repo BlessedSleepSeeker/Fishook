@@ -48,10 +48,3 @@ func play_animation(animation_name: String):
 
 func set_hitbox_shape(shape: Shape3D) -> void:
 	hitbox.shape = shape
-
-## TODO : should be moved at some point in another code
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	if event.is_action_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

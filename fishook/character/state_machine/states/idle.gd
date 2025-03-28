@@ -10,7 +10,6 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 @onready var crosshair_timer: Timer = $FadeCrosshairTimer
 
 func enter(_msg := {}) -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	current_loop = 0
 	super()
 	crosshair_timer.start()

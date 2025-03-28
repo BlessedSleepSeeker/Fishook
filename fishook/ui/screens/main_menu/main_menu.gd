@@ -1,7 +1,7 @@
 extends Control
 
 @export var creditsScenePath: String = "res://ui/screens/credits/credit_scene.tscn"
-@export var gamePath: String = "res://level/lvl1/Level1.tscn"
+@export var gamePath: String = "res://ui/screens/level_selector/LevelSelector.tscn"
 @export var settings_screen_path: String = "res://ui/screens/settings/settings_screen.tscn"
 
 signal transition(new_scene: PackedScene, animation: String)
@@ -22,6 +22,5 @@ func _on_play_button_pressed():
 	transition.emit(gameScene, "scene_transition")
 
 func _on_settings_pressed():
-	print_debug("coucou")
 	var settings_scene = load(settings_screen_path)
 	transition.emit(settings_scene, "scene_transition")

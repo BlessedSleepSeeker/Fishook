@@ -1,9 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://kr5ol3w1cldd"]
+[gd_scene load_steps=3 format=3 uid="uid://kr5ol3w1cldd"]
 
 [ext_resource type="Script" uid="uid://c13ivktf4i7yh" path="res://level/level_manager.gd" id="1_6k05x"]
+[ext_resource type="PackedScene" uid="uid://cbhkdaifd8q8t" path="res://ui/pause_hud/PauseUI.tscn" id="2_uiwfl"]
 
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_6k05x")
+level_scene_name = "Level2"
 
 [node name="LevelHolder" type="Node3D" parent="."]
 unique_name_in_owner = true
+process_mode = 1
+
+[node name="PauseUILayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+process_mode = 1
+layer = 2
+
+[node name="PauseUi" parent="PauseUILayer" instance=ExtResource("2_uiwfl")]
+unique_name_in_owner = true
+
+[node name="SettingsUILayer" type="CanvasLayer" parent="."]
+process_mode = 1
+
+[node name="SettingsContainer" type="MarginContainer" parent="SettingsUILayer"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

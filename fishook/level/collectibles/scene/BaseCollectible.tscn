@@ -60,7 +60,6 @@ autoplay = "Spin"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Area3D"]
 unique_name_in_owner = true
 stream = ExtResource("3_f734n")
-volume_db = -10.0
 bus = &"Sound Effect"
 
 [node name="godot_plushV2" parent="Area3D" instance=ExtResource("2_38j43")]

@@ -89,7 +89,7 @@ func build_range() -> void:
 
 
 func _on_slider_value_changed(value: float) -> void:
-	lbl.text = "%3d" % value
+	lbl.text = "%03d" % value
 
 
 func build_options() -> void:

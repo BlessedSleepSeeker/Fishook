@@ -1,0 +1,28 @@
+extends Control
+class_name LevelSelector
+
+@export var levels: Array[LevelData] = []
+@export var level_button_scene: PackedScene = preload("res://ui/screens/level_selector/button/LevelSelectButton.tscn")
+@export var level_manager_scene_path: String = "res://level/LevelManager.tscn"
+@export var main_menu_scene_path: String = "res://ui/screens/main_menu/main_menu.tscn"
+
+@onready var button_grid: GridContainer = %GridContainer
+
+signal transition_by_path(new_scene_path: String, scene_parameters: Dictionary)
+
+func _ready():
+	build()
+
+func build() -> void:
+	for level: LevelData in levels:
+		var inst: LevelSelectButton = level_button_scene.instantiate()
+		button_grid.add_child(inst)
+		inst.pressed.connect(level_picked)
+		inst.level_data = level
+
+func level_picked(level: LevelData) -> void:
+	var level_param_dict: Dictionary = {"level_scene_name": level.scene_name}
+	transition_by_path.emit(level_manager_scene_path, level_param_dict)
+
+func _on_return_button_pressed():
+	transition_by_path.emit(main_menu_scene_path)

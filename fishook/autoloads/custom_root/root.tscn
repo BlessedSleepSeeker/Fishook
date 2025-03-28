@@ -1,50 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmywmdt0bmod4"]
+[gd_scene load_steps=5 format=3 uid="uid://bmywmdt0bmod4"]
 
 [ext_resource type="Script" uid="uid://jesss50ubfj6" path="res://autoloads/custom_root/root.gd" id="1_0ggjb"]
 [ext_resource type="PackedScene" uid="uid://s46wqxnh4dnl" path="res://autoloads/settings/settings.tscn" id="2_022ww"]
+[ext_resource type="Shader" uid="uid://rtggyt425ym3" path="res://ui/transition/shader/transition.gdshader" id="3_c14vr"]
 
-[sub_resource type="Animation" id="Animation_43y50"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/TransitionSprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_5nrjs"]
-resource_name = "scene_transition_out"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/TransitionSprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-5, 1),
-"update": 0,
-"values": [Vector2(-1920, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yeyqi"]
-_data = {
-&"RESET": SubResource("Animation_43y50"),
-&"scene_transition": SubResource("Animation_5nrjs")
-}
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m7ssa"]
+shader = ExtResource("3_c14vr")
+shader_parameter/progress = 0.0
+shader_parameter/diamondPixelSize = 10.0
 
 [node name="Root" type="Node"]
+process_mode = 3
 script = ExtResource("1_0ggjb")
 
 [node name="Settings" parent="." instance=ExtResource("2_022ww")]
-user_settings_file_path = "user://settings/game_settings.cfg"
 
 [node name="NetworkRoot" type="Node" parent="."]
 
@@ -52,28 +21,20 @@ user_settings_file_path = "user://settings/game_settings.cfg"
 
 [node name="LogsRoot" type="Node" parent="."]
 
-[node name="Animator" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_yeyqi")
-}
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
+layer = 10
 
-[node name="TransitionSprite" type="Control" parent="CanvasLayer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MarginContainer"]
 unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="ColorRect" parent="CanvasLayer/TransitionSprite"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+material = SubResource("ShaderMaterial_m7ssa")
+layout_mode = 2
+mouse_filter = 2
 color = Color(0.133333, 0.129412, 0.14902, 1)

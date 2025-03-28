@@ -269,7 +269,6 @@ script = ExtResource("5_svu25")
 script = ExtResource("5_6r8ug")
 
 [node name="RandomStreamPlayer" parent="StateMachine/Run" instance=ExtResource("6_kdfyh")]
-volume_db = -20.0
 bus = &"Sound Effect"
 streams = Array[AudioStream]([ExtResource("7_uame8"), ExtResource("8_s53p4"), ExtResource("9_x5wc4"), ExtResource("10_jf1sj"), ExtResource("11_wick5")])
 
@@ -280,7 +279,6 @@ script = ExtResource("6_j4qiq")
 physics_parameters = SubResource("Resource_0y2cd")
 
 [node name="RandomStreamPlayer" parent="StateMachine/Jump" instance=ExtResource("6_kdfyh")]
-volume_db = -10.0
 bus = &"Sound Effect"
 streams = Array[AudioStream]([ExtResource("14_m6vje"), ExtResource("15_bjf1r"), ExtResource("16_2c7bb"), ExtResource("17_8ojuf"), ExtResource("18_ybyru")])
 no_repeat = false
@@ -290,7 +288,6 @@ script = ExtResource("6_7jo2n")
 physics_parameters = SubResource("Resource_uip3n")
 
 [node name="RandomStreamPlayer" parent="StateMachine/DoubleJump" instance=ExtResource("6_kdfyh")]
-volume_db = -10.0
 bus = &"Sound Effect"
 streams = Array[AudioStream]([ExtResource("14_m6vje"), ExtResource("15_bjf1r"), ExtResource("16_2c7bb"), ExtResource("17_8ojuf"), ExtResource("18_ybyru")])
 no_repeat = false
@@ -303,7 +300,6 @@ physics_parameters = SubResource("Resource_m6vje")
 script = ExtResource("10_iw8v4")
 
 [node name="RandomStreamPlayer" parent="StateMachine/Land" instance=ExtResource("6_kdfyh")]
-volume_db = -20.0
 streams = Array[AudioStream]([ExtResource("17_wick5"), ExtResource("18_0cabr"), ExtResource("19_l2q03"), ExtResource("20_c6ppy"), ExtResource("21_hdq18")])
 
 [node name="HookAiming" type="Node" parent="StateMachine"]

@@ -1,6 +1,6 @@
 extends Setting
 
-@export var main_menu = preload("res://ui/screens/main_menu/main_menu.tscn")
+@export var main_menu: PackedScene = preload("res://ui/screens/main_menu/main_menu.tscn")
 @onready var sprite: AnimatedSprite2D = $"%LogoAnimation"
 @onready var subviewport_container: SubViewportContainer = $"%SubViewportContainer"
 

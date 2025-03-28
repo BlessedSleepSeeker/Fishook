@@ -1,7 +1,7 @@
 extends Node
 class_name Settings
 
-@export var user_settings_file_path: String = "user://settings/game_settings.cfg"
+@export var user_settings_file_path: String = "user://game_settings.cfg"
 @export var load_settings_on_boot: bool = true
 
 #setting file path

@@ -3,7 +3,7 @@ class_name VolumeSetting
 
 @export var bus_name: String = "Master"
 @export var base_value: int = 100
-@onready var audio_bus = AudioServer.get_bus_index(bus_name)
+@onready var audio_bus: int = AudioServer.get_bus_index(bus_name)
 
 func _ready():
 	value = base_value
