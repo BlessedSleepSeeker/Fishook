@@ -13,8 +13,10 @@ class_name LevelManager
 @onready var ui_layer: CanvasLayer = %PauseUILayer
 @onready var pause_ui: PauseUI = %PauseUi
 @onready var settings_container: MarginContainer = %SettingsContainer
+@onready var settings_ui_layer: CanvasLayer = %SettingsUILayer
 
 signal transition_by_path(new_scene_path: String, scene_parameters: Dictionary)
+signal play_transition(direction: bool, wait_for_tween: bool)
 
 var is_paused: bool = true
 
@@ -28,7 +30,7 @@ func _ready():
 
 #region Pausing
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_cancel") && settings_ui_layer.visible == false:
 		toggle_pause()
 
 func toggle_pause() -> void:
@@ -43,7 +45,23 @@ func toggle_pause() -> void:
 		ui_layer.hide()
 
 func go_to_settings() -> void:
-	pass
+	play_transition.emit(true, false)
+	settings_ui_layer.show()
+	await get_tree().create_timer(0.5).timeout
+	var settings: ClientSettingsUI = settings_ui_scene.instantiate()
+	settings.going_back.connect(go_back_from_settings)
+	settings.transition_on_back = false
+	settings_container.add_child(settings)
+	play_transition.emit(false, false)
+
+func go_back_from_settings() -> void:
+	play_transition.emit(true, false)
+	await get_tree().create_timer(0.5).timeout
+	settings_ui_layer.hide()
+	for child in settings_container.get_children():
+		child.queue_free()
+	play_transition.emit(false, false)
+
 
 func go_to_level_selector() -> void:
 	transition_by_path.emit(level_selector_path)

@@ -42,9 +42,7 @@ layout_mode = 2
 text = "Change Level"
 
 [node name="Settings" type="Button" parent="MainMenu/VBox"]
-visible = false
 layout_mode = 2
-disabled = true
 text = "Settings"
 
 [node name="MainMenu" type="Button" parent="MainMenu/VBox"]

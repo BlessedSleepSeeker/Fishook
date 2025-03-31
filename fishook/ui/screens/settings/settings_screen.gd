@@ -3,7 +3,9 @@ class_name ClientSettingsUI
 
 @export var setting_tab_scene: PackedScene = preload("res://ui/screens/settings/setting_tab.tscn")
 
-@export var back_scene: PackedScene = preload("res://ui/screens/main_menu/main_menu.tscn")
+@export var back_scene_path: String = "res://ui/screens/main_menu/main_menu.tscn"
+@export var transition_on_back: bool = true
+@export var emit_signal_on_back: bool = true
 
 @onready var settings_tab: TabContainer = $MC/VB/SettingsTab
 @onready var settings: Settings = get_tree().root.get_node("Root").settings
@@ -11,7 +13,8 @@ class_name ClientSettingsUI
 @onready var save_dialog: ConfirmationDialog = $SaveDialog
 @onready var quit_dialog: ConfirmationDialog = $QuitDialog
 
-signal transition(new_scene: PackedScene, animation: String)
+signal going_back
+signal transition_by_path(new_scene_path: String, scene_parameters: Dictionary)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,7 +36,7 @@ func _on_quit_button_pressed():
 			quit_dialog.show()
 			b = true
 	if not b:
-		transition.emit(back_scene, "scene_transition")
+		go_back()
 	
 
 func _on_save_button_pressed():
@@ -49,4 +52,10 @@ func _on_save_confirmed():
 
 
 func _on_quit_confirmed():
-	transition.emit(back_scene, "scene_transition")
+	go_back()
+
+func go_back() -> void:
+	if emit_signal_on_back:
+		going_back.emit()
+	if transition_on_back:
+		transition_by_path.emit(back_scene_path)

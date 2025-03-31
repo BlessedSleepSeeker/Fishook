@@ -20,7 +20,10 @@ layer = 2
 unique_name_in_owner = true
 
 [node name="SettingsUILayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 process_mode = 1
+layer = 3
+visible = false
 
 [node name="SettingsContainer" type="MarginContainer" parent="SettingsUILayer"]
 unique_name_in_owner = true
@@ -29,3 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20

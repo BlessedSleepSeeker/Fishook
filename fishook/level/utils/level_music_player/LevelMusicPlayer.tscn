@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cvbkcnravdnej"]
+[gd_scene load_steps=23 format=3 uid="uid://cvbkcnravdnej"]
 
 [ext_resource type="Script" uid="uid://c5fdi5b6v0iko" path="res://level/utils/level_music_player/level_music_player.gd" id="1_4q0oc"]
 [ext_resource type="AudioStream" uid="uid://cis4ksv5yd2ly" path="res://level/assets/music/HOME/Odyssey/Intro.mp3" id="2_2j07f"]
@@ -21,10 +21,11 @@
 [ext_resource type="AudioStream" uid="uid://doptmxvghuhm6" path="res://level/assets/music/HOME/Before The Night/If I'm Wrong.mp3" id="19_21wtu"]
 [ext_resource type="AudioStream" uid="uid://bhs306bw8gs40" path="res://level/assets/music/HOME/Before The Night/Nosebleed.mp3" id="20_xh8a0"]
 [ext_resource type="AudioStream" uid="uid://bdkiq0tr1r6a7" path="res://level/assets/music/HOME/Before The Night/Sun.mp3" id="21_e2ddo"]
+[ext_resource type="AudioStream" uid="uid://dp3htcnq8vyxi" path="res://level/assets/music/Wavetable.mp3" id="22_rscnc"]
 
 [node name="LevelMusicPlayer" type="Node"]
 script = ExtResource("1_4q0oc")
-musics = Array[AudioStream]([ExtResource("12_b2ge8"), ExtResource("4_3jgvj"), ExtResource("11_rqaa5"), ExtResource("2_2j07f"), ExtResource("3_rscnc"), ExtResource("8_2hvq5"), ExtResource("7_wh40x"), ExtResource("9_68poa"), ExtResource("13_fbhnj"), ExtResource("5_t81vm"), ExtResource("10_fifmh"), ExtResource("6_g2q4r"), ExtResource("17_8s45k"), ExtResource("19_21wtu"), ExtResource("20_xh8a0"), ExtResource("15_0o8xl"), ExtResource("18_80xav"), ExtResource("21_e2ddo"), ExtResource("14_k8cb4"), ExtResource("16_rmwuj")])
+musics = Array[AudioStream]([ExtResource("12_b2ge8"), ExtResource("4_3jgvj"), ExtResource("11_rqaa5"), ExtResource("2_2j07f"), ExtResource("3_rscnc"), ExtResource("8_2hvq5"), ExtResource("7_wh40x"), ExtResource("9_68poa"), ExtResource("13_fbhnj"), ExtResource("5_t81vm"), ExtResource("10_fifmh"), ExtResource("6_g2q4r"), ExtResource("17_8s45k"), ExtResource("19_21wtu"), ExtResource("20_xh8a0"), ExtResource("15_0o8xl"), ExtResource("18_80xav"), ExtResource("21_e2ddo"), ExtResource("14_k8cb4"), ExtResource("16_rmwuj"), ExtResource("22_rscnc")])
 
 [node name="AudioStreamPlayer1" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

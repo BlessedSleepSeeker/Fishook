@@ -4,11 +4,12 @@ A 3D Platformer with a fishing hookshot.
 
 ## Tasks
 
-- [ ] In-Game Settings
-- [ ] Input Remapping
+- [x] In-Game Settings
+- [x] Input Remapping
+  - [ ] Input remapping cleaner UI
 - [ ] Controller Support
 - [ ] Allow to shot hookshot from the ground and let the hookshot attached when landing.
-- [ ] Coyote Time
+- [x] Coyote Time
 - [ ] More Levels !
 - [ ] Fix bugs
 

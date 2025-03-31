@@ -22,6 +22,8 @@ func add_scene(new_scene: PackedScene, scene_parameters: Dictionary = {}) -> voi
 		instance.transition.connect(_on_transition)
 	if instance.has_signal("transition_by_path") and not instance.transition_by_path.is_connected(_on_transition_by_path):
 		instance.transition_by_path.connect(_on_transition_by_path)
+	if instance.has_signal("play_transition") and not instance.play_transition.is_connected(play_transition):
+		instance.play_transition.connect(play_transition)
 	# if instance.has_signal("transition_by_instance") and not instance.transition_by_instance.is_connected(_on_transition_by_instance):
 	# 	instance.transition_by_instance.connect(_on_transition_by_instance)
 
