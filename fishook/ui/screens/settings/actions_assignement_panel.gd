@@ -11,17 +11,14 @@ extends PanelContainer
 @onready var action_name: String = "If you see this_I fucked up":
 	set(val):
 		action_name = val
-		var split = action_name.split("_", false, 1)
-		var player_nbr = split[0].lstrip("p")
-		var player_action = split[1].capitalize()
-		current_action_lbl.text = current_input_template % [player_nbr, player_action]
+		current_action_lbl.text = action_name
 
 var last_input_event = null:
 		set(val):
 			last_input_event = val
 			current_input_lbl.text = last_input_event.as_text()
 
-signal action_set
+signal action_set(input_event: InputEvent)
 
 func _ready():
 	accept_input_btn.pressed.connect(_on_button_pressed)
@@ -37,5 +34,5 @@ func _on_button_pressed():
 		error_lbl.text = "No input detected"
 		return
 	#InputHandler.add_action_from_event(action_name, last_input_event)
-	action_set.emit()
+	action_set.emit(last_input_event)
 	queue_free()

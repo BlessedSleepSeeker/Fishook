@@ -45,7 +45,8 @@ func _on_save_confirmed():
 		tabs.save()
 	settings.apply_settings()
 	settings.save_settings_to_file()
+	InputHandler.save_actions_to_file()
 
 
 func _on_quit_confirmed():
-	transition.emit(back_scene, true)
+	transition.emit(back_scene, "scene_transition")

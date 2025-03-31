@@ -8,8 +8,13 @@ var options: OptionButton
 var text: LineEdit
 var number: SpinBox
 
-@onready var setting_name = $NameContainer/SettingName
-@onready var container = $Container
+@export var action_assignement_line: PackedScene = preload("res://ui/screens/settings/ActionAssignementLine.tscn")
+@export var action_assignement_modal: PackedScene = preload("res://ui/screens/settings/actions_assignement_panel.tscn")
+
+@onready var setting_name: Label = %SettingName
+@onready var settings_container = %SettingContainer
+@onready var title_container = %TitleContainer
+@onready var input_plus_button = %InputPlusButton
 
 var setting: Setting = null:
 	set(val):
@@ -18,7 +23,7 @@ var setting: Setting = null:
 		build()
 
 func _ready():
-	pass
+	input_plus_button.pressed.connect(add_input_event_to_action)
 
 func _on_mouse_exited():
 	match setting.type:
@@ -46,6 +51,9 @@ func tear_down() -> void:
 		text.queue_free()
 	if number != null:
 		number.queue_free()
+	for child in settings_container.get_children():
+		if child is ActionAssignementLine:
+			child.queue_free()
 
 
 func build() -> void:
@@ -62,6 +70,8 @@ func build() -> void:
 			build_text()
 		setting.SETTING_TYPE.NUMBER:
 			build_number()
+		setting.SETTING_TYPE.INPUT:
+			build_input()
 
 
 func build_bool() -> void:
@@ -69,7 +79,7 @@ func build_bool() -> void:
 	checkbox.toggle_mode = true
 	checkbox.set_pressed_no_signal(setting.value)
 	checkbox.mouse_exited.connect(_on_mouse_exited)
-	container.add_child(checkbox)
+	settings_container.add_child(checkbox)
 
 
 func build_range() -> void:
@@ -78,8 +88,8 @@ func build_range() -> void:
 	slider.set_h_size_flags(Control.SIZE_EXPAND_FILL)
 	slider.value_changed.connect(_on_slider_value_changed)
 	slider.mouse_exited.connect(_on_mouse_exited)
-	container.add_child(slider)
-	container.add_child(lbl)
+	settings_container.add_child(slider)
+	settings_container.add_child(lbl)
 	slider.tick_count = 5
 	slider.ticks_on_borders = true
 	slider.min_value = setting.min_value_range
@@ -108,20 +118,78 @@ func build_options() -> void:
 	options.alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	options.fit_to_longest_item = false
 	options.mouse_exited.connect(_on_mouse_exited)
-	container.add_child(options)
+	settings_container.add_child(options)
 
 func build_text() -> void:
 	text = LineEdit.new()
-	container.add_child(text)
+	settings_container.add_child(text)
 	text.text = setting.value
 
 func build_number() -> void:
 	number = SpinBox.new()
-	container.add_child(number)
+	settings_container.add_child(number)
 	number.min_value = setting.min_value_nbr
 	number.max_value = setting.max_value_nbr
 	number.step = setting.step_nbr
 	number.value = setting.value
+
+#region Input
+func build_input() -> void:
+	input_plus_button.show()
+	for action: InputEvent in InputMap.action_get_events(setting.action):
+		var inst: ActionAssignementLine = action_assignement_line.instantiate()
+		inst.remove.connect(_on_remove_input)
+		inst.rebind.connect(_on_rebind_input)
+		settings_container.add_child(inst)
+		inst.input_event = action
+
+func _on_remove_input(input_event: InputEvent):
+	var action_name: String = setting.key.to_lower()
+	print_debug("Removing %s : %s" % [action_name, input_event.as_text()])
+	InputMap.action_erase_event(action_name, input_event)
+	remove_input_line(input_event)
+
+func _on_rebind_input(input_event: InputEvent):
+	var input_panel: ActionsAssignementPanel = action_assignement_modal.instantiate()
+	add_child(input_panel)
+	input_panel.action_name = setting.key.to_lower()
+	input_panel.action_set.connect(update_input.bind(input_event))
+
+func update_input(new_input: InputEvent, old_input: InputEvent) -> void:
+	var action_name: String = setting.key.to_lower()
+	InputMap.action_erase_event(action_name, old_input)
+	InputMap.action_add_event(action_name, new_input)
+
+	var line: ActionAssignementLine = get_input_line_by_event(old_input)
+	if line:
+		line.input_event = new_input
+	else:
+		push_error("ActionAssignementLine not found : %s" % old_input.as_text())
+
+func add_input_event_to_action() -> void:
+	var input_panel: ActionsAssignementPanel = action_assignement_modal.instantiate()
+	add_child(input_panel)
+	input_panel.action_set.connect(add_input)
+
+func add_input(event: InputEvent):
+	var action_name: String = setting.key.to_lower()
+	InputMap.action_add_event(action_name, event)
+	print(InputMap.action_get_events(action_name))
+
+	tear_down()
+	build()
+
+
+func remove_input_line(input_event: InputEvent):
+	get_input_line_by_event(input_event).queue_free()
+
+func get_input_line_by_event(input_event: InputEvent) -> ActionAssignementLine:
+	for child in settings_container.get_children():
+		if child is ActionAssignementLine:
+			if child.input_event == input_event:
+				return child
+	return null
+#endregion
 
 
 func is_modified() -> bool:
@@ -136,6 +204,8 @@ func is_modified() -> bool:
 			return setting.value != text.text
 		setting.SETTING_TYPE.NUMBER:
 			return setting.value != number.value
+		setting.SETTING_TYPE.INPUT:
+			return false
 	return true
 
 func save() -> void:

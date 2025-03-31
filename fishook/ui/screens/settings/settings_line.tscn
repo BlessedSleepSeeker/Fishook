@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://eumbs2kuhj63"]
+[gd_scene load_steps=3 format=3 uid="uid://eumbs2kuhj63"]
 
 [ext_resource type="Script" uid="uid://bqwkd7tvdglih" path="res://ui/screens/settings/settings_line.gd" id="1_tf1xw"]
+[ext_resource type="Texture2D" uid="uid://d1ycmieucseay" path="res://ui_assets/game_icon/plus.png" id="2_1pjbo"]
 
 [node name="SettingsLine" type="HBoxContainer"]
 anchors_preset = 10
@@ -9,23 +10,26 @@ grow_horizontal = 2
 theme_override_constants/separation = -1
 script = ExtResource("1_tf1xw")
 
-[node name="NameContainer" type="HBoxContainer" parent="."]
+[node name="TitleContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="SettingName" type="Label" parent="TitleContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SettingContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SettingName" type="Label" parent="NameContainer"]
+[node name="InputPlusButton" type="Button" parent="SettingContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-size_flags_horizontal = 0
-mouse_filter = 1
-
-[node name="Control2" type="Control" parent="NameContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Container" type="HBoxContainer" parent="."]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control" type="Control" parent="Container"]
-layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 8
+icon = ExtResource("2_1pjbo")
+expand_icon = true

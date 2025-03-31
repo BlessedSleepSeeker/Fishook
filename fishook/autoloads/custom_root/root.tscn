@@ -15,11 +15,7 @@ script = ExtResource("1_0ggjb")
 
 [node name="Settings" parent="." instance=ExtResource("2_022ww")]
 
-[node name="NetworkRoot" type="Node" parent="."]
-
 [node name="SceneRoot" type="Node" parent="."]
-
-[node name="LogsRoot" type="Node" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 10

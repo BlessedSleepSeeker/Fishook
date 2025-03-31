@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://s46wqxnh4dnl"]
+[gd_scene load_steps=11 format=3 uid="uid://s46wqxnh4dnl"]
 
 [ext_resource type="Script" uid="uid://7pud10826kcg" path="res://autoloads/settings/settings.gd" id="1_dbr6m"]
 [ext_resource type="Script" uid="uid://n1ryqrkueeuw" path="res://autoloads/settings/settings_scripts/window/Resolution.gd" id="2_g3vyq"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://do5hsrqsbqhp6" path="res://autoloads/settings/settings_scripts/sound/AudioBusVolume.gd" id="5_c4hqd"]
 [ext_resource type="Script" uid="uid://1mgu5hu3rf1n" path="res://autoloads/settings/settings_scripts/window/Fullscreen.gd" id="5_h84ts"]
 [ext_resource type="Script" uid="uid://ddwbstxgq8etd" path="res://autoloads/settings/settings_scripts/sound/MuteInBackground.gd" id="6_dhgul"]
+[ext_resource type="Script" uid="uid://y5tvwyqjw12d" path="res://autoloads/settings/settings_scripts/game/camera_sensitivity.gd" id="9_8e0ev"]
 [ext_resource type="Script" uid="uid://mf1p16q2yo7l" path="res://autoloads/settings/settings_scripts/game/Language.gd" id="9_bqloj"]
 [ext_resource type="Script" uid="uid://c27adpcx3gjxr" path="res://autoloads/settings/settings_scripts/UI/scale.gd" id="9_nhd6j"]
 
@@ -68,6 +69,14 @@ script = ExtResource("9_bqloj")
 type = 2
 key = "LANGUAGE"
 tooltip = "Sorry... Only English for now..."
+
+[node name="Camera Sensitivity" type="Node" parent="Game"]
+script = ExtResource("9_8e0ev")
+type = 1
+key = "CAMERA_SENSIBILITY"
+tooltip = "Affect the speed at which the camera rotate around the player"
+min_value_range = 1
+max_value_range = 1000
 
 [node name="UI" type="Node" parent="."]
 

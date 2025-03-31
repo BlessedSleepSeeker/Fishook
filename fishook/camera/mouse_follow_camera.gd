@@ -31,7 +31,7 @@ func _unhandled_input(_event: InputEvent):
 	)
 
 	if _event is InputEventMouseMotion && Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		_camera_input_direction = _event.screen_relative * parameters.CAMERA_MOUSE_SENSIBILITY * scale_factor
+		_camera_input_direction = _event.screen_relative * (InputHandler.camera_sensitivity * parameters.CAMERA_MOUSE_SENSIBILITY) * scale_factor
 
 func rotate_camera(_delta) -> void:
 	#print(character.bullet_time_on)

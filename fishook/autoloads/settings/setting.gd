@@ -13,10 +13,9 @@ enum SETTING_TYPE {
 	RANGE,
 	OPTIONS,
 	TEXT,
-	NUMBER
+	NUMBER,
+	INPUT
 }
-
-
 
 @export_group("Range Type")
 @export var min_value_range: int = 0

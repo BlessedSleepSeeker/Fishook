@@ -6,8 +6,6 @@ extends Node
 
 @onready var settings = $Settings
 @onready var scene_root = $SceneRoot
-@onready var server_logs_root = $LogsRoot
-@onready var network_root = $NetworkRoot
 @onready var transition_color_rect: ColorRect = %ColorRect
 
 # Called when the node enters the scene tree for the first time.
@@ -30,14 +28,6 @@ func add_scene(new_scene: PackedScene, scene_parameters: Dictionary = {}) -> voi
 	for parameter in scene_parameters:
 		instance.set(parameter, scene_parameters[parameter])
 	scene_root.add_child(instance)
-
-func add_network_scene(network_scene: PackedScene):
-	var instance = network_scene.instantiate()
-	network_root.add_child(instance)
-
-func add_logs_scene(log_scene: PackedScene) -> void:
-	var instance = log_scene.instantiate()
-	server_logs_root.add_child(instance)
 
 func change_scene(new_scene: PackedScene, scene_parameters: Dictionary = {}) -> void:
 	flush_scenes()

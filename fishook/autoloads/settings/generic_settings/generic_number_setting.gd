@@ -1,4 +1,5 @@
 extends Setting
+class_name GenericNumberSetting
 
 @export var base_value: float = 0
 

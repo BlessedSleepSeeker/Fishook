@@ -20,14 +20,20 @@ func build_settings_ui() -> void:
 		var instance: SettingLine = setting_line_scene.instantiate()
 		column.add_child(instance)
 		instance.setting = setting
+		if setting != settings[-1]:
+			var separator: HSeparator = HSeparator.new()
+			separator.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			column.add_child(separator)
 
 
 func has_modified_settings() -> bool:
-	for child: SettingLine in column.get_children():
-		if child.is_modified():
-			return true
+	for child in column.get_children():
+		if child is SettingLine:
+			if child.is_modified():
+				return true
 	return false
 
 func save() -> void:
-	for child: SettingLine in column.get_children():
-		child.save()
+	for child in column.get_children():
+		if child is SettingLine:
+			child.save()

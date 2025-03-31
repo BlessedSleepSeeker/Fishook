@@ -7,6 +7,8 @@ class_name Settings
 #setting file path
 @onready var settings_file := ConfigFile.new()
 
+var settings_node: Node = null
+
 ## On boot, we first create the basic settings due to them being defined in our scene tree.
 ## Then we load the setting file and change the values of our settings based on the value inside the file.
 ## We then apply the settings and save the settings value to the settings file.
@@ -15,6 +17,7 @@ func _ready():
 		load_settings_from_file()
 	apply_settings()
 	save_settings_to_file()
+	create_input_tab()
 
 #region SceneTree
 ## Return an array with the names of the sections.
@@ -138,4 +141,22 @@ func apply_settings() -> void:
 		for setting in section.get_children():
 			if setting.has_method("apply"):
 				setting.apply()
+#endregion
+
+#region UserInput
+
+func create_input_tab():
+	settings_node = Node.new()
+	settings_node.name = "Keybinds"
+	add_child(settings_node)
+	for action: String in InputHandler.possible_actions:
+		var input_sett: GenericInputSetting = GenericInputSetting.new()
+		input_sett.name = action.capitalize()
+		input_sett.key = action.to_upper()
+		input_sett.type = Setting.SETTING_TYPE.INPUT
+		input_sett.tooltip = "The %s action" % action.capitalize()
+		input_sett.action = action
+		settings_node.add_child(input_sett)
+
+
 #endregion
