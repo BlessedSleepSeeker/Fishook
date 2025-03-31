@@ -7,7 +7,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_isqua"]
 resource_local_to_scene = true
-size = Vector3(0.8, 0.8, 0.8)
+size = Vector3(1.1, 1.1, 1.1)
 
 [sub_resource type="Curve" id="Curve_f734n"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

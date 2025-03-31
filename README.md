@@ -4,17 +4,11 @@ A 3D Platformer with a fishing hookshot.
 
 ## Tasks
 
-- [x] Remove HookThrow Delay.
-- [x] Display where the hook is attached (line)
-- [x] Make jump input the same as left click when attached.
-- [x] Add the reel in/out feature.
+- [ ] In-Game Settings
+- [ ] Input Remapping
 - [ ] Allow to shot hookshot from the ground and let the hookshot attached when landing.
-- [x] Tweak crosshairs : fade out after a time in idle instead of being invisible all the time.
-- [x] Double Jump indicator
-- [x] Bullet Time
-  - [x] Bullet Time Indicator
-    - Might be buggy
-  - [x] Bullet Time VFX
+- [ ] Coyote Time
+- [ ] More Levels !
 - [ ] Fix bugs
 
 ## Playtest Alpha 0.0.1
@@ -56,6 +50,72 @@ Personal Thoughts :
 - Lots of work on
 - Display the crosshair when jumping, fade it away when in idle for extended period of time
   -> this is about allowing 2 experiences to co-exist : both the speedrun enthusiast who want to schmoove and the chill panorama enjoyer.
+
+## Playtest Alpha 0.0.2
+
+### Dusk
+
+- Grosse pyramide grabbable : pas intuitif
+- Bon feeling sur la physique
+- Bug sur l'orientation : pas bouger orientation si velocité < amount
+- Envie de customisation de perso (long terme)
+- Envie de voir LA PECHE
+
+### Farl
+
+- Beaucoup plus agréable/intuitif le grappin
+- Sensi souris
+- Inverser reel_in/reel_out
+- bullet_time = bonne surprise & super pratique
+- musique s'arrete au bout d'un moment :
+  - passer à la suivante
+- particules sur checkpoints
+- mouvement :
+  - petit dash vers l'avant ?
+- bonus temporaire ?
+
+### Neylax
+
+- Sensi souris !!
+- Peut pas grab au sol
+- Relacher avec beaucoup de vélocité devrait envoyer + loin
+  - Si input directionel quand avec velocité -> va moins loin
+  - Si aucun input -> vélocité conservé
+- Multiples Canne à peche avec effet différents
+- Musique ne boucle pas
+- BulletTime UI : limite infinie pas claire -> + de feedback
+- Feedback sonore + visuel sur canne à peche
+
+### Larenthios
+
+- Settings : très éloigné sur grand écran
+- Settings : save n quit
+- Sound Effect très pop
+- BulletTime devient tout noir -> Carte AMD ?
+- Besoin de feedback quand hook est tenté mais rate
+- Hitbox des collectibles pourraient etre + généreuse
+- grounded hook intuitif
+- feedback sur checkpoint
+- quicker restart/death
+- Dur mécaniquement à controller => bouger & viser dur
+- QOL
+- Peche
+- Besoin de Vision Finale pour se projeter
+
+### Syla
+
+- Momentum en l'air compliqué
+- Coyotte Time
+- Inputs + Evident
+- plus de maniabilité sans grappin
+- Si rate la plateforme -> snap dessus
+- Tutoriel ou Indicateur pour voir les touches
+- Bouton reset pour speedrun
+
+### BN
+
+- Augmenter taille des collectibles
+- dash/boost momentum/sprint
 
 ## Music
 
