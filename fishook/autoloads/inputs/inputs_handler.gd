@@ -17,6 +17,12 @@ var controls_file_path := "%s%s" % [settings_folder_path, controls_file_name]
 
 var camera_sensitivity: float = 0.5
 
+@export var last_input_mode: INPUT_MODE = INPUT_MODE.KEYBOARD
+enum INPUT_MODE {
+	KEYBOARD,
+	CONTROLLER,
+}
+
 func _ready():
 	var err = input_file.load(controls_file_path)
 	if err != OK:
@@ -27,6 +33,25 @@ func _ready():
 			printerr("Could not load the settings, using default configuration instead")
 		return # default action are set in the editor directly, so we do not need to set them if the input file wasn't found, as we are falling back to default.
 	load_player_actions_from_file()
+
+#region Inputs
+
+func _unhandled_input(event: InputEvent):
+	if event is InputEventJoypadButton or event is InputEventJoypadMotion && last_input_mode != INPUT_MODE.CONTROLLER:
+		last_input_mode = INPUT_MODE.CONTROLLER
+	if event is InputEventMouseMotion or event is InputEventMouseButton or event is InputEventKey && last_input_mode != INPUT_MODE.KEYBOARD:
+		last_input_mode = INPUT_MODE.KEYBOARD
+
+func handle_mouse(mode: bool) -> void:
+	if last_input_mode == INPUT_MODE.KEYBOARD:
+		if mode:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
+#endregion
 
 
 #region Actions

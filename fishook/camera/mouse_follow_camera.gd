@@ -30,7 +30,7 @@ func _unhandled_input(_event: InputEvent):
 			(float(get_viewport().size.y) / get_viewport().get_visible_rect().size.y)
 	)
 
-	if _event is InputEventMouseMotion && Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+	if _event is InputEventMouseMotion && Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED && InputHandler.last_input_mode == InputHandler.INPUT_MODE.KEYBOARD:
 		_camera_input_direction = _event.screen_relative * (InputHandler.camera_sensitivity * parameters.CAMERA_MOUSE_SENSIBILITY) * scale_factor
 
 func rotate_camera(_delta) -> void:
@@ -67,6 +67,13 @@ func _physics_process(_delta):
 		is_colliding.emit(true)
 	else:
 		is_colliding.emit(false)
+
+	var scale_factor: float = min(
+			(float(get_viewport().size.x) / get_viewport().get_visible_rect().size.x),
+			(float(get_viewport().size.y) / get_viewport().get_visible_rect().size.y)
+	)
+	if InputHandler.last_input_mode == InputHandler.INPUT_MODE.CONTROLLER:
+		_camera_input_direction = Input.get_vector("controller_camera_left", "controller_camera_right", "controller_camera_up", "controller_camera_down") * 10 * (InputHandler.camera_sensitivity * parameters.CAMERA_MOUSE_SENSIBILITY) * scale_factor
 	# 	sphere_indicator.global_position = raycast.get_collision_point()
 	# 	sphere_indicator.show()
 	# else:

@@ -12,6 +12,7 @@ class_name ClientSettingsUI
 
 @onready var save_dialog: ConfirmationDialog = $SaveDialog
 @onready var quit_dialog: ConfirmationDialog = $QuitDialog
+@onready var save_btn: Button = %SaveButton
 
 signal going_back
 signal transition_by_path(new_scene_path: String, scene_parameters: Dictionary)
@@ -24,10 +25,8 @@ func _ready():
 		instance.settings = settings.get_settings_by_section(section)
 		instance.section_name = section
 	save_dialog.confirmed.connect(_on_save_confirmed)
-	#save_dialog.canceled.connect(_on_save_canceled)
 	quit_dialog.confirmed.connect(_on_quit_confirmed)
-	#quit_dialog.canceled.connect(_on_quit_canceled)
-
+	save_btn.grab_focus()
 
 func _on_quit_button_pressed():
 	var b = false

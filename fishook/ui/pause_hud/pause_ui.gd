@@ -1,6 +1,9 @@
 extends Control
 class_name PauseUI
 
+@onready var continue_btn: Button = %Continue
+@onready var settings_btn: Button = %Settings
+
 signal continue_game
 signal go_to_settings
 signal go_to_level_selector
@@ -20,3 +23,7 @@ func _on_exit_pressed():
 
 func _on_main_menu_pressed():
 	go_to_main_menu.emit()
+
+func _on_visibility_changed():
+	if self.visible && continue_btn:
+		continue_btn.grab_focus()

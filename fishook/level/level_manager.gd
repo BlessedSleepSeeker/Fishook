@@ -30,17 +30,17 @@ func _ready():
 
 #region Pausing
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel") && settings_ui_layer.visible == false:
+	if event.is_action_pressed("pause") && settings_ui_layer.visible == false:
 		toggle_pause()
 
 func toggle_pause() -> void:
 	is_paused = !is_paused
 	if is_paused:
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		InputHandler.handle_mouse(true)
 		level_holder.process_mode = PROCESS_MODE_DISABLED
 		ui_layer.show()
 	else:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		InputHandler.handle_mouse(false)
 		level_holder.process_mode = PROCESS_MODE_PAUSABLE
 		ui_layer.hide()
 
@@ -61,6 +61,7 @@ func go_back_from_settings() -> void:
 	for child in settings_container.get_children():
 		child.queue_free()
 	play_transition.emit(false, false)
+	pause_ui.settings_btn.grab_focus()
 
 
 func go_to_level_selector() -> void:

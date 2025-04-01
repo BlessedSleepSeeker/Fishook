@@ -16,9 +16,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 
-[node name="SettingName" type="Label" parent="TitleContainer"]
+[node name="SettingName" type="RichTextLabel" parent="TitleContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+fit_content = true
 
 [node name="SettingContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true

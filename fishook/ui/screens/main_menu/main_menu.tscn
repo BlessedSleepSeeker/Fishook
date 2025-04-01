@@ -36,19 +36,36 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="Play" type="Button" parent="MainMenu/VBox"]
+unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_top = NodePath("../Exit")
+focus_neighbor_bottom = NodePath("../Settings")
+focus_next = NodePath("../Settings")
+focus_previous = NodePath("../Exit")
 text = "Play"
 
 [node name="Settings" type="Button" parent="MainMenu/VBox"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../Credits")
+focus_next = NodePath("../Credits")
+focus_previous = NodePath("../Play")
 text = "Settings"
 
 [node name="Credits" type="Button" parent="MainMenu/VBox"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_bottom = NodePath("../Exit")
+focus_next = NodePath("../Exit")
+focus_previous = NodePath("../Settings")
 text = "Credits"
 
 [node name="Exit" type="Button" parent="MainMenu/VBox"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Credits")
+focus_neighbor_bottom = NodePath("../Play")
+focus_next = NodePath("../Play")
+focus_previous = NodePath("../Credits")
 text = "Exit"
 
 [connection signal="pressed" from="MainMenu/VBox/Play" to="." method="_on_play_button_pressed"]

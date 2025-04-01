@@ -7,6 +7,7 @@ class_name LevelSelector
 @export var main_menu_scene_path: String = "res://ui/screens/main_menu/main_menu.tscn"
 
 @onready var button_grid: GridContainer = %GridContainer
+@onready var random_btn: Button = %Random
 
 signal transition_by_path(new_scene_path: String, scene_parameters: Dictionary)
 
@@ -19,6 +20,8 @@ func build() -> void:
 		button_grid.add_child(inst)
 		inst.pressed.connect(level_picked)
 		inst.level_data = level
+	random_btn.grab_focus()
+
 
 func level_picked(level: LevelData) -> void:
 	var level_param_dict: Dictionary = {"level_scene_name": level.scene_name}
@@ -26,3 +29,11 @@ func level_picked(level: LevelData) -> void:
 
 func _on_return_button_pressed():
 	transition_by_path.emit(main_menu_scene_path)
+
+
+func _on_random_pressed():
+	var btn = button_grid.get_children().pick_random()
+	if btn is LevelSelectButton:
+		btn.on_button_pressed()
+	else:
+		_on_random_pressed()

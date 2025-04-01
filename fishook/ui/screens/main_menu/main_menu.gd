@@ -4,11 +4,13 @@ extends Control
 @export var gamePath: String = "res://ui/screens/level_selector/LevelSelector.tscn"
 @export var settings_screen_path: String = "res://ui/screens/settings/settings_screen.tscn"
 
+@onready var play_btn: Button = %Play
+
 signal transition(new_scene: PackedScene, animation: String)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	play_btn.grab_focus()
 
 func _on_quit_button_pressed():
 	get_tree().quit()

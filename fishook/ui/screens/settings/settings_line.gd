@@ -11,10 +11,10 @@ var number: SpinBox
 @export var action_assignement_line: PackedScene = preload("res://ui/screens/settings/ActionAssignementLine.tscn")
 @export var action_assignement_modal: PackedScene = preload("res://ui/screens/settings/actions_assignement_panel.tscn")
 
-@onready var setting_name: Label = %SettingName
-@onready var settings_container = %SettingContainer
-@onready var title_container = %TitleContainer
-@onready var input_plus_button = %InputPlusButton
+@onready var title_container: Container = %TitleContainer
+@onready var setting_name: RichTextLabel = %SettingName
+@onready var settings_container: Container = %SettingContainer
+@onready var input_plus_button: Button = %InputPlusButton
 
 var setting: Setting = null:
 	set(val):
@@ -88,8 +88,8 @@ func build_range() -> void:
 	slider.set_h_size_flags(Control.SIZE_EXPAND_FILL)
 	slider.value_changed.connect(_on_slider_value_changed)
 	slider.mouse_exited.connect(_on_mouse_exited)
-	settings_container.add_child(slider)
 	settings_container.add_child(lbl)
+	settings_container.add_child(slider)
 	slider.tick_count = 5
 	slider.ticks_on_borders = true
 	slider.min_value = setting.min_value_range
@@ -150,10 +150,15 @@ func _on_remove_input(input_event: InputEvent):
 	remove_input_line(input_event)
 
 func _on_rebind_input(input_event: InputEvent):
+	var window: Window = Window.new()
+	window.initial_position = Window.WINDOW_INITIAL_POSITION_CENTER_MAIN_WINDOW_SCREEN
+	window.size = get_viewport().size / 2
 	var input_panel: ActionsAssignementPanel = action_assignement_modal.instantiate()
-	add_child(input_panel)
+	window.add_child(input_panel)
+	add_child(window)
 	input_panel.action_name = setting.key.to_lower()
 	input_panel.action_set.connect(update_input.bind(input_event))
+	input_panel.action_set.connect(close_window.bind(window))
 
 func update_input(new_input: InputEvent, old_input: InputEvent) -> void:
 	var action_name: String = setting.key.to_lower()
@@ -166,10 +171,18 @@ func update_input(new_input: InputEvent, old_input: InputEvent) -> void:
 	else:
 		push_error("ActionAssignementLine not found : %s" % old_input.as_text())
 
+func close_window(_new_input: InputEvent, window: Window) -> void:
+	window.queue_free()
+
 func add_input_event_to_action() -> void:
+	var window: Window = Window.new()
+	window.initial_position = Window.WINDOW_INITIAL_POSITION_CENTER_MAIN_WINDOW_SCREEN
+	window.size = get_viewport().size / 2
 	var input_panel: ActionsAssignementPanel = action_assignement_modal.instantiate()
-	add_child(input_panel)
+	window.add_child(input_panel)
+	add_child(window)
 	input_panel.action_set.connect(add_input)
+	input_panel.action_set.connect(close_window.bind(window))
 
 func add_input(event: InputEvent):
 	var action_name: String = setting.key.to_lower()

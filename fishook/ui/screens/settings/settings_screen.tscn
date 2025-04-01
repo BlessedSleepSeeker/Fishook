@@ -48,11 +48,20 @@ layout_mode = 2
 [node name="QuitButton" type="Button" parent="MC/VB/HB"]
 layout_mode = 2
 size_flags_horizontal = 2
+focus_neighbor_left = NodePath("../SaveButton")
+focus_neighbor_right = NodePath("../SaveButton")
+focus_next = NodePath("../SaveButton")
+focus_previous = NodePath("../SaveButton")
 text = "Go Back"
 
 [node name="SaveButton" type="Button" parent="MC/VB/HB"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
+focus_neighbor_left = NodePath("../QuitButton")
+focus_neighbor_right = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../QuitButton")
 text = "Save"
 
 [node name="SaveDialog" type="ConfirmationDialog" parent="."]
