@@ -1,6 +1,8 @@
 extends Node3D
 class_name BaseLevel
 
+@export var debug_collectible_timer_template: String = "Collectible %s : %s"
+
 @onready var character: CharacterInstance = %CharacterInstance
 @onready var current_checkpoint = %FirstCheckpoint
 @onready var hud: LevelHUD = %LevelHud
@@ -22,8 +24,10 @@ func register_collectibles() -> void:
 func picked_up_collectible(_collectible: BaseCollectible) -> void:
 	collected_amount += 1
 	hud.update_collectible(collected_amount, total_collectibles)
+	print_debug(debug_collectible_timer_template % [collected_amount, level_stopwatch.get_current_time_as_string()])
 	if collected_amount >= total_collectibles:
 		level_stopwatch.pause = true
+		print_debug("Final Time : %s" % [level_stopwatch.get_current_time_as_string()])
 
 func register_checkpoints() -> void:
 	for checkpoint: BaseCheckpoint in get_tree().get_nodes_in_group("Checkpoint"):

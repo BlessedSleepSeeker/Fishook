@@ -16,7 +16,6 @@ func enter(_msg := {}) -> void:
 
 func unhandled_input(_event: InputEvent):
 	super(_event)
-	print(_event.as_text())
 	if Input.is_action_just_pressed("jump") && not character.did_double_jump && current_frame > dj_minimum_delay:
 		state_machine.transition_to("DoubleJump")
 	if Input.is_action_just_pressed("throw_hook"):

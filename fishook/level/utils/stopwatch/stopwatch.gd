@@ -9,6 +9,8 @@ class_name Stopwatch
 
 @export var unaffected_by_time_scale: bool = true
 
+@export var current_time_string_template: String = "%02.0f:%02.0f:%02d"
+
 func _ready():
 	reset()
 
@@ -33,3 +35,7 @@ func get_current_time_dict() -> Dictionary:
 	time_dict["minute"] = int(current_time / 60)
 
 	return time_dict
+
+func get_current_time_as_string() -> String:
+	var dict = get_current_time_dict()
+	return current_time_string_template % [dict["minute"], dict["second"], dict["millisecond"] * 100]
