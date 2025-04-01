@@ -283,6 +283,9 @@ bus = &"Sound Effect"
 streams = Array[AudioStream]([ExtResource("14_m6vje"), ExtResource("15_bjf1r"), ExtResource("16_2c7bb"), ExtResource("17_8ojuf"), ExtResource("18_ybyru")])
 no_repeat = false
 
+[node name="Stopwatch" parent="StateMachine/Jump" instance=ExtResource("35_2c7bb")]
+paused_at_load = true
+
 [node name="DoubleJump" type="Node" parent="StateMachine"]
 script = ExtResource("6_7jo2n")
 physics_parameters = SubResource("Resource_uip3n")
