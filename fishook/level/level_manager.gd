@@ -96,5 +96,7 @@ func restart_level() -> void:
 	load_level()
 	if root:
 		root.play_fade(false, false)
+	pause_ui.restart_btn.disabled = false
+	toggle_pause()
 
 #endregion
