@@ -15,6 +15,8 @@ class_name CharacterHUD
 @export var crosshair_base_color: Color = Color("ffffff")
 @export var crosshair_color_on_colliding: Color = Color("70ff7c")
 
+@onready var settings: Settings = get_tree().root.get_node("Root").settings
+
 func set_double_jump_base_color(new_color: Color) -> void:
 	double_jump_indicator.modulate = new_color
 
@@ -56,6 +58,8 @@ func change_crosshair_to(crosshair_texture: Texture2D) -> void:
 			crosshair.texture = crosshair_base_texture
 
 func tween_bullet_time(wanted_time: float, max_time: float, tween_speed: float):
+	if settings.read_setting_value_by_key("DISABLE_BULLET_TIME_VISUALS"):
+		return
 	var percent: float = wanted_time / max_time
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(bullet_time_screen_fx.material, "shader_parameter/levels", clampi(int(percent) * 10, 3, 10), tween_speed)

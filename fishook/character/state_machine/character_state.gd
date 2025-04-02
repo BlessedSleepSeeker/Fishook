@@ -23,6 +23,7 @@ var anim_duration: float = 10
 
 @onready var saved_max_speed: float = physics_parameters.MAX_SPEED
 
+
 func _ready() -> void:
 	character = owner as CharacterInstance
 

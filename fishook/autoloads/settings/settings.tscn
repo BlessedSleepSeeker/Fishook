@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://s46wqxnh4dnl"]
+[gd_scene load_steps=12 format=3 uid="uid://s46wqxnh4dnl"]
 
 [ext_resource type="Script" uid="uid://7pud10826kcg" path="res://autoloads/settings/settings.gd" id="1_dbr6m"]
 [ext_resource type="Script" uid="uid://n1ryqrkueeuw" path="res://autoloads/settings/settings_scripts/window/Resolution.gd" id="2_g3vyq"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://y5tvwyqjw12d" path="res://autoloads/settings/settings_scripts/game/camera_sensitivity.gd" id="9_8e0ev"]
 [ext_resource type="Script" uid="uid://mf1p16q2yo7l" path="res://autoloads/settings/settings_scripts/game/Language.gd" id="9_bqloj"]
 [ext_resource type="Script" uid="uid://c27adpcx3gjxr" path="res://autoloads/settings/settings_scripts/UI/scale.gd" id="9_nhd6j"]
+[ext_resource type="Script" uid="uid://d0jsuxpy73a0g" path="res://autoloads/settings/settings_scripts/game/disable_bullet_time_visuals_effects.gd" id="10_6rgcf"]
 
 [node name="Settings" type="Node"]
 script = ExtResource("1_dbr6m")
@@ -77,6 +78,11 @@ key = "CAMERA_SENSIBILITY"
 tooltip = "Affect the speed at which the camera rotate around the player"
 min_value_range = 1
 max_value_range = 1000
+
+[node name="Disable Bullet Time Visuals Effects" type="Node" parent="Game"]
+script = ExtResource("10_6rgcf")
+key = "DISABLE_BULLET_TIME_VISUALS"
+tooltip = "This will disable the chroma aberration effect when using bullet time."
 
 [node name="UI" type="Node" parent="."]
 
