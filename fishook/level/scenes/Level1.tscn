@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://ctqppdq3quxc2"]
+[gd_scene load_steps=17 format=3 uid="uid://ctqppdq3quxc2"]
 
 [ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_ec3ai"]
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_8nujw"]
-[ext_resource type="Environment" uid="uid://ckid4l4im4nv2" path="res://level/assets/world_env_defautl.tres" id="3_ger3j"]
 [ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="4_ih5b3"]
 [ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/huds/level_hud/LevelHUD.tscn" id="5_6wlfj"]
 [ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="6_eoepi"]
@@ -15,6 +14,28 @@
 [ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="13_01jhy"]
 [ext_resource type="PackedScene" uid="uid://c7pg5cdosq1p1" path="res://level/assets/decoration/AssetRandomRotator.tscn" id="14_r524h"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_36jh6"]
+sky_top_color = Color(0.11, 1, 0.881333, 1)
+sky_horizon_color = Color(0.883333, 0.65, 1, 1)
+ground_bottom_color = Color(0.306, 0.6, 0.4089, 1)
+ground_horizon_color = Color(0.883333, 0.65, 1, 1)
+ground_curve = 0.109283
+
+[sub_resource type="Sky" id="Sky_ec3ai"]
+sky_material = SubResource("ProceduralSkyMaterial_36jh6")
+
+[sub_resource type="Environment" id="Environment_8nujw"]
+background_mode = 2
+sky = SubResource("Sky_ec3ai")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 2
+tonemap_exposure = 1.05
+tonemap_white = 0.95
+ssao_enabled = true
+ssao_radius = 2.0
+ssao_intensity = 1.4
+
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_ec3ai")
 
@@ -24,7 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 102.172, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 unique_name_in_owner = true
-environment = ExtResource("3_ger3j")
+environment = SubResource("Environment_8nujw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.67946, 100, 8.76321)

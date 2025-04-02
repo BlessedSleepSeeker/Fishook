@@ -15,6 +15,8 @@ class_name LevelManager
 @onready var settings_container: MarginContainer = %SettingsContainer
 @onready var settings_ui_layer: CanvasLayer = %SettingsUILayer
 
+@onready var root: CustomRoot = get_tree().root.get_node("Root")
+
 signal transition_by_path(new_scene_path: String, scene_parameters: Dictionary)
 signal play_transition(direction: bool, wait_for_tween: bool)
 
@@ -26,6 +28,7 @@ func _ready():
 	pause_ui.go_to_settings.connect(go_to_settings)
 	pause_ui.go_to_level_selector.connect(go_to_level_selector)
 	pause_ui.go_to_main_menu.connect(go_to_main_menu)
+	pause_ui.restart.connect(restart_level)
 	load_level()
 
 #region Pausing
@@ -85,5 +88,13 @@ func load_level() -> void:
 
 func build_level_path() -> String:
 	return level_scene_path + level_scene_name + level_scene_extension
+
+func restart_level() -> void:
+	if root:
+		await root.play_fade(true, true)
+	flush_level()
+	load_level()
+	if root:
+		root.play_fade(false, false)
 
 #endregion

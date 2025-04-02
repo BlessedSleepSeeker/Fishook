@@ -123,6 +123,8 @@ Personal Thoughts :
 ## Music
 
 [HOME Tweet about his music](https://x.com/RNDYGFFE/status/1595515631020957703)
+[Patricia Taxxon bandcamp](https://patriciataxxon.bandcamp.com/album/wavetable)
+)
 
 ## Shaders
 

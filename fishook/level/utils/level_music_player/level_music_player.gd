@@ -56,6 +56,7 @@ func play(audio_stream: AudioStream) -> void:
 	fade_current_tween.tween_property(current_player, "volume_db", crossfade_out_volume, crossfade_duration)
 	fade_unused_tween.tween_property(unused_player, "volume_db", crossfade_in_volume, crossfade_duration)
 
+
 	var switch = current_player
 	current_player = unused_player
 	unused_player = switch
@@ -63,6 +64,10 @@ func play(audio_stream: AudioStream) -> void:
 		current_player.finished.connect(_on_song_end)
 	if unused_player.finished.is_connected(_on_song_end):
 		unused_player.finished.disconnect(_on_song_end)
+	fade_current_tween.finished.connect(stop_unused)
+
+func stop_unused() -> void:
+	unused_player.stop()
 
 func calculate_song_position(future_stream: AudioStream, _current_player: AudioStreamPlayer) -> float:
 	var current_percent: float = _current_player.get_playback_position() / _current_player.stream.get_length()

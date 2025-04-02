@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbhkdaifd8q8t"]
+[gd_scene load_steps=3 format=3 uid="uid://cbhkdaifd8q8t"]
 
 [ext_resource type="Script" uid="uid://dmktmx3gyr5rx" path="res://ui/huds/pause_hud/pause_ui.gd" id="1_nnkm3"]
+[ext_resource type="Theme" uid="uid://dow3yf2y5jff7" path="res://ui/themes/main_menu_theme.tres" id="1_rqn4q"]
 
 [node name="PauseUi" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_rqn4q")
 script = ExtResource("1_nnkm3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -38,6 +40,12 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Continue"
 
+[node name="Restart" type="Button" parent="MainMenu/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Restart
+"
+
 [node name="ChangeLevel" type="Button" parent="MainMenu/VBox"]
 layout_mode = 2
 text = "Change Level"
@@ -57,6 +65,7 @@ text = "Exit"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="MainMenu/VBox/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MainMenu/VBox/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="MainMenu/VBox/ChangeLevel" to="." method="_on_change_level_pressed"]
 [connection signal="pressed" from="MainMenu/VBox/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MainMenu/VBox/MainMenu" to="." method="_on_main_menu_pressed"]

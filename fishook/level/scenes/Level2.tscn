@@ -1,12 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://n16wqmmxdo5x"]
+[gd_scene load_steps=18 format=3 uid="uid://n16wqmmxdo5x"]
 
 [ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_4fg25"]
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_0v83y"]
-[ext_resource type="Environment" uid="uid://ckid4l4im4nv2" path="res://level/assets/world_env_defautl.tres" id="3_6sa3k"]
 [ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="4_vg7cp"]
 [ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/huds/level_hud/LevelHUD.tscn" id="5_fktwg"]
 [ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="6_sv5sn"]
 [ext_resource type="Material" uid="uid://h0r4shlt6jqo" path="res://level/template_assets/material/dark_grid_texture.tres" id="7_3s61v"]
+[ext_resource type="Material" uid="uid://bwr2uhkx8pf3h" path="res://level/template_assets/material/water.tres" id="8_4fg25"]
 [ext_resource type="Material" uid="uid://cm88joxmcriqi" path="res://level/template_assets/material/orange_grid_texture.tres" id="8_xbakf"]
 [ext_resource type="PackedScene" uid="uid://bufgfitu7r2tc" path="res://level/assets/decoration/models/rocks/Rock.glb" id="9_twqvy"]
 [ext_resource type="PackedScene" uid="uid://donkxcqkw68d4" path="res://level/assets/decoration/Tree.tscn" id="10_58uud"]
@@ -14,6 +14,27 @@
 [ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="12_ni7fk"]
 [ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="13_hyrj1"]
 [ext_resource type="PackedScene" uid="uid://c7pg5cdosq1p1" path="res://level/assets/decoration/AssetRandomRotator.tscn" id="14_cwsm6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2cdyt"]
+sky_top_color = Color(0.11, 1, 0.881333, 1)
+sky_horizon_color = Color(0.883333, 0.65, 1, 1)
+ground_bottom_color = Color(0.2805, 0.55, 0.419742, 1)
+ground_horizon_color = Color(0.883333, 0.65, 1, 1)
+
+[sub_resource type="Sky" id="Sky_4fg25"]
+sky_material = SubResource("ProceduralSkyMaterial_2cdyt")
+
+[sub_resource type="Environment" id="Environment_0v83y"]
+background_mode = 2
+sky = SubResource("Sky_4fg25")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 2
+tonemap_exposure = 1.05
+tonemap_white = 0.95
+ssao_enabled = true
+ssao_radius = 2.0
+ssao_intensity = 1.4
 
 [node name="Level2" type="Node3D"]
 script = ExtResource("1_4fg25")
@@ -24,7 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 101, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 unique_name_in_owner = true
-environment = ExtResource("3_6sa3k")
+environment = SubResource("Environment_0v83y")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.67946, 100, 8.76321)
@@ -231,6 +252,11 @@ radius = 1.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.823, 37.641, 63.6331)
 radius = 1.0
 material = ExtResource("8_xbakf")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geometry/CSGGrabbable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8577, 46.5213, 29.6549)
+size = Vector3(15, 0.01, 15)
+material = ExtResource("8_4fg25")
 
 [node name="Decoration" type="Node3D" parent="Geometry"]
 

@@ -6,6 +6,8 @@ class_name MouseFollowCamera
 @onready var real_camera: Camera3D = %Camera3D
 @onready var raycast: RayCast3D = %HookRayCast
 @onready var behind: Marker3D = %Behind
+@onready var camera_position: Node3D = %CameraPosition
+
 # @onready var sphere_indicator: Node3D = %ShpereIndicator
 
 signal is_colliding(is_colliding: bool)
@@ -50,17 +52,7 @@ func rotate_camera(_delta) -> void:
 	self._camera_input_direction = Vector2.ZERO
 
 func _process(_delta):
-	pass
-	# var distance = self.global_position.distance_to(real_camera.global_position)
-	# if distance <= parameters.CAMERA_TOO_CLOSE_RANGE:
-	# 	var tween = get_tree().create_tween()
-	# 	var behind_direction = self.global_position.direction_to(behind.global_position)
-	# 	behind_direction.y = 0
-	# 	print(behind_direction)
-	# 	tween.tween_property(self, "position", parameters.CAMERA_TOO_CLOSE_OFFSET + (behind_direction * parameters.CAMERA_TOO_CLOSE_BEHIND_MULTIPLICATOR), parameters.CAMERA_TOO_CLOSE_MOVEMENT_TWEEN_SPEED)
-	# else:
-	# 	var tween = get_tree().create_tween()
-	# 	tween.tween_property(self, "position", parameters.CAMERA_BASE_OFFSET, parameters.CAMERA_TOO_CLOSE_MOVEMENT_TWEEN_SPEED)
+	real_camera.global_position = lerp(real_camera.global_position, camera_position.global_position, parameters.SPRING_ARM_SPEED * _delta)
 
 func _physics_process(_delta):
 	if raycast.is_colliding():
