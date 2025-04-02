@@ -1,13 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmywmdt0bmod4"]
+[gd_scene load_steps=7 format=3 uid="uid://bmywmdt0bmod4"]
 
 [ext_resource type="Script" uid="uid://jesss50ubfj6" path="res://autoloads/custom_root/root.gd" id="1_0ggjb"]
 [ext_resource type="PackedScene" uid="uid://s46wqxnh4dnl" path="res://autoloads/settings/settings.tscn" id="2_022ww"]
 [ext_resource type="Shader" uid="uid://bn07t86j8sbtb" path="res://ui/transition/shader/fade_to_black.gdshader" id="3_c14vr"]
+[ext_resource type="Shader" uid="uid://rtggyt425ym3" path="res://ui/transition/shader/transition.gdshader" id="3_m7ssa"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m7ssa"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ml0n7"]
 shader = ExtResource("3_c14vr")
 shader_parameter/progress = 0.0
 shader_parameter/diamondPixelSize = 20.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m7ssa"]
+shader = ExtResource("3_m7ssa")
+shader_parameter/progress = 0.0
+shader_parameter/diamondPixelSize = 10.0
 
 [node name="Root" type="Node"]
 process_mode = 3
@@ -26,7 +32,7 @@ mouse_filter = 2
 
 [node name="FadeToBlack" type="ColorRect" parent="CanvasLayer/MarginContainer2"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_m7ssa")
+material = SubResource("ShaderMaterial_ml0n7")
 layout_mode = 2
 mouse_filter = 2
 color = Color(0.133333, 0.129412, 0.14902, 1)

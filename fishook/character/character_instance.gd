@@ -27,8 +27,6 @@ var did_double_jump: bool = false:
 		else:
 			hud_canvas.tween_double_jump_cooldown(1, 1, 0.1)
 
-
-
 func _ready():
 	camera.is_colliding.connect(hud_canvas.crosshair_collision)
 
@@ -48,3 +46,7 @@ func play_animation(animation_name: String):
 
 func set_hitbox_shape(shape: Shape3D) -> void:
 	hitbox.shape = shape
+
+func respawn(respawn_global_position: Vector3) -> void:
+	self.global_position = respawn_global_position
+	self.velocity = Vector3.ZERO

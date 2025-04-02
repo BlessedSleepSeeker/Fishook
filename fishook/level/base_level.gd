@@ -42,17 +42,18 @@ func _process(_delta):
 	update_timer()
 
 func _physics_process(_delta):
-	if character.global_position.y < 50:
+	if character.global_position.y < 50 && is_respawning == false:
 		teleport_player_to_checkpoint()
 
+var is_respawning: bool = false
 func teleport_player_to_checkpoint() -> void:
+	is_respawning = true
 	if root:
-		await root.play_transition(true, true)
-	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(character, "global_position", current_checkpoint.global_position, 0.3).set_ease(Tween.EASE_IN_OUT)
-	await tween.finished
+		await root.play_fade(true, true)
+	await character.respawn(current_checkpoint.global_position)
 	if root:
-		root.play_transition(false, false)
+		root.play_fade(false, false)
+	is_respawning = false
 
 func update_timer() -> void:
 	var time_dict = level_stopwatch.get_current_time_dict()
