@@ -1,6 +1,7 @@
 extends CharacterState
 class_name FallState
 
+@export var dj_minimum_delay: int = 6
 @export var coyote_frames: int = 6
 var can_coyote_time: bool = false
 var frame_count: int = 0
@@ -15,7 +16,7 @@ func unhandled_input(_event: InputEvent):
 	super(_event)
 	if Input.is_action_just_pressed("jump") && frame_count < coyote_frames && can_coyote_time:
 		state_machine.transition_to("Jump")
-	elif Input.is_action_just_pressed("jump") && not character.did_double_jump:
+	elif Input.is_action_just_pressed("jump") && not character.did_double_jump && frame_count > dj_minimum_delay:
 		state_machine.transition_to("DoubleJump")
 	elif Input.is_action_just_pressed("throw_hook"):
 		state_machine.transition_to("HookAiming")

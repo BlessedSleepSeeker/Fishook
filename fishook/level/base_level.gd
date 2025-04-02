@@ -8,6 +8,8 @@ class_name BaseLevel
 @onready var hud: LevelHUD = %LevelHud
 @onready var level_stopwatch: Stopwatch = %LevelStopwatch
 
+@onready var root: CustomRoot = get_tree().root.get_node("Root")
+
 var total_collectibles: int = 0
 var collected_amount: int = 0
 
@@ -44,8 +46,13 @@ func _physics_process(_delta):
 		teleport_player_to_checkpoint()
 
 func teleport_player_to_checkpoint() -> void:
+	if root:
+		await root.play_transition(true, true)
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(character, "global_position", current_checkpoint.global_position, 1).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(character, "global_position", current_checkpoint.global_position, 0.3).set_ease(Tween.EASE_IN_OUT)
+	await tween.finished
+	if root:
+		root.play_transition(false, false)
 
 func update_timer() -> void:
 	var time_dict = level_stopwatch.get_current_time_dict()

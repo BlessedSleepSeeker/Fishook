@@ -50,19 +50,21 @@ func physics_update(_delta: float, _move_character: bool = true):
 	if Input.is_action_pressed("reel_out"):
 		reel_out(_delta)
 
+
+	if frame_nbr == 9:
+		character.skin.swing_with_hookshot(character.velocity, character.velocity.length() * physics_parameters.GRAPPLE_ROTATION_SPEED, _delta)
+		frame_nbr = 0
+	else:
+		frame_nbr += 1
 	swing(_delta)
+
 	## reset double jump only if you've gone downward once
 	if character.velocity.y < 0:
 		can_reset_dj = true
 	if can_reset_dj && character.velocity.y > 0:
 		character.did_double_jump = false
 	character.move_and_slide()
-	if frame_nbr == 0:
-		character.skin.swing_with_hookshot(character.velocity, character.velocity.length() * physics_parameters.GRAPPLE_ROTATION_SPEED, _delta)
-	elif frame_nbr > 10:
-		frame_nbr = 0
-	else:
-		frame_nbr += 1
+	#character.skin.swing_with_hookshot(character.velocity, character.velocity.length() * physics_parameters.GRAPPLE_ROTATION_SPEED, _delta)
 	if character.is_on_floor():
 		state_machine.transition_to("Land")
 

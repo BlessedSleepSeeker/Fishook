@@ -7,7 +7,8 @@ A 3D Platformer with a fishing hookshot.
 - [x] In-Game Settings
 - [x] Input Remapping
   - [ ] Input remapping cleaner UI
-- [ ] Controller Support
+- [x] Controller Support
+  - [x] Fix DJ Bug
 - [ ] Allow to shot hookshot from the ground and let the hookshot attached when landing.
 - [x] Coyote Time
 - [ ] More Levels !

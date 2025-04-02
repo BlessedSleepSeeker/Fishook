@@ -1,12 +1,13 @@
-class_name Root
 extends Node
+class_name CustomRoot
 
 @export var first_client_scene: PackedScene = preload("res://ui/screens/title_sequence/title_sequence.tscn")
 @export_range(0.1, 10, 0.1) var transition_speed: float = 0.5
 
 @onready var settings = $Settings
 @onready var scene_root = $SceneRoot
-@onready var transition_color_rect: ColorRect = %ColorRect
+@onready var transition_color_rect: ColorRect = %Transition
+@onready var fade_to_black_color_rect: ColorRect = %FadeToBlack
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,12 +38,22 @@ func change_scene(new_scene: PackedScene, scene_parameters: Dictionary = {}) -> 
 
 func play_transition(direction: bool = true, wait_for_tween: bool = true) -> void:
 	var tween: Tween = get_tree().create_tween()
-	if direction:
-		tween.tween_property(transition_color_rect.material, "shader_parameter/progress", 1, transition_speed).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
-	else:
-		tween.tween_property(transition_color_rect.material, "shader_parameter/progress", 0, transition_speed).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	var tween_value: float = 1
+	if not direction:
+		tween_value = 0
+	tween.tween_property(transition_color_rect.material, "shader_parameter/progress", tween_value, transition_speed).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	if wait_for_tween:
 		await tween.finished
+
+func play_fade(direction: bool = true, wait_for_tween: bool = true) -> void:
+	var tween: Tween = get_tree().create_tween()
+	var tween_value: float = 1
+	if not direction:
+		tween_value = 0
+	tween.tween_property(fade_to_black_color_rect.material, "shader_parameter/progress", tween_value, transition_speed).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	if wait_for_tween:
+		await tween.finished
+
 
 func _on_transition(new_scene: PackedScene, animation: String = "") -> void:
 	if animation != "":
@@ -59,7 +70,6 @@ func _on_transition_by_path(new_scene_path: String, scene_parameters: Dictionary
 	change_scene(new_scene, scene_parameters)
 	await get_tree().create_timer(0.2).timeout
 	play_transition(false, false)
-
 
 # func _on_transition_by_instance(new_instance: Node) -> void:
 # 	await play_transition(true)

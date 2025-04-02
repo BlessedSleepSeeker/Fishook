@@ -2,23 +2,34 @@
 
 [ext_resource type="Script" uid="uid://jesss50ubfj6" path="res://autoloads/custom_root/root.gd" id="1_0ggjb"]
 [ext_resource type="PackedScene" uid="uid://s46wqxnh4dnl" path="res://autoloads/settings/settings.tscn" id="2_022ww"]
-[ext_resource type="Shader" uid="uid://rtggyt425ym3" path="res://ui/transition/shader/transition.gdshader" id="3_c14vr"]
+[ext_resource type="Shader" uid="uid://bn07t86j8sbtb" path="res://ui/transition/shader/fade_to_black.gdshader" id="3_c14vr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m7ssa"]
 shader = ExtResource("3_c14vr")
 shader_parameter/progress = 0.0
-shader_parameter/diamondPixelSize = 10.0
+shader_parameter/diamondPixelSize = 20.0
 
 [node name="Root" type="Node"]
 process_mode = 3
 script = ExtResource("1_0ggjb")
 
-[node name="Settings" parent="." instance=ExtResource("2_022ww")]
-
-[node name="SceneRoot" type="Node" parent="."]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 10
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FadeToBlack" type="ColorRect" parent="CanvasLayer/MarginContainer2"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_m7ssa")
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.133333, 0.129412, 0.14902, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -28,9 +39,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MarginContainer"]
+[node name="Transition" type="ColorRect" parent="CanvasLayer/MarginContainer"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_m7ssa")
 layout_mode = 2
 mouse_filter = 2
 color = Color(0.133333, 0.129412, 0.14902, 1)
+
+[node name="Settings" parent="." instance=ExtResource("2_022ww")]
+
+[node name="SceneRoot" type="Node" parent="."]

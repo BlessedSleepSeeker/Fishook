@@ -8,7 +8,7 @@ class_name JumpState
 var current_frame: int = 0
 
 func enter(_msg := {}) -> void:
-	character.velocity.y += physics_parameters.JUMP_IMPULSE
+	character.velocity.y = physics_parameters.JUMP_IMPULSE
 	rdm_stream_player.play_random()
 	fade_crosshair(true)
 	current_frame = 0

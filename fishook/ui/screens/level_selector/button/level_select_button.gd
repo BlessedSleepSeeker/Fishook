@@ -13,7 +13,6 @@ signal pressed(level: LevelData)
 func _ready():
 	button.pressed.connect(on_button_pressed)
 	update_button()
-	grab_focus()
 
 func update_button() -> void:
 	button.text = level_data.name

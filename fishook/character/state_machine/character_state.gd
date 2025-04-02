@@ -62,6 +62,8 @@ func physics_update(_delta: float, move_character: bool = true) -> void:
 		
 		## Horizontal Movement.
 		## If we have no movement, stop using acceleration and use friction instead.
+		## The more acceleration we have, the slower we accelerate.
+		## The more friction we have, the slower we decelerate.
 		if handle_movements_input:
 			if character.raw_input == Vector2.ZERO:
 				character.velocity = character.velocity.move_toward(character.direction * physics_parameters.MAX_SPEED, physics_parameters.FRICTION * _delta)
@@ -76,6 +78,8 @@ func physics_update(_delta: float, move_character: bool = true) -> void:
 
 		if move_character:
 			character.move_and_slide()
+	
+	character.debug_canvas.set_speedometer(character.velocity)
 	## Reseting raw input
 	character.raw_input = Vector2.ZERO
 
