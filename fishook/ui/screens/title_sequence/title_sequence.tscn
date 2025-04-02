@@ -88,7 +88,7 @@ snap_2d_transforms_to_pixel = true
 snap_2d_vertices_to_pixel = true
 canvas_item_default_texture_filter = 0
 gui_disable_input = true
-size = Vector2i(1910, 750)
+size = Vector2i(1142, 318)
 render_target_update_mode = 4
 
 [node name="Control" type="Control" parent="MarginContainer/VB/SubViewportContainer/SubViewport"]

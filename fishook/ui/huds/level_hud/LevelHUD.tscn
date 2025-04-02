@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://du5lfj2lpryh8"]
 
-[ext_resource type="Script" uid="uid://ve25t5t7lumb" path="res://ui/level_hud/level_hud.gd" id="1_o1pp8"]
+[ext_resource type="Script" uid="uid://ve25t5t7lumb" path="res://ui/huds/level_hud/level_hud.gd" id="1_o1pp8"]
 
 [sub_resource type="World3D" id="World3D_sdvmq"]
 

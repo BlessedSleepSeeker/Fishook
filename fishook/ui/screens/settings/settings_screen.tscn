@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dalktguxudra8"]
 
-[ext_resource type="Theme" uid="uid://srf2bpfdjwwr" path="res://ui/themes/menu_ui_theme.tres" id="1_87076"]
+[ext_resource type="Theme" uid="uid://d3kms72g8lsqf" path="res://ui/themes/base_ui_theme.tres" id="1_3ioqg"]
 [ext_resource type="Script" uid="uid://c1ve6qkwvohlw" path="res://ui/screens/settings/settings_screen.gd" id="2_ehjt7"]
 
 [node name="SettingScreen" type="Control"]
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_87076")
+theme = ExtResource("1_3ioqg")
 script = ExtResource("2_ehjt7")
 
 [node name="ColorRect" type="ColorRect" parent="."]

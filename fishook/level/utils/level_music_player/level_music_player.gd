@@ -7,6 +7,7 @@ class_name LevelMusicPlayer
 @export_range(0.1, 10, 0.1) var crossfade_duration: float = 1.0
 @export var crossfade_out_volume: float = -40.0
 @export var crossfade_in_volume: float = 0.0
+@export var loop_music: bool = true
 
 @onready var audio_player1: AudioStreamPlayer = %AudioStreamPlayer1
 @onready var audio_player2: AudioStreamPlayer = %AudioStreamPlayer2
@@ -58,9 +59,16 @@ func play(audio_stream: AudioStream) -> void:
 	var switch = current_player
 	current_player = unused_player
 	unused_player = switch
+	if not current_player.finished.is_connected(_on_song_end):
+		current_player.finished.connect(_on_song_end)
+	if unused_player.finished.is_connected(_on_song_end):
+		unused_player.finished.disconnect(_on_song_end)
 
 func calculate_song_position(future_stream: AudioStream, _current_player: AudioStreamPlayer) -> float:
 	var current_percent: float = _current_player.get_playback_position() / _current_player.stream.get_length()
 
 	var future_position: float = future_stream.get_length() * current_percent
 	return future_position
+
+func _on_song_end():
+	audio_stream_id += 1

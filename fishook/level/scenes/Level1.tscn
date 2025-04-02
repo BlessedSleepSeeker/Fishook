@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_8nujw"]
 [ext_resource type="Environment" uid="uid://ckid4l4im4nv2" path="res://level/assets/world_env_defautl.tres" id="3_ger3j"]
 [ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="4_ih5b3"]
-[ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/level_hud/LevelHUD.tscn" id="5_6wlfj"]
+[ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/huds/level_hud/LevelHUD.tscn" id="5_6wlfj"]
 [ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="6_eoepi"]
 [ext_resource type="Material" uid="uid://h0r4shlt6jqo" path="res://level/template_assets/material/dark_grid_texture.tres" id="7_bhrt1"]
 [ext_resource type="Material" uid="uid://cm88joxmcriqi" path="res://level/template_assets/material/orange_grid_texture.tres" id="8_qdi35"]

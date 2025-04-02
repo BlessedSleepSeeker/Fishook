@@ -18,4 +18,5 @@ func update_button() -> void:
 	button.text = level_data.name
 
 func on_button_pressed() -> void:
+	self.button.disabled = true
 	pressed.emit(level_data)
