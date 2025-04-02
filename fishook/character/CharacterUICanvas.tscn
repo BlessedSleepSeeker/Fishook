@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=3 uid="uid://bn8hn6umnjoeb"]
+[gd_scene load_steps=10 format=3 uid="uid://bn8hn6umnjoeb"]
 
-[ext_resource type="Texture2D" uid="uid://dl5mjfx4al1ot" path="res://character/ui_assets/PNG/Outline/crosshair009.png" id="1_3opi4"]
 [ext_resource type="Script" uid="uid://b005j3c3vu2s2" path="res://character/character_ui_canvas.gd" id="1_8qiw1"]
 [ext_resource type="Shader" uid="uid://bs8nax4sphxxm" path="res://character/ui_assets/Shaders/cooldown.gdshader" id="2_8qiw1"]
 [ext_resource type="Texture2D" uid="uid://m43ay4wc4ouq" path="res://character/ui_assets/PNG/Outline/crosshair001.png" id="3_ny6jb"]
@@ -27,6 +26,7 @@ shader_parameter/spread = 0.01
 
 [node name="UICanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_8qiw1")
+crosshair_base_texture = ExtResource("3_ny6jb")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -47,15 +47,12 @@ alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
+alignment = 1
 
 [node name="DoubleJumpIndicator" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_ybyru")
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("3_pdutl")
 expand_mode = 1
@@ -63,7 +60,7 @@ expand_mode = 1
 [node name="BulletTimeIndicator" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_6hg2s")
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("4_ny6jb")
 expand_mode = 1
@@ -79,10 +76,11 @@ grow_vertical = 2
 [node name="Crosshair" type="TextureRect" parent="CrosshairContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("1_3opi4")
+texture = ExtResource("3_ny6jb")
 
 [node name="CollisionCrosshair" type="TextureRect" parent="CrosshairContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 texture = ExtResource("3_ny6jb")
 

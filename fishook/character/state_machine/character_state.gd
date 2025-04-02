@@ -10,6 +10,7 @@ var character: CharacterInstance
 @export var rotate_player_skin: bool = true
 @export var allow_bullet_time = true
 @export var should_play_animation_on_enter: bool = true
+@export var update_max_speed_on_enter: bool = false
 
 @export_group("Parameters")
 @export var physics_parameters: CharacterPhysics = CharacterPhysics.new()
@@ -19,6 +20,8 @@ var character: CharacterInstance
 @export var crosshair_texture: Texture2D = null
 
 var anim_duration: float = 10
+
+@onready var saved_max_speed: float = physics_parameters.MAX_SPEED
 
 func _ready() -> void:
 	character = owner as CharacterInstance
@@ -30,6 +33,10 @@ func enter(_msg := {}) -> void:
 	character.camera.parameters = self.camera_parameters
 	character.camera.raycast_range = physics_parameters.GRAPPLE_MAX_RANGE
 	character.debug_canvas.set_state(self.name)
+	if update_max_speed_on_enter:
+		physics_parameters.MAX_SPEED = max(abs(character.velocity.x) + abs(character.velocity.z), saved_max_speed)
+		#print_debug("Updated max speed : %f" % physics_parameters.MAX_SPEED)
+
 
 func input(_event: InputEvent) -> void:
 	pass

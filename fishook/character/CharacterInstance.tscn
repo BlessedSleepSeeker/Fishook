@@ -23,7 +23,6 @@
 [ext_resource type="Script" uid="uid://bria1y7ivp7ag" path="res://character/particles_manager.gd" id="13_0y2cd"]
 [ext_resource type="Script" uid="uid://c2b5vle648c6o" path="res://character/state_machine/states/hook_aim.gd" id="14_k5qqw"]
 [ext_resource type="AudioStream" uid="uid://b1ykvyjtyaidx" path="res://sounds_effects/personal/shortboop1.mp3" id="14_m6vje"]
-[ext_resource type="Texture2D" uid="uid://t0rb60xjmpwi" path="res://character/ui_assets/PNG/Outline/crosshair145.png" id="14_uh5tv"]
 [ext_resource type="AudioStream" uid="uid://dtm66jtnrrx6r" path="res://sounds_effects/personal/shortboop2.mp3" id="15_bjf1r"]
 [ext_resource type="AudioStream" uid="uid://gksm874m57qf" path="res://sounds_effects/personal/shortboop3.mp3" id="16_2c7bb"]
 [ext_resource type="AudioStream" uid="uid://cqkf41dnsoqia" path="res://sounds_effects/personal/shortboop4.mp3" id="17_8ojuf"]
@@ -33,6 +32,7 @@
 [ext_resource type="AudioStream" uid="uid://c70p1fpi3cklb" path="res://sounds_effects/kenney_impact-sounds/footstep_concrete_002.ogg" id="19_l2q03"]
 [ext_resource type="AudioStream" uid="uid://dhrapjgt5xjdw" path="res://sounds_effects/kenney_impact-sounds/footstep_concrete_003.ogg" id="20_c6ppy"]
 [ext_resource type="AudioStream" uid="uid://jjo6qhry1akn" path="res://sounds_effects/kenney_impact-sounds/footstep_concrete_004.ogg" id="21_hdq18"]
+[ext_resource type="Texture2D" uid="uid://d0xy7hyupgqge" path="res://character/ui_assets/PNG/Outline/crosshair186.png" id="31_2c7bb"]
 [ext_resource type="PackedScene" uid="uid://bn8hn6umnjoeb" path="res://character/CharacterUICanvas.tscn" id="34_bjf1r"]
 [ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="35_2c7bb"]
 [ext_resource type="PackedScene" uid="uid://khpkfqnos2o" path="res://character/CharacterDebugCanvas.tscn" id="35_bjf1r"]
@@ -45,7 +45,7 @@ GRAVITY = -30.0
 JUMP_IMPULSE = 12.0
 ACCELERATION = 20.0
 MAX_SPEED = 8.0
-FRICTION = 5.0
+FRICTION = 0.0
 ROTATION_SPEED = 6.0
 GRAPPLE_MAX_RANGE = 30.0
 GRAPPLE_REST_LENGTH = 0.1
@@ -63,7 +63,7 @@ GRAVITY = -30.0
 JUMP_IMPULSE = 15.0
 ACCELERATION = 20.0
 MAX_SPEED = 8.0
-FRICTION = 5.0
+FRICTION = 0.0
 ROTATION_SPEED = 6.0
 GRAPPLE_MAX_RANGE = 30.0
 GRAPPLE_REST_LENGTH = 0.1
@@ -276,6 +276,7 @@ streams = Array[AudioStream]([ExtResource("7_uame8"), ExtResource("8_s53p4"), Ex
 
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("6_j4qiq")
+update_max_speed_on_enter = true
 physics_parameters = SubResource("Resource_0y2cd")
 
 [node name="RandomStreamPlayer" parent="StateMachine/Jump" instance=ExtResource("6_kdfyh")]
@@ -288,6 +289,7 @@ paused_at_load = true
 
 [node name="DoubleJump" type="Node" parent="StateMachine"]
 script = ExtResource("6_7jo2n")
+update_max_speed_on_enter = true
 physics_parameters = SubResource("Resource_uip3n")
 
 [node name="RandomStreamPlayer" parent="StateMachine/DoubleJump" instance=ExtResource("6_kdfyh")]
@@ -297,6 +299,7 @@ no_repeat = false
 
 [node name="Fall" type="Node" parent="StateMachine"]
 script = ExtResource("7_185dw")
+update_max_speed_on_enter = true
 physics_parameters = SubResource("Resource_m6vje")
 
 [node name="Land" type="Node" parent="StateMachine"]
@@ -317,7 +320,7 @@ script = ExtResource("8_7jo2n")
 rotate_player_skin = false
 should_play_animation_on_enter = false
 physics_parameters = SubResource("Resource_3in86")
-crosshair_texture = ExtResource("14_uh5tv")
+crosshair_texture = ExtResource("31_2c7bb")
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
