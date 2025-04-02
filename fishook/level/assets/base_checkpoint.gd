@@ -12,6 +12,8 @@ signal reached(checkpoint: BaseCheckpoint)
 @onready var area: Area3D = %Area3D
 @onready var hitbox: CollisionShape3D = %Hitbox
 @onready var model_container: Node3D = %ModelContainer
+@onready var picked_up_particles: GPUParticles3D = %PickedUpParticles
+@onready var picked_up_audio: AudioStreamPlayer = %PickedUpAudio
 
 var model: MeshInstance3D = null
 var mesh: Mesh = null
@@ -25,9 +27,14 @@ func _ready():
 
 func _on_checkpoint_reached(_body):
 	reached.emit(self)
+	if picked_up_particles:
+		picked_up_particles.emitting = true
+	if picked_up_audio:
+		picked_up_audio.play()
 	if mesh:
 		var tween: Tween = get_tree().create_tween()
 		tween.tween_property(mesh.material, "albedo_color", color_on_reach, 0.3).set_ease(Tween.EASE_OUT)
 		await tween.finished
 		var tween2: Tween = get_tree().create_tween()
 		tween2.tween_property(mesh.material, "albedo_color", base_color, 1).set_ease(Tween.EASE_IN_OUT)
+	

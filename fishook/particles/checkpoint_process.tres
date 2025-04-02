@@ -1,0 +1,37 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=7 format=3 uid="uid://bpqxobmijvoyi"]
+
+[sub_resource type="Curve" id="Curve_cq6ty"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xangi"]
+curve = SubResource("Curve_cq6ty")
+
+[sub_resource type="Gradient" id="Gradient_isbue"]
+colors = PackedColorArray(0.563, 1, 0.54, 1, 0.0500001, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xncby"]
+gradient = SubResource("Gradient_isbue")
+
+[sub_resource type="Gradient" id="Gradient_h7ekt"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.145455, 0.40625, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tnce3"]
+gradient = SubResource("Gradient_h7ekt")
+
+[resource]
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -3.0
+linear_accel_max = -3.0
+tangential_accel_min = 5.0
+tangential_accel_max = 5.0
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_tnce3")
+color_initial_ramp = SubResource("GradientTexture1D_xncby")
+alpha_curve = SubResource("CurveTexture_xangi")

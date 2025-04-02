@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://drqwyeworm38d"]
+
+[ext_resource type="Material" uid="uid://pb51wbj1r51u" path="res://particles/smoke_cloud_landing.tres" id="1_f2o2k"]
+[ext_resource type="SphereMesh" uid="uid://d2lyc6t4es2fg" path="res://particles/smoke_cloud_landing_mesh.tres" id="2_6yve1"]
+
+[node name="SmokeCloudLanding" type="GPUParticles3D"]
+emitting = false
+amount = 100
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+process_material = ExtResource("1_f2o2k")
+draw_pass_1 = ExtResource("2_6yve1")

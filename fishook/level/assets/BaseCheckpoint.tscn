@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbqvw8ulit3kj"]
+[gd_scene load_steps=8 format=3 uid="uid://cbqvw8ulit3kj"]
 
 [ext_resource type="Script" uid="uid://ccslxh35nahue" path="res://level/assets/base_checkpoint.gd" id="1_44ggx"]
+[ext_resource type="Material" uid="uid://bpqxobmijvoyi" path="res://particles/checkpoint_process.tres" id="2_vw1nl"]
+[ext_resource type="SphereMesh" uid="uid://d2lyc6t4es2fg" path="res://particles/smoke_cloud_landing_mesh.tres" id="3_vw1nl"]
+[ext_resource type="AudioStream" uid="uid://dvcu3ttj6aujd" path="res://sounds_effects/kenney_jingles/jingles_NES08.ogg" id="4_el323"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_44ggx"]
 size = Vector3(1, 0.1, 1)
@@ -31,3 +34,17 @@ unique_name_in_owner = true
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ModelContainer"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("QuadMesh_20vtb")
+
+[node name="PickedUpParticles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 100
+one_shot = true
+explosiveness = 1.0
+process_material = ExtResource("2_vw1nl")
+draw_pass_1 = ExtResource("3_vw1nl")
+
+[node name="PickedUpAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_el323")
+volume_db = -20.0

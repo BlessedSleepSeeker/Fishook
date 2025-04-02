@@ -1,14 +1,6 @@
 extends CharacterState
 class_name HookActivatedState
 
-var hookshot_raycast: RayCast3D = null
-var hookshot_point: Vector3 = Vector3.ZERO
-var distance: float
-
-var frame_nbr: int = 0
-
-var can_reset_dj: bool = false
-
 @export var fishook_scene: PackedScene = preload("res://character/hookshot/HookshotFishook.tscn")
 var fishook: Node3D = null
 
@@ -16,6 +8,15 @@ var fishook: Node3D = null
 @export var spawn_debug: bool = false
 @export var debug_ball: PackedScene = preload("res://debug/DebugBall.tscn")
 
+@onready var reel_sound_player: AudioStreamPlayer = %ReelSoundPlayer
+
+var hookshot_raycast: RayCast3D = null
+var hookshot_point: Vector3 = Vector3.ZERO
+var distance: float
+
+var frame_nbr: int = 0
+
+var can_reset_dj: bool = false
 
 func enter(_msg := {}) -> void:
 	super()
@@ -90,11 +91,15 @@ func reel_in(_delta: float) -> void:
 	var displacement = distance - physics_parameters.GRAPPLE_REST_LENGTH
 	if displacement > 0:
 		distance = character.global_position.distance_to(hookshot_point) - (physics_parameters.GRAPPLE_REELING_SPEED * _delta)
+		if reel_sound_player.playing == false:
+			reel_sound_player.play()
 
 func reel_out(_delta: float) -> void:
 	var displacement = physics_parameters.GRAPPLE_MAX_RANGE - distance
 	if displacement > 0:
 		distance = character.global_position.distance_to(hookshot_point) + (physics_parameters.GRAPPLE_REELING_SPEED * _delta)
+		if reel_sound_player.playing == false:
+			reel_sound_player.play()
 
 func spawn_fishook() -> void:
 	var inst = fishook_scene.instantiate()

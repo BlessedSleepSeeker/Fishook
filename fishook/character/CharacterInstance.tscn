@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://bcvho024kiqga"]
+[gd_scene load_steps=61 format=3 uid="uid://bcvho024kiqga"]
 
 [ext_resource type="Script" uid="uid://dprgwt0j2p82d" path="res://character/character_instance.gd" id="1_vgy44"]
 [ext_resource type="PackedScene" uid="uid://uh75ppgcvkw1" path="res://character/model/CharacterSkin.tscn" id="2_1bt4p"]
@@ -35,7 +35,9 @@
 [ext_resource type="Texture2D" uid="uid://d0xy7hyupgqge" path="res://character/ui_assets/PNG/Outline/crosshair186.png" id="31_2c7bb"]
 [ext_resource type="PackedScene" uid="uid://bn8hn6umnjoeb" path="res://character/CharacterUICanvas.tscn" id="34_bjf1r"]
 [ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="35_2c7bb"]
+[ext_resource type="PackedScene" uid="uid://drqwyeworm38d" path="res://particles/smoke_cloud_landing.tscn" id="35_8ojuf"]
 [ext_resource type="PackedScene" uid="uid://khpkfqnos2o" path="res://character/CharacterDebugCanvas.tscn" id="35_bjf1r"]
+[ext_resource type="AudioStream" uid="uid://crcr12uky3lxp" path="res://sounds_effects/bbc_remove_before_selling/reel-05.mp3" id="38_ybyru"]
 
 [sub_resource type="Resource" id="Resource_0y2cd"]
 script = ExtResource("6_uip3n")
@@ -179,42 +181,6 @@ height = 0.2
 radial_segments = 6
 rings = 6
 
-[sub_resource type="Curve" id="Curve_0y2cd"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_uh5tv"]
-curve = SubResource("Curve_0y2cd")
-
-[sub_resource type="Gradient" id="Gradient_3in86"]
-colors = PackedColorArray(0.54, 0.915667, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_66hhr"]
-gradient = SubResource("Gradient_3in86")
-
-[sub_resource type="Gradient" id="Gradient_wtdxw"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.145455, 0.827273, 1)
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6r8ug"]
-gradient = SubResource("Gradient_wtdxw")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iw8v4"]
-spread = 180.0
-flatness = 1.0
-initial_velocity_min = 1.0
-initial_velocity_max = 2.0
-gravity = Vector3(0, 0, 0)
-linear_accel_min = -1.0
-linear_accel_max = -2.23517e-06
-tangential_accel_min = 5.0
-tangential_accel_max = 5.0
-scale_max = 2.0
-color_ramp = SubResource("GradientTexture1D_6r8ug")
-color_initial_ramp = SubResource("GradientTexture1D_66hhr")
-alpha_curve = SubResource("CurveTexture_uh5tv")
-
 [sub_resource type="Curve" id="Curve_uh5tv"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(0.9, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
@@ -322,6 +288,11 @@ should_play_animation_on_enter = false
 physics_parameters = SubResource("Resource_3in86")
 crosshair_texture = ExtResource("31_2c7bb")
 
+[node name="ReelSoundPlayer" type="AudioStreamPlayer" parent="StateMachine/HookActivated"]
+unique_name_in_owner = true
+stream = ExtResource("38_ybyru")
+volume_db = -20.0
+
 [node name="Hitbox" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
@@ -347,14 +318,7 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_6r8ug")
 draw_pass_1 = SubResource("SphereMesh_k5qqw")
 
-[node name="SmokeCloudLanding" type="GPUParticles3D" parent="ParticlesManager"]
-emitting = false
-amount = 100
-lifetime = 0.8
-one_shot = true
-explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_iw8v4")
-draw_pass_1 = SubResource("SphereMesh_k5qqw")
+[node name="SmokeCloudLanding" parent="ParticlesManager" instance=ExtResource("35_8ojuf")]
 
 [node name="HookTrail" type="GPUParticles3D" parent="ParticlesManager"]
 emitting = false
