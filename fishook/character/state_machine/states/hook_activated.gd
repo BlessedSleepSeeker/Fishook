@@ -93,6 +93,7 @@ func reel_in(_delta: float) -> void:
 		distance = character.global_position.distance_to(hookshot_point) - (physics_parameters.GRAPPLE_REELING_SPEED * _delta)
 		if reel_sound_player.playing == false:
 			reel_sound_player.play()
+			reel_sound_player.pitch_scale = (distance / physics_parameters.GRAPPLE_MAX_RANGE) * 2
 
 func reel_out(_delta: float) -> void:
 	var displacement = physics_parameters.GRAPPLE_MAX_RANGE - distance
@@ -100,6 +101,7 @@ func reel_out(_delta: float) -> void:
 		distance = character.global_position.distance_to(hookshot_point) + (physics_parameters.GRAPPLE_REELING_SPEED * _delta)
 		if reel_sound_player.playing == false:
 			reel_sound_player.play()
+			reel_sound_player.pitch_scale = (distance / physics_parameters.GRAPPLE_MAX_RANGE) * 2
 
 func spawn_fishook() -> void:
 	var inst = fishook_scene.instantiate()
