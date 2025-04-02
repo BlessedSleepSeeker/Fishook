@@ -1,0 +1,204 @@
+[gd_scene load_steps=14 format=3 uid="uid://bi2lvxtj0nalg"]
+
+[ext_resource type="Script" uid="uid://c8qtb7a6nwiqd" path="res://level/main_menu_scene/main_menu_scene.gd" id="1_3840d"]
+[ext_resource type="PackedScene" uid="uid://uh75ppgcvkw1" path="res://character/model/CharacterSkin.tscn" id="1_be8to"]
+[ext_resource type="Environment" uid="uid://ckid4l4im4nv2" path="res://level/assets/world_env_defautl.tres" id="2_3840d"]
+[ext_resource type="Material" uid="uid://8eadmdi7suis" path="res://level/template_assets/material/main_menu_ground.tres" id="3_kqjql"]
+[ext_resource type="Material" uid="uid://bwr2uhkx8pf3h" path="res://level/template_assets/material/water.tres" id="4_6pdqh"]
+[ext_resource type="PackedScene" uid="uid://br70t0g51amx8" path="res://level/assets/decoration/models/flowers/flower1.glb" id="5_legjx"]
+[ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="6_0m5ec"]
+[ext_resource type="PackedScene" uid="uid://donkxcqkw68d4" path="res://level/assets/decoration/Tree.tscn" id="6_qlfff"]
+[ext_resource type="PackedScene" uid="uid://bufgfitu7r2tc" path="res://level/assets/decoration/models/rocks/Rock.glb" id="7_fvhxg"]
+[ext_resource type="PackedScene" uid="uid://c7pg5cdosq1p1" path="res://level/assets/decoration/AssetRandomRotator.tscn" id="10_fvhxg"]
+
+[sub_resource type="Animation" id="Animation_be8to"]
+resource_name = "main_menu_idle"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Geometry/CSGCombiner3D/CSGBox3D:material:albedo_texture:noise:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 512, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6pdqh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Geometry/CSGCombiner3D/CSGBox3D:material:albedo_texture:noise:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3840d"]
+_data = {
+&"RESET": SubResource("Animation_6pdqh"),
+&"main_menu_idle": SubResource("Animation_be8to")
+}
+
+[node name="MainMenuScene" type="Node3D"]
+script = ExtResource("1_3840d")
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="CharacterSkin" parent="Geometry" instance=ExtResource("1_be8to")]
+unique_name_in_owner = true
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -1.01341, 0, -1.81428)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Geometry"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Geometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -15, 0)
+radius = 30.0
+height = 30.0
+cone = true
+smooth_faces = false
+material = ExtResource("3_kqjql")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Geometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -9.52676, -1.44075, -5.83298)
+operation = 2
+radius = 10.0
+height = 3.0
+cone = true
+smooth_faces = false
+material = ExtResource("3_kqjql")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.87875, -0.4066, -5.89992)
+size = Vector3(21, 0.1, 21)
+material = ExtResource("4_6pdqh")
+
+[node name="Decoration" type="Node3D" parent="Geometry"]
+
+[node name="Flower" parent="Geometry/Decoration" instance=ExtResource("5_legjx")]
+transform = Transform3D(0.990585, 0.123021, 0.0600693, -0.128895, 0.985935, 0.106385, -0.0461369, -0.113126, 0.992509, 7.36043, 0, -2.17817)
+
+[node name="Flower2" parent="Geometry/Decoration" instance=ExtResource("5_legjx")]
+transform = Transform3D(0.987943, -0.119107, 0.0989022, 0.125001, 0.990593, -0.0556818, -0.0913397, 0.0673734, 0.993538, 4.41033, 0, -6.85517)
+
+[node name="Flower3" parent="Geometry/Decoration" instance=ExtResource("5_legjx")]
+transform = Transform3D(0.97772, 0.1602, 0.135646, -0.162486, 0.986693, 0.00588032, -0.132899, -0.0277899, 0.99074, 4.81683, 0, 3.47157)
+
+[node name="Flower4" parent="Geometry/Decoration" instance=ExtResource("5_legjx")]
+transform = Transform3D(0.987321, -0.0456164, 0.152038, 0.0267956, 0.991968, 0.123615, -0.156456, -0.117973, 0.980614, 21.2306, 0, -4.40389)
+
+[node name="Flower5" parent="Geometry/Decoration" instance=ExtResource("5_legjx")]
+transform = Transform3D(0.998291, 0.0162982, -0.0561209, -0.0206897, 0.996693, -0.0785821, 0.0546545, 0.0796089, 0.995327, -7.32781, 0, -18.5873)
+
+[node name="Flower6" parent="Geometry/Decoration" instance=ExtResource("5_legjx")]
+transform = Transform3D(0.996904, -0.0684638, 0.0386654, 0.0673349, 0.997286, 0.0297825, -0.0405995, -0.0270868, 0.998808, -10.9225, 0, -19.128)
+
+[node name="Flower7" parent="Geometry/Decoration" instance=ExtResource("5_legjx")]
+transform = Transform3D(0.993511, -0.0948813, 0.0627097, 0.0969548, 0.994809, -0.0308853, -0.0594538, 0.0367649, 0.997554, 3.47658, 0, -7.31779)
+
+[node name="Tree" parent="Geometry/Decoration" instance=ExtResource("6_qlfff")]
+transform = Transform3D(0.993599, -0.0790289, 0.0807175, 0.0820202, 0.996036, -0.0344361, -0.0776761, 0.0408362, 0.996142, -4.05458, 0, -19.2021)
+
+[node name="Tree2" parent="Geometry/Decoration" instance=ExtResource("6_qlfff")]
+transform = Transform3D(0.996771, -0.0352524, -0.0721508, 0.0329778, 0.998928, -0.0324784, 0.0732185, 0.0299941, 0.996865, -7.94719, 0, 10.2661)
+
+[node name="Tree3" parent="Geometry/Decoration" instance=ExtResource("6_qlfff")]
+transform = Transform3D(0.996154, -0.0803387, -0.0349831, 0.080072, 0.996749, -0.00896112, 0.0355893, 0.00612549, 0.999348, -12.868, 0, -17.4836)
+
+[node name="Tree4" parent="Geometry/Decoration" instance=ExtResource("6_qlfff")]
+transform = Transform3D(0.996142, 0.0861643, -0.0166532, -0.0862469, 0.996265, -0.00430343, 0.0162202, 0.00572311, 0.999852, -20.4716, 0, -9.15364)
+
+[node name="Tree5" parent="Geometry/Decoration" instance=ExtResource("6_qlfff")]
+transform = Transform3D(0.997817, -0.0632309, 0.0190746, 0.063517, 0.997871, -0.0147824, -0.0180993, 0.0159617, 0.999709, 3.76958, 0, 0.806106)
+
+[node name="Rock" parent="Geometry/Decoration" instance=ExtResource("7_fvhxg")]
+transform = Transform3D(0.996879, -0.0789433, 0, 0.078937, 0.996799, -0.0126473, 0.000998417, 0.0126078, 0.99992, -4.54433, 0, -16.3194)
+
+[node name="Rock2" parent="Geometry/Decoration" instance=ExtResource("7_fvhxg")]
+transform = Transform3D(0.997721, 0.0674771, 0, -0.0674274, 0.996986, -0.0383607, -0.00258847, 0.0382733, 0.999264, -2.15135, 0, 2.88237)
+
+[node name="Rock3" parent="Geometry/Decoration" instance=ExtResource("7_fvhxg")]
+transform = Transform3D(0.999922, 0.0124606, 0, -0.0124582, 0.999725, 0.0198529, 0.000247379, -0.0198513, 0.999803, -15.3727, 0, 2.51604)
+
+[node name="Rock4" parent="Geometry/Decoration" instance=ExtResource("7_fvhxg")]
+transform = Transform3D(0.999159, 0.0409963, 0, -0.0409239, 0.997395, -0.0593924, -0.00243487, 0.0593424, 0.998235, -12.1116, -0.407595, -13.337)
+
+[node name="Flower8" parent="Geometry/Decoration" instance=ExtResource("5_legjx")]
+transform = Transform3D(0.986057, 0.158987, -0.0491464, -0.152404, 0.981376, 0.116941, 0.0668231, -0.10782, 0.991922, 3.48906, 0, -6.34307)
+
+[node name="Flower9" parent="Geometry/Decoration" instance=ExtResource("5_legjx")]
+transform = Transform3D(0.999066, -0.0340128, 0.0266578, 0.0364413, 0.994651, -0.0966487, -0.0232279, 0.0975299, 0.994961, -0.57682, 0, -10.1365)
+
+[node name="Flower10" parent="Geometry/Decoration" instance=ExtResource("5_legjx")]
+transform = Transform3D(0.981846, -0.122153, 0.145108, 0.112398, 0.99093, 0.0736524, -0.152789, -0.0560055, 0.986671, 0.01662, 0, -10.731)
+
+[node name="Flower11" parent="Geometry/Decoration" instance=ExtResource("5_legjx")]
+transform = Transform3D(0.979573, 0.149132, -0.13489, -0.145088, 0.988635, 0.0393838, 0.139231, -0.0190082, 0.990078, 0.810567, 0, -7.89008)
+
+[node name="Flower12" parent="Geometry/Decoration" instance=ExtResource("5_legjx")]
+transform = Transform3D(0.981723, 0.101205, -0.161175, -0.113427, 0.991182, -0.0685054, 0.152821, 0.0855349, 0.984545, -5.67226, 0, -14.6471)
+
+[node name="Flower13" parent="Geometry/Decoration" instance=ExtResource("5_legjx")]
+transform = Transform3D(0.981128, -0.0980253, 0.166671, 0.111512, 0.991037, -0.0735623, -0.157966, 0.0907597, 0.983265, -6.42558, 0, -16.5217)
+
+[node name="Flower14" parent="Geometry/Decoration" instance=ExtResource("5_legjx")]
+transform = Transform3D(0.985894, 0.122089, -0.11449, -0.112292, 0.989731, 0.0884476, 0.124113, -0.0743435, 0.989479, -2.12424, 0, -16.9386)
+
+[node name="Flower15" parent="Geometry/Decoration" instance=ExtResource("5_legjx")]
+transform = Transform3D(0.99447, -0.0757507, 0.0727471, 0.066415, 0.990165, 0.123138, -0.0813594, -0.117626, 0.98972, -5.44356, 0, -18.2899)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_3840d")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.766072, 0.630395, 0.125441, -0.403897, 0.320316, 0.856892, 0.5, -0.707107, 0.5, -3, 0, 0)
+light_color = Color(0.51004, 0.3772, 0.82, 1)
+sky_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.979339, 0.202223, 0, -0.202223, 0.979339, -4.73488, 1.93874, 5.19938)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3840d")
+}
+autoplay = "main_menu_idle"
+
+[node name="LevelMusicPlayer" parent="." instance=ExtResource("6_0m5ec")]
+
+[node name="FlowerRotator" parent="." instance=ExtResource("10_fvhxg")]
+models = Array[NodePath]([NodePath("../Geometry/Decoration/Flower"), NodePath("../Geometry/Decoration/Flower2"), NodePath("../Geometry/Decoration/Flower3"), NodePath("../Geometry/Decoration/Flower4"), NodePath("../Geometry/Decoration/Flower5"), NodePath("../Geometry/Decoration/Flower6"), NodePath("../Geometry/Decoration/Flower7"), NodePath("../Geometry/Decoration/Flower8"), NodePath("../Geometry/Decoration/Flower9"), NodePath("../Geometry/Decoration/Flower10"), NodePath("../Geometry/Decoration/Flower11"), NodePath("../Geometry/Decoration/Flower12"), NodePath("../Geometry/Decoration/Flower13"), NodePath("../Geometry/Decoration/Flower14"), NodePath("../Geometry/Decoration/Flower15")])
+rotation_x_min = -0.174533
+rotation_x_max = 0.174533
+rotation_y_min = -0.174533
+rotation_y_max = 0.174533
+rotation_z_min = -0.174533
+rotation_z_max = 0.174533
+
+[node name="TreeRotator" parent="." instance=ExtResource("10_fvhxg")]
+models = Array[NodePath]([NodePath("../Geometry/Decoration/Tree"), NodePath("../Geometry/Decoration/Tree2"), NodePath("../Geometry/Decoration/Tree3"), NodePath("../Geometry/Decoration/Tree4"), NodePath("../Geometry/Decoration/Tree5")])
+rotation_x_min = -0.0872665
+rotation_x_max = 0.0872665
+rotation_y_min = -0.0872665
+rotation_y_max = 0.0872665
+rotation_z_min = -0.0872665
+rotation_z_max = 0.0872665
+
+[node name="AssetRandomRotator3" parent="." instance=ExtResource("10_fvhxg")]
+models = Array[NodePath]([NodePath("../Geometry/Decoration/Rock"), NodePath("../Geometry/Decoration/Rock2"), NodePath("../Geometry/Decoration/Rock3"), NodePath("../Geometry/Decoration/Rock4")])
+rotation_x_min = -0.0872665
+rotation_x_max = 0.0872665
+rotation_y_min = 0.0
+rotation_y_max = 0.0
+rotation_z_min = -0.0872665
+rotation_z_max = 0.0872665

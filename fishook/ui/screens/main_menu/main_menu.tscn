@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://chgfq0kn0onbo"]
 
-[ext_resource type="Theme" uid="uid://srf2bpfdjwwr" path="res://ui/themes/menu_ui_theme.tres" id="1_w8hiq"]
+[ext_resource type="Theme" uid="uid://dow3yf2y5jff7" path="res://ui/themes/main_menu_theme.tres" id="1_aiivd"]
 [ext_resource type="PackedScene" uid="uid://dg2lu8hd15uey" path="res://ui/screens/main_menu/main_menu_background.tscn" id="2_0xe1w"]
 [ext_resource type="Script" uid="uid://bsuusk6hp5bge" path="res://ui/screens/main_menu/main_menu.gd" id="2_20ujx"]
 
@@ -11,31 +11,42 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_w8hiq")
+theme = ExtResource("1_aiivd")
 script = ExtResource("2_20ujx")
 
 [node name="MainMenuBg" parent="." instance=ExtResource("2_0xe1w")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="MainMenu" type="CenterContainer" parent="."]
-texture_filter = 1
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.2
+
+[node name="MainMenu" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_right = 20
 
-[node name="VBox" type="VBoxContainer" parent="MainMenu"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainMenu"]
 layout_mode = 2
+alignment = 1
 
-[node name="Play" type="Button" parent="MainMenu/VBox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[center][font_size=150][wave amp=30.0 freq=1.5 connected=1][rainbow freq=0.1 sat=0.8 val=0.8 speed=1.0]Fishook[/rainbow][/wave][/font_size][center]"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu"]
+layout_mode = 2
+alignment = 2
+
+[node name="VBox" type="VBoxContainer" parent="MainMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+alignment = 2
+
+[node name="Play" type="Button" parent="MainMenu/HBoxContainer/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../Exit")
@@ -44,7 +55,7 @@ focus_next = NodePath("../Settings")
 focus_previous = NodePath("../Exit")
 text = "Play"
 
-[node name="Settings" type="Button" parent="MainMenu/VBox"]
+[node name="Settings" type="Button" parent="MainMenu/HBoxContainer/VBox"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Play")
 focus_neighbor_bottom = NodePath("../Credits")
@@ -52,7 +63,7 @@ focus_next = NodePath("../Credits")
 focus_previous = NodePath("../Play")
 text = "Settings"
 
-[node name="Credits" type="Button" parent="MainMenu/VBox"]
+[node name="Credits" type="Button" parent="MainMenu/HBoxContainer/VBox"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Settings")
 focus_neighbor_bottom = NodePath("../Exit")
@@ -60,7 +71,7 @@ focus_next = NodePath("../Exit")
 focus_previous = NodePath("../Settings")
 text = "Credits"
 
-[node name="Exit" type="Button" parent="MainMenu/VBox"]
+[node name="Exit" type="Button" parent="MainMenu/HBoxContainer/VBox"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Credits")
 focus_neighbor_bottom = NodePath("../Play")
@@ -68,7 +79,7 @@ focus_next = NodePath("../Play")
 focus_previous = NodePath("../Credits")
 text = "Exit"
 
-[connection signal="pressed" from="MainMenu/VBox/Play" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MainMenu/VBox/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="MainMenu/VBox/Credits" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="MainMenu/VBox/Exit" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MainMenu/HBoxContainer/VBox/Play" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenu/HBoxContainer/VBox/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainMenu/HBoxContainer/VBox/Credits" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MainMenu/HBoxContainer/VBox/Exit" to="." method="_on_quit_button_pressed"]

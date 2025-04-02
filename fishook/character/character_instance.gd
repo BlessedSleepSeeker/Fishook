@@ -1,7 +1,6 @@
 extends CharacterBody3D
 class_name CharacterInstance
 
-
 @onready var state_machine: StateMachine = $StateMachine
 @onready var skin: CharacterSkin = %CharacterSkin
 @onready var camera: MouseFollowCamera = $MouseFollowCamera

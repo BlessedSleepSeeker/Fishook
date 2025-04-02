@@ -2,18 +2,18 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cmrl2ud2gbcsr"
-path="res://.godot/imported/sci-bi.ttf-cf441e68ffcfc762e60ff2db01aa8991.fontdata"
+uid="uid://cm7uiypoce1r1"
+path="res://.godot/imported/SeaGreen.ttf-5cb61246250dc711b4bf555c30740312.fontdata"
 
 [deps]
 
-source_file="res://ui/fonts/sci-bi.ttf"
-dest_files=["res://.godot/imported/sci-bi.ttf-cf441e68ffcfc762e60ff2db01aa8991.fontdata"]
+source_file="res://ui/themes/fonts/SeaGreen.ttf"
+dest_files=["res://.godot/imported/SeaGreen.ttf-5cb61246250dc711b4bf555c30740312.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=0
+antialiasing=1
 generate_mipmaps=false
 disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
@@ -22,7 +22,7 @@ msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 hinting=1
-subpixel_positioning=1
+subpixel_positioning=4
 keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null
