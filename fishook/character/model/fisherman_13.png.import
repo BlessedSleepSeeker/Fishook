@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsd3jn1hs4r7r"
-path.s3tc="res://.godot/imported/fisherman_10.png-a992c0489f013d66650b69907647d9cf.s3tc.ctex"
+uid="uid://cnkbqwvn2bmno"
+path.s3tc="res://.godot/imported/fisherman_13.png-3051faa7a67b3ddc99838eeb787b9602.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "d3f120e00a25ff38b22e80ae8f42d6f0"
+"md5": "23d37f46ba0dc8c94849144b16c55737"
 }
 
 [deps]
 
-source_file="res://character/model/fisherman_10.png"
-dest_files=["res://.godot/imported/fisherman_10.png-a992c0489f013d66650b69907647d9cf.s3tc.ctex"]
+source_file="res://character/model/fisherman_13.png"
+dest_files=["res://.godot/imported/fisherman_13.png-3051faa7a67b3ddc99838eeb787b9602.s3tc.ctex"]
 
 [params]
 

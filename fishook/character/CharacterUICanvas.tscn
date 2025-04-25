@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bn8hn6umnjoeb"]
+[gd_scene load_steps=12 format=3 uid="uid://bn8hn6umnjoeb"]
 
 [ext_resource type="Script" uid="uid://b005j3c3vu2s2" path="res://character/character_ui_canvas.gd" id="1_8qiw1"]
 [ext_resource type="Shader" uid="uid://bs8nax4sphxxm" path="res://character/ui_assets/Shaders/cooldown.gdshader" id="2_8qiw1"]
@@ -17,6 +17,12 @@ shader_parameter/affect_alpha = false
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6hg2s"]
 shader = ExtResource("2_8qiw1")
 shader_parameter/cooldown_color = Color(0, 0.62, 0.527, 0.501961)
+shader_parameter/percent = 1.0
+shader_parameter/affect_alpha = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ywu5b"]
+shader = ExtResource("2_8qiw1")
+shader_parameter/cooldown_color = Color(0, 0, 0, 1)
 shader_parameter/percent = 1.0
 shader_parameter/affect_alpha = false
 
@@ -79,6 +85,7 @@ grow_vertical = 2
 
 [node name="Crosshair" type="TextureRect" parent="CrosshairContainer"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_ywu5b")
 layout_mode = 2
 texture = ExtResource("3_ny6jb")
 

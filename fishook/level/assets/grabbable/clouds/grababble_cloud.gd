@@ -70,12 +70,6 @@ func generate_hitbox() -> void:
 	point_arr.append(Vector3(min_x_scatter_distance, 0, max_z_scatter_distance / 2))
 
 	shape.points = point_arr
-	# shape.points.append(Vector3(0, 0.1, max_z_scatter_distance))
-	# shape.points.append(Vector3(max_x_scatter_distance, 0.1, max_z_scatter_distance / 2))
-	# shape.points.append(Vector3(max_x_scatter_distance, 0.1, min_z_scatter_distance / 2))
-	# shape.points.append(Vector3(0, 0.1, min_z_scatter_distance))
-	# shape.points.append(Vector3(min_x_scatter_distance, 0.1, min_z_scatter_distance / 2))
-	# shape.points.append(Vector3(min_x_scatter_distance, 0.1, max_z_scatter_distance / 2))
 
 	collision_shape.shape = shape
 

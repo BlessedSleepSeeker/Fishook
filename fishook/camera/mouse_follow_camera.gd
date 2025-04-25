@@ -52,7 +52,7 @@ func rotate_camera(_delta) -> void:
 	self._camera_input_direction = Vector2.ZERO
 
 func _process(_delta):
-	real_camera.global_position = lerp(real_camera.global_position, camera_position.global_position, parameters.SPRING_ARM_SPEED * _delta)
+	pass#real_camera.global_position = lerp(real_camera.global_position, camera_position.global_position, parameters.SPRING_ARM_SPEED * _delta)
 
 func _physics_process(_delta):
 	if raycast.is_colliding():

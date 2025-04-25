@@ -32,7 +32,7 @@
 [ext_resource type="AudioStream" uid="uid://c70p1fpi3cklb" path="res://sounds_effects/kenney_impact-sounds/footstep_concrete_002.ogg" id="19_l2q03"]
 [ext_resource type="AudioStream" uid="uid://dhrapjgt5xjdw" path="res://sounds_effects/kenney_impact-sounds/footstep_concrete_003.ogg" id="20_c6ppy"]
 [ext_resource type="AudioStream" uid="uid://jjo6qhry1akn" path="res://sounds_effects/kenney_impact-sounds/footstep_concrete_004.ogg" id="21_hdq18"]
-[ext_resource type="Texture2D" uid="uid://d0xy7hyupgqge" path="res://character/ui_assets/PNG/Outline/crosshair186.png" id="31_2c7bb"]
+[ext_resource type="Texture2D" uid="uid://xq8syly2wisv" path="res://character/ui_assets/PNG/Outline/crosshair118.png" id="31_ybyru"]
 [ext_resource type="PackedScene" uid="uid://bn8hn6umnjoeb" path="res://character/CharacterUICanvas.tscn" id="34_bjf1r"]
 [ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="35_2c7bb"]
 [ext_resource type="PackedScene" uid="uid://drqwyeworm38d" path="res://particles/smoke_cloud_landing.tscn" id="35_8ojuf"]
@@ -286,7 +286,7 @@ script = ExtResource("8_7jo2n")
 rotate_player_skin = false
 should_play_animation_on_enter = false
 physics_parameters = SubResource("Resource_3in86")
-crosshair_texture = ExtResource("31_2c7bb")
+crosshair_texture = ExtResource("31_ybyru")
 
 [node name="ReelSoundPlayer" type="AudioStreamPlayer" parent="StateMachine/HookActivated"]
 unique_name_in_owner = true

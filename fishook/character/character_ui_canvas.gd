@@ -33,6 +33,12 @@ func tween_double_jump_cooldown(wanted_time: float, max_time: float, tween_speed
 
 	tween.tween_property(double_jump_indicator.material, "shader_parameter/percent", percent, tween_speed)
 
+func tween_reel_value(value: float, max_value: float, tween_speed: float) -> void:
+	var percent: float = value / max_value
+	var tween: Tween = get_tree().create_tween()
+
+	tween.tween_property(crosshair.material, "shader_parameter/percent", percent, tween_speed)
+
 func crosshair_collision(is_colliding: bool) -> void:
 	var tween_container: Tween = get_tree().create_tween()
 	var tween_collision: Tween = get_tree().create_tween()

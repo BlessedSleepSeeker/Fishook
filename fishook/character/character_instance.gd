@@ -16,7 +16,7 @@ var bullet_time_on: bool = false
 
 var direction: Vector3 = Vector3.ZERO
 var raw_input: Vector2 = Vector2.ZERO
-var  last_movement_direction: Vector3 = Vector3.BACK
+var last_movement_direction: Vector3 = Vector3.BACK
 
 var did_double_jump: bool = false:
 	set(value):

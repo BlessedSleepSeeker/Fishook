@@ -25,6 +25,7 @@ func enter(_msg := {}) -> void:
 	if hookshot_raycast.is_colliding():
 		hookshot_point = hookshot_raycast.get_collision_point()
 		distance = character.global_position.distance_to(hookshot_point)
+		character.hud_canvas.tween_reel_value(distance, physics_parameters.GRAPPLE_MAX_RANGE, 0.1)
 		spawn_fishook()
 	else:
 		state_machine.transition_to("Fall")
@@ -94,6 +95,7 @@ func reel_in(_delta: float) -> void:
 		if reel_sound_player.playing == false:
 			reel_sound_player.play()
 			reel_sound_player.pitch_scale = (distance / physics_parameters.GRAPPLE_MAX_RANGE) * 2
+		character.hud_canvas.tween_reel_value(distance, physics_parameters.GRAPPLE_MAX_RANGE, 0.1)
 
 func reel_out(_delta: float) -> void:
 	var displacement = physics_parameters.GRAPPLE_MAX_RANGE - distance
@@ -102,6 +104,7 @@ func reel_out(_delta: float) -> void:
 		if reel_sound_player.playing == false:
 			reel_sound_player.play()
 			reel_sound_player.pitch_scale = (distance / physics_parameters.GRAPPLE_MAX_RANGE) * 2
+		character.hud_canvas.tween_reel_value(distance, physics_parameters.GRAPPLE_MAX_RANGE, 0.1)
 
 func spawn_fishook() -> void:
 	var inst = fishook_scene.instantiate()
@@ -117,3 +120,4 @@ func exit():
 		fishook = null
 	character.skin.toggle_hookline(false, null)
 	character.skin.reset_swing_orientation()
+	character.hud_canvas.tween_reel_value(1, 1, 0.1)

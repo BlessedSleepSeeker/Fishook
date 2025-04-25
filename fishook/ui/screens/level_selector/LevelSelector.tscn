@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ciqi6ctu5bu60"]
+[gd_scene load_steps=7 format=3 uid="uid://ciqi6ctu5bu60"]
 
 [ext_resource type="Theme" uid="uid://d3kms72g8lsqf" path="res://ui/themes/base_ui_theme.tres" id="1_ey0nq"]
 [ext_resource type="Script" uid="uid://bu6dq3162m11d" path="res://ui/screens/level_selector/level_selector.gd" id="1_lq5ei"]
@@ -18,13 +18,6 @@ scene_name = "Level2"
 difficulty = 0
 metadata/_custom_type_script = "uid://bhcn1srajolcg"
 
-[sub_resource type="Resource" id="Resource_n722h"]
-script = ExtResource("2_gl7ew")
-name = "Mountain (WIP)"
-scene_name = "Mountain"
-difficulty = 1
-metadata/_custom_type_script = "uid://bhcn1srajolcg"
-
 [sub_resource type="Resource" id="Resource_h0c2t"]
 script = ExtResource("2_gl7ew")
 name = "Tower"
@@ -41,7 +34,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ey0nq")
 script = ExtResource("1_lq5ei")
-levels = Array[ExtResource("2_gl7ew")]([SubResource("Resource_ey0nq"), SubResource("Resource_b2pph"), SubResource("Resource_n722h"), SubResource("Resource_h0c2t")])
+levels = Array[ExtResource("2_gl7ew")]([SubResource("Resource_ey0nq"), SubResource("Resource_b2pph"), SubResource("Resource_h0c2t")])
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

@@ -6,6 +6,8 @@ class_name LevelSelector
 @export var level_manager_scene_path: String = "res://level/LevelManager.tscn"
 @export var main_menu_scene_path: String = "res://ui/screens/main_menu/main_menu.tscn"
 
+@export var force_random_level: bool = false
+
 @onready var button_grid: GridContainer = %GridContainer
 @onready var random_btn: Button = %Random
 
@@ -33,12 +35,13 @@ func _on_return_button_pressed():
 
 func _on_random_pressed():
 	random_btn.disabled = true
-	for btn in button_grid.get_children():
-		if btn is LevelSelectButton && btn.level_data.name == "Tower":
+	if force_random_level:
+		for btn in button_grid.get_children():
+			if btn is LevelSelectButton && btn.level_data.name == "Tower":
+				btn.on_button_pressed()
+	else:
+		var btn = button_grid.get_children().pick_random()
+		if btn is LevelSelectButton:
 			btn.on_button_pressed()
-
-	# var btn = button_grid.get_children().pick_random()
-	# if btn is LevelSelectButton:
-	# 	btn.on_button_pressed()
-	# else:
-	# 	_on_random_pressed()
+		else:
+			_on_random_pressed()

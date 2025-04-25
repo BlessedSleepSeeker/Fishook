@@ -68,7 +68,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 
 [node name="CSGGrounds" type="CSGCombiner3D" parent="Geometry"]
 use_collision = true
-collision_layer = 4
+collision_layer = 2
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Geometry/CSGGrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
