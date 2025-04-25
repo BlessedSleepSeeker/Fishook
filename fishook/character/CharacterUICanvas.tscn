@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bn8hn6umnjoeb"]
+[gd_scene load_steps=11 format=3 uid="uid://bn8hn6umnjoeb"]
 
 [ext_resource type="Script" uid="uid://b005j3c3vu2s2" path="res://character/character_ui_canvas.gd" id="1_8qiw1"]
 [ext_resource type="Shader" uid="uid://bs8nax4sphxxm" path="res://character/ui_assets/Shaders/cooldown.gdshader" id="2_8qiw1"]
+[ext_resource type="Theme" uid="uid://lwpyypu4qtj" path="res://ui/themes/character_ui_theme.tres" id="3_6hg2s"]
 [ext_resource type="Texture2D" uid="uid://m43ay4wc4ouq" path="res://character/ui_assets/PNG/Outline/crosshair001.png" id="3_ny6jb"]
 [ext_resource type="Texture2D" uid="uid://dwu7dl4h0u76y" path="res://character/ui_assets/Vector/double_jump.svg" id="3_pdutl"]
 [ext_resource type="Texture2D" uid="uid://bblvtkthnjx8s" path="res://character/ui_assets/Vector/bullet_time.svg" id="4_ny6jb"]
@@ -36,10 +37,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme = ExtResource("3_6hg2s")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -49,7 +47,10 @@ alignment = 2
 layout_mode = 2
 alignment = 1
 
-[node name="DoubleJumpIndicator" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="DoubleJumpIndicator" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_ybyru")
 custom_minimum_size = Vector2(48, 48)
@@ -57,7 +58,10 @@ layout_mode = 2
 texture = ExtResource("3_pdutl")
 expand_mode = 1
 
-[node name="BulletTimeIndicator" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="BulletTimeIndicator" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_6hg2s")
 custom_minimum_size = Vector2(48, 48)

@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6pa51ao8igh"
-path.s3tc="res://.godot/imported/texture_05.png-70690f533c590f7ebb0dcaee08618e37.s3tc.ctex"
+uid="uid://cs123o0e0pb0w"
+path.s3tc="res://.godot/imported/CloudMesh_0.png-44b50af34f1d42322bce720eb3a21497.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "6ae59e64850377ee5470c854761551ea"
+}
 
 [deps]
 
-source_file="res://level/template_assets/PNG/Light/texture_05.png"
-dest_files=["res://.godot/imported/texture_05.png-70690f533c590f7ebb0dcaee08618e37.s3tc.ctex"]
+source_file="res://level/assets/grabbable/clouds/CloudMesh_0.png"
+dest_files=["res://.godot/imported/CloudMesh_0.png-44b50af34f1d42322bce720eb3a21497.s3tc.ctex"]
 
 [params]
 

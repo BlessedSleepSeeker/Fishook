@@ -1,0 +1,664 @@
+[gd_scene load_steps=23 format=3 uid="uid://bfvhhew1rxjs0"]
+
+[ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_ehgmg"]
+[ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_og642"]
+[ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="3_1booi"]
+[ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/huds/level_hud/LevelHUD.tscn" id="4_ove64"]
+[ext_resource type="Material" uid="uid://h0r4shlt6jqo" path="res://level/template_assets/material/dark_grid_texture.tres" id="5_mq3vy"]
+[ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="6_ebyyx"]
+[ext_resource type="PackedScene" uid="uid://donkxcqkw68d4" path="res://level/assets/decoration/Tree.tscn" id="7_1booi"]
+[ext_resource type="Material" uid="uid://bwr2uhkx8pf3h" path="res://level/template_assets/material/water.tres" id="7_og642"]
+[ext_resource type="PackedScene" uid="uid://crxufspl5lqpb" path="res://level/assets/grabbable/clouds/GrababbleCloud.tscn" id="8_1booi"]
+[ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="8_4jlt8"]
+[ext_resource type="PackedScene" uid="uid://bufgfitu7r2tc" path="res://level/assets/decoration/models/rocks/Rock.glb" id="8_mq3vy"]
+[ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="9_21non"]
+[ext_resource type="PackedScene" uid="uid://br70t0g51amx8" path="res://level/assets/decoration/models/flowers/flower1.glb" id="9_58hut"]
+[ext_resource type="PackedScene" uid="uid://c7pg5cdosq1p1" path="res://level/assets/decoration/AssetRandomRotator.tscn" id="10_8dqi2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0g43g"]
+sky_top_color = Color(0.11, 1, 0.881333, 1)
+sky_horizon_color = Color(0.883333, 0.65, 1, 1)
+ground_bottom_color = Color(0.2805, 0.55, 0.419742, 1)
+ground_horizon_color = Color(0.883333, 0.65, 1, 1)
+
+[sub_resource type="Sky" id="Sky_ebyyx"]
+sky_material = SubResource("ProceduralSkyMaterial_0g43g")
+
+[sub_resource type="Environment" id="Environment_ehgmg"]
+background_mode = 2
+sky = SubResource("Sky_ebyyx")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_exposure = 1.05
+tonemap_white = 0.95
+ssao_enabled = true
+ssao_radius = 2.0
+ssao_intensity = 1.4
+
+[sub_resource type="Curve" id="Curve_58hut"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(0.321138, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_q7iuu"]
+_limits = [0.0, 1.5, 0.0, 1.0]
+_data = [Vector2(0, 1.5), 0.0, 0.0, 0, 0, Vector2(0.130081, 0.859551), 0.0, 0.0, 0, 0, Vector2(0.528455, 1.17978), 0.0, 0.0, 0, 0, Vector2(0.646341, 0.404494), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_1booi"]
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0, 4), 0.0, 0.0, 0, 0, Vector2(0.325203, 4), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_ove64"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 2.19005), 0.0, 0.0, 0, 0, Vector2(0.410569, 3.76405), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_mq3vy"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="LevelTower" type="Node3D"]
+script = ExtResource("1_ehgmg")
+level_down_limit = -40.0
+
+[node name="CharacterInstance" parent="." instance=ExtResource("2_og642")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.781425, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+unique_name_in_owner = true
+environment = SubResource("Environment_ehgmg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.67946, 100, 8.76321)
+shadow_enabled = true
+
+[node name="LevelMusicPlayer" parent="." instance=ExtResource("3_1booi")]
+
+[node name="LevelHud" parent="." instance=ExtResource("4_ove64")]
+unique_name_in_owner = true
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="CSGTower" type="CSGCombiner3D" parent="Geometry"]
+material_override = ExtResource("5_mq3vy")
+use_collision = true
+collision_layer = 2
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Geometry/CSGTower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.7837, 259.421)
+radius = 25.0
+height = 293.189
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D35" type="CSGBox3D" parent="Geometry/CSGTower"]
+transform = Transform3D(0.0194439, 0.1199, 0.992595, -0.220736, 0.9688, -0.112702, -0.975139, -0.21691, 0.0453038, -17.0951, 97.1676, 259.337)
+operation = 2
+size = Vector3(42, 4, 3)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geometry/CSGTower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 152.495, 274.595)
+operation = 2
+size = Vector3(37, 16, 31)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Geometry/CSGTower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3005, 158.967, 251.752)
+operation = 2
+size = Vector3(37, 12.6724, 17.3508)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Geometry/CSGTower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.35107, 153.085, 258.385)
+operation = 2
+size = Vector3(29.5479, 7.45508, 17.3508)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Geometry/CSGTower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5654, 153.085, 264.44)
+operation = 2
+size = Vector3(5.11914, 7.45508, 17.3508)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Geometry/CSGTower"]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 5.08617, 142.545, 269.595)
+operation = 2
+radius = 10.0
+height = 4.0
+cone = true
+
+[node name="CSGGrounds" type="CSGCombiner3D" parent="Geometry"]
+use_collision = true
+collision_layer = 2
+
+[node name="CSGBox3D" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17.6687, 0)
+radius = 4.0
+height = 34.3804
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -5.5, -27)
+size = Vector3(5, 12, 5)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -7, -27)
+size = Vector3(5, 15, 5)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.5, -32)
+size = Vector3(23, 38, 5)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -32.5)
+operation = 2
+size = Vector3(5, 4, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.96701e-07, -10, -10.5)
+size = Vector3(5, 15, 7)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.96701e-07, -10, -15)
+size = Vector3(23, 21, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.96701e-07, -3, -53)
+size = Vector3(23, 7, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(-0.836516, -0.224144, 0.5, -0.258819, 0.965926, -2.26267e-08, -0.482963, -0.12941, -0.866025, 19.4483, 1.06815, -47.7412)
+size = Vector3(23, 5, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(-0.474445, -0.224144, 0.851271, -0.224144, 0.965926, 0.129409, -0.851271, -0.12941, -0.508519, 33.3148, 7.20413, -33.6865)
+size = Vector3(23, 3, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5, 12, 252)
+size = Vector3(24, 1, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.393062, 0.105321, -0.91346, -0.258819, 0.965926, -8.19819e-09, 0.882335, 0.236421, 0.406928, 21.5403, 13.4149, 246.321)
+size = Vector3(13.1218, 1, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.9381, -0.0165862, -0.345968, -0.0165862, 0.995556, -0.0927018, 0.345968, 0.0927018, 0.933655, 9.54028, 16.4149, 237.321)
+size = Vector3(13.1218, 1, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.872741, 0.309657, 0.377405, -0.251022, 0.947703, -0.197097, -0.4187, 0.0772783, 0.90483, -8.71567, 20.7761, 237.924)
+size = Vector3(16, 1, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 12, 115.5)
+size = Vector3(3, 1, 271)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(-3.78552e-08, 0.866025, -0.5, -1, -4.37114e-08, 0, -2.18557e-08, 0.5, 0.866025, -21.7645, 26.8583, 249.559)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.321056, 0.273604, 0.906677, -0.251022, 0.947703, -0.197097, -0.913187, -0.164316, 0.372946, -24.7157, 27.6495, 249.924)
+size = Vector3(16, 1, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(-0.452545, 0.00894678, 0.891697, -0.13835, 0.987137, -0.0801183, -0.880943, -0.159623, -0.445486, -20.2614, 32.6565, 272.441)
+size = Vector3(28.0347, 1, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.967099, 0, -0.254399, 0, 1, 0, 0.254399, 0, 0.967099, -16.692, 39.0399, 277.712)
+size = Vector3(4.68738, 1, 7)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.967099, 0, -0.254399, 0, 1, 0, 0.254399, 0, 0.967099, -18.3478, 41.0399, 276.759)
+size = Vector3(1, 5, 8)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(-0.918732, -0.113099, 0.378338, -0.158911, 0.982993, -0.0920363, -0.361494, -0.144679, -0.921081, -6.98783, 46.208, 282.391)
+size = Vector3(24.8711, 1, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.528838, 0, -0.848723, 0, 1, 0, 0.848722, 0, 0.528838, -17.2246, 44.5661, 279.968)
+operation = 2
+size = Vector3(3, 1.94775, 3.34515)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(-0.898474, -0.247711, -0.362469, -0.242591, 0.968248, -0.0603758, 0.365915, 0.0336853, -0.930038, 11.3893, 49.416, 279.649)
+size = Vector3(24.8711, 1, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(-0.413634, -0.0998545, -0.904951, -0.260813, 0.965306, 0.0126984, 0.872286, 0.241276, -0.425327, 28.6281, 57.9787, 267.266)
+size = Vector3(12, 1, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(-4.37114e-08, -0.908392, -0.418121, 1, -3.97071e-08, -1.82766e-08, 0, -0.418121, 0.908392, 26.6833, 67.6164, 261.762)
+height = 6.0459
+material = ExtResource("5_mq3vy")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(-4.37114e-08, -0.908392, -0.418121, 1, -3.97071e-08, -1.82766e-08, 0, -0.418121, 0.908392, 24.4396, 65.2377, 270.235)
+height = 9.39111
+material = ExtResource("5_mq3vy")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.1943, 60.8285, 271.837)
+radius = 0.11
+height = 8.0
+material = ExtResource("5_mq3vy")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.0202, 63.2688, 263.106)
+radius = 0.11
+height = 8.0
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.395957, 0.042635, -0.917279, -0.18391, 0.982364, -0.0337269, 0.899664, 0.182051, 0.396815, 29.4206, 63.2579, 255.41)
+size = Vector3(4, 2, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.395957, 0.042635, -0.917279, -0.18391, 0.982364, -0.0337269, 0.899664, 0.182051, 0.396815, 27.754, 64.5744, 254.19)
+size = Vector3(4, 2, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D26" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.395957, 0.042635, -0.917279, -0.18391, 0.982364, -0.0337269, 0.899664, 0.182051, 0.396815, 27.922, 65.9583, 252.176)
+size = Vector3(4, 2, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D27" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.395957, 0.042635, -0.917279, -0.18391, 0.982364, -0.0337269, 0.899664, 0.182051, 0.396815, 28.0687, 66.851, 250.071)
+size = Vector3(4, 3, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.395957, 0.042635, -0.917279, -0.18391, 0.982364, -0.0337269, 0.899664, 0.182051, 0.396815, 26.7255, 68.477, 247.104)
+size = Vector3(5, 3, 6)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D29" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.395957, 0.042635, -0.917279, -0.18391, 0.982364, -0.0337269, 0.899664, 0.182051, 0.396815, 24.663, 69.9774, 244.984)
+size = Vector3(5, 3, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D30" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.395957, 0.042635, -0.917279, -0.18391, 0.982364, -0.0337269, 0.899664, 0.182051, 0.396815, 25.8523, 71.3054, 240.286)
+size = Vector3(5, 4, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D31" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.619874, 0.042635, -0.783542, -0.168914, 0.982364, -0.080177, 0.766305, 0.182051, 0.616144, 22.5192, 73.9383, 237.845)
+size = Vector3(7, 4, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.885921, 0.281521, -0.36863, -0.356831, 0.921406, -0.153892, 0.296334, 0.267875, 0.916749, 14.8632, 77.7796, 232.684)
+size = Vector3(14, 4, 4)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D33" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.951545, 0.239908, 0.192365, -0.232079, 0.970681, -0.0625921, -0.201742, 0.0149155, 0.979325, 0.867891, 84.2944, 231.005)
+size = Vector3(11, 2, 3)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D34" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.715619, 0.1199, 0.688122, -0.235776, 0.9688, 0.0763915, -0.657493, -0.21691, 0.721563, -15.9794, 89.7342, 240.584)
+size = Vector3(16, 2, 3)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D35" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.812262, -0.265003, -0.519618, 0.280926, 0.958444, -0.0496613, 0.511184, -0.105636, 0.852954, -15.8173, 99.9952, 277.967)
+size = Vector3(16, 1, 2)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D36" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.919072, -0.265003, -0.291683, 0.284207, 0.958444, 0.0247399, 0.273006, -0.105636, 0.956195, -5.41507, 106.555, 282.988)
+size = Vector3(15, 1, 2)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.212472, 0.951138, 0.224037, -0.970834, 0.231531, -0.0622324, -0.111063, -0.20428, 0.972592, 5.88244, 104.58, 284.983)
+size = Vector3(15, 2, 2)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D39" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.261648, 0.912374, 0.314823, -0.957215, 0.287074, -0.0364174, -0.123604, -0.291825, 0.948452, 7.61342, 110.047, 285.473)
+size = Vector3(7, 2, 2)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.212472, 0.957583, 0.194652, -0.970834, 0.229506, -0.06933, -0.111063, -0.174244, 0.978419, 9.66245, 109.648, 283.926)
+size = Vector3(15, 2, 2)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D40" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.212472, 0.941782, 0.260581, -0.970834, 0.23376, -0.0532496, -0.111063, -0.241667, 0.963982, 13.1833, 106.034, 281.738)
+size = Vector3(30, 2, 2)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D41" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.212472, 0.842248, 0.495453, -0.970834, 0.239577, 0.00906656, -0.111063, -0.482929, 0.868587, 10.6401, 127.837, 281.49)
+size = Vector3(2, 2, 5.03955)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D45" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.212472, 0.842248, 0.495453, -0.970834, 0.239577, 0.00906656, -0.111063, -0.482929, 0.868587, 13.6493, 132.212, 279.728)
+size = Vector3(2, 2, 5.03955)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D42" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.212472, 0.842248, 0.495453, -0.970834, 0.239577, 0.00906656, -0.111063, -0.482929, 0.868587, 14.3478, 122.252, 281.135)
+size = Vector3(2, 2, 2)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D43" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.965993, 0, 0.258566, 0, 1, 0, -0.258566, 0, 0.965993, 7.56374, 134.173, 284.398)
+size = Vector3(2, 2, 6.11182)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGBox3D44" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.844127, 0.36758, -0.390297, -0.399245, 0.916844, 0, 0.357842, 0.155824, 0.920688, -6.46518, 141.936, 283.246)
+size = Vector3(30.528, 2, 3.1377)
+material = ExtResource("5_mq3vy")
+
+[node name="CSGWater" type="CSGCombiner3D" parent="Geometry"]
+material_override = ExtResource("7_og642")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geometry/CSGWater"]
+transform = Transform3D(0.865763, 0, 0.500453, 0, 1, 0, -0.500453, 0, 0.865763, 4.7464, 144.114, 269.331)
+size = Vector3(19.4928, 0.1, 19.2181)
+
+[node name="Decoration" type="Node3D" parent="Geometry"]
+
+[node name="Tree" parent="Geometry/Decoration" instance=ExtResource("7_1booi")]
+transform = Transform3D(-0.254792, -0.0524584, 0.965572, 0.0787174, 0.994088, 0.0747794, -0.963786, 0.0950606, -0.249157, 9.10621, 5.51563, -32.4787)
+
+[node name="Tree2" parent="Geometry/Decoration" instance=ExtResource("7_1booi")]
+transform = Transform3D(0.959727, 0.0125721, 0.280652, -0.0262228, 0.998646, 0.0449369, -0.279707, -0.0504866, 0.958757, -9.71325, 0.51564, -14.7187)
+
+[node name="Rock" parent="Geometry/Decoration" instance=ExtResource("8_mq3vy")]
+transform = Transform3D(-0.0336622, 0, 0.999433, 0, 1, 0, -0.999433, 0, -0.0336622, -6.77448, 144.495, 273.63)
+
+[node name="Rock2" parent="Geometry/Decoration" instance=ExtResource("8_mq3vy")]
+transform = Transform3D(0.953144, 0, -0.302518, 0, 1, 0, 0.302518, 0, 0.953144, 17.1964, 144.495, 265.316)
+
+[node name="Rock3" parent="Geometry/Decoration" instance=ExtResource("8_mq3vy")]
+transform = Transform3D(-0.00119028, 0, 0.999999, 0, 1, 0, -0.999999, 0, -0.00119028, 18.9237, 152.631, 254.59)
+
+[node name="Rock4" parent="Geometry/Decoration" instance=ExtResource("8_mq3vy")]
+transform = Transform3D(-0.798442, 0, 0.602072, 0, 1, 0, -0.602072, 0, -0.798442, -16.7017, 160.378, 265.864)
+
+[node name="Rock5" parent="Geometry/Decoration" instance=ExtResource("8_mq3vy")]
+transform = Transform3D(-0.626328, 0, 0.77956, 0, 1, 0, -0.77956, 0, -0.626328, -7.61022, 160.378, 244.257)
+
+[node name="Rock6" parent="Geometry/Decoration" instance=ExtResource("8_mq3vy")]
+transform = Transform3D(0.976207, 0, 0.216841, 0, 1, 0, -0.216841, 0, 0.976207, -10.4013, 105.864, 282.078)
+
+[node name="Tree3" parent="Geometry/Decoration" instance=ExtResource("7_1booi")]
+transform = Transform3D(0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0.707107, -0.183013, 0.683013, -21.5351, 98.4885, 274.282)
+
+[node name="Flower" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(0.943734, 0.0890231, -0.318499, -0.0535671, 0.991518, 0.118415, 0.326339, -0.0946908, 0.940498, 39.639, 12.5, 86.4053)
+
+[node name="Flower2" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(0.88912, 0.173356, -0.423572, -0.124555, 0.98221, 0.140536, 0.440399, -0.0721956, 0.894895, 38.8596, 12.5, 87.6713)
+
+[node name="Flower3" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(0.701373, -0.123079, -0.702088, 0.0957203, 0.992321, -0.0783352, 0.706338, -0.0122619, 0.707768, 39.4569, 12.5, 107.957)
+
+[node name="Flower4" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(0.945832, -0.173159, 0.274623, 0.16934, 0.984835, 0.0377479, -0.276995, 0.0108014, 0.960811, 40.9548, 12.5, 154.835)
+
+[node name="Flower5" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(-0.599383, -0.226547, -0.767735, -0.162051, 0.973596, -0.160778, 0.783887, 0.0280451, -0.620269, 38.8488, 12.5, 172.495)
+
+[node name="Tree4" parent="Geometry/Decoration" instance=ExtResource("7_1booi")]
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 28.9197, 6.28741, -42.9837)
+
+[node name="Tree5" parent="Geometry/Decoration" instance=ExtResource("7_1booi")]
+transform = Transform3D(-0.973548, -0.0592506, -0.220666, -0.0561981, 0.998217, -0.0200912, 0.221463, -0.00715874, -0.975142, -9.91854, 0.515632, -53.6446)
+
+[node name="Flower6" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(-0.805022, -0.066758, 0.589477, -0.0764544, 0.997037, 0.00850363, -0.588298, -0.0382226, -0.80774, 8.11454, 5.50001, -31.4105)
+
+[node name="Flower7" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(-0.111607, 0.00262911, 0.993749, 0.0141118, 0.9999, -0.0010605, -0.993652, 0.0139052, -0.111633, 11.0739, 5.50001, -33.4688)
+
+[node name="Flower8" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(-0.952609, -0.0929881, 0.289636, -0.0761169, 0.994708, 0.0690051, -0.29452, 0.0436887, -0.954646, 39.3594, 12.5, 62.8357)
+
+[node name="Flower9" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(-0.602714, 0.0849134, 0.793427, 0.144495, 0.989498, 0.00386574, -0.784766, 0.116976, -0.608653, 40.5948, 12.5, 4.78107)
+
+[node name="Flower10" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(-0.071345, -0.00240877, -0.997449, 0.156521, 0.987581, -0.0135805, 0.985094, -0.157091, -0.070082, 39.8532, 12.5, 26.7498)
+
+[node name="Flower11" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(-0.866055, -0.00683563, 0.499902, 0.0892596, 0.981727, 0.168062, -0.491916, 0.190172, -0.849619, 35.6075, 9.99277, -28.5343)
+
+[node name="Flower12" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(0.598968, 0.0158522, 0.800616, 0.0405668, 0.99792, -0.0501082, -0.799745, 0.0624917, 0.597079, 8.67151, 5.50001, -30.934)
+
+[node name="Flower13" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(-0.995892, -0.0876064, 0.0228946, -0.0830341, 0.98442, 0.154993, -0.0361162, 0.152455, -0.98765, 7.988, 5.50001, -30.7066)
+
+[node name="Flower14" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(0.811426, -0.0848398, -0.578265, 0.147086, 0.987206, 0.0615552, 0.565645, -0.135002, 0.813523, 10.9987, 5.50001, -32.6947)
+
+[node name="Flower15" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(-0.859535, -0.0140842, 0.510883, -0.0203176, 0.999772, -0.00662115, -0.510674, -0.016071, -0.859625, 8.34742, 0.500007, -28.6648)
+
+[node name="Flower16" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(-0.0301853, 0.065566, -0.997392, 0.0415187, 0.997067, 0.0642882, 0.998682, -0.0394699, -0.032819, 7.3541, 0.500008, -27.7198)
+
+[node name="Flower17" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(-0.857297, 0.020424, 0.514417, 0.00781548, 0.999614, -0.0266631, -0.514763, -0.0188378, -0.857126, 10.2121, 0.515634, -25.2871)
+
+[node name="Tree6" parent="Geometry/Decoration" instance=ExtResource("7_1booi")]
+transform = Transform3D(0.389346, 0.0455765, 0.919963, 0.0150573, 0.998327, -0.0558312, -0.920969, 0.0355898, 0.388008, 10.2121, 0.515634, -25.5592)
+
+[node name="Rock7" parent="Geometry/Decoration" instance=ExtResource("8_mq3vy")]
+transform = Transform3D(0.688355, 0, -0.725374, 0, 1, 0, 0.725374, 0, 0.688355, -9.35075, 0.500007, -25.6427)
+
+[node name="Rock8" parent="Geometry/Decoration" instance=ExtResource("8_mq3vy")]
+transform = Transform3D(-0.974624, 0, 0.22385, 0, 1, 0, -0.22385, 0, -0.974624, 8.06072, 0.500007, -15.8078)
+
+[node name="Rock9" parent="Geometry/Decoration" instance=ExtResource("8_mq3vy")]
+transform = Transform3D(-0.118741, 0, 0.992925, 0, 1, 0, -0.992925, 0, -0.118741, -4.92412, 0.500008, -14.9333)
+
+[node name="Flower18" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(0.734612, 0.0629999, 0.675557, -0.0728917, 0.997245, -0.0137358, -0.674561, -0.039152, 0.73718, 10.6738, 0.500009, -13.8286)
+
+[node name="Flower19" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(0.860622, 0.0057066, 0.509213, -0.077878, 0.98965, 0.120531, -0.503254, -0.143388, 0.852159, 0.879805, -2.50001, -12.7144)
+
+[node name="Flower20" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(0.748588, -0.0960427, 0.656043, -0.0209179, 0.98554, 0.168149, -0.662706, -0.139597, 0.735754, -0.120336, -0.478466, 3.75135)
+
+[node name="Flower21" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(0.0852652, -0.107132, 0.990582, 0.164467, 0.982077, 0.092056, -0.98269, 0.155069, 0.101357, -2.58799, -0.478466, 2.67277)
+
+[node name="Flower22" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(0.867842, -0.0893398, 0.488742, 0.115094, 0.993092, -0.0228363, -0.483326, 0.0760697, 0.872129, -3.66752, -0.478466, 0.0535898)
+
+[node name="Flower23" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(0.883687, -0.0274093, -0.467275, -0.00385275, 0.997824, -0.0658161, 0.468063, 0.0599611, 0.881659, 2.64088, -0.478466, 2.5802)
+
+[node name="Flower24" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(-0.679501, -0.0330639, -0.732929, -0.0351098, 0.999305, -0.0125303, 0.732834, 0.0172186, -0.68019, 3.68396, -0.478466, 0.00116348)
+
+[node name="Flower25" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(-0.606146, -0.0460941, 0.794017, -0.0461021, 0.998677, 0.0227811, -0.794016, -0.0227972, -0.607469, -2.73492, -0.478466, -2.61174)
+
+[node name="Flower26" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(-0.997551, 0.0622317, 0.0319255, 0.0640771, 0.996111, 0.0604698, -0.0280382, 0.0623674, -0.997659, -0.0291169, -0.478466, -3.6436)
+
+[node name="Flower27" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(-0.00550297, -0.0313432, -0.999494, -0.0984286, 0.994672, -0.03065, 0.995129, 0.09821, -0.00855871, 2.58117, -0.478466, -2.65448)
+
+[node name="Flower28" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
+transform = Transform3D(-0.952193, 0.0284598, -0.304168, 0.0306537, 0.999527, -0.00243938, 0.303955, -0.0116467, -0.952615, 1.22653, -2.50001, -12.7246)
+
+[node name="Rock10" parent="Geometry/Decoration" instance=ExtResource("8_mq3vy")]
+transform = Transform3D(-0.254395, 0, -0.967101, 0, 1, 0, 0.967101, 0, -0.254395, -10.4134, 5.50001, -33.0853)
+
+[node name="Clouds" type="Node3D" parent="Geometry"]
+
+[node name="GrababbleCloud" parent="Geometry/Clouds" instance=ExtResource("8_1booi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.1491, 14.5316, -31.3824)
+cloudism_curve = SubResource("Curve_58hut")
+
+[node name="GrababbleCloud2" parent="Geometry/Clouds" instance=ExtResource("8_1booi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.352, 33.9519, 43.5598)
+body_min_blob = 700
+body_max_blob = 700
+cloudism_curve = SubResource("Curve_q7iuu")
+
+[node name="GrababbleCloud7" parent="Geometry/Clouds" instance=ExtResource("8_1booi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.6599, 81.202, 15.9219)
+body_min_blob = 700
+body_max_blob = 700
+cloudism_curve = SubResource("Curve_q7iuu")
+
+[node name="GrababbleCloud8" parent="Geometry/Clouds" instance=ExtResource("8_1booi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9795, 81.202, 141.466)
+body_min_blob = 700
+body_max_blob = 700
+cloudism_curve = SubResource("Curve_q7iuu")
+
+[node name="GrababbleCloud3" parent="Geometry/Clouds" instance=ExtResource("8_1booi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0638, 107.458, 290.027)
+body_min_blob = 1000
+body_max_blob = 1200
+cloudism_curve = SubResource("Curve_1booi")
+
+[node name="GrababbleCloud4" parent="Geometry/Clouds" instance=ExtResource("8_1booi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9899, 121.58, 301.303)
+
+[node name="GrababbleCloud5" parent="Geometry/Clouds" instance=ExtResource("8_1booi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9365, 180.238, 279.408)
+body_min_blob = 3000
+body_max_blob = 4000
+max_x_scatter_distance = 7.0
+maximum_scatter_absolute_distance = 7.0
+cloudism_curve = SubResource("Curve_ove64")
+
+[node name="GrababbleCloud6" parent="Geometry/Clouds" instance=ExtResource("8_1booi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9365, 203.684, 240.712)
+min_x_scatter_distance = -2.0
+max_x_scatter_distance = 2.0
+maximum_scatter_absolute_distance = 7.0
+cloudism_curve = SubResource("Curve_mq3vy")
+
+[node name="Collectibles" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
+
+[node name="BaseCollectiblePositionHack" parent="Collectibles" instance=ExtResource("6_ebyyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0868769, -97.3457, -4.30573)
+
+[node name="BaseCollectiblePositionHack3" parent="Collectibles" instance=ExtResource("6_ebyyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0868769, -97.3457, -33.3057)
+
+[node name="BaseCollectiblePositionHack7" parent="Collectibles" instance=ExtResource("6_ebyyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.6493, -84.3332, -31.6586)
+
+[node name="BaseCollectiblePositionHack6" parent="Collectibles" instance=ExtResource("6_ebyyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.2771, -66.7938, 43.1756)
+
+[node name="BaseCollectiblePositionHack9" parent="Collectibles" instance=ExtResource("6_ebyyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9117, -96.1374, 43.1756)
+
+[node name="BaseCollectiblePositionHack10" parent="Collectibles" instance=ExtResource("6_ebyyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9117, -96.1374, 63.9479)
+
+[node name="BaseCollectiblePositionHack11" parent="Collectibles" instance=ExtResource("6_ebyyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9117, -99.522, 52.272)
+
+[node name="BaseCollectiblePositionHack2" parent="Collectibles" instance=ExtResource("6_ebyyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7063, 51.5808, 269.989)
+
+[node name="BaseCollectiblePositionHack12" parent="Collectibles" instance=ExtResource("6_ebyyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.209, -2.50928, 257.629)
+
+[node name="BaseCollectiblePositionHack13" parent="Collectibles" instance=ExtResource("6_ebyyx")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -24.6161, -0.206512, 268.108)
+
+[node name="BaseCollectiblePositionHack4" parent="Collectibles" instance=ExtResource("6_ebyyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3853, 56.8414, 258.694)
+
+[node name="BaseCollectiblePositionHack5" parent="Collectibles" instance=ExtResource("6_ebyyx")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -7.03152, 61.7388, 256.062)
+
+[node name="BaseCollectiblePositionHack8" parent="Collectibles" instance=ExtResource("6_ebyyx")]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 12.5053, 78.9937, 279.425)
+
+[node name="Checkpoints" type="Node3D" parent="."]
+
+[node name="FirstCheckpoint" parent="Checkpoints" instance=ExtResource("8_4jlt8")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.477898, 0)
+
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("8_4jlt8")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.522102, -33)
+
+[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource("8_4jlt8")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 12.51, -18)
+
+[node name="Checkpoint5" parent="Checkpoints" instance=ExtResource("8_4jlt8")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8167, 12.51, 251.931)
+
+[node name="Checkpoint4" parent="Checkpoints" instance=ExtResource("8_4jlt8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26879, 160.38, 257.219)
+
+[node name="LevelStopwatch" parent="." instance=ExtResource("9_21non")]
+unique_name_in_owner = true
+
+[node name="FlowerRandomRotator" parent="." instance=ExtResource("10_8dqi2")]
+models = Array[NodePath]([NodePath("../Geometry/Decoration/Flower"), NodePath("../Geometry/Decoration/Flower2"), NodePath("../Geometry/Decoration/Flower3"), NodePath("../Geometry/Decoration/Flower4"), NodePath("../Geometry/Decoration/Flower5"), NodePath("../Geometry/Decoration/Flower6"), NodePath("../Geometry/Decoration/Flower6"), NodePath("../Geometry/Decoration/Flower6"), NodePath("../Geometry/Decoration/Flower6"), NodePath("../Geometry/Decoration/Flower6"), NodePath("../Geometry/Decoration/Flower6"), NodePath("../Geometry/Decoration/Flower7"), NodePath("../Geometry/Decoration/Flower8"), NodePath("../Geometry/Decoration/Flower9"), NodePath("../Geometry/Decoration/Flower10"), NodePath("../Geometry/Decoration/Flower11"), NodePath("../Geometry/Decoration/Flower12"), NodePath("../Geometry/Decoration/Flower13"), NodePath("../Geometry/Decoration/Flower14"), NodePath("../Geometry/Decoration/Flower16"), NodePath("../Geometry/Decoration/Flower15"), NodePath("../Geometry/Decoration/Flower17"), NodePath("../Geometry/Decoration/Flower18"), NodePath("../Geometry/Decoration/Flower19"), NodePath("../Geometry/Decoration/Flower20"), NodePath("../Geometry/Decoration/Flower21"), NodePath("../Geometry/Decoration/Flower22"), NodePath("../Geometry/Decoration/Flower23")])
+rotation_x_min = -0.174533
+rotation_x_max = 0.174533
+rotation_z_min = -0.174533
+rotation_z_max = 0.174533
+
+[node name="RockRandomRotator" parent="." instance=ExtResource("10_8dqi2")]
+models = Array[NodePath]([NodePath("../Geometry/Decoration/Rock"), NodePath("../Geometry/Decoration/Rock2"), NodePath("../Geometry/Decoration/Rock3"), NodePath("../Geometry/Decoration/Rock4"), NodePath("../Geometry/Decoration/Rock5"), NodePath("../Geometry/Decoration/Rock6"), NodePath("../Geometry/Decoration/Rock7"), NodePath("../Geometry/Decoration/Rock7"), NodePath("../Geometry/Decoration/Rock7"), NodePath("../Geometry/Decoration/Rock7")])
+rotation_x_min = 0.0
+rotation_x_max = 0.0
+rotation_z_min = 0.0
+rotation_z_max = 0.0
+
+[node name="TreeRandomRotator" parent="." instance=ExtResource("10_8dqi2")]
+models = Array[NodePath]([NodePath("../Geometry/Decoration/Tree"), NodePath("../Geometry/Decoration/Tree2"), NodePath("../Geometry/Decoration/Tree5"), NodePath("../Geometry/Decoration/Tree6")])
+rotation_x_min = -0.0872665
+rotation_x_max = 0.0872665
+rotation_z_min = -0.0872665
+rotation_z_max = 0.0872665

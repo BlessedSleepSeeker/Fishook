@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpcxrmm61t53y"]
+
+[ext_resource type="Script" uid="uid://ca1xkqdlrocrx" path="res://level/assets/grabbable/big_tree.gd" id="1_i7g76"]
+
+[node name="BigTree" type="StaticBody3D"]
+script = ExtResource("1_i7g76")
+
+[node name="Trunk" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Branches" type="Node3D" parent="."]
+unique_name_in_owner = true

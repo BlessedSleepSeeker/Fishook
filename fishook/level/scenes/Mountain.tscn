@@ -1,0 +1,143 @@
+[gd_scene load_steps=14 format=3 uid="uid://conn71ntnphrv"]
+
+[ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_crsr6"]
+[ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_0mocl"]
+[ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="3_785ym"]
+[ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/huds/level_hud/LevelHUD.tscn" id="4_cs42w"]
+[ext_resource type="Material" uid="uid://h0r4shlt6jqo" path="res://level/template_assets/material/dark_grid_texture.tres" id="5_jkg6g"]
+[ext_resource type="Material" uid="uid://bwr2uhkx8pf3h" path="res://level/template_assets/material/water.tres" id="6_0mocl"]
+[ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="6_osqfy"]
+[ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="7_1dls0"]
+[ext_resource type="Material" uid="uid://dwovhd6ywwmib" path="res://level/template_assets/material/ground_path.tres" id="7_785ym"]
+[ext_resource type="PackedScene" uid="uid://c7pg5cdosq1p1" path="res://level/assets/decoration/AssetRandomRotator.tscn" id="8_jgeu1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2cdyt"]
+sky_top_color = Color(0.11, 1, 0.881333, 1)
+sky_horizon_color = Color(0.883333, 0.65, 1, 1)
+ground_bottom_color = Color(0.2805, 0.55, 0.419742, 1)
+ground_horizon_color = Color(0.883333, 0.65, 1, 1)
+
+[sub_resource type="Sky" id="Sky_4fg25"]
+sky_material = SubResource("ProceduralSkyMaterial_2cdyt")
+
+[sub_resource type="Environment" id="Environment_0v83y"]
+background_mode = 2
+sky = SubResource("Sky_4fg25")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 2
+tonemap_exposure = 1.05
+tonemap_white = 0.95
+ssao_enabled = true
+ssao_radius = 2.0
+ssao_intensity = 1.4
+
+[node name="LevelMountain" type="Node3D"]
+script = ExtResource("1_crsr6")
+level_down_limit = -20.0
+
+[node name="CharacterInstance" parent="." instance=ExtResource("2_0mocl")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.693292, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+unique_name_in_owner = true
+environment = SubResource("Environment_0v83y")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.67946, 100, 8.76321)
+shadow_enabled = true
+
+[node name="LevelMusicPlayer" parent="." instance=ExtResource("3_785ym")]
+
+[node name="LevelHud" parent="." instance=ExtResource("4_cs42w")]
+unique_name_in_owner = true
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="CSGGrounds" type="CSGCombiner3D" parent="Geometry"]
+use_collision = true
+collision_layer = 4
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+size = Vector3(1000, 0.1, 1000)
+material = ExtResource("5_jkg6g")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 936.783, 237.627, 0)
+radius = 500.0
+height = 500.0
+sides = 40
+cone = true
+smooth_faces = false
+material = ExtResource("5_jkg6g")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 937.862, 447.325, 5.55823)
+operation = 2
+size = Vector3(246.85, 122.852, 249.219)
+material = ExtResource("5_jkg6g")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, -1, 5.96046e-08, 0, -5.96046e-08, -1, 961.874, 371.778, 34.0596)
+operation = 2
+radius = 50.0
+height = 30.0
+cone = true
+material = ExtResource("5_jkg6g")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 960.51, 385.105, 34.1846)
+size = Vector3(100, 0.01, 100)
+material = ExtResource("6_0mocl")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.738632, 0, -0.674109, 0, 1, 0, 0.674109, 0, 0.738632, 1041.03, 385.105, 98.0595)
+operation = 2
+size = Vector3(100, 0.01, 100)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.831179, 0, -0.556006, 0, 1, 0, 0.556006, 0, 0.831179, -25.5175, 0, 38.9407)
+size = Vector3(10, 1, 100)
+material = ExtResource("7_785ym")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.981554, 0, -0.191186, 0, 1, 0, 0.191186, 0, 0.981554, -53.9135, 0, 85.7439)
+size = Vector3(10, 1, 15)
+material = ExtResource("7_785ym")
+
+[node name="CSGGrabbable" type="CSGCombiner3D" parent="Geometry"]
+use_collision = true
+collision_layer = 2
+
+[node name="Decoration" type="Node3D" parent="Geometry"]
+
+[node name="Collectibles" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
+
+[node name="Checkpoints" type="Node3D" parent="."]
+
+[node name="FirstCheckpoint" parent="Checkpoints" instance=ExtResource("6_osqfy")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.522102, 0)
+
+[node name="LevelStopwatch" parent="." instance=ExtResource("7_1dls0")]
+unique_name_in_owner = true
+
+[node name="FlowerRandomRotator" parent="." instance=ExtResource("8_jgeu1")]
+rotation_x_min = -0.174533
+rotation_x_max = 0.174533
+rotation_z_min = -0.174533
+rotation_z_max = 0.174533
+
+[node name="RockRandomRotator" parent="." instance=ExtResource("8_jgeu1")]
+rotation_x_min = 0.0
+rotation_x_max = 0.0
+rotation_z_min = 0.0
+rotation_z_max = 0.0
+
+[node name="TreeRandomRotator" parent="." instance=ExtResource("8_jgeu1")]
+rotation_x_min = -0.0872665
+rotation_x_max = 0.0872665
+rotation_z_min = -0.0872665
+rotation_z_max = 0.0872665

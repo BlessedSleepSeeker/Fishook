@@ -93,6 +93,7 @@ func restart_level() -> void:
 	if root:
 		await root.play_fade(true, true)
 	flush_level()
+	await get_tree().process_frame
 	load_level()
 	if root:
 		root.play_fade(false, false)

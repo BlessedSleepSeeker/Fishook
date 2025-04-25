@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://crxufspl5lqpb"]
+
+[ext_resource type="Script" uid="uid://crpbwola5sl4d" path="res://level/assets/grabbable/clouds/grababble_cloud.gd" id="1_fdhmg"]
+
+[sub_resource type="Curve" id="Curve_fdhmg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fdhmg"]
+points = PackedVector3Array(0, 0, 7, 5, 0, 3.5, 5, 0, -3.5, 0, 0, -7, -5, 0, -3.5, -5, 0, 3.5)
+
+[node name="GrababbleCloud" type="StaticBody3D"]
+collision_layer = 2
+collision_mask = 33
+script = ExtResource("1_fdhmg")
+base_max_x_amount = 30
+base_max_z_amount = 30
+body_min_blob = 300
+body_max_blob = 400
+min_x_scatter_distance = -5.0
+max_x_scatter_distance = 5.0
+min_z_scatter_distance = -7.0
+max_z_scatter_distance = 7.0
+maximum_scatter_absolute_distance = 5.0
+cloudism_curve = SubResource("Curve_fdhmg")
+
+[node name="BlobHolder" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_fdhmg")

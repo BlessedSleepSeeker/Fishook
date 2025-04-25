@@ -3,6 +3,8 @@ class_name BaseLevel
 
 @export var debug_collectible_timer_template: String = "Collectible %s : %s"
 
+@export var level_down_limit: float = 50
+
 @onready var character: CharacterInstance = %CharacterInstance
 @onready var current_checkpoint = %FirstCheckpoint
 @onready var hud: LevelHUD = %LevelHud
@@ -42,7 +44,7 @@ func _process(_delta):
 	update_timer()
 
 func _physics_process(_delta):
-	if character.global_position.y < 50 && is_respawning == false:
+	if character.global_position.y < level_down_limit && is_respawning == false:
 		teleport_player_to_checkpoint()
 
 var is_respawning: bool = false

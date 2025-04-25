@@ -33,8 +33,12 @@ func _on_return_button_pressed():
 
 func _on_random_pressed():
 	random_btn.disabled = true
-	var btn = button_grid.get_children().pick_random()
-	if btn is LevelSelectButton:
-		btn.on_button_pressed()
-	else:
-		_on_random_pressed()
+	for btn in button_grid.get_children():
+		if btn is LevelSelectButton && btn.level_data.name == "Tower":
+			btn.on_button_pressed()
+
+	# var btn = button_grid.get_children().pick_random()
+	# if btn is LevelSelectButton:
+	# 	btn.on_button_pressed()
+	# else:
+	# 	_on_random_pressed()

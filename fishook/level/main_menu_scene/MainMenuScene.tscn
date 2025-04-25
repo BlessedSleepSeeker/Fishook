@@ -11,6 +11,21 @@
 [ext_resource type="PackedScene" uid="uid://bufgfitu7r2tc" path="res://level/assets/decoration/models/rocks/Rock.glb" id="7_fvhxg"]
 [ext_resource type="PackedScene" uid="uid://c7pg5cdosq1p1" path="res://level/assets/decoration/AssetRandomRotator.tscn" id="10_fvhxg"]
 
+[sub_resource type="Animation" id="Animation_6pdqh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Geometry/CSGCombiner3D/CSGBox3D:material:albedo_texture:noise:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_be8to"]
 resource_name = "main_menu_idle"
 length = 10.0
@@ -26,21 +41,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 512, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_6pdqh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Geometry/CSGCombiner3D/CSGBox3D:material:albedo_texture:noise:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3840d"]

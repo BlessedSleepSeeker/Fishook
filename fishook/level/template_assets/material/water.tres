@@ -18,3 +18,5 @@ noise = SubResource("FastNoiseLite_htmff")
 transparency = 1
 albedo_color = Color(0, 0.95, 1, 0.564706)
 albedo_texture = SubResource("NoiseTexture2D_audhb")
+uv1_triplanar = true
+uv1_world_triplanar = true
