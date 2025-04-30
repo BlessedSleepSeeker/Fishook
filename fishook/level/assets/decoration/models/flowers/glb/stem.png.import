@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0yl2bbx3akw2"
-path="res://.godot/imported/bouton.png-a6049301f0f53d5fdbf72fda385d4dd7.ctex"
+uid="uid://80fiu3hic68s"
+path="res://.godot/imported/stem.png-85127fa521c9879b9de99a85cfa5da09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level/assets/decoration/models/flowers/bouton.png"
-dest_files=["res://.godot/imported/bouton.png-a6049301f0f53d5fdbf72fda385d4dd7.ctex"]
+source_file="res://level/assets/decoration/models/flowers/glb/stem.png"
+dest_files=["res://.godot/imported/stem.png-85127fa521c9879b9de99a85cfa5da09.ctex"]
 
 [params]
 

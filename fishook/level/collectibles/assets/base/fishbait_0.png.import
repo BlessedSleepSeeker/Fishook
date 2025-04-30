@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsd3jn1hs4r7r"
-path.s3tc="res://.godot/imported/fisherman_10.png-a992c0489f013d66650b69907647d9cf.s3tc.ctex"
+uid="uid://d4ja7gbue1urv"
+path.s3tc="res://.godot/imported/fishbait_0.png-07ef2a76e749d634407ca7a129bc2abf.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "bbe764b535dd344abe474d62a9ad5767"
+"md5": "8860dfda732f1038d0cf9626836d2bfe"
 }
 
 [deps]
 
-source_file="res://character/model/fisherman_10.png"
-dest_files=["res://.godot/imported/fisherman_10.png-a992c0489f013d66650b69907647d9cf.s3tc.ctex"]
+source_file="res://level/collectibles/assets/base/fishbait_0.png"
+dest_files=["res://.godot/imported/fishbait_0.png-07ef2a76e749d634407ca7a129bc2abf.s3tc.ctex"]
 
 [params]
 

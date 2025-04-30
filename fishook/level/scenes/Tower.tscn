@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bfvhhew1rxjs0"]
+[gd_scene load_steps=25 format=3 uid="uid://bfvhhew1rxjs0"]
 
 [ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_ehgmg"]
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_og642"]
@@ -6,14 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/huds/level_hud/LevelHUD.tscn" id="4_ove64"]
 [ext_resource type="Material" uid="uid://h0r4shlt6jqo" path="res://level/template_assets/material/dark_grid_texture.tres" id="5_mq3vy"]
 [ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="6_ebyyx"]
+[ext_resource type="PackedScene" uid="uid://dlowoj1ptc3wl" path="res://level/collectibles/assets/base/godot_plushV2.glb" id="6_q7iuu"]
 [ext_resource type="PackedScene" uid="uid://donkxcqkw68d4" path="res://level/assets/decoration/Tree.tscn" id="7_1booi"]
 [ext_resource type="Material" uid="uid://bwr2uhkx8pf3h" path="res://level/template_assets/material/water.tres" id="7_og642"]
 [ext_resource type="PackedScene" uid="uid://crxufspl5lqpb" path="res://level/assets/grabbable/clouds/GrababbleCloud.tscn" id="8_1booi"]
 [ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="8_4jlt8"]
 [ext_resource type="PackedScene" uid="uid://bufgfitu7r2tc" path="res://level/assets/decoration/models/rocks/Rock.glb" id="8_mq3vy"]
 [ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="9_21non"]
-[ext_resource type="PackedScene" uid="uid://br70t0g51amx8" path="res://level/assets/decoration/models/flowers/flower1.glb" id="9_58hut"]
+[ext_resource type="PackedScene" uid="uid://br70t0g51amx8" path="res://level/assets/decoration/models/flowers/glb/flower1.glb" id="9_58hut"]
 [ext_resource type="PackedScene" uid="uid://c7pg5cdosq1p1" path="res://level/assets/decoration/AssetRandomRotator.tscn" id="10_8dqi2"]
+[ext_resource type="PackedScene" uid="uid://pd1lku6503f" path="res://level/assets/decoration/models/flowers/RandomFlower.tscn" id="15_58hut"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0g43g"]
 sky_top_color = Color(0.11, 1, 0.881333, 1)
@@ -129,6 +131,18 @@ radius = 10.0
 height = 4.0
 cone = true
 
+[node name="godot_plushV2" parent="Geometry/CSGTower" instance=ExtResource("6_q7iuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.88332, -134.158, 260.025)
+
+[node name="godot_plush_01" parent="Geometry/CSGTower/godot_plushV2" index="0"]
+visible = false
+
+[node name="godot_plush_sitted" parent="Geometry/CSGTower/godot_plushV2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09119, 0)
+
+[node name="godot_plush_02" parent="Geometry/CSGTower/godot_plushV2" index="2"]
+visible = false
+
 [node name="CSGGrounds" type="CSGCombiner3D" parent="Geometry"]
 use_collision = true
 collision_layer = 2
@@ -240,7 +254,7 @@ size = Vector3(24.8711, 1, 4)
 material = ExtResource("5_mq3vy")
 
 [node name="CSGBox3D21" type="CSGBox3D" parent="Geometry/CSGGrounds"]
-transform = Transform3D(0.528838, 0, -0.848723, 0, 1, 0, 0.848722, 0, 0.528838, -17.2246, 44.5661, 279.968)
+transform = Transform3D(0.974082, 0, -0.226193, 0, 1, 0, 0.226192, 0, 0.974083, -17.9143, 44.5661, 278.758)
 operation = 2
 size = Vector3(3, 1.94775, 3.34515)
 material = ExtResource("5_mq3vy")
@@ -424,19 +438,19 @@ transform = Transform3D(0.976207, 0, 0.216841, 0, 1, 0, -0.216841, 0, 0.976207, 
 transform = Transform3D(0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0.707107, -0.183013, 0.683013, -21.5351, 98.4885, 274.282)
 
 [node name="Flower" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(0.943734, 0.0890231, -0.318499, -0.0535671, 0.991518, 0.118415, 0.326339, -0.0946908, 0.940498, 39.639, 12.5, 86.4053)
+transform = Transform3D(-0.492891, 0.135812, -0.859426, 0.160054, 0.98504, 0.063869, 0.855244, -0.106074, -0.507254, 39.639, 12.5, 86.4053)
 
 [node name="Flower2" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(0.88912, 0.173356, -0.423572, -0.124555, 0.98221, 0.140536, 0.440399, -0.0721956, 0.894895, 38.8596, 12.5, 87.6713)
+transform = Transform3D(0.523729, -0.0523804, -0.850273, -0.135281, 0.980329, -0.143719, 0.841075, 0.190296, 0.506341, 38.8596, 12.5, 87.6713)
 
 [node name="Flower3" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(0.701373, -0.123079, -0.702088, 0.0957203, 0.992321, -0.0783352, 0.706338, -0.0122619, 0.707768, 39.4569, 12.5, 107.957)
+transform = Transform3D(-0.983243, 0.0466316, 0.176234, 0.0333988, 0.996446, -0.0773218, -0.179214, -0.0701401, -0.981306, 39.4569, 12.5, 107.957)
 
 [node name="Flower4" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(0.945832, -0.173159, 0.274623, 0.16934, 0.984835, 0.0377479, -0.276995, 0.0108014, 0.960811, 40.9548, 12.5, 154.835)
+transform = Transform3D(0.0481116, 0.044291, 0.99786, -0.024149, 0.998776, -0.0431674, -0.99855, -0.0220205, 0.0491223, 40.9548, 12.5, 154.835)
 
 [node name="Flower5" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(-0.599383, -0.226547, -0.767735, -0.162051, 0.973596, -0.160778, 0.783887, 0.0280451, -0.620269, 38.8488, 12.5, 172.495)
+transform = Transform3D(-0.801671, -0.0801814, -0.592363, -0.150823, 0.986033, 0.0706475, 0.578425, 0.145978, -0.802568, 38.8488, 12.5, 172.495)
 
 [node name="Tree4" parent="Geometry/Decoration" instance=ExtResource("7_1booi")]
 transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 28.9197, 6.28741, -42.9837)
@@ -445,40 +459,40 @@ transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 
 transform = Transform3D(-0.973548, -0.0592506, -0.220666, -0.0561981, 0.998217, -0.0200912, 0.221463, -0.00715874, -0.975142, -9.91854, 0.515632, -53.6446)
 
 [node name="Flower6" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(-0.805022, -0.066758, 0.589477, -0.0764544, 0.997037, 0.00850363, -0.588298, -0.0382226, -0.80774, 8.11454, 5.50001, -31.4105)
+transform = Transform3D(-0.542096, -0.153468, 0.826183, -0.13182, 0.98654, 0.0967612, -0.829913, -0.0564539, -0.55503, 8.11454, 5.50001, -31.4105)
 
 [node name="Flower7" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(-0.111607, 0.00262911, 0.993749, 0.0141118, 0.9999, -0.0010605, -0.993652, 0.0139052, -0.111633, 11.0739, 5.50001, -33.4688)
+transform = Transform3D(0.799251, 0.133308, -0.586026, -0.158264, 0.987358, 0.0087545, 0.579784, 0.0857497, 0.810245, 11.0739, 5.50001, -33.4688)
 
 [node name="Flower8" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(-0.952609, -0.0929881, 0.289636, -0.0761169, 0.994708, 0.0690051, -0.29452, 0.0436887, -0.954646, 39.3594, 12.5, 62.8357)
+transform = Transform3D(0.509036, -0.122488, -0.851985, 0.0827777, 0.992201, -0.0931896, 0.856755, -0.0230885, 0.515206, 39.3594, 12.5, 62.8357)
 
 [node name="Flower9" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(-0.602714, 0.0849134, 0.793427, 0.144495, 0.989498, 0.00386574, -0.784766, 0.116976, -0.608653, 40.5948, 12.5, 4.78107)
+transform = Transform3D(0.951107, -0.0622727, 0.30252, 0.0218975, 0.990595, 0.135066, -0.308085, -0.121838, 0.943525, 40.5948, 12.5, 4.78107)
 
 [node name="Flower10" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(-0.071345, -0.00240877, -0.997449, 0.156521, 0.987581, -0.0135805, 0.985094, -0.157091, -0.070082, 39.8532, 12.5, 26.7498)
+transform = Transform3D(-0.0559583, 0.151756, -0.986833, 0.159852, 0.976993, 0.141179, 0.985553, -0.149847, -0.0789294, 39.8532, 12.5, 26.7498)
 
 [node name="Flower11" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(-0.866055, -0.00683563, 0.499902, 0.0892596, 0.981727, 0.168062, -0.491916, 0.190172, -0.849619, 35.6075, 9.99277, -28.5343)
+transform = Transform3D(-0.055873, -0.162971, -0.985047, -0.0953478, 0.982951, -0.157216, 0.993875, 0.085138, -0.0704593, 35.6075, 9.99277, -28.5343)
 
 [node name="Flower12" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(0.598968, 0.0158522, 0.800616, 0.0405668, 0.99792, -0.0501082, -0.799745, 0.0624917, 0.597079, 8.67151, 5.50001, -30.934)
+transform = Transform3D(0.851186, 0.00217928, -0.52486, 0.0215451, 0.999004, 0.0390886, 0.524422, -0.0445798, 0.850291, 8.67151, 5.50001, -30.934)
 
 [node name="Flower13" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(-0.995892, -0.0876064, 0.0228946, -0.0830341, 0.98442, 0.154993, -0.0361162, 0.152455, -0.98765, 7.988, 5.50001, -30.7066)
+transform = Transform3D(-0.867392, 0.115128, -0.484124, 0.113806, 0.99298, 0.0322339, 0.484437, -0.0271367, -0.874405, 7.988, 5.50001, -30.7066)
 
 [node name="Flower14" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(0.811426, -0.0848398, -0.578265, 0.147086, 0.987206, 0.0615552, 0.565645, -0.135002, 0.813523, 10.9987, 5.50001, -32.6947)
+transform = Transform3D(-0.204109, 0.0976451, 0.974066, -0.139043, 0.982033, -0.127579, -0.969024, -0.161477, -0.186865, 10.9987, 5.50001, -32.6947)
 
 [node name="Flower15" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(-0.859535, -0.0140842, 0.510883, -0.0203176, 0.999772, -0.00662115, -0.510674, -0.016071, -0.859625, 8.34742, 0.500007, -28.6648)
+transform = Transform3D(0.975275, -0.0782831, -0.206667, 0.0624288, 0.994662, -0.0821615, 0.211995, 0.0672281, 0.974956, 8.34742, 0.500007, -28.6648)
 
 [node name="Flower16" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(-0.0301853, 0.065566, -0.997392, 0.0415187, 0.997067, 0.0642882, 0.998682, -0.0394699, -0.032819, 7.3541, 0.500008, -27.7198)
+transform = Transform3D(-0.779094, 0.0972782, -0.619314, 0.079624, 0.995241, 0.0561602, 0.621831, -0.00555825, -0.783132, 7.3541, 0.500008, -27.7198)
 
 [node name="Flower17" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(-0.857297, 0.020424, 0.514417, 0.00781548, 0.999614, -0.0266631, -0.514763, -0.0188378, -0.857126, 10.2121, 0.515634, -25.2871)
+transform = Transform3D(0.812579, 0.0894688, 0.575944, -0.0869283, 0.9957, -0.0320309, -0.576333, -0.0240382, 0.816862, 10.2121, 0.515634, -25.2871)
 
 [node name="Tree6" parent="Geometry/Decoration" instance=ExtResource("7_1booi")]
 transform = Transform3D(0.389346, 0.0455765, 0.919963, 0.0150573, 0.998327, -0.0558312, -0.920969, 0.0355898, 0.388008, 10.2121, 0.515634, -25.5592)
@@ -493,22 +507,22 @@ transform = Transform3D(-0.974624, 0, 0.22385, 0, 1, 0, -0.22385, 0, -0.974624, 
 transform = Transform3D(-0.118741, 0, 0.992925, 0, 1, 0, -0.992925, 0, -0.118741, -4.92412, 0.500008, -14.9333)
 
 [node name="Flower18" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(0.734612, 0.0629999, 0.675557, -0.0728917, 0.997245, -0.0137358, -0.674561, -0.039152, 0.73718, 10.6738, 0.500009, -13.8286)
+transform = Transform3D(-0.993407, 0.0604224, 0.0974236, 0.0514275, 0.994399, -0.0923349, -0.102457, -0.0867158, -0.990951, 10.6738, 0.500009, -13.8286)
 
 [node name="Flower19" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(0.860622, 0.0057066, 0.509213, -0.077878, 0.98965, 0.120531, -0.503254, -0.143388, 0.852159, 0.879805, -2.50001, -12.7144)
+transform = Transform3D(-0.936365, -0.183036, -0.299532, -0.160921, 0.982176, -0.0971279, 0.311971, -0.0427463, -0.94913, 0.879805, -2.50001, -12.7144)
 
 [node name="Flower20" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(0.748588, -0.0960427, 0.656043, -0.0209179, 0.98554, 0.168149, -0.662706, -0.139597, 0.735754, -0.120336, -0.478466, 3.75135)
+transform = Transform3D(0.0118795, 0.00203047, -0.999928, -0.0259353, 0.999662, 0.00172181, 0.999593, 0.0259129, 0.0119282, -0.120336, -0.478466, 3.75135)
 
 [node name="Flower21" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(0.0852652, -0.107132, 0.990582, 0.164467, 0.982077, 0.092056, -0.98269, 0.155069, 0.101357, -2.58799, -0.478466, 2.67277)
+transform = Transform3D(0.28991, 0.037229, 0.95633, -0.15496, 0.987883, 0.00851855, -0.944425, -0.150662, 0.292167, -2.58799, -0.478466, 2.67277)
 
 [node name="Flower22" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(0.867842, -0.0893398, 0.488742, 0.115094, 0.993092, -0.0228363, -0.483326, 0.0760697, 0.872129, -3.66752, -0.478466, 0.0535898)
+transform = Transform3D(0.989094, -0.0654008, 0.131972, 0.0567429, 0.996047, 0.0683347, -0.13592, -0.060101, 0.988895, -3.66752, -0.478466, 0.0535898)
 
 [node name="Flower23" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
-transform = Transform3D(0.883687, -0.0274093, -0.467275, -0.00385275, 0.997824, -0.0658161, 0.468063, 0.0599611, 0.881659, 2.64088, -0.478466, 2.5802)
+transform = Transform3D(-0.25593, 0.0356785, 0.966037, -0.119296, 0.990514, -0.0681872, -0.959307, -0.132695, -0.249246, 2.64088, -0.478466, 2.5802)
 
 [node name="Flower24" parent="Geometry/Decoration" instance=ExtResource("9_58hut")]
 transform = Transform3D(-0.679501, -0.0330639, -0.732929, -0.0351098, 0.999305, -0.0125303, 0.732834, 0.0172186, -0.68019, 3.68396, -0.478466, 0.00116348)
@@ -643,7 +657,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26879, 160.38, 257.219)
 unique_name_in_owner = true
 
 [node name="FlowerRandomRotator" parent="." instance=ExtResource("10_8dqi2")]
-models = Array[NodePath]([NodePath("../Geometry/Decoration/Flower"), NodePath("../Geometry/Decoration/Flower2"), NodePath("../Geometry/Decoration/Flower3"), NodePath("../Geometry/Decoration/Flower4"), NodePath("../Geometry/Decoration/Flower5"), NodePath("../Geometry/Decoration/Flower6"), NodePath("../Geometry/Decoration/Flower6"), NodePath("../Geometry/Decoration/Flower6"), NodePath("../Geometry/Decoration/Flower6"), NodePath("../Geometry/Decoration/Flower6"), NodePath("../Geometry/Decoration/Flower6"), NodePath("../Geometry/Decoration/Flower7"), NodePath("../Geometry/Decoration/Flower8"), NodePath("../Geometry/Decoration/Flower9"), NodePath("../Geometry/Decoration/Flower10"), NodePath("../Geometry/Decoration/Flower11"), NodePath("../Geometry/Decoration/Flower12"), NodePath("../Geometry/Decoration/Flower13"), NodePath("../Geometry/Decoration/Flower14"), NodePath("../Geometry/Decoration/Flower16"), NodePath("../Geometry/Decoration/Flower15"), NodePath("../Geometry/Decoration/Flower17"), NodePath("../Geometry/Decoration/Flower18"), NodePath("../Geometry/Decoration/Flower19"), NodePath("../Geometry/Decoration/Flower20"), NodePath("../Geometry/Decoration/Flower21"), NodePath("../Geometry/Decoration/Flower22"), NodePath("../Geometry/Decoration/Flower23")])
+models = Array[NodePath]([NodePath("../Geometry/Decoration/Flower"), NodePath("../Geometry/Decoration/Flower2"), NodePath("../Geometry/Decoration/Flower3"), NodePath("../Geometry/Decoration/Flower4"), NodePath("../Geometry/Decoration/Flower5"), NodePath("../Geometry/Decoration/Flower6"), NodePath("../Geometry/Decoration/Flower6"), NodePath("../Geometry/Decoration/Flower6"), NodePath("../Geometry/Decoration/Flower6"), NodePath("../Geometry/Decoration/Flower6"), NodePath("../Geometry/Decoration/Flower6"), NodePath("../Geometry/Decoration/Flower7"), NodePath("../Geometry/Decoration/Flower8"), NodePath("../Geometry/Decoration/Flower9"), NodePath("../Geometry/Decoration/Flower10"), NodePath("../Geometry/Decoration/Flower11"), NodePath("../Geometry/Decoration/Flower12"), NodePath("../Geometry/Decoration/Flower13"), NodePath("../Geometry/Decoration/Flower14"), NodePath("../Geometry/Decoration/Flower16"), NodePath("../Geometry/Decoration/Flower15"), NodePath("../Geometry/Decoration/Flower17"), NodePath("../Geometry/Decoration/Flower18"), NodePath("../Geometry/Decoration/Flower19"), NodePath("../Geometry/Decoration/Flower20"), NodePath("../Geometry/Decoration/Flower21"), NodePath("../Geometry/Decoration/Flower22"), NodePath("../Geometry/Decoration/Flower23"), NodePath("../RandomFlower"), NodePath("../RandomFlower2"), NodePath("../RandomFlower3"), NodePath("../RandomFlower4")])
 rotation_x_min = -0.174533
 rotation_x_max = 0.174533
 rotation_z_min = -0.174533
@@ -662,3 +676,17 @@ rotation_x_min = -0.0872665
 rotation_x_max = 0.0872665
 rotation_z_min = -0.0872665
 rotation_z_max = 0.0872665
+
+[node name="RandomFlower" parent="." instance=ExtResource("15_58hut")]
+transform = Transform3D(-0.758531, 0.18562, -0.624641, 0.16719, 0.981921, 0.0887635, 0.629824, -0.0371039, -0.775851, 16.9008, 144.495, 270.775)
+
+[node name="RandomFlower2" parent="." instance=ExtResource("15_58hut")]
+transform = Transform3D(-0.496859, 0.108483, -0.861024, 0.0430432, 0.994016, 0.100401, 0.866763, 0.0128239, -0.498555, 14.525, 144.495, 276.125)
+
+[node name="RandomFlower3" parent="." instance=ExtResource("15_58hut")]
+transform = Transform3D(0.973846, -0.132668, -0.184456, 0.134707, 0.990884, -0.00149, 0.182972, -0.0233964, 0.98284, 15.7738, 144.495, 273.318)
+
+[node name="RandomFlower4" parent="." instance=ExtResource("15_58hut")]
+transform = Transform3D(0.336173, -0.0018179, 0.941798, -0.119129, 0.991884, 0.0444374, -0.934235, -0.127134, 0.333228, 15.5007, 144.495, 266.491)
+
+[editable path="Geometry/CSGTower/godot_plushV2"]

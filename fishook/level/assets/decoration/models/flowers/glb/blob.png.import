@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cka453rgd2ogo"
-path="res://.godot/imported/tige.png-9be1f767307566a6de55c33b46c93824.ctex"
+uid="uid://mupkyxqp4noe"
+path="res://.godot/imported/blob.png-aefd1e79fc3429a2f39507d55b588af8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level/assets/decoration/models/flowers/tige.png"
-dest_files=["res://.godot/imported/tige.png-9be1f767307566a6de55c33b46c93824.ctex"]
+source_file="res://level/assets/decoration/models/flowers/glb/blob.png"
+dest_files=["res://.godot/imported/blob.png-aefd1e79fc3429a2f39507d55b588af8.ctex"]
 
 [params]
 

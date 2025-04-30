@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://squnuur682wi"]
+[gd_scene load_steps=10 format=3 uid="uid://squnuur682wi"]
 
 [ext_resource type="Script" uid="uid://crve62qlkejvs" path="res://level/collectibles/scene/base_collectible.gd" id="1_8ycso"]
-[ext_resource type="PackedScene" uid="uid://dlowoj1ptc3wl" path="res://level/collectibles/assets/base/godot_plushV2.glb" id="2_38j43"]
 [ext_resource type="AnimationLibrary" uid="uid://btn4pfm4gfehs" path="res://level/collectibles/assets/base/collectible_base_animations.res" id="2_dhkau"]
 [ext_resource type="AudioStream" uid="uid://linrxtfh38hx" path="res://sounds_effects/kenney_impact-sounds/impactGlass_medium_000.ogg" id="3_f734n"]
+[ext_resource type="PackedScene" uid="uid://8mrhitx8ws2s" path="res://level/collectibles/assets/base/fishbait.glb" id="4_f734n"]
+[ext_resource type="ArrayMesh" uid="uid://g6vvowp3i3um" path="res://level/collectibles/assets/base/fishbait_mesh.res" id="4_i6ltm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_isqua"]
 resource_local_to_scene = true
@@ -26,18 +27,9 @@ initial_velocity_max = 10.0
 gravity = Vector3(0, 0, 0)
 linear_accel_min = -5.0
 linear_accel_max = -1.0
+scale_min = 0.1
+scale_max = 0.3
 alpha_curve = SubResource("CurveTexture_i6ltm")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6ltm"]
-transparency = 1
-vertex_color_use_as_albedo = true
-
-[sub_resource type="SphereMesh" id="SphereMesh_y40sa"]
-material = SubResource("StandardMaterial3D_i6ltm")
-radius = 0.1
-height = 0.2
-radial_segments = 6
-rings = 6
 
 [node name="BaseCollectiblePositionHack" type="Node3D" groups=["Collectible"]]
 script = ExtResource("1_8ycso")
@@ -62,17 +54,6 @@ unique_name_in_owner = true
 stream = ExtResource("3_f734n")
 bus = &"Sound Effect"
 
-[node name="godot_plushV2" parent="Area3D" instance=ExtResource("2_38j43")]
-
-[node name="godot_plush_01" parent="Area3D/godot_plushV2" index="0"]
-visible = false
-
-[node name="godot_plush_sitted" parent="Area3D/godot_plushV2" index="1"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.14658, 0)
-
-[node name="godot_plush_02" parent="Area3D/godot_plushV2" index="2"]
-visible = false
-
 [node name="PickedUpParticles" type="GPUParticles3D" parent="Area3D"]
 unique_name_in_owner = true
 emitting = false
@@ -80,6 +61,6 @@ amount = 50
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_f734n")
-draw_pass_1 = SubResource("SphereMesh_y40sa")
+draw_pass_1 = ExtResource("4_i6ltm")
 
-[editable path="Area3D/godot_plushV2"]
+[node name="FishBair" parent="Area3D" instance=ExtResource("4_f734n")]

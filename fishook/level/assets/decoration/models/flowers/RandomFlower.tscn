@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://pd1lku6503f"]
+
+[ext_resource type="Script" uid="uid://dxxq2q1toibjm" path="res://level/assets/decoration/models/flowers/random_flower.gd" id="1_uplwe"]
+[ext_resource type="PackedScene" uid="uid://br70t0g51amx8" path="res://level/assets/decoration/models/flowers/glb/flower1.glb" id="2_76kka"]
+[ext_resource type="PackedScene" uid="uid://b0emilkjr7k11" path="res://level/assets/decoration/models/flowers/glb/flower2.glb" id="3_76kka"]
+
+[node name="RandomFlower" type="Node3D"]
+script = ExtResource("1_uplwe")
+flower_models = Array[PackedScene]([ExtResource("2_76kka"), ExtResource("3_76kka")])

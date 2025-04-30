@@ -1,11 +1,15 @@
 extends Node3D
 class_name CharacterSkin
 
+@export var play_animation_on_load: String = ""
+
 @onready var animation_tree: AnimationTree = %AnimationTree
 @onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/StateMachine/playback")
 @onready var hookline: HookshotLine = %HookshotLine
 
 func _ready():
+	if play_animation_on_load:
+		travel(play_animation_on_load)
 	hookline.hide()
 
 func travel(state_name: String) -> void:
