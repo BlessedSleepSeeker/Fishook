@@ -213,7 +213,7 @@ sections = 2
 section_length = 0.1
 
 [node name="CharacterInstance" type="CharacterBody3D"]
-collision_mask = 62
+collision_mask = 58
 script = ExtResource("1_vgy44")
 
 [node name="StateMachine" type="Node" parent="."]

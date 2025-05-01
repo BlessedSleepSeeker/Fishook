@@ -68,7 +68,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 
 [node name="CSGGrounds" type="CSGCombiner3D" parent="Geometry"]
 use_collision = true
-collision_layer = 2
+collision_layer = 6
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Geometry/CSGGrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
@@ -114,8 +114,9 @@ size = Vector3(5, 2, 14)
 material = ExtResource("7_bhrt1")
 
 [node name="CSGGrabbable" type="CSGCombiner3D" parent="Geometry"]
+material_override = ExtResource("7_bhrt1")
 use_collision = true
-collision_layer = 2
+collision_layer = 6
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Geometry/CSGGrabbable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 15)

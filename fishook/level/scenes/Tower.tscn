@@ -90,7 +90,7 @@ unique_name_in_owner = true
 [node name="CSGTower" type="CSGCombiner3D" parent="Geometry"]
 material_override = ExtResource("5_mq3vy")
 use_collision = true
-collision_layer = 2
+collision_layer = 6
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Geometry/CSGTower"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.7837, 259.421)
@@ -145,7 +145,7 @@ visible = false
 
 [node name="CSGGrounds" type="CSGCombiner3D" parent="Geometry"]
 use_collision = true
-collision_layer = 2
+collision_layer = 6
 
 [node name="CSGBox3D" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17.6687, 0)

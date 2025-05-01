@@ -74,7 +74,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 
 [node name="CSGGrounds" type="CSGCombiner3D" parent="Geometry"]
 use_collision = true
-collision_layer = 2
+collision_layer = 6
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Geometry/CSGGrounds"]
 size = Vector3(10, 1, 10)
@@ -207,19 +207,14 @@ operation = 2
 radius = 1.0
 
 [node name="CSGGrabbable" type="CSGCombiner3D" parent="Geometry"]
+material_override = ExtResource("7_3s61v")
 use_collision = true
-collision_layer = 2
+collision_layer = 6
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Geometry/CSGGrabbable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 16, 35)
 layers = 0
 size = Vector3(5, 1, 5)
-material = ExtResource("8_xbakf")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="Geometry/CSGGrabbable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0283, 12.4582, 61.5077)
-layers = 0
-size = Vector3(1.87585, 0.1, 5)
 material = ExtResource("8_xbakf")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Geometry/CSGGrabbable"]
@@ -253,7 +248,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.823, 37.641, 63.6331)
 radius = 1.0
 material = ExtResource("8_xbakf")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Geometry"]
+[node name="HotWorter" type="CSGBox3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8577, 46.5213, 29.6549)
 size = Vector3(15, 0.01, 15)
 material = ExtResource("8_4fg25")
