@@ -1,0 +1,164 @@
+[gd_scene load_steps=16 format=3 uid="uid://bgp0j7i4u3men"]
+
+[ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_0j7lo"]
+[ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="1_cvcm1"]
+[ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="2_0j7lo"]
+[ext_resource type="Material" uid="uid://h0r4shlt6jqo" path="res://level/template_assets/material/dark_grid_texture.tres" id="4_3ue7i"]
+[ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="5_7isi1"]
+[ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="6_x7o3b"]
+[ext_resource type="Material" uid="uid://bvexudfc4kmcx" path="res://level/template_assets/material/half_transparent.tres" id="7_4rgwe"]
+[ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/huds/level_hud/LevelHUD.tscn" id="7_alplb"]
+[ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="8_4rgwe"]
+
+[sub_resource type="Gradient" id="Gradient_cvcm1"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.595745, 0.648936)
+colors = PackedColorArray(0.46, 0.964, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7isi1"]
+seed = 4
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x7o3b"]
+seamless = true
+color_ramp = SubResource("Gradient_cvcm1")
+noise = SubResource("FastNoiseLite_7isi1")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_alplb"]
+sky_top_color = Color(0.11, 1, 0.881333, 1)
+sky_horizon_color = Color(0.883333, 0.65, 1, 1)
+sky_cover = SubResource("NoiseTexture2D_x7o3b")
+sky_cover_modulate = Color(0.7, 0, 1, 1)
+ground_bottom_color = Color(0.306, 0.6, 0.4089, 1)
+ground_horizon_color = Color(0.883333, 0.65, 1, 1)
+ground_curve = 0.109283
+
+[sub_resource type="Sky" id="Sky_33aam"]
+sky_material = SubResource("ProceduralSkyMaterial_alplb")
+
+[sub_resource type="Environment" id="Environment_4rgwe"]
+background_mode = 2
+sky = SubResource("Sky_33aam")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 2
+tonemap_exposure = 1.05
+tonemap_white = 0.95
+ssao_enabled = true
+ssao_radius = 2.0
+ssao_intensity = 1.4
+
+[node name="Ascension" type="Node3D"]
+script = ExtResource("1_0j7lo")
+
+[node name="CharacterInstance" parent="." instance=ExtResource("1_cvcm1")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 102.172, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+unique_name_in_owner = true
+environment = SubResource("Environment_4rgwe")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.67946, 100, 8.76321)
+shadow_enabled = true
+
+[node name="LevelMusicPlayer" parent="." instance=ExtResource("2_0j7lo")]
+
+[node name="LevelStopwatch" parent="." instance=ExtResource("5_7isi1")]
+unique_name_in_owner = true
+
+[node name="Clouds" type="Node3D" parent="."]
+
+[node name="FirstCheckpoint" parent="." instance=ExtResource("6_x7o3b")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 101.004, 0)
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="Platform" type="CSGCombiner3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
+material_override = ExtResource("4_3ue7i")
+use_collision = true
+collision_layer = 6
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Geometry/Platform"]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, -4, 3.49691e-07)
+radius = 35.0
+height = 10.0
+cone = true
+
+[node name="Hookables" type="Node3D" parent="."]
+
+[node name="Platform2" type="CSGCombiner3D" parent="Hookables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
+material_override = ExtResource("7_4rgwe")
+use_collision = true
+collision_layer = 4
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Hookables/Platform2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.6289, 9.91807)
+size = Vector3(5, 5, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Hookables/Platform2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3458, 36.115, -16.3633)
+size = Vector3(5, 5, 5)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Hookables/Platform2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9503, 51.9031, -0.437133)
+size = Vector3(5, 5, 5)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Hookables/Platform2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8965, 98.2286, 28.7117)
+size = Vector3(5, 5, 5)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Hookables/Platform2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.0278, 117.331, 15.9911)
+size = Vector3(5, 5, 5)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Hookables/Platform2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2314, 141.613, -14.1025)
+size = Vector3(4, 4, 4)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Hookables/Platform2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.7287, 162.11, -0.909355)
+size = Vector3(4, 4, 4)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Hookables/Platform2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2594, 199.417, 15.3688)
+size = Vector3(4, 4, 4)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Hookables/Platform2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07811, 221.242, -17.7654)
+size = Vector3(4, 4, 4)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Hookables/Platform2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4128, 255.684, 36.109)
+size = Vector3(3, 3, 3)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Hookables/Platform2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0445, 289.135, -3.4188)
+size = Vector3(3, 3, 3)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Hookables/Platform2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09856, 315.001, 39.9245)
+size = Vector3(3, 3, 3)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Hookables/Platform2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6117, 335.932, 16.9504)
+size = Vector3(2, 2, 2)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Hookables/Platform2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.54929, 369.559, 30.2136)
+size = Vector3(2, 2, 2)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Hookables/Platform2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 406.692, 0)
+
+[node name="Collectibles" type="Node3D" parent="."]
+
+[node name="BaseCollectiblePositionHack4" parent="Collectibles" instance=ExtResource("8_4rgwe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 512.92, 0)
+
+[node name="LevelHud" parent="." instance=ExtResource("7_alplb")]
+unique_name_in_owner = true

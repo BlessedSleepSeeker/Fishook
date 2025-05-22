@@ -55,6 +55,7 @@ key = "MUSIC_VOLUME"
 [node name="SoundEffectVolume" type="Node" parent="Sound"]
 script = ExtResource("5_c4hqd")
 bus_name = "Sound Effect"
+base_value = 50
 type = 1
 key = "SOUND_EFFECT_VOLUME"
 
@@ -73,6 +74,7 @@ tooltip = "Sorry... Only English for now..."
 
 [node name="Camera Sensitivity" type="Node" parent="Game"]
 script = ExtResource("9_8e0ev")
+base_value = 500.0
 type = 1
 key = "CAMERA_SENSIBILITY"
 tooltip = "Affect the speed at which the camera rotate around the player"

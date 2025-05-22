@@ -37,7 +37,7 @@ func _on_random_pressed():
 	random_btn.disabled = true
 	if force_random_level:
 		for btn in button_grid.get_children():
-			if btn is LevelSelectButton && btn.level_data.name == "Tower":
+			if btn is LevelSelectButton && btn.level_data.name == "Ascension":
 				btn.on_button_pressed()
 	else:
 		var btn = button_grid.get_children().pick_random()

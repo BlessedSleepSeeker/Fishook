@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ctqppdq3quxc2"]
+[gd_scene load_steps=20 format=3 uid="uid://ctqppdq3quxc2"]
 
 [ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_ec3ai"]
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_8nujw"]
@@ -14,9 +14,23 @@
 [ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="13_01jhy"]
 [ext_resource type="PackedScene" uid="uid://c7pg5cdosq1p1" path="res://level/assets/decoration/AssetRandomRotator.tscn" id="14_r524h"]
 
+[sub_resource type="Gradient" id="Gradient_3ue7i"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.595745, 0.648936)
+colors = PackedColorArray(0.46, 0.964, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_36jh6"]
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_36jh6"]
+seamless = true
+color_ramp = SubResource("Gradient_3ue7i")
+noise = SubResource("FastNoiseLite_36jh6")
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_36jh6"]
 sky_top_color = Color(0.11, 1, 0.881333, 1)
 sky_horizon_color = Color(0.883333, 0.65, 1, 1)
+sky_cover = SubResource("NoiseTexture2D_36jh6")
 ground_bottom_color = Color(0.306, 0.6, 0.4089, 1)
 ground_horizon_color = Color(0.883333, 0.65, 1, 1)
 ground_curve = 0.109283
