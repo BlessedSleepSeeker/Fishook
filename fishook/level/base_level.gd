@@ -5,6 +5,9 @@ class_name BaseLevel
 
 @export var level_down_limit: float = 50
 
+@export var register_collectibles_: bool = true
+@export var register_checkpoints_: bool = true
+
 @onready var character: CharacterInstance = %CharacterInstance
 @onready var current_checkpoint = %FirstCheckpoint
 @onready var hud: LevelHUD = %LevelHud
@@ -16,8 +19,10 @@ var total_collectibles: int = 0
 var collected_amount: int = 0
 
 func _ready():
-	register_collectibles()
-	register_checkpoints()
+	if register_collectibles_:
+		register_collectibles()
+	if register_checkpoints_:
+		register_checkpoints()
 
 func register_collectibles() -> void:
 	for collectible: BaseCollectible in get_tree().get_nodes_in_group("Collectible"):

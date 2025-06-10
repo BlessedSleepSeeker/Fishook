@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ProceduralLevelTileDefinition" load_steps=2 format=3 uid="uid://bjerkdkts6p4p"]
+
+[ext_resource type="Script" uid="uid://dcn4j0n71cwxv" path="res://level/procgen/procgen_level_tile_definition.gd" id="1_7svw7"]
+
+[resource]
+script = ExtResource("1_7svw7")
+tile_id = "air"
+scene_path = "uid://bsl8pibq4pirm"
+generation_weight = 10
+allowed_or_forbidden = false
+neighbor_north = Array[String]([])
+neighbor_south = Array[String]([])
+neighbor_east = Array[String]([])
+neighbor_west = Array[String]([])
+neighbor_up = Array[String]([])
+neighbor_down = Array[String]([])

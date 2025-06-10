@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bsl8pibq4pirm"]
+
+[node name="TileAir" type="Node3D"]

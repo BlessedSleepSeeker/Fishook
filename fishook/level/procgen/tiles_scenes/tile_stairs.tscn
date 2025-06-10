@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b64ibfkbnont0"]
+
+[node name="TileStairs" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+collision_layer = 6
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(16, 16, 16)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+operation = 2
+size = Vector3(14, 14, 14)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.595, -5, 0)
+operation = 2
+size = Vector3(2, 4, 4)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 7.777, 0)
+operation = 2
+size = Vector3(4, 2, 14)

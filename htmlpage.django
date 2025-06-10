@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %}
+{% translate "Fishook - Dev" %}
+{% endblock title %}
+{% block content %}
+<div class="cover-container d-flex p-3 mx-auto flex-column text-center justify-content-center">
+    <main class="px-3">
+        <h1 class="display-1">{% translate "Fishook"%}</h1>
+        <div class="d-flex justify-content-center">
+            <div class="pt-4 border-top w-15">
+                <div class="btn-group" role="group">
+                    <a href="https://github.com/BlessedSleepSeeker/Fishook" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="{% translate 'Github' %}" class="btn btn-outline-info"><i class="bi bi-github"></i></a>
+                    {% if project.release %}<a href="{{ project.release.url }}" download="CarrotsOfChaos.zip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="{% translate 'Release' %}" class="btn btn-outline-info"><i class="bi bi-download"></i></a>{% endif %}
+                    {% if project.source %}<a href="{{ project.source.url }}" download="CarrotsOfChaosSource.zip.zip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="{% translate 'Source' %}" class="btn btn-outline-info"><i class="bi bi-file-earmark-binary"></i></a>{% endif %}
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<div class="container py-3">
+    <p class="text-justify display-5 text-muted text-center">
+        {% translate "A Personal Project of Mine" %}
+    </p>
+    <p class="text-justify text-muted text-center">
+        {% translate "Fishook is a 3D platformer with an emphasis on hookshooting with a fishing hook." %}
+    </p>
+</div>
+
+
+<div class="container px-4 py-5">
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+        <div class="col d-flex align-items-start">
+            <div class="text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <i class="bi bi-controller text-info"></i>
+            </div>
+            <div>
+                <h3 class="text-body-emphasis fs-2">
+                    {% translate "Already playable..." %}
+                </h3>
+                <p class="text-muted">
+                    {% translate "Head to" %} <a href="https://github.com/BlessedSleepSeeker/Fishook/releases">Github</a> {% translate "and download the game !" %}
+                </p>
+            </div>
+        </div>
+        <div class="col d-flex align-items-start">
+            <div class="text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <i class="bi bi-hammer text-info"></i>
+            </div>
+            <div>
+                <h3 class="text-body-emphasis fs-2">
+                    {% translate "Started from a joke" %}
+                </h3>
+                <p class="text-muted">
+                    <br>{% translate "I was just out of another gamedev project that went kind of nowhere (I learned a lot so worth it), and just needed to do something with only gameplay and nothing more. Some of my friends are big fans of fishing minigames and asked me to do a fishing game." %}
+                </p>
+            </div>
+        </div>
+        <div class="col d-flex align-items-start">
+            <div class="text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <i class="bi bi-hammer text-info"></i>
+            </div>
+            <div>
+                <h3 class="text-body-emphasis fs-2">
+                    {% translate "Built with Godot and Blockbench" %}
+                </h3>
+                <p class="text-muted">
+                    <a href="https://godotengine.org/">Godot</a>{% translate " is a free, open-source, no-string attached game engine. It has been my goto engine since 2020 and is well deserving of some support." %}
+                    <a href="https://www.blockbench.net/">Blockbench</a>{% translate " is a free, open-source, no-string attached 3D Modeling Tool. I started using it for this project and I regret nothing !" %}
+                </p>
+            </div>
+        </div>
+        <div class="col d-flex align-items-start">
+            <div class="text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <i class="bi bi-node-plus text-info"></i>
+            </div>
+            <div>
+                <h3 class="text-muted text-body-emphasis fs-2">
+                    {% translate "Open and Free" %}
+                </h3>
+                <p class="text-muted">
+                    {% translate "The Project is under the " %}<a href="https://github.com/BlessedSleepSeeker/Fishook/blob/main/LICENSE">GPL-3</a>{% translate " license." %}
+                    {% translate "You can find the sources " %}<a href="https://github.com/BlessedSleepSeeker/Fishook">{% translate "here " %}</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

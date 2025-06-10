@@ -32,6 +32,7 @@ folder_colors={
 "res://autoloads/": "teal",
 "res://character/": "blue",
 "res://level/": "purple",
+"res://level/procgen/": "red",
 "res://ui/": "green"
 }
 
