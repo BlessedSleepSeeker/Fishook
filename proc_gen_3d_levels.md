@@ -5,6 +5,7 @@
   - [Idea](#idea)
   - [Algorithm Constraints](#algorithm-constraints)
   - [2-pass algorithm](#2-pass-algorithm)
+  - [To-Do List](#to-do-list)
 
 ## Context
 
@@ -35,12 +36,19 @@ AlgorithmRules for things like finding the next tiles.
 - Vertical Y Grid Size
   - Define the maximum amount of tiles in the Y axis (up/down)
 - Maximum amount of tiles
-- Algorithm Type [Expand, WFC, Fill, ContinuedRandom] ->
-  - Expand is "infinite" growth in every direction, next generated tile is simply the next one in the chosen grid coordinate system.
+- Algorithm Type [Fill, WFC, Connect, FrogLeap] ->
+  - Fill is "infinite" growth in every direction, next generated tile is simply the next one in the chosen grid coordinate system.
   - WFC for WaveFunctionCollapse. Find the lowest entropy tile, collapse it, reduce entropy on other tiles, repeat. Has additionals parameters to control wave propagation when collapsing options.
-  - Fill between various preset tiles, connecting them.
-  - ContinuedRandom create a continuous path : Generate a tile, select an empty neighbor, generate again...
+  - Connect between various preset tiles, creating a path from point a to b to c...
+  - FrogLeap create a continuous path of a selected lenght: Generate a tile, select an empty neighbor, generate again...
 
 ## 2-pass algorithm
 
 The first stage of the algorithm is pure level generation. The second stage is scene instancing and eye-candy, where we will transform some tiles according to a few rules.
+
+## To-Do List
+
+- [ ] Figure out adjacentcy constraints in an automated/scripted way.
+  - Can't use sockets because empty space is very important in my case. tbh tile_id seems fine for now.
+- [ ] Implement neighbors constraints.
+- [ ] Implement WFC and Entropy.

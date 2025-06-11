@@ -6,6 +6,7 @@ var MAIN_SEED: String = '':
 	set(value):
 		if value != '':
 			main_seed_changed.emit(value)
+			MAIN_SEED = value
 
 @onready var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
@@ -18,7 +19,6 @@ func generate_seeds():
 		rng.randomize()
 		rng.seed = hash(rng.randi())
 		MAIN_SEED = str(rng.seed)
-		print_debug("Main Seed : ", MAIN_SEED)
 	else:
 		rng.seed = int(MAIN_SEED)
 

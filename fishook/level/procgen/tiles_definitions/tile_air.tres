@@ -1,16 +1,17 @@
-[gd_resource type="Resource" script_class="ProceduralLevelTileDefinition" load_steps=2 format=3 uid="uid://bjerkdkts6p4p"]
+[gd_resource type="Resource" script_class="AlgorithmTileDefinition" load_steps=2 format=3 uid="uid://bjerkdkts6p4p"]
 
-[ext_resource type="Script" uid="uid://dcn4j0n71cwxv" path="res://level/procgen/procgen_level_tile_definition.gd" id="1_7svw7"]
+[ext_resource type="Script" uid="uid://dcn4j0n71cwxv" path="res://level/procgen/tile_definition.gd" id="1_7svw7"]
 
 [resource]
 script = ExtResource("1_7svw7")
 tile_id = "air"
 scene_path = "uid://bsl8pibq4pirm"
-generation_weight = 10
-allowed_or_forbidden = false
-neighbor_north = Array[String]([])
-neighbor_south = Array[String]([])
-neighbor_east = Array[String]([])
-neighbor_west = Array[String]([])
-neighbor_up = Array[String]([])
-neighbor_down = Array[String]([])
+generation_weight = 100
+allowed_neighbors = Dictionary[Vector3i, Array]({
+Vector3i(-1, 0, 0): ["air", "basic_ground", "stairs"],
+Vector3i(0, -1, 0): ["air", "basic_ground", "stairs"],
+Vector3i(0, 0, -1): ["air", "basic_ground", "stairs"],
+Vector3i(0, 0, 1): ["air", "basic_ground", "stairs"],
+Vector3i(0, 1, 0): ["air", "basic_ground", "stairs"],
+Vector3i(1, 0, 0): ["air", "basic_ground", "stairs"]
+})

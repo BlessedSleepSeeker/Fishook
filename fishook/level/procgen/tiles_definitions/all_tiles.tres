@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AlgorithmTiles" load_steps=6 format=3 uid="uid://c6s71fhohi3lw"]
+
+[ext_resource type="Script" uid="uid://dcn4j0n71cwxv" path="res://level/procgen/tile_definition.gd" id="1_48uj3"]
+[ext_resource type="Resource" uid="uid://bjerkdkts6p4p" path="res://level/procgen/tiles_definitions/tile_air.tres" id="2_shdt1"]
+[ext_resource type="Resource" uid="uid://bcjbdq6hb77ph" path="res://level/procgen/tiles_definitions/tile_basic_ground.tres" id="3_3uhvb"]
+[ext_resource type="Resource" uid="uid://hyk2ysjygvie" path="res://level/procgen/tiles_definitions/tile_stairs.tres" id="4_xsv6x"]
+[ext_resource type="Script" uid="uid://dg13m744a8cut" path="res://level/procgen/algorithm_tiles.gd" id="5_80th2"]
+
+[resource]
+script = ExtResource("5_80th2")
+algorithm_tiles = Array[ExtResource("1_48uj3")]([ExtResource("2_shdt1"), ExtResource("3_3uhvb"), ExtResource("4_xsv6x")])
+metadata/_custom_type_script = "uid://dg13m744a8cut"

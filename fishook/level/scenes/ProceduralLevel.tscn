@@ -1,0 +1,96 @@
+[gd_scene load_steps=19 format=3 uid="uid://bmx438bhm112h"]
+
+[ext_resource type="Script" uid="uid://23kwl6ahfbxf" path="res://level/procgen/procgen_level.gd" id="1_mugtj"]
+[ext_resource type="Script" uid="uid://cny6f3feb5qi8" path="res://level/procgen/generation_rules/algorithm_fill.gd" id="2_82778"]
+[ext_resource type="Script" uid="uid://cce5ncid3uwij" path="res://level/procgen/tile_generation.gd" id="2_eyylu"]
+[ext_resource type="Script" uid="uid://dt0ebj6ks0gku" path="res://level/procgen/procgen_level_algorithm.gd" id="2_p13vr"]
+[ext_resource type="Resource" uid="uid://c6s71fhohi3lw" path="res://level/procgen/tiles_definitions/all_tiles.tres" id="3_ajvnm"]
+[ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="8_2wn7o"]
+[ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="9_sdfvu"]
+[ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="10_w18c5"]
+[ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="11_w7qq1"]
+[ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/huds/level_hud/LevelHUD.tscn" id="13_ewfnn"]
+
+[sub_resource type="Resource" id="Resource_5xox2"]
+script = ExtResource("2_82778")
+grid = Array[ExtResource("2_eyylu")]([])
+metadata/_custom_type_script = "uid://cny6f3feb5qi8"
+
+[sub_resource type="Resource" id="Resource_kb2o8"]
+script = ExtResource("2_p13vr")
+generation_seed = "1"
+grid_size = Vector3i(20, 3, 20)
+tile_size = Vector3i(16, 16, 16)
+tiles = ExtResource("3_ajvnm")
+rules = SubResource("Resource_5xox2")
+metadata/_custom_type_script = "uid://dt0ebj6ks0gku"
+
+[sub_resource type="Gradient" id="Gradient_1wmjk"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.595745, 0.648936)
+colors = PackedColorArray(0.46, 0.964, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1v0t2"]
+seed = 4
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x7o3b"]
+seamless = true
+color_ramp = SubResource("Gradient_1wmjk")
+noise = SubResource("FastNoiseLite_1v0t2")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_34j83"]
+sky_top_color = Color(0.11, 1, 0.881333, 1)
+sky_horizon_color = Color(0.883333, 0.65, 1, 1)
+sky_cover = SubResource("NoiseTexture2D_x7o3b")
+sky_cover_modulate = Color(0.7, 0, 1, 1)
+ground_bottom_color = Color(0.306, 0.6, 0.4089, 1)
+ground_horizon_color = Color(0.883333, 0.65, 1, 1)
+ground_curve = 0.109283
+
+[sub_resource type="Sky" id="Sky_33aam"]
+sky_material = SubResource("ProceduralSkyMaterial_34j83")
+
+[sub_resource type="Environment" id="Environment_3wuqr"]
+background_mode = 2
+sky = SubResource("Sky_33aam")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 2
+tonemap_exposure = 1.05
+tonemap_white = 0.95
+ssao_enabled = true
+ssao_radius = 2.0
+ssao_intensity = 1.4
+
+[node name="ProceduralLevel" type="Node3D"]
+script = ExtResource("1_mugtj")
+algorithm = SubResource("Resource_kb2o8")
+level_down_limit = -30.0
+register_collectibles_ = false
+
+[node name="CharacterInstance" parent="." instance=ExtResource("8_2wn7o")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 102.172, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+unique_name_in_owner = true
+environment = SubResource("Environment_3wuqr")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.67946, 100, 8.76321)
+shadow_enabled = true
+
+[node name="LevelMusicPlayer" parent="." instance=ExtResource("9_sdfvu")]
+
+[node name="LevelStopwatch" parent="." instance=ExtResource("10_w18c5")]
+unique_name_in_owner = true
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="FirstCheckpoint" parent="Geometry" instance=ExtResource("11_w7qq1")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.004, 0)
+
+[node name="LevelHud" parent="." instance=ExtResource("13_ewfnn")]
+unique_name_in_owner = true

@@ -1,0 +1,41 @@
+extends Resource
+class_name AlgorithmRules
+
+@export var grid: Array[AlgorithmTileGeneration] = []
+var grid_size: Vector3i = Vector3i.ZERO
+
+func _init():
+	print_debug("Initiating Base Rules")
+
+## Create each generation tiles (tiles only used for generating level, which are converted to 3D afterward)
+func setup(_grid_size: Vector3i, _tiles: AlgorithmTiles) -> void:
+	var total_positions: int = _grid_size.x * _grid_size.y * _grid_size.z
+	print_debug("Generating grid : total size %d" % total_positions)
+	grid_size = _grid_size
+	for pos_x: int in _grid_size.x:
+		for pos_y: int in _grid_size.y:
+			for pos_z: int in _grid_size.z:
+				var new_tile: AlgorithmTileGeneration = AlgorithmTileGeneration.new()
+				new_tile.grid_position = Vector3i(pos_x, pos_y, pos_z)
+				new_tile.available_tiles = _tiles.algorithm_tiles
+				grid.append(new_tile)
+	# print_debug("Generated grid size : %d" % grid.size())
+
+func loop() -> void:
+	pass
+
+func get_next_tile() -> AlgorithmTileGeneration:
+	return get_tile_from_position(find_next_tile_position())
+
+func find_next_tile_position() -> Vector3i:
+	return Vector3i.ZERO
+
+func find_start_tile_position() -> Vector3i:
+	return Vector3i.ZERO
+
+func get_tile_from_position(position: Vector3i) -> AlgorithmTileGeneration:
+	for tile: AlgorithmTileGeneration in grid:
+		if tile.grid_position == position:
+			return tile
+	push_error("Tile not found at position %s" % position)
+	return null

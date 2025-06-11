@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 InputHandler="*res://autoloads/inputs/inputs_handler.gd"
 DebugHelper="*res://autoloads/debug_printer.gd"
+RNGHandler="*res://autoloads/seed_handler.gd"
 
 [display]
 
