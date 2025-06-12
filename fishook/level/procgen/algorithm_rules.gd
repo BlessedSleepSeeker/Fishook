@@ -34,8 +34,20 @@ func find_start_tile_position() -> Vector3i:
 	return Vector3i.ZERO
 
 func get_tile_from_position(position: Vector3i) -> AlgorithmTileGeneration:
+	if not check_if_position_can_exist(position):
+		push_error("Position %s does not exist" % position)
+		return null
 	for tile: AlgorithmTileGeneration in grid:
 		if tile.grid_position == position:
 			return tile
 	push_error("Tile not found at position %s" % position)
 	return null
+
+func check_if_position_can_exist(position: Vector3i) -> bool:
+	if position.x < 0 || position.x > grid_size.x - 1:
+		return false
+	if position.y < 0 || position.y > grid_size.y - 1:
+		return false
+	if position.z < 0 || position.z > grid_size.z - 1:
+		return false
+	return true

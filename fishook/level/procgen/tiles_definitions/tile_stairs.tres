@@ -9,9 +9,9 @@ scene_path = "uid://b64ibfkbnont0"
 generation_weight = 10
 allowed_neighbors = Dictionary[Vector3i, Array]({
 Vector3i(-1, 0, 0): ["basic_ground"],
-Vector3i(0, -1, 0): ["air", "basic_ground", "stairs"],
-Vector3i(0, 0, -1): ["basic_ground"],
-Vector3i(0, 0, 1): ["basic_ground"],
-Vector3i(0, 1, 0): ["air", "basic_ground", "stairs"],
-Vector3i(1, 0, 0): ["air", "stairs"]
+Vector3i(0, -1, 0): ["air", "basic_ground"],
+Vector3i(0, 0, -1): ["air", "basic_ground"],
+Vector3i(0, 0, 1): ["air", "basic_ground"],
+Vector3i(0, 1, 0): ["air"],
+Vector3i(1, 0, 0): ["air", "basic_ground"]
 })

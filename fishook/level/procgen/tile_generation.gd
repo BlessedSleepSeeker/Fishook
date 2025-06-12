@@ -12,23 +12,16 @@ var entropy_score: int:
 	get():
 		return available_tiles.size()
 
-## Removing an option return an array of position offsets of neighbors. This will be used for repercuting options 
-func remove_option(tile_definition: AlgorithmTileDefinition) -> Array[Vector3i]:
-	if available_tiles.has(tile_definition):
-		available_tiles.remove_at(available_tiles.find(tile_definition))
-		
-	return []
-
 ## TODO : CHANGE TO WEIGHTED RNG
 func pick_tile() -> void:
 	#print("Picking for %s" % grid_position)
 	if available_tiles.size() == 1:
-		return available_tiles.front()
+		chosen_tile_definition = available_tiles.front()
+		return
 	if available_tiles.size() == 0:
 		push_error("No tiles available at position %s (this shouldn't happen !)" % grid_position)
 		return
 	weighted_random_pick()
-	#print("Picked %s" % [chosen_tile_definition.tile_id])
 
 
 func weighted_random_pick() -> void:
@@ -41,3 +34,13 @@ func weighted_random_pick() -> void:
 			chosen_tile_definition = tile
 			return
 		rng_nbr -= tile.generation_weight
+
+
+#region Wave Function Collapse Functions
+
+func collapse() -> Dictionary[Vector3i, Array]:
+	pick_tile()
+	print("Collapsed tile %s for %s" % [grid_position, chosen_tile_definition.tile_id])
+	return chosen_tile_definition.allowed_neighbors
+
+#endregion

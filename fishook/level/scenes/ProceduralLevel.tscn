@@ -1,9 +1,9 @@
 [gd_scene load_steps=19 format=3 uid="uid://bmx438bhm112h"]
 
 [ext_resource type="Script" uid="uid://23kwl6ahfbxf" path="res://level/procgen/procgen_level.gd" id="1_mugtj"]
-[ext_resource type="Script" uid="uid://cny6f3feb5qi8" path="res://level/procgen/generation_rules/algorithm_fill.gd" id="2_82778"]
 [ext_resource type="Script" uid="uid://cce5ncid3uwij" path="res://level/procgen/tile_generation.gd" id="2_eyylu"]
 [ext_resource type="Script" uid="uid://dt0ebj6ks0gku" path="res://level/procgen/procgen_level_algorithm.gd" id="2_p13vr"]
+[ext_resource type="Script" uid="uid://dkpama1ui05al" path="res://level/procgen/generation_rules/algorithm_wfc.gd" id="3_773w7"]
 [ext_resource type="Resource" uid="uid://c6s71fhohi3lw" path="res://level/procgen/tiles_definitions/all_tiles.tres" id="3_ajvnm"]
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="8_2wn7o"]
 [ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="9_sdfvu"]
@@ -11,10 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="11_w7qq1"]
 [ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/huds/level_hud/LevelHUD.tscn" id="13_ewfnn"]
 
-[sub_resource type="Resource" id="Resource_5xox2"]
-script = ExtResource("2_82778")
+[sub_resource type="Resource" id="Resource_eyylu"]
+script = ExtResource("3_773w7")
 grid = Array[ExtResource("2_eyylu")]([])
-metadata/_custom_type_script = "uid://cny6f3feb5qi8"
+metadata/_custom_type_script = "uid://dkpama1ui05al"
 
 [sub_resource type="Resource" id="Resource_kb2o8"]
 script = ExtResource("2_p13vr")
@@ -22,7 +22,7 @@ generation_seed = ""
 grid_size = Vector3i(20, 3, 20)
 tile_size = Vector3i(16, 16, 16)
 tiles = ExtResource("3_ajvnm")
-rules = SubResource("Resource_5xox2")
+rules = SubResource("Resource_eyylu")
 metadata/_custom_type_script = "uid://dt0ebj6ks0gku"
 
 [sub_resource type="Gradient" id="Gradient_1wmjk"]
