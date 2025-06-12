@@ -18,7 +18,7 @@ metadata/_custom_type_script = "uid://cny6f3feb5qi8"
 
 [sub_resource type="Resource" id="Resource_kb2o8"]
 script = ExtResource("2_p13vr")
-generation_seed = "1"
+generation_seed = ""
 grid_size = Vector3i(20, 3, 20)
 tile_size = Vector3i(16, 16, 16)
 tiles = ExtResource("3_ajvnm")

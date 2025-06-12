@@ -29,7 +29,7 @@ var did_double_jump: bool = false:
 
 func _ready():
 	## deactivated for gameplay reason -> add in gameplay/accessibility option
-	pass#camera.is_colliding.connect(hud_canvas.crosshair_collision)
+	camera.is_colliding.connect(hud_canvas.crosshair_collision)
 
 func transition_state(state_name: String, msg: Dictionary = {}):
 	state_machine.transition_to(state_name, msg)

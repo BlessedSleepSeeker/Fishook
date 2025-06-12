@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ProceduralLevelTileDefinition" load_steps=2 format=3 uid="uid://bcjbdq6hb77ph"]
+[gd_resource type="Resource" script_class="AlgorithmTileDefinition" load_steps=2 format=3 uid="uid://bcjbdq6hb77ph"]
 
 [ext_resource type="Script" uid="uid://dcn4j0n71cwxv" path="res://level/procgen/tile_definition.gd" id="1_enr5m"]
 

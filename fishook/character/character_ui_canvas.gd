@@ -40,13 +40,13 @@ func tween_reel_value(value: float, max_value: float, tween_speed: float) -> voi
 	tween.tween_property(crosshair.material, "shader_parameter/percent", percent, tween_speed)
 
 func crosshair_collision(is_colliding: bool) -> void:
-	var tween_container: Tween = get_tree().create_tween()
+	#var tween_container: Tween = get_tree().create_tween()
 	var tween_collision: Tween = get_tree().create_tween()
 	if is_colliding:
-		tween_container.tween_property(crosshair_container, "modulate", crosshair_color_on_colliding, 0.1).set_ease(Tween.EASE_OUT)
+		#tween_container.tween_property(crosshair_container, "modulate", crosshair_color_on_colliding, 0.1).set_ease(Tween.EASE_OUT)
 		tween_collision.tween_property(collision_crosshair, "modulate:a", 1, 0.1).set_ease(Tween.EASE_OUT)
 	else:
-		tween_container.tween_property(crosshair_container, "modulate", crosshair_base_color, 0.1).set_ease(Tween.EASE_OUT)
+		#tween_container.tween_property(crosshair_container, "modulate", crosshair_base_color, 0.1).set_ease(Tween.EASE_OUT)
 		tween_collision.tween_property(collision_crosshair, "modulate:a", 0, 0.1).set_ease(Tween.EASE_OUT)
 
 func fade_crosshair(direction: bool) -> void:
