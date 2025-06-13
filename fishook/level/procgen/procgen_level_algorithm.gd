@@ -20,6 +20,7 @@ func _init():
 
 func setup() -> void:
 	tiles.preload_tiles_scenes()
+	tiles.rotate_tiles()
 	rules.setup(grid_size, tiles)
 	setup_rng()
 
@@ -35,6 +36,7 @@ func load_grid_into_world(parent: Node3D) -> void:
 		var instance = tiles.get_tile_instance(tile.chosen_tile_definition.tile_name)
 		parent.add_child(instance)
 		instance.position = tile.grid_position * tile_size
+		instance.rotation_degrees.y = tile.chosen_tile_definition.rotation_score * 90
 
 func clean() -> void:
 	rules = null

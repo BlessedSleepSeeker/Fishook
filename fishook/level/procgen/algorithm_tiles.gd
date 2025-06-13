@@ -11,3 +11,19 @@ func preload_tiles_scenes() -> void:
 
 func get_tile_instance(tile_name: String) -> AlgorithmTileScene:
 	return tiles_scenes[tile_name].instantiate()
+
+
+func rotate_tiles():
+	var rotated_tiles: Array[AlgorithmTileDefinition] = []
+	for tile: AlgorithmTileDefinition in algorithm_tiles:
+		if tile.can_be_rotated_horizontaly:
+			for i in range(1, 4):
+				var new_def: AlgorithmTileDefinition = tile.duplicate(true)
+				new_def.rotate_sockets(i)
+				new_def.rotation_score = i
+				#new_def.tile_name += "_rotate_%d" % i
+				rotated_tiles.append(new_def)
+				# print(new_def.tile_name)
+				# print(tile.sockets)
+				# print(new_def.sockets)
+	algorithm_tiles.append_array(rotated_tiles)
