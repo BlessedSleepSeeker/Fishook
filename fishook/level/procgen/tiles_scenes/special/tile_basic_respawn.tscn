@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv84jmnrsinxm"]
+
+[ext_resource type="Material" uid="uid://cj4lsj2ubhfek" path="res://level/template_assets/material/sobel_outline_base.tres" id="1_dcj6o"]
+[ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="2_gfa0n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eq8ng"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.588235, 1, 1, 1)
+
+[node name="TileBasicRespawn" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+material_override = SubResource("StandardMaterial3D_eq8ng")
+material_overlay = ExtResource("1_dcj6o")
+use_collision = true
+collision_layer = 6
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+use_collision = true
+collision_layer = 6
+size = Vector3(12, 1, 12)
+
+[node name="BaseCheckpoint" parent="." instance=ExtResource("2_gfa0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.003, 0)

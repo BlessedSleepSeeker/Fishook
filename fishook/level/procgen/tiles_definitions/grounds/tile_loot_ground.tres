@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="AlgorithmTileDefinition" load_steps=2 format=3 uid="uid://cvraijsbxlgiv"]
+
+[ext_resource type="Script" uid="uid://dcn4j0n71cwxv" path="res://level/procgen/tile_definition.gd" id="1_umx7n"]
+
+[resource]
+script = ExtResource("1_umx7n")
+tile_name = "LootGround"
+scene_path = "uid://pxcdlb1o3cod"
+generation_weight = 2
+generation_weight_height_multiplier = 2.0
+tile_socket = 1
+sockets = Dictionary[Vector3i, Array]({
+Vector3i(-1, 0, 0): [0, 1, 2],
+Vector3i(0, -1, 0): [0, 1],
+Vector3i(0, 0, -1): [0, 1, 2],
+Vector3i(0, 0, 1): [0, 1, 2],
+Vector3i(0, 1, 0): [0, 1, 2],
+Vector3i(1, 0, 0): [0, 1, 2]
+})

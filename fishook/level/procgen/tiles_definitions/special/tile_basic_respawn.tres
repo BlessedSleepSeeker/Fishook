@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="AlgorithmTileDefinition" load_steps=2 format=3 uid="uid://ddr1vk47t237a"]
+
+[ext_resource type="Script" uid="uid://dcn4j0n71cwxv" path="res://level/procgen/tile_definition.gd" id="1_63bdw"]
+
+[resource]
+script = ExtResource("1_63bdw")
+tile_name = "BasicRespawn"
+scene_path = "uid://cv84jmnrsinxm"
+generation_weight = 1
+generation_weight_height_multiplier = 1.0
+tile_socket = 3
+sockets = Dictionary[Vector3i, Array]({
+Vector3i(-1, 0, 0): [0],
+Vector3i(0, -1, 0): [0],
+Vector3i(0, 0, -1): [0],
+Vector3i(0, 0, 1): [0],
+Vector3i(0, 1, 0): [0],
+Vector3i(1, 0, 0): [0]
+})

@@ -1,11 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://dt1bggvlga1t7"]
 
-[ext_resource type="Material" uid="uid://cj4lsj2ubhfek" path="res://level/template_assets/material/sobel_outline_base.tres" id="1_161pr"]
+[ext_resource type="Material" uid="uid://cj4lsj2ubhfek" path="res://level/template_assets/material/sobel_outline_base.tres" id="1_xya8a"]
 
 [node name="TileBasicGround" type="Node3D"]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-material_override = ExtResource("1_161pr")
+material_override = ExtResource("1_xya8a")
 use_collision = true
 collision_layer = 6
 

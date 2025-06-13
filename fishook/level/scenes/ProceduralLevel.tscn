@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bmx438bhm112h"]
+[gd_scene load_steps=18 format=3 uid="uid://bmx438bhm112h"]
 
 [ext_resource type="Script" uid="uid://23kwl6ahfbxf" path="res://level/procgen/procgen_level.gd" id="1_mugtj"]
 [ext_resource type="Script" uid="uid://cce5ncid3uwij" path="res://level/procgen/tile_generation.gd" id="2_eyylu"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="8_2wn7o"]
 [ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="9_sdfvu"]
 [ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="10_w18c5"]
-[ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="11_w7qq1"]
 [ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/huds/level_hud/LevelHUD.tscn" id="13_ewfnn"]
 
 [sub_resource type="Resource" id="Resource_eyylu"]
@@ -67,7 +66,7 @@ ssao_intensity = 1.4
 script = ExtResource("1_mugtj")
 algorithm = SubResource("Resource_kb2o8")
 level_down_limit = -30.0
-register_collectibles_ = false
+randomize_spawn_point = true
 
 [node name="CharacterInstance" parent="." instance=ExtResource("8_2wn7o")]
 unique_name_in_owner = true
@@ -87,10 +86,6 @@ shadow_enabled = true
 unique_name_in_owner = true
 
 [node name="Geometry" type="Node3D" parent="."]
-
-[node name="FirstCheckpoint" parent="Geometry" instance=ExtResource("11_w7qq1")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.004, 0)
 
 [node name="LevelHud" parent="." instance=ExtResource("13_ewfnn")]
 unique_name_in_owner = true

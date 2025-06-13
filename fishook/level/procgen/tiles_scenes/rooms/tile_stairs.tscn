@@ -1,12 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b64ibfkbnont0"]
+[gd_scene load_steps=3 format=3 uid="uid://b64ibfkbnont0"]
 
-[ext_resource type="Material" uid="uid://cj4lsj2ubhfek" path="res://level/template_assets/material/sobel_outline_base.tres" id="1_32i01"]
+[ext_resource type="Material" uid="uid://cj4lsj2ubhfek" path="res://level/template_assets/material/sobel_outline_base.tres" id="1_p4m8n"]
+[ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="2_6q11w"]
 
 [node name="TileStairs" type="Node3D"]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-material_override = ExtResource("1_32i01")
+material_override = ExtResource("1_p4m8n")
 use_collision = true
 collision_layer = 6
 
@@ -26,3 +27,6 @@ size = Vector3(2, 4, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 7.777, 0)
 operation = 2
 size = Vector3(4, 2, 14)
+
+[node name="BaseCollectiblePositionHack" parent="." instance=ExtResource("2_6q11w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)

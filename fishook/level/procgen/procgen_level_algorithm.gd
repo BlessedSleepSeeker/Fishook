@@ -32,6 +32,10 @@ func generate_grid() -> void:
 
 func load_grid_into_world(parent: Node3D) -> void:
 	for tile: AlgorithmTileGeneration in rules.grid:
-		var instance = tiles.get_tile_instance(tile.chosen_tile_definition.tile_id)
+		var instance = tiles.get_tile_instance(tile.chosen_tile_definition.tile_name)
 		parent.add_child(instance)
 		instance.position = tile.grid_position * tile_size
+
+func clean() -> void:
+	rules = null
+	tiles = null

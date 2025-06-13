@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://pxcdlb1o3cod"]
+
+[ext_resource type="Material" uid="uid://cj4lsj2ubhfek" path="res://level/template_assets/material/sobel_outline_base.tres" id="1_46xx6"]
+[ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="2_7p6an"]
+
+[node name="TileBasicGround" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+material_override = ExtResource("1_46xx6")
+use_collision = true
+collision_layer = 6
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+use_collision = true
+collision_layer = 6
+size = Vector3(16, 1, 16)
+
+[node name="BaseCollectiblePositionHack" parent="." instance=ExtResource("2_7p6an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)

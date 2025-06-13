@@ -7,9 +7,10 @@ class_name BaseLevel
 
 @export var register_collectibles_: bool = true
 @export var register_checkpoints_: bool = true
+@export var randomize_spawn_point: bool = false
 
 @onready var character: CharacterInstance = %CharacterInstance
-@onready var current_checkpoint = %FirstCheckpoint
+@onready var current_checkpoint = null
 @onready var hud: LevelHUD = %LevelHud
 @onready var level_stopwatch: Stopwatch = %LevelStopwatch
 
@@ -23,6 +24,10 @@ func _ready():
 		register_collectibles()
 	if register_checkpoints_:
 		register_checkpoints()
+	if randomize_spawn_point:
+		randomize_spawn()
+	else:
+		find_spawn()
 
 func register_collectibles() -> void:
 	for collectible: BaseCollectible in get_tree().get_nodes_in_group("Collectible"):
@@ -44,6 +49,19 @@ func register_checkpoints() -> void:
 
 func reached_checkpoint(checkpoint: BaseCheckpoint) -> void:
 	current_checkpoint = checkpoint
+
+func randomize_spawn() -> void:
+	var checkpoints: Array = get_tree().get_nodes_in_group("Checkpoint")
+	if checkpoints.size() > 0:
+		var rng_index: int = RNGHandler.rng.randi_range(0, checkpoints.size() - 1)
+		current_checkpoint = checkpoints[rng_index]
+		teleport_player_to_checkpoint()
+
+func find_spawn() -> void:
+	var checkpoints: Array = get_tree().get_nodes_in_group("Checkpoint")
+	for checkpoint: BaseCheckpoint in checkpoints:
+		if checkpoint.name == "FirstCheckpoint":
+			current_checkpoint = checkpoint
 
 func _process(_delta):
 	update_timer()

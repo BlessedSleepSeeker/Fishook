@@ -27,20 +27,23 @@ func pick_tile() -> void:
 func weighted_random_pick() -> void:
 	var sum = 0
 	for tile: AlgorithmTileDefinition in available_tiles:
-		sum += tile.generation_weight
-	var rng_nbr: int = RNGHandler.rng.randi_range(0, sum)
+		sum += get_tile_weight(tile)
+	var rng_nbr: float = RNGHandler.rng.randf_range(0, sum)
 	for tile: AlgorithmTileDefinition in available_tiles:
-		if rng_nbr <= tile.generation_weight:
+		if rng_nbr <= get_tile_weight(tile):
 			chosen_tile_definition = tile
 			return
-		rng_nbr -= tile.generation_weight
+		rng_nbr -= get_tile_weight(tile)
+
+func get_tile_weight(tile: AlgorithmTileDefinition) -> float:
+	return tile.generation_weight * (tile.generation_weight_height_multiplier ** (grid_position.y))
 
 
 #region Wave Function Collapse Functions
 
 func collapse() -> Dictionary[Vector3i, Array]:
 	pick_tile()
-	print("Collapsed tile %s for %s" % [grid_position, chosen_tile_definition.tile_id])
-	return chosen_tile_definition.allowed_neighbors
+	#print("Collapsed tile %s for %s" % [grid_position, chosen_tile_definition.tile_name])
+	return chosen_tile_definition.sockets
 
 #endregion
