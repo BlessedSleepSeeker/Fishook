@@ -16,7 +16,7 @@ class_name ProceduralLevelAlgorithm
 @export var rules: AlgorithmRules = null
 
 func _init():
-	print_debug("Initiating Procedural Generation Algorithm")
+	pass#print_debug("Initiating Procedural Generation Algorithm")
 
 func setup() -> void:
 	tiles.preload_tiles_scenes()
@@ -40,4 +40,5 @@ func load_grid_into_world(parent: Node3D) -> void:
 
 func clean() -> void:
 	rules = null
-	tiles = null
+	## need to still store tiles to add 
+	#tiles = null

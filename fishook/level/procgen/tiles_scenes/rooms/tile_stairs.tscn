@@ -28,5 +28,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 7.777, 0)
 operation = 2
 size = Vector3(4, 2, 14)
 
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 7.777, 0)
+operation = 2
+size = Vector3(4, 2, 14)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.777, 5)
+operation = 2
+size = Vector3(14, 2, 4)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.777, -5)
+operation = 2
+size = Vector3(14, 2, 4)
+
 [node name="BaseCollectiblePositionHack" parent="." instance=ExtResource("2_6q11w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)

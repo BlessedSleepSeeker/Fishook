@@ -2,7 +2,7 @@ extends AlgorithmRules
 class_name AlgorithmRulesWaveFunctionCollapse
 
 func _init():
-	print_debug("Initiating Wave Function Collapse Algorithm")
+	pass#print_debug("Initiating Wave Function Collapse Algorithm")
 
 ## Check if at least one tile is not collapsed yet
 func has_uncollapsed_tiles() -> bool:
