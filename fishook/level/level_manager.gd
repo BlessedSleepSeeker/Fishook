@@ -6,8 +6,8 @@ class_name LevelManager
 @export var level_scene_extension: String = ".tscn"
 
 @export var settings_ui_scene: PackedScene = preload("res://ui/screens/settings/settings_screen.tscn")
-@export var level_selector_path: String = "res://ui/screens/level_selector/LevelSelector.tscn"
-@export var main_menu_path: String = "res://ui/screens/main_menu/main_menu.tscn"
+@export_file(".tscn") var level_selector_path: String = "res://ui/screens/level_selector/LevelSelector.tscn"
+@export_file(".tscn") var main_menu_path: String = "res://ui/screens/main_menu/main_menu.tscn"
 
 @onready var level_holder: Node3D = %LevelHolder
 @onready var ui_layer: CanvasLayer = %PauseUILayer
@@ -17,7 +17,7 @@ class_name LevelManager
 
 @onready var root: CustomRoot = get_tree().root.get_node("Root")
 
-signal transition_by_path(new_scene_path: String, scene_parameters: Dictionary)
+signal transition_by_path(new_scene_path: String, scene_parameters: Dictionary, toggle_loading_screen: bool, animation: String)
 signal play_transition(direction: bool, wait_for_tween: bool)
 
 var is_paused: bool = true
@@ -68,10 +68,10 @@ func go_back_from_settings() -> void:
 
 
 func go_to_level_selector() -> void:
-	transition_by_path.emit(level_selector_path)
+	transition_by_path.emit(level_selector_path, {}, true, "transition")
 
 func go_to_main_menu() -> void:
-	transition_by_path.emit(main_menu_path)
+	transition_by_path.emit(main_menu_path, {}, false, "transition")
 
 #endregion
 

@@ -15,7 +15,7 @@ class_name ClientSettingsUI
 @onready var save_btn: Button = %SaveButton
 
 signal going_back
-signal transition_by_path(new_scene_path: String, scene_parameters: Dictionary)
+signal transition_by_path(new_scene_path: String, scene_parameters: Dictionary, toggle_loading_screen: bool, animation: String)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -57,4 +57,4 @@ func go_back() -> void:
 	if emit_signal_on_back:
 		going_back.emit()
 	if transition_on_back:
-		transition_by_path.emit(back_scene_path)
+		transition_by_path.emit(back_scene_path, {}, false, "transition")

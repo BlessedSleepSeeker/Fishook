@@ -1,4 +1,4 @@
-extends ColorRect
+extends Control
 class_name LoadingScreen
 
 @export var animation_speed: float = 0.8
@@ -10,14 +10,14 @@ class_name LoadingScreen
 @onready var bar_label: RichTextLabel = %BarLabel
 
 func _ready():
-	await get_tree().create_timer(2).timeout
-	update_bar(23, "Collapsing Wave Function...")
+	pass# await get_tree().create_timer(2).timeout
+	# update_bar(23, "Collapsing Wave Function...")
 
-	await get_tree().create_timer(3).timeout
-	update_bar(82, "Rendering World...")
+	# await get_tree().create_timer(3).timeout
+	# update_bar(82, "Rendering World...")
 
-	await get_tree().create_timer(1).timeout
-	update_bar(99.9, "Finishing Touches...")
+	# await get_tree().create_timer(1).timeout
+	# update_bar(99.9, "Finishing Touches...")
 
 func update_bar(amount: float, info: String) -> void:
 	var tween_bar_progress: Tween = get_tree().create_tween()

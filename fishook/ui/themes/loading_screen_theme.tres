@@ -3,8 +3,7 @@
 [ext_resource type="FontFile" uid="uid://cm7uiypoce1r1" path="res://ui/themes/fonts/SeaGreen.ttf" id="1_a2ye3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2ye3"]
-bg_color = Color(0.3536, 0.51168, 0.52, 1)
-draw_center = false
+bg_color = Color(0.6, 0.6, 0.6, 0.541176)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2

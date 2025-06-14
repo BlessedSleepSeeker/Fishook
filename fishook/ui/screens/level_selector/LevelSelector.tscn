@@ -49,8 +49,8 @@ grow_vertical = 2
 theme = ExtResource("1_ey0nq")
 script = ExtResource("1_lq5ei")
 levels = Array[ExtResource("2_gl7ew")]([SubResource("Resource_ey0nq"), SubResource("Resource_b2pph"), SubResource("Resource_h0c2t"), SubResource("Resource_n722h"), SubResource("Resource_13d6h")])
-force_random_level = true
 autopress_random_button = true
+force_random_level = true
 forced_random_level_name = "Procedural"
 
 [node name="ColorRect" type="ColorRect" parent="."]
