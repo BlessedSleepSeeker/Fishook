@@ -6,7 +6,7 @@ class_name AlgorithmTileDefinition
 @export_file("*.tscn") var scene_path: = ""
 
 ## The weight of the tile in randomization.
-@export var generation_weight: int = -1
+@export var generation_weight: float = 0
 ## Multiply the generation weight by the current tile height when randomizing for tile type.
 ## If at 1 == no change. If at 2 == double chance per height.
 @export var generation_weight_height_multiplier: float = 1

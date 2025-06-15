@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AlgorithmTileDefinition" load_steps=2 format=3 uid="uid://cgppuuect3tiv"]
+
+[ext_resource type="Script" uid="uid://dcn4j0n71cwxv" path="res://level/procgen/tile_definition.gd" id="1_e1y8d"]
+
+[resource]
+script = ExtResource("1_e1y8d")
+tile_name = "HoledGroundReversed"
+scene_path = "uid://ciqpg5yk1w2rx"
+generation_weight = 10.0
+generation_weight_height_multiplier = 1.0
+can_be_rotated_horizontaly = true
+rotation_score = 0
+tile_socket = 1
+sockets = Dictionary[Vector3i, Array]({
+Vector3i(-1, 0, 0): [0, 1, 2],
+Vector3i(0, -1, 0): [0, 1],
+Vector3i(0, 0, -1): [0, 1, 2],
+Vector3i(0, 0, 1): [0, 1, 2],
+Vector3i(0, 1, 0): [0, 1, 2],
+Vector3i(1, 0, 0): [0, 1, 2]
+})

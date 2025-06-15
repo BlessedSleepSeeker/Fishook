@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="AlgorithmTileDefinition" load_steps=2 format=3 uid="uid://dbeduau7jwwyr"]
 
-[ext_resource type="Script" uid="uid://dcn4j0n71cwxv" path="res://level/procgen/tile_definition.gd" id="1_htd2b"]
+[ext_resource type="Script" uid="uid://dcn4j0n71cwxv" path="res://level/procgen/tile_definition.gd" id="1_n2ml0"]
 
 [resource]
-script = ExtResource("1_htd2b")
+script = ExtResource("1_n2ml0")
 tile_name = "HoledGround"
 scene_path = "uid://cvwwdwqfvg6ru"
-generation_weight = 10
+generation_weight = 10.0
 generation_weight_height_multiplier = 1.0
-can_be_rotated_horizontaly = false
+can_be_rotated_horizontaly = true
 rotation_score = 0
 tile_socket = 1
 sockets = Dictionary[Vector3i, Array]({

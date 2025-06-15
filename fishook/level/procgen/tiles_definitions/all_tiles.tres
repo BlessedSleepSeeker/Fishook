@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AlgorithmTiles" load_steps=10 format=3 uid="uid://c6s71fhohi3lw"]
+[gd_resource type="Resource" script_class="AlgorithmTiles" load_steps=12 format=3 uid="uid://c6s71fhohi3lw"]
 
 [ext_resource type="Script" uid="uid://dcn4j0n71cwxv" path="res://level/procgen/tile_definition.gd" id="1_48uj3"]
 [ext_resource type="Resource" uid="uid://bjerkdkts6p4p" path="res://level/procgen/tiles_definitions/special/tile_air.tres" id="2_shdt1"]
@@ -7,10 +7,12 @@
 [ext_resource type="Resource" uid="uid://hyk2ysjygvie" path="res://level/procgen/tiles_definitions/rooms/tile_stairs.tres" id="4_xsv6x"]
 [ext_resource type="Script" uid="uid://dg13m744a8cut" path="res://level/procgen/algorithm_tiles.gd" id="5_80th2"]
 [ext_resource type="Resource" uid="uid://ddr1vk47t237a" path="res://level/procgen/tiles_definitions/special/tile_basic_respawn.tres" id="5_shdt1"]
-[ext_resource type="Resource" uid="uid://dbeduau7jwwyr" path="res://level/procgen/tiles_definitions/grounds/tile_jump_puzzle_ground.tres" id="7_xsv6x"]
-[ext_resource type="Resource" uid="uid://b7hff5cnmntep" path="res://level/procgen/tiles_definitions/rooms/tile_ring_launcher.tres" id="8_80th2"]
+[ext_resource type="Resource" uid="uid://dbeduau7jwwyr" path="res://level/procgen/tiles_definitions/grounds/tile_holed_ground.tres" id="7_dbfpa"]
+[ext_resource type="Resource" uid="uid://cgppuuect3tiv" path="res://level/procgen/tiles_definitions/grounds/tile_holed_ground_reversed.tres" id="8_ldfrf"]
+[ext_resource type="Resource" uid="uid://b7hff5cnmntep" path="res://level/procgen/tiles_definitions/rooms/tile_ring_launcher.tres" id="9_pjvwp"]
+[ext_resource type="Resource" uid="uid://c75kjn661j6aw" path="res://level/procgen/tiles_definitions/rooms/tile_ring_launcher_vertical.tres" id="10_ldfrf"]
 
 [resource]
 script = ExtResource("5_80th2")
-algorithm_tiles = Array[ExtResource("1_48uj3")]([ExtResource("2_shdt1"), ExtResource("3_3uhvb"), ExtResource("4_3uhvb"), ExtResource("4_xsv6x"), ExtResource("5_shdt1"), ExtResource("7_xsv6x"), ExtResource("8_80th2")])
+algorithm_tiles = Array[ExtResource("1_48uj3")]([ExtResource("2_shdt1"), ExtResource("3_3uhvb"), ExtResource("4_3uhvb"), ExtResource("4_xsv6x"), ExtResource("5_shdt1"), ExtResource("7_dbfpa"), ExtResource("8_ldfrf"), ExtResource("9_pjvwp"), ExtResource("10_ldfrf")])
 metadata/_custom_type_script = "uid://dg13m744a8cut"

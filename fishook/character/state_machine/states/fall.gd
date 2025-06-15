@@ -11,6 +11,8 @@ func enter(_msg := {}) -> void:
 	frame_count = 0
 	if _msg["PreviousState"] == "Idle" or _msg["PreviousState"] == "Run" or _msg["PreviousState"] == "Walk":
 		can_coyote_time = true
+	if _msg["PreviousState"] == "Jump":
+		frame_count = dj_minimum_delay + 1
 
 func unhandled_input(_event: InputEvent):
 	super(_event)

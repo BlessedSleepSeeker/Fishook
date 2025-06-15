@@ -6,7 +6,7 @@
 script = ExtResource("1_umx7n")
 tile_name = "LootGround"
 scene_path = "uid://pxcdlb1o3cod"
-generation_weight = 2
+generation_weight = 10.0
 generation_weight_height_multiplier = 2.0
 can_be_rotated_horizontaly = false
 rotation_score = 0

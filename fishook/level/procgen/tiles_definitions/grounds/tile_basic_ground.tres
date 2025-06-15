@@ -6,7 +6,7 @@
 script = ExtResource("1_enr5m")
 tile_name = "BasicGround"
 scene_path = "uid://dt1bggvlga1t7"
-generation_weight = 10
+generation_weight = 10.0
 generation_weight_height_multiplier = 1.0
 can_be_rotated_horizontaly = false
 rotation_score = 0

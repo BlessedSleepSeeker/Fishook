@@ -6,7 +6,7 @@
 script = ExtResource("1_sg3ri")
 tile_name = "BasicStairs"
 scene_path = "uid://b64ibfkbnont0"
-generation_weight = 5
+generation_weight = 5.0
 generation_weight_height_multiplier = 1.0
 can_be_rotated_horizontaly = true
 rotation_score = 0

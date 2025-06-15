@@ -1,12 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://47v7knaxkby5"]
+[gd_scene load_steps=11 format=3 uid="uid://b3uqbsx2jiclt"]
 
-[ext_resource type="Script" uid="uid://dkx20cn0sq4sq" path="res://level/procgen/tiles_scenes/rooms/tile_ring_launcher.gd" id="1_dsepi"]
-[ext_resource type="Shader" uid="uid://hafl6rc6msin" path="res://level/template_assets/shaders/sobel_outline.gdshader" id="2_7yihw"]
-[ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="3_2sr86"]
+[ext_resource type="Script" uid="uid://dkx20cn0sq4sq" path="res://level/procgen/tiles_scenes/rooms/tile_ring_launcher.gd" id="1_yruek"]
+[ext_resource type="Shader" uid="uid://hafl6rc6msin" path="res://level/template_assets/shaders/sobel_outline.gdshader" id="2_lr1rd"]
+[ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="3_wbfjs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4mnb2"]
 render_priority = 0
-shader = ExtResource("2_7yihw")
+shader = ExtResource("2_lr1rd")
 shader_parameter/outline_color = Color(0.448, 0, 0.64, 1)
 shader_parameter/outline_threshold = 0.2
 
@@ -190,11 +190,12 @@ _data = {
 &"launch": SubResource("Animation_4mnb2")
 }
 
-[node name="TileRingLauncher" type="Node3D"]
-script = ExtResource("1_dsepi")
+[node name="TileRingLauncherVertical" type="Node3D"]
+script = ExtResource("1_yruek")
+launch_direction = Vector3(0, 1, 0)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 8, 0)
 material_override = SubResource("StandardMaterial3D_ywmsw")
 use_collision = true
 collision_layer = 6
@@ -220,7 +221,7 @@ outer_radius = 4.0
 sides = 6
 smooth_faces = false
 
-[node name="BaseCollectiblePositionHack" parent="." instance=ExtResource("3_2sr86")]
+[node name="BaseCollectiblePositionHack" parent="." instance=ExtResource("3_wbfjs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 
 [node name="BoostArea" type="Area3D" parent="."]
@@ -228,7 +229,7 @@ unique_name_in_owner = true
 collision_layer = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BoostArea"]
-transform = Transform3D(0.999997, 0, 0, 0, 0.999997, 0, 0, 0, 1, -0.499999, 8, 0)
+transform = Transform3D(-4.37113e-08, -0.999997, 0, 0.999997, -4.37113e-08, 0, 0, 0, 1, 0, 8, 0)
 shape = SubResource("BoxShape3D_slbp8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
