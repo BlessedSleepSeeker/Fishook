@@ -1,0 +1,239 @@
+[gd_scene load_steps=11 format=3 uid="uid://47v7knaxkby5"]
+
+[ext_resource type="Script" uid="uid://dkx20cn0sq4sq" path="res://level/procgen/tiles_scenes/rooms/tile_ring_launcher.gd" id="1_dsepi"]
+[ext_resource type="Shader" uid="uid://hafl6rc6msin" path="res://level/template_assets/shaders/sobel_outline.gdshader" id="2_7yihw"]
+[ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="3_2sr86"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4mnb2"]
+render_priority = 0
+shader = ExtResource("2_7yihw")
+shader_parameter/outline_color = Color(0.448, 0, 0.64, 1)
+shader_parameter/outline_threshold = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ywmsw"]
+next_pass = SubResource("ShaderMaterial_4mnb2")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_slbp8"]
+size = Vector3(2, 6, 6)
+
+[sub_resource type="Animation" id="Animation_slbp8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGCombiner3D/CSGTorus3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5708)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGCombiner3D/CSGTorus3D2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.523599, 0, 1.5708)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CSGCombiner3D/CSGTorus3D5:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.0472, -3.55271e-15, 1.5708)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CSGCombiner3D/CSGTorus3D5:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CSGCombiner3D/CSGTorus3D2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oqrlh"]
+resource_name = "idle"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGCombiner3D/CSGTorus3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 11, 30),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5708), Vector3(6.28319, 0, 1.5708), Vector3(6.28319, 0, 1.5708)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGCombiner3D/CSGTorus3D2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10, 21, 30),
+"transitions": PackedFloat32Array(1, 0.5, 1, 1),
+"update": 0,
+"values": [Vector3(0.523599, 0, 1.5708), Vector3(0.523599, 0, 1.5708), Vector3(-5.75959, 0, 1.5708), Vector3(-5.75959, 0, 1.5708)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CSGCombiner3D/CSGTorus3D5:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 20, 30),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector3(1.0472, -3.55271e-15, 1.5708), Vector3(1.0472, -3.55271e-15, 1.5708), Vector3(7.33038, 0, 1.5708)]
+}
+
+[sub_resource type="Animation" id="Animation_4mnb2"]
+resource_name = "launch"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGCombiner3D/CSGTorus3D5:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 2.1, 3),
+"transitions": PackedFloat32Array(0.2, 1.6245, 0.25, 0.517632),
+"update": 0,
+"values": [Vector3(-2, 0, 0), Vector3(-7, 0, 0), Vector3(4, 0, 0), Vector3(-2, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGCombiner3D/CSGTorus3D5:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 2.1, 5),
+"transitions": PackedFloat32Array(2, 0.5, 0.4, 1),
+"update": 0,
+"values": [Vector3(1.0472, -3.55271e-15, 1.5708), Vector3(13.6136, 0, 1.5708), Vector3(19.8968, 0, 1.5708), Vector3(1.0472, 0, 1.5708)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CSGCombiner3D/CSGTorus3D2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2, 2.1, 3),
+"transitions": PackedFloat32Array(0.2, 1.62, 0.25, 0.25),
+"update": 0,
+"values": [Vector3(-1, 0, 0), Vector3(-4, 0, 0), Vector3(2, 0, 0), Vector3(-1, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CSGCombiner3D/CSGTorus3D2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 2.1, 5),
+"transitions": PackedFloat32Array(2, 0.5, 0.5, 2),
+"update": 0,
+"values": [Vector3(0.523599, 0, 1.5708), Vector3(-5.75959, 0, 1.5708), Vector3(-12.0428, 0, 1.5708), Vector3(0.523599, 0, 1.5708)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CSGCombiner3D/CSGTorus3D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2, 2.1, 5),
+"transitions": PackedFloat32Array(2, 0.5, 0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5708), Vector3(6.28319, 0, 1.5708), Vector3(12.5664, 0, 1.5708), Vector3(0, 0, 1.5708)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4mnb2"]
+_data = {
+&"RESET": SubResource("Animation_slbp8"),
+&"idle": SubResource("Animation_oqrlh"),
+&"launch": SubResource("Animation_4mnb2")
+}
+
+[node name="TileStairs" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_dsepi")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+material_override = SubResource("StandardMaterial3D_ywmsw")
+use_collision = true
+collision_layer = 6
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="CSGCombiner3D"]
+transform = Transform3D(-3.61999e-06, -1, 0, 1, -3.61999e-06, 0, 0, 0, 1, 0, 0, 0)
+inner_radius = 6.0
+outer_radius = 8.0
+sides = 6
+smooth_faces = false
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="CSGCombiner3D"]
+transform = Transform3D(-3.61999e-06, -1, 0, 0.866025, -3.135e-06, -0.5, 0.5, -1.81e-06, 0.866025, -1, 0, 0)
+inner_radius = 4.5
+outer_radius = 6.0
+sides = 6
+smooth_faces = false
+
+[node name="CSGTorus3D5" type="CSGTorus3D" parent="CSGCombiner3D"]
+transform = Transform3D(-3.61999e-06, -1, -1.77635e-15, 0.499998, -1.80999e-06, -0.866026, 0.866026, -3.13501e-06, 0.499998, -2, 0, 0)
+inner_radius = 3.0
+outer_radius = 4.0
+sides = 6
+smooth_faces = false
+
+[node name="BaseCollectiblePositionHack" parent="." instance=ExtResource("3_2sr86")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="BoostArea" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoostArea"]
+transform = Transform3D(0.999997, 0, 0, 0, 0.999997, 0, 0, 0, 1, -0.499999, 8, 0)
+shape = SubResource("BoxShape3D_slbp8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_4mnb2")
+}

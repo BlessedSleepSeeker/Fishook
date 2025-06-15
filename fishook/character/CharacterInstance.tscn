@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://bcvho024kiqga"]
+[gd_scene load_steps=62 format=3 uid="uid://bcvho024kiqga"]
 
 [ext_resource type="Script" uid="uid://dprgwt0j2p82d" path="res://character/character_instance.gd" id="1_vgy44"]
 [ext_resource type="PackedScene" uid="uid://uh75ppgcvkw1" path="res://character/model/CharacterSkin.tscn" id="2_1bt4p"]
@@ -33,6 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://dhrapjgt5xjdw" path="res://sounds_effects/kenney_impact-sounds/footstep_concrete_003.ogg" id="20_c6ppy"]
 [ext_resource type="AudioStream" uid="uid://jjo6qhry1akn" path="res://sounds_effects/kenney_impact-sounds/footstep_concrete_004.ogg" id="21_hdq18"]
 [ext_resource type="Texture2D" uid="uid://xq8syly2wisv" path="res://character/ui_assets/PNG/Outline/crosshair118.png" id="31_ybyru"]
+[ext_resource type="Script" uid="uid://jvptig38u8c7" path="res://character/state_machine/states/launched.gd" id="33_g8u6d"]
 [ext_resource type="PackedScene" uid="uid://bn8hn6umnjoeb" path="res://character/CharacterUICanvas.tscn" id="34_bjf1r"]
 [ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="35_2c7bb"]
 [ext_resource type="PackedScene" uid="uid://drqwyeworm38d" path="res://particles/smoke_cloud_landing.tscn" id="35_8ojuf"]
@@ -292,6 +293,17 @@ crosshair_texture = ExtResource("31_ybyru")
 unique_name_in_owner = true
 stream = ExtResource("38_ybyru")
 volume_db = -20.0
+
+[node name="Launched" type="Node" parent="StateMachine"]
+script = ExtResource("33_g8u6d")
+apply_gravity = false
+handle_movements_input = false
+should_play_animation_on_enter = false
+
+[node name="LaunchedCD" type="Timer" parent="StateMachine/Launched"]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true

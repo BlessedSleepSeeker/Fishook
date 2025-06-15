@@ -8,6 +8,8 @@ tile_name = "LootGround"
 scene_path = "uid://pxcdlb1o3cod"
 generation_weight = 2
 generation_weight_height_multiplier = 2.0
+can_be_rotated_horizontaly = false
+rotation_score = 0
 tile_socket = 1
 sockets = Dictionary[Vector3i, Array]({
 Vector3i(-1, 0, 0): [0, 1, 2],

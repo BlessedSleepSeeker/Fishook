@@ -26,4 +26,7 @@ func rotate_tiles():
 				# print(new_def.tile_name)
 				# print(tile.sockets)
 				# print(new_def.sockets)
+		else:
+			# To compensate for increased amount of rotated tile, which all have the original tile weight, we multiply the "single" tile's weight by 4
+			tile.generation_weight *= 4
 	algorithm_tiles.append_array(rotated_tiles)

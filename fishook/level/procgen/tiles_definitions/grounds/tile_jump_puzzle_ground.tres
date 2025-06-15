@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="AlgorithmTileDefinition" load_steps=2 format=3 uid="uid://bcjbdq6hb77ph"]
+[gd_resource type="Resource" script_class="AlgorithmTileDefinition" load_steps=2 format=3 uid="uid://dbeduau7jwwyr"]
 
-[ext_resource type="Script" uid="uid://dcn4j0n71cwxv" path="res://level/procgen/tile_definition.gd" id="1_enr5m"]
+[ext_resource type="Script" uid="uid://dcn4j0n71cwxv" path="res://level/procgen/tile_definition.gd" id="1_htd2b"]
 
 [resource]
-script = ExtResource("1_enr5m")
-tile_name = "BasicGround"
-scene_path = "uid://dt1bggvlga1t7"
+script = ExtResource("1_htd2b")
+tile_name = "HoledGround"
+scene_path = "uid://cvwwdwqfvg6ru"
 generation_weight = 10
 generation_weight_height_multiplier = 1.0
 can_be_rotated_horizontaly = false
