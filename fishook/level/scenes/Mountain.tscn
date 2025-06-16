@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://conn71ntnphrv"]
+[gd_scene load_steps=15 format=3 uid="uid://conn71ntnphrv"]
 
 [ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_crsr6"]
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_0mocl"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="7_1dls0"]
 [ext_resource type="Material" uid="uid://dwovhd6ywwmib" path="res://level/template_assets/material/ground_path.tres" id="7_785ym"]
 [ext_resource type="PackedScene" uid="uid://c7pg5cdosq1p1" path="res://level/assets/decoration/AssetRandomRotator.tscn" id="8_jgeu1"]
+[ext_resource type="PackedScene" uid="uid://khpkfqnos2o" path="res://level/utils/debug_ui/DebugCanvas.tscn" id="11_cs42w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2cdyt"]
 sky_top_color = Color(0.11, 1, 0.881333, 1)
@@ -141,3 +142,5 @@ rotation_x_min = -0.0872665
 rotation_x_max = 0.0872665
 rotation_z_min = -0.0872665
 rotation_z_max = 0.0872665
+
+[node name="DebugCanvasLayer" parent="." instance=ExtResource("11_cs42w")]

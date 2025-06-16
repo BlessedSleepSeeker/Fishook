@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvwwdwqfvg6ru"]
+[gd_scene load_steps=3 format=3 uid="uid://cvwwdwqfvg6ru"]
 
+[ext_resource type="Script" uid="uid://b4xkjk0mahknm" path="res://level/procgen/tile_scene.gd" id="1_8a10c"]
 [ext_resource type="Material" uid="uid://cj4lsj2ubhfek" path="res://level/template_assets/material/sobel_outline_base.tres" id="1_ou3la"]
 
 [node name="TileHoledGround" type="Node3D"]
+script = ExtResource("1_8a10c")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 material_override = ExtResource("1_ou3la")

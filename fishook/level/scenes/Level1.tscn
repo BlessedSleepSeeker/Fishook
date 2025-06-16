@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ctqppdq3quxc2"]
+[gd_scene load_steps=21 format=3 uid="uid://ctqppdq3quxc2"]
 
 [ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_ec3ai"]
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_8nujw"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://br70t0g51amx8" path="res://level/assets/decoration/models/flowers/glb/flower1.glb" id="11_6kc0f"]
 [ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="12_aaqac"]
 [ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="13_01jhy"]
+[ext_resource type="PackedScene" uid="uid://khpkfqnos2o" path="res://level/utils/debug_ui/DebugCanvas.tscn" id="14_ec3ai"]
 [ext_resource type="PackedScene" uid="uid://c7pg5cdosq1p1" path="res://level/assets/decoration/AssetRandomRotator.tscn" id="14_r524h"]
 
 [sub_resource type="Gradient" id="Gradient_3ue7i"]
@@ -382,3 +383,5 @@ models = Array[NodePath]([NodePath("../Geometry/Decoration/Rock"), NodePath("../
 models = Array[NodePath]([NodePath("../Geometry/Decoration/Tree"), NodePath("../Geometry/Decoration/Tree2"), NodePath("../Geometry/Decoration/Tree3"), NodePath("../Geometry/Decoration/Tree4"), NodePath("../Geometry/Decoration/Tree5"), NodePath("../Geometry/Decoration/Tree6")])
 rotation_x_max = 0.0872665
 rotation_z_max = 0.0872665
+
+[node name="DebugCanvasLayer" parent="." instance=ExtResource("14_ec3ai")]

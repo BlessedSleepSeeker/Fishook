@@ -31,14 +31,22 @@ func setup_rng():
 func generate_grid() -> void:
 	rules.loop()
 
+func check_grid_validity() -> bool:
+	return rules.check_for_respawn()
+
+
 func load_grid_into_world(parent: Node3D) -> void:
 	for tile: AlgorithmTileGeneration in rules.grid:
-		var instance = tiles.get_tile_instance(tile.chosen_tile_definition.tile_name)
+		var instance: AlgorithmTileScene = tiles.get_tile_instance(tile.chosen_tile_definition.tile_name)
+		instance.tile_generation = tile
 		parent.add_child(instance)
 		instance.position = tile.grid_position * tile_size
 		instance.rotation_degrees.y = tile.chosen_tile_definition.rotation_score * 90
 
 func clean() -> void:
-	rules = null
-	## need to still store tiles to add 
-	#tiles = null
+	pass
+
+
+func reset_generation() -> void:
+	tiles.reset_generation()
+	rules.reset_generation()

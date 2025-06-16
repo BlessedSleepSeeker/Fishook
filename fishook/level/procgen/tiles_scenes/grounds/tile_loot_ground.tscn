@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://pxcdlb1o3cod"]
+[gd_scene load_steps=4 format=3 uid="uid://pxcdlb1o3cod"]
 
+[ext_resource type="Script" uid="uid://b4xkjk0mahknm" path="res://level/procgen/tile_scene.gd" id="1_7p6an"]
 [ext_resource type="Material" uid="uid://cj4lsj2ubhfek" path="res://level/template_assets/material/sobel_outline_base.tres" id="1_46xx6"]
 [ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="2_7p6an"]
 
 [node name="TileBasicGround" type="Node3D"]
+script = ExtResource("1_7p6an")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 material_override = ExtResource("1_46xx6")

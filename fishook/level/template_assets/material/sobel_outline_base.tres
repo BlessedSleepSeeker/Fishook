@@ -5,8 +5,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2fhcm"]
 render_priority = 0
 shader = ExtResource("1_n1k8y")
-shader_parameter/outline_color = Color(0, 0.458667, 0.64, 1)
-shader_parameter/outline_threshold = 0.1
+shader_parameter/outline_color = Color(0, 1, 0.933333, 1)
+shader_parameter/outline_threshold = 1.0
 
 [resource]
 next_pass = SubResource("ShaderMaterial_2fhcm")

@@ -1,11 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://ciqpg5yk1w2rx"]
+[gd_scene load_steps=5 format=3 uid="uid://ciqpg5yk1w2rx"]
 
-[ext_resource type="Material" uid="uid://cj4lsj2ubhfek" path="res://level/template_assets/material/sobel_outline_base.tres" id="1_aqv8g"]
+[ext_resource type="Shader" uid="uid://hafl6rc6msin" path="res://level/template_assets/shaders/sobel_outline.gdshader" id="1_aqv8g"]
+[ext_resource type="Script" uid="uid://b4xkjk0mahknm" path="res://level/procgen/tile_scene.gd" id="1_kxapn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kxapn"]
+render_priority = 0
+shader = ExtResource("1_aqv8g")
+shader_parameter/outline_color = Color(0.234667, 0.64, 0, 1)
+shader_parameter/outline_threshold = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpgsy"]
+next_pass = SubResource("ShaderMaterial_kxapn")
 
 [node name="TileHoledGroundReversed" type="Node3D"]
+script = ExtResource("1_kxapn")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-material_override = ExtResource("1_aqv8g")
+material_override = SubResource("StandardMaterial3D_kpgsy")
 use_collision = true
 collision_layer = 6
 

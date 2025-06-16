@@ -1,4 +1,5 @@
 extends AlgorithmTileScene
+class_name TileLauncher
 
 @export var launch_windup_time: float = 2
 @export var velocity_decrease_time: float = 1

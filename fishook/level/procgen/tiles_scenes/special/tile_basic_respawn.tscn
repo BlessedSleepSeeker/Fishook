@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cv84jmnrsinxm"]
+[gd_scene load_steps=5 format=3 uid="uid://cv84jmnrsinxm"]
 
 [ext_resource type="Material" uid="uid://cj4lsj2ubhfek" path="res://level/template_assets/material/sobel_outline_base.tres" id="1_dcj6o"]
+[ext_resource type="Script" uid="uid://b4xkjk0mahknm" path="res://level/procgen/tile_scene.gd" id="1_gfa0n"]
 [ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="2_gfa0n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eq8ng"]
@@ -8,6 +9,7 @@ vertex_color_use_as_albedo = true
 albedo_color = Color(0.588235, 0.301961, 1, 1)
 
 [node name="TileBasicRespawn" type="Node3D"]
+script = ExtResource("1_gfa0n")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 material_override = SubResource("StandardMaterial3D_eq8ng")

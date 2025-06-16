@@ -33,7 +33,8 @@ func enter(_msg := {}) -> void:
 	character.hud_canvas.change_crosshair_to(crosshair_texture)
 	character.camera.parameters = self.camera_parameters
 	character.camera.raycast_range = physics_parameters.GRAPPLE_MAX_RANGE
-	character.debug_canvas.set_state(self.name)
+	if character.debug_canvas:
+		character.debug_canvas.set_state(self.name)
 	if update_max_speed_on_enter:
 		physics_parameters.MAX_SPEED = max(abs(character.velocity.x) + abs(character.velocity.z), saved_max_speed)
 		#print_debug("Updated max speed : %f" % physics_parameters.MAX_SPEED)
@@ -43,8 +44,6 @@ func input(_event: InputEvent) -> void:
 	pass
 
 func unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_debug_toggle"):
-		character.debug_canvas.visible = !character.debug_canvas.visible
 	if handle_movements_input:
 		character.raw_input = Input.get_vector("left", "right", "forward", "back")
 		var forward: Vector3 = character.camera.real_camera.global_basis.z
@@ -86,8 +85,9 @@ func physics_update(_delta: float, move_character: bool = true) -> void:
 
 		if move_character:
 			character.move_and_slide()
-	
-	character.debug_canvas.set_speedometer(character.velocity)
+	if character.debug_canvas:
+		character.debug_canvas.set_speedometer(character.velocity)
+		character.debug_canvas.set_world_position(character.position)
 	## Reseting raw input
 	character.raw_input = Vector2.ZERO
 

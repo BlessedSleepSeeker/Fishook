@@ -8,7 +8,7 @@ class_name CharacterInstance
 @onready var particles_manager: ParticlesManager = %ParticlesManager
 
 @onready var hud_canvas: CharacterHUD = %HUDCanvasLayer
-@onready var debug_canvas: CharacterDebugCanvas = %DebugCanvasLayer
+var debug_canvas: DebugCanvas = null
 
 @onready var bullet_time_stopwatch: Stopwatch = %BulletTimeStopwatch
 @onready var bullet_time_cooldown: Timer = %BulletTimeCooldown

@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://bsl8pibq4pirm"]
+[gd_scene load_steps=2 format=3 uid="uid://bsl8pibq4pirm"]
+
+[ext_resource type="Script" uid="uid://b4xkjk0mahknm" path="res://level/procgen/tile_scene.gd" id="1_iihuf"]
 
 [node name="TileAir" type="Node3D"]
+script = ExtResource("1_iihuf")

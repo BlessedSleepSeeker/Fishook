@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bfvhhew1rxjs0"]
+[gd_scene load_steps=29 format=3 uid="uid://bfvhhew1rxjs0"]
 
 [ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_ehgmg"]
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_og642"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://br70t0g51amx8" path="res://level/assets/decoration/models/flowers/glb/flower1.glb" id="9_58hut"]
 [ext_resource type="PackedScene" uid="uid://c7pg5cdosq1p1" path="res://level/assets/decoration/AssetRandomRotator.tscn" id="10_8dqi2"]
 [ext_resource type="PackedScene" uid="uid://pd1lku6503f" path="res://level/assets/decoration/models/flowers/RandomFlower.tscn" id="15_58hut"]
+[ext_resource type="PackedScene" uid="uid://khpkfqnos2o" path="res://level/utils/debug_ui/DebugCanvas.tscn" id="17_4jlt8"]
 
 [sub_resource type="Gradient" id="Gradient_3ue7i"]
 interpolation_mode = 2
@@ -704,5 +705,7 @@ transform = Transform3D(0.973846, -0.132668, -0.184456, 0.134707, 0.990884, -0.0
 
 [node name="RandomFlower4" parent="." instance=ExtResource("15_58hut")]
 transform = Transform3D(0.336173, -0.0018179, 0.941798, -0.119129, 0.991884, 0.0444374, -0.934235, -0.127134, 0.333228, 15.5007, 144.495, 266.491)
+
+[node name="DebugCanvasLayer" parent="." instance=ExtResource("17_4jlt8")]
 
 [editable path="Geometry/CSGTower/godot_plushV2"]

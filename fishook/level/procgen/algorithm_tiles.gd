@@ -3,7 +3,7 @@ class_name AlgorithmTiles
 
 @export var algorithm_tiles: Array[AlgorithmTileDefinition] = []
 
-var tiles_scenes: Dictionary[String, PackedScene]
+var tiles_scenes: Dictionary[String, PackedScene] = {}
 
 func preload_tiles_scenes() -> void:
 	for tile: AlgorithmTileDefinition in algorithm_tiles:
@@ -30,3 +30,7 @@ func rotate_tiles():
 			# To compensate for increased amount of rotated tile, which all have the original tile weight, we multiply the "single" tile's weight by 4
 			tile.generation_weight *= 4
 	algorithm_tiles.append_array(rotated_tiles)
+
+
+func reset_generation() -> void:
+	tiles_scenes = {}

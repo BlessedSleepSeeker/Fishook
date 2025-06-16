@@ -13,6 +13,7 @@ class_name BaseLevel
 @onready var current_checkpoint = null
 @onready var hud: LevelHUD = %LevelHud
 @onready var level_stopwatch: Stopwatch = %LevelStopwatch
+@onready var debug_canvas: DebugCanvas = $DebugCanvasLayer
 
 @onready var root: CustomRoot = get_tree().root.get_node("Root")
 
@@ -28,6 +29,7 @@ func _ready():
 		randomize_spawn()
 	else:
 		find_spawn()
+	character.debug_canvas = debug_canvas
 
 func register_collectibles() -> void:
 	for collectible: BaseCollectible in get_tree().get_nodes_in_group("Collectible"):
@@ -69,6 +71,10 @@ func _process(_delta):
 func _physics_process(_delta):
 	if character.global_position.y < level_down_limit && is_respawning == false:
 		teleport_player_to_checkpoint()
+
+func _unhandled_input(_event):
+	if Input.is_action_just_pressed("ui_debug_toggle"):
+		debug_canvas.visible = !debug_canvas.visible
 
 var is_respawning: bool = false
 func teleport_player_to_checkpoint() -> void:

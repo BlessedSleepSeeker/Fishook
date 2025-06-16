@@ -51,3 +51,13 @@ func check_if_position_can_exist(position: Vector3i) -> bool:
 	if position.z < 0 || position.z > grid_size.z - 1:
 		return false
 	return true
+
+func check_for_respawn() -> bool:
+	for tile: AlgorithmTileGeneration in self.grid:
+		if tile.chosen_tile_definition.tile_name == "BasicRespawn":
+			return true
+	return false
+
+
+func reset_generation() -> void:
+	grid = []
