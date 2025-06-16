@@ -32,6 +32,7 @@ func enter(_msg := {}) -> void:
 		play_animation()
 	character.hud_canvas.change_crosshair_to(crosshair_texture)
 	character.camera.parameters = self.camera_parameters
+	character.camera.tween_spring_length(self.camera_parameters.SPRING_ARM_LENGHT, self.camera_parameters.CAMERA_PARAMS_TWEEN_SPEED)
 	character.camera.raycast_range = physics_parameters.GRAPPLE_MAX_RANGE
 	if character.debug_canvas:
 		character.debug_canvas.set_state(self.name)

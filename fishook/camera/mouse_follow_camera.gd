@@ -3,6 +3,7 @@ class_name MouseFollowCamera
 
 @export var parameters: CameraParameters = CameraParameters.new()
 
+@onready var spring_arm: SpringArm3D = $SpringArm3D
 @onready var real_camera: Camera3D = %Camera3D
 @onready var raycast: RayCast3D = %HookRayCast
 @onready var behind: Marker3D = %Behind
@@ -70,3 +71,13 @@ func _physics_process(_delta):
 	# 	sphere_indicator.show()
 	# else:
 	# 	sphere_indicator.hide()
+
+
+func tween_spring_length(length: float, tween_duration: float) -> void:
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(spring_arm, "spring_length", length, tween_duration).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+
+
+func tween_fov(new_fov: float, tween_duration: float) -> void:
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(real_camera, "fov", new_fov, tween_duration).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)

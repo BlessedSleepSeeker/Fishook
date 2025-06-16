@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://bcvho024kiqga"]
+[gd_scene load_steps=65 format=3 uid="uid://bcvho024kiqga"]
 
 [ext_resource type="Script" uid="uid://dprgwt0j2p82d" path="res://character/character_instance.gd" id="1_vgy44"]
 [ext_resource type="PackedScene" uid="uid://uh75ppgcvkw1" path="res://character/model/CharacterSkin.tscn" id="2_1bt4p"]
@@ -35,8 +35,10 @@
 [ext_resource type="Texture2D" uid="uid://xq8syly2wisv" path="res://character/ui_assets/PNG/Outline/crosshair118.png" id="31_ybyru"]
 [ext_resource type="Script" uid="uid://jvptig38u8c7" path="res://character/state_machine/states/launched.gd" id="33_g8u6d"]
 [ext_resource type="PackedScene" uid="uid://bn8hn6umnjoeb" path="res://character/CharacterUICanvas.tscn" id="34_bjf1r"]
+[ext_resource type="Script" uid="uid://dfiphiydwmcpr" path="res://character/state_machine/states/gliding.gd" id="34_g8u6d"]
 [ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="35_2c7bb"]
 [ext_resource type="PackedScene" uid="uid://drqwyeworm38d" path="res://particles/smoke_cloud_landing.tscn" id="35_8ojuf"]
+[ext_resource type="Script" uid="uid://vu5siov5wkt1" path="res://camera/camera_parameters.gd" id="35_i2ope"]
 [ext_resource type="AudioStream" uid="uid://crcr12uky3lxp" path="res://sounds_effects/bbc_remove_before_selling/reel-05.mp3" id="38_ybyru"]
 
 [sub_resource type="Resource" id="Resource_0y2cd"]
@@ -128,6 +130,41 @@ GRAPPLE_REELING_SPEED = 3.0
 GRAPPLE_FRICTION = 0.995
 GRAPPLE_ROTATION_SPEED = 0.1
 metadata/_custom_type_script = "uid://dba7awsrs6b6y"
+
+[sub_resource type="Resource" id="Resource_g8u6d"]
+script = ExtResource("6_uip3n")
+BULLET_TIME_STRENGHT = 0.2
+BULLET_TIME_TRANSITION_SPEED = 0.3
+GRAVITY = -30.0
+JUMP_IMPULSE = 12.0
+ACCELERATION = 20.0
+MAX_SPEED = 8.0
+FRICTION = 0.0
+ROTATION_SPEED = 6.0
+GRAPPLE_MAX_RANGE = 45.0
+GRAPPLE_REST_LENGTH = 0.1
+GRAPPLE_SWING_SPEED = 70.0
+GRAPPLE_REELING_SPEED = 3.0
+GRAPPLE_FRICTION = 0.995
+GRAPPLE_ROTATION_SPEED = 0.1
+metadata/_custom_type_script = "uid://dba7awsrs6b6y"
+
+[sub_resource type="Resource" id="Resource_w8puf"]
+script = ExtResource("35_i2ope")
+CAMERA_CONTROLLER_ROTATION_SPEED = 3.0
+CAMERA_MOUSE_SENSIBILITY = 0.2
+CAMERA_X_ROT_MIN = -1.56905
+CAMERA_X_ROT_MAX = 1.22173
+SPRING_ARM_SPEED = 2.0
+SPRING_ARM_LENGHT = 16.0
+CAMERA_FOV = 100.0
+CAMERA_PARAMS_TWEEN_SPEED = 5.0
+CAMERA_BASE_OFFSET = Vector3(0, 2.75, 0)
+CAMERA_TOO_CLOSE_RANGE = 4.0
+CAMERA_TOO_CLOSE_OFFSET = Vector3(0, 2.75, 0)
+CAMERA_TOO_CLOSE_BEHIND_MULTIPLICATOR = 10.0
+CAMERA_TOO_CLOSE_MOVEMENT_TWEEN_SPEED = 0.3
+metadata/_custom_type_script = "uid://vu5siov5wkt1"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7jo2n"]
 radius = 0.3
@@ -303,6 +340,14 @@ should_play_animation_on_enter = false
 unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true
+
+[node name="Gliding" type="Node" parent="StateMachine"]
+script = ExtResource("34_g8u6d")
+default_physics = false
+apply_gravity = false
+should_play_animation_on_enter = false
+physics_parameters = SubResource("Resource_g8u6d")
+camera_parameters = SubResource("Resource_w8puf")
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true

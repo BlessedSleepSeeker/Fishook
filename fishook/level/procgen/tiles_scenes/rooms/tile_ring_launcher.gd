@@ -5,6 +5,7 @@ class_name TileLauncher
 @export var velocity_decrease_time: float = 1
 @export var launch_direction: Vector3 = Vector3(1, 0, 0)
 @export var launch_power: float = 80
+@export var post_launch_character_state: String = "Fall"
 
 @onready var boost_area: Area3D = %BoostArea
 @onready var anim_player: AnimationPlayer = %AnimationPlayer
@@ -21,4 +22,4 @@ func on_boost_entered(body: Node3D) -> void:
 		var velo = (launch_direction * launch_power)
 		body.velocity = velo.rotated(Vector3.UP, self.rotation.y)
 		#print(body.velocity)
-		body.state_machine.transition_to("Fall")
+		body.state_machine.transition_to(post_launch_character_state)

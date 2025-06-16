@@ -7,7 +7,7 @@ func enter(_msg := {}) -> void:
 	if cooldown.time_left == 0:
 		cooldown.start()
 	else:
-		return state_machine.transition_to(_msg["PreviousState"])
+		return state_machine.transition_to("Fall")
 	super()
 	character.did_double_jump = false
 

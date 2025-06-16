@@ -5,23 +5,34 @@ class_name ProceduralLevel
 
 @export var algorithm: ProceduralLevelAlgorithm = null
 
+signal level_loading_finished
+@export var chunk_generating: bool = true
+@export var chunk_loading: bool = true
+
 var current_tile: AlgorithmTileScene = null
 
 func _ready():
-	generate_level()
+	generate_full_level()
 
-func generate_level() -> void:
+func generate_full_level() -> void:
 	algorithm.setup()
-	algorithm.generate_grid()
+	algorithm.generate_full_grid()
 	if not algorithm.check_grid_validity():
 		print("Seed %s did not generate a valid level... Changing seed to random..." % RNGHandler.MAIN_SEED)
 		RNGHandler.MAIN_SEED = ''
 		RNGHandler.generate_seeds()
 		algorithm.reset_generation()
-		return generate_level()
+		return generate_full_level()
 	algorithm.load_grid_into_world(geometry_parent)
 	algorithm.clean()
 	super._ready()
+
+func generate_chunk() -> void:
+	pass
+
+
+func load_chunk_to_world() -> void:
+	pass
 
 func _physics_process(delta):
 	super(delta)

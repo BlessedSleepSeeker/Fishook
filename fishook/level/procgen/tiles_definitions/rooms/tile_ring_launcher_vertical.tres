@@ -6,7 +6,7 @@
 script = ExtResource("1_uh3fa")
 tile_name = "RingLauncherVertical"
 scene_path = "uid://b3uqbsx2jiclt"
-generation_weight = 1.0
+generation_weight = 10.0
 generation_weight_height_multiplier = 1.0
 can_be_rotated_horizontaly = false
 rotation_score = 0
