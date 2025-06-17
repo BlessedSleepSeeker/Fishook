@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://bcvho024kiqga"]
+[gd_scene load_steps=66 format=3 uid="uid://bcvho024kiqga"]
 
 [ext_resource type="Script" uid="uid://dprgwt0j2p82d" path="res://character/character_instance.gd" id="1_vgy44"]
 [ext_resource type="PackedScene" uid="uid://uh75ppgcvkw1" path="res://character/model/CharacterSkin.tscn" id="2_1bt4p"]
@@ -39,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="35_2c7bb"]
 [ext_resource type="PackedScene" uid="uid://drqwyeworm38d" path="res://particles/smoke_cloud_landing.tscn" id="35_8ojuf"]
 [ext_resource type="Script" uid="uid://vu5siov5wkt1" path="res://camera/camera_parameters.gd" id="35_i2ope"]
+[ext_resource type="Script" uid="uid://cu0ui5bqe7meb" path="res://character/state_machine/states/cinematic.gd" id="36_w8puf"]
 [ext_resource type="AudioStream" uid="uid://crcr12uky3lxp" path="res://sounds_effects/bbc_remove_before_selling/reel-05.mp3" id="38_ybyru"]
 
 [sub_resource type="Resource" id="Resource_0y2cd"]
@@ -332,9 +333,9 @@ volume_db = -20.0
 
 [node name="Launched" type="Node" parent="StateMachine"]
 script = ExtResource("33_g8u6d")
+default_physics = false
 apply_gravity = false
 handle_movements_input = false
-should_play_animation_on_enter = false
 
 [node name="LaunchedCD" type="Timer" parent="StateMachine/Launched"]
 unique_name_in_owner = true
@@ -345,9 +346,11 @@ one_shot = true
 script = ExtResource("34_g8u6d")
 default_physics = false
 apply_gravity = false
-should_play_animation_on_enter = false
 physics_parameters = SubResource("Resource_g8u6d")
 camera_parameters = SubResource("Resource_w8puf")
+
+[node name="Cinematic" type="Node" parent="StateMachine"]
+script = ExtResource("36_w8puf")
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
