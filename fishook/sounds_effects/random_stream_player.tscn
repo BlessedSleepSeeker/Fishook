@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://d3evtq3o86t31" path="res://sounds_effects/random_stream_player.gd" id="1_es3ha"]
 
 [node name="RandomStreamPlayer" type="AudioStreamPlayer"]
+bus = &"Sound Effect"
 script = ExtResource("1_es3ha")

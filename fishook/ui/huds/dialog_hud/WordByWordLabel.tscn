@@ -1,0 +1,24 @@
+[gd_scene load_steps=8 format=3 uid="uid://bsy2brcc5c7qq"]
+
+[ext_resource type="Script" uid="uid://dado4uvm410rr" path="res://ui/huds/dialog_hud/word_by_word_label.gd" id="1_pnfxj"]
+[ext_resource type="PackedScene" uid="uid://co75xjj6oudb4" path="res://sounds_effects/random_stream_player.tscn" id="2_0knnw"]
+[ext_resource type="AudioStream" uid="uid://b1ykvyjtyaidx" path="res://sounds_effects/personal/shortboop1.mp3" id="2_nywrd"]
+[ext_resource type="AudioStream" uid="uid://dtm66jtnrrx6r" path="res://sounds_effects/personal/shortboop2.mp3" id="3_owxb6"]
+[ext_resource type="AudioStream" uid="uid://gksm874m57qf" path="res://sounds_effects/personal/shortboop3.mp3" id="4_3m8c1"]
+[ext_resource type="AudioStream" uid="uid://cqkf41dnsoqia" path="res://sounds_effects/personal/shortboop4.mp3" id="5_68pji"]
+[ext_resource type="AudioStream" uid="uid://bgsvu8t4igd73" path="res://sounds_effects/personal/shortboop5.mp3" id="6_kf06v"]
+
+[node name="WordByWordLabel" type="Label"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+text = "Something went wrong..."
+autowrap_mode = 3
+script = ExtResource("1_pnfxj")
+noises_on_word = Array[AudioStream]([ExtResource("2_nywrd"), ExtResource("3_owxb6"), ExtResource("4_3m8c1"), ExtResource("5_68pji"), ExtResource("6_kf06v")])
+
+[node name="RandomStreamPlayer" parent="." instance=ExtResource("2_0knnw")]
+bus = &"SoundEffectLow"

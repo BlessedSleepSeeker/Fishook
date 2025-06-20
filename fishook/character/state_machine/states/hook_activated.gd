@@ -30,7 +30,6 @@ func enter(_msg := {}) -> void:
 	if hookshot_raycast.is_colliding():
 		var collider: Node3D = hookshot_raycast.get_collider()
 		hookshot_node.reparent(collider)
-		print(collider)
 		hookshot_point = hookshot_raycast.get_collision_point()
 		hookshot_node.global_position = hookshot_point
 		distance = character.global_position.distance_to(hookshot_point)
@@ -60,6 +59,8 @@ func physics_update(_delta: float, _move_character: bool = true):
 		reel_in(_delta)
 	if Input.is_action_pressed("reel_out"):
 		reel_out(_delta)
+	if Input.is_action_just_released("reel_in") || Input.is_action_just_released("reel_out"):
+		tween_reel_sound_player_volume(-80)
 
 
 	if frame_nbr == 9:
@@ -107,6 +108,7 @@ func reel_in(_delta: float) -> void:
 	if displacement > 0:
 		distance = character.global_position.distance_to(hookshot_point) - (physics_parameters.GRAPPLE_REELING_SPEED * _delta)
 		if reel_sound_player.playing == false:
+			tween_reel_sound_player_volume(0, 0.05)
 			reel_sound_player.play()
 			reel_sound_player.pitch_scale = (distance / physics_parameters.GRAPPLE_MAX_RANGE) * 2
 		character.hud_canvas.tween_reel_value(distance, physics_parameters.GRAPPLE_MAX_RANGE, 0.1)
@@ -116,9 +118,14 @@ func reel_out(_delta: float) -> void:
 	if displacement > 0:
 		distance = character.global_position.distance_to(hookshot_point) + (physics_parameters.GRAPPLE_REELING_SPEED * _delta)
 		if reel_sound_player.playing == false:
+			tween_reel_sound_player_volume(0, 0.05)
 			reel_sound_player.play()
 			reel_sound_player.pitch_scale = (distance / physics_parameters.GRAPPLE_MAX_RANGE) * 2
 		character.hud_canvas.tween_reel_value(distance, physics_parameters.GRAPPLE_MAX_RANGE, 0.1)
+
+func tween_reel_sound_player_volume(new_volume: float, speed: float = 0.2) -> void:
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(reel_sound_player, "volume_db", new_volume, speed)
 
 func spawn_fishook() -> void:
 	var inst = fishook_scene.instantiate()
@@ -130,6 +137,7 @@ func update_fishook_position(new_position: Vector3) -> void:
 	fishook.global_position = new_position
 
 func exit():
+	tween_reel_sound_player_volume(-80, 0.3)
 	character.particles_manager.stop("HookTrail")
 	character.skin.animation_tree.animation_finished.disconnect(play_animation)
 	if fishook:

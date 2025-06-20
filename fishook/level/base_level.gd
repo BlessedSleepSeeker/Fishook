@@ -14,6 +14,7 @@ class_name BaseLevel
 @onready var hud: LevelHUD = %LevelHud
 @onready var level_stopwatch: Stopwatch = %LevelStopwatch
 @onready var debug_canvas: DebugCanvas = $DebugCanvasLayer
+@onready var dialog_hud: DialogHUD = %DialogHUD
 
 @onready var root: CustomRoot = get_tree().root.get_node("Root")
 
@@ -30,6 +31,9 @@ func _ready():
 	else:
 		find_spawn()
 	character.debug_canvas = debug_canvas
+	if dialog_hud != null:
+		dialog_hud.hide()
+		dialog_hud.update_dialog(" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet bibendum mauris, sed molestie magna. Duis id malesuada velit. Maecenas imperdiet quis tellus eget sagittis. Nulla mi mi, luctus a tellus nec, tincidunt mattis quam. Curabitur porttitor in ligula ut blandit. Donec cursus felis sed nisi volutpat, ac ornare nisl molestie. Sed erat sapien, aliquam nec elit a, rutrum dictum leo. Duis accumsan rhoncus eleifend. ")
 
 func register_collectibles() -> void:
 	for collectible: BaseCollectible in get_tree().get_nodes_in_group("Collectible"):

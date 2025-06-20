@@ -273,7 +273,6 @@ script = ExtResource("5_svu25")
 script = ExtResource("5_6r8ug")
 
 [node name="RandomStreamPlayer" parent="StateMachine/Run" instance=ExtResource("6_kdfyh")]
-bus = &"Sound Effect"
 streams = Array[AudioStream]([ExtResource("7_uame8"), ExtResource("8_s53p4"), ExtResource("9_x5wc4"), ExtResource("10_jf1sj"), ExtResource("11_wick5")])
 
 [node name="AnimationLoopingTimer" type="Timer" parent="StateMachine/Run"]
@@ -284,7 +283,6 @@ update_max_speed_on_enter = true
 physics_parameters = SubResource("Resource_0y2cd")
 
 [node name="RandomStreamPlayer" parent="StateMachine/Jump" instance=ExtResource("6_kdfyh")]
-bus = &"Sound Effect"
 streams = Array[AudioStream]([ExtResource("14_m6vje"), ExtResource("15_bjf1r"), ExtResource("16_2c7bb"), ExtResource("17_8ojuf"), ExtResource("18_ybyru")])
 no_repeat = false
 
@@ -297,7 +295,6 @@ update_max_speed_on_enter = true
 physics_parameters = SubResource("Resource_uip3n")
 
 [node name="RandomStreamPlayer" parent="StateMachine/DoubleJump" instance=ExtResource("6_kdfyh")]
-bus = &"Sound Effect"
 streams = Array[AudioStream]([ExtResource("14_m6vje"), ExtResource("15_bjf1r"), ExtResource("16_2c7bb"), ExtResource("17_8ojuf"), ExtResource("18_ybyru")])
 no_repeat = false
 
@@ -329,7 +326,7 @@ crosshair_texture = ExtResource("31_ybyru")
 [node name="ReelSoundPlayer" type="AudioStreamPlayer" parent="StateMachine/HookActivated"]
 unique_name_in_owner = true
 stream = ExtResource("38_ybyru")
-volume_db = -20.0
+bus = &"Sound Effect"
 
 [node name="Launched" type="Node" parent="StateMachine"]
 script = ExtResource("33_g8u6d")

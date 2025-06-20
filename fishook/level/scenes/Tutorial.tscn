@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://blqblyst28eku"]
+[gd_scene load_steps=22 format=3 uid="uid://blqblyst28eku"]
 
 [ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_xroqs"]
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_6ainc"]
@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/huds/level_hud/LevelHUD.tscn" id="4_3f3lf"]
 [ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="5_8snt5"]
 [ext_resource type="Material" uid="uid://h0r4shlt6jqo" path="res://level/template_assets/material/dark_grid_texture.tres" id="6_d21nb"]
+[ext_resource type="Material" uid="uid://bvexudfc4kmcx" path="res://level/template_assets/material/half_transparent.tres" id="7_eo4ju"]
 [ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="11_016wd"]
 [ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="12_laaud"]
+[ext_resource type="PackedScene" uid="uid://bsssnsrsqpssb" path="res://ui/huds/dialog_hud/DialogHUD.tscn" id="12_rrasd"]
 [ext_resource type="PackedScene" uid="uid://c7pg5cdosq1p1" path="res://level/assets/decoration/AssetRandomRotator.tscn" id="13_7puqx"]
 [ext_resource type="PackedScene" uid="uid://khpkfqnos2o" path="res://level/utils/debug_ui/DebugCanvas.tscn" id="14_hkna7"]
 
@@ -54,7 +56,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CSGBox3D2:position")
+tracks/0/path = NodePath("Geometry/CSGBox3D2:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -69,7 +71,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CSGBox3D2:position")
+tracks/0/path = NodePath("Geometry/CSGBox3D2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -106,19 +108,8 @@ shadow_enabled = true
 [node name="LevelHud" parent="." instance=ExtResource("4_3f3lf")]
 unique_name_in_owner = true
 
-[node name="FirstCheckpoint" parent="." instance=ExtResource("5_8snt5")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.513, 0)
-
-[node name="Checkpoint2" parent="." instance=ExtResource("5_8snt5")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 5.513, 0)
-
-[node name="Checkpoint3" parent="." instance=ExtResource("5_8snt5")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136, 5.513, 0)
-
 [node name="Geometry" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="CSGGrounds" type="CSGCombiner3D" parent="Geometry"]
 material_override = ExtResource("6_d21nb")
@@ -168,6 +159,10 @@ height = 4.75
 sides = 12
 smooth_faces = false
 
+[node name="CSGBox3D" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91, 25, 0)
+size = Vector3(4, 4, 4)
+
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -136, 3.125, 0)
 radius = 8.0
@@ -175,21 +170,102 @@ height = 4.75
 sides = 12
 smooth_faces = false
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Geometry/CSGGrounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91, 25, 0)
-size = Vector3(4, 4, 4)
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -247, 3.125, 0)
+radius = 8.0
+height = 4.75
+sides = 12
+smooth_faces = false
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -247, 26.125, 0)
+radius = 8.0
+height = 4.75
+sides = 12
+smooth_faces = false
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -277, 26, 0)
+radius = 8.0
+sides = 12
+smooth_faces = false
+
+[node name="StartingPlatform8" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -262, 26, 0)
+size = Vector3(34, 2, 16)
+material = ExtResource("6_d21nb")
+
+[node name="StartingPlatform9" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -349, 26, -3.80289e-06)
+size = Vector3(34, 2, 16)
+material = ExtResource("6_d21nb")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -247, 26.125, 0)
+operation = 2
+radius = 6.0
+height = 4.75
+sides = 12
+smooth_faces = false
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -247, 45.125, 0)
+radius = 4.0
+height = 3.0
+sides = 12
+smooth_faces = false
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -247, 45.9231, 0)
+operation = 2
+radius = 3.0
+height = 3.5
+sides = 12
+smooth_faces = false
+
+[node name="FirstCheckpoint" parent="Geometry" instance=ExtResource("5_8snt5")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.513, 0)
+
+[node name="Checkpoint2" parent="Geometry" instance=ExtResource("5_8snt5")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 5.513, 0)
+
+[node name="Checkpoint3" parent="Geometry" instance=ExtResource("5_8snt5")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136, 5.513, 0)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185, 25, 0)
 use_collision = true
 collision_layer = 6
 size = Vector3(4, 4, 4)
 material = ExtResource("6_d21nb")
 
+[node name="CSGBox3D3" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -302.5, 48, 0.999998)
+use_collision = true
+collision_layer = 4
+size = Vector3(4, 96, 74)
+material = ExtResource("7_eo4ju")
+
 [node name="Collectibles" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="BaseCollectiblePositionHack" parent="Collectibles" instance=ExtResource("11_016wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2, 0)
+
+[node name="BaseCollectiblePositionHack5" parent="Collectibles" instance=ExtResource("11_016wd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10175e-14, -4, -4.80825e-07)
+
+[node name="BaseCollectiblePositionHack2" parent="Collectibles" instance=ExtResource("11_016wd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247, 7, 0)
+
+[node name="BaseCollectiblePositionHack3" parent="Collectibles" instance=ExtResource("11_016wd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247, 45, 0)
+
+[node name="BaseCollectiblePositionHack4" parent="Collectibles" instance=ExtResource("11_016wd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247, 39, 0)
 
 [node name="LevelStopwatch" parent="." instance=ExtResource("12_laaud")]
 unique_name_in_owner = true
@@ -210,9 +286,13 @@ rotation_x_max = 0.0872665
 rotation_z_max = 0.0872665
 
 [node name="DebugCanvasLayer" parent="." instance=ExtResource("14_hkna7")]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_eo4ju")
 }
 autoplay = "move_around"
+
+[node name="DialogHUD" parent="." instance=ExtResource("12_rrasd")]
+unique_name_in_owner = true
