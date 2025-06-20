@@ -192,6 +192,7 @@ _data = {
 
 [node name="TileRingLauncher" type="Node3D"]
 script = ExtResource("1_dsepi")
+post_launch_wait = 0.1
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)

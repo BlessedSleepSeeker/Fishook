@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://b64ibfkbnont0"]
+
+[ext_resource type="Script" uid="uid://b4xkjk0mahknm" path="res://level/procgen/tile_scene.gd" id="1_31dow"]
+[ext_resource type="Material" uid="uid://cj4lsj2ubhfek" path="res://level/template_assets/material/sobel_outline_base.tres" id="2_jg2da"]
+[ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="3_aa2rr"]
+[ext_resource type="PackedScene" uid="uid://bcgxqrrrdjuxs" path="res://level/assets/decoration/RandomizedDecoration.tscn" id="4_jg2da"]
+
+[node name="TileHouse" type="Node3D" node_paths=PackedStringArray("random_decoration_spots")]
+script = ExtResource("1_31dow")
+random_decoration_spots = [NodePath("RandomizedDecoration"), NodePath("RandomizedDecoration2")]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+material_override = ExtResource("2_jg2da")
+use_collision = true
+collision_layer = 6
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(16, 16, 16)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+operation = 2
+size = Vector3(14, 14, 14)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.595, -5, 0)
+operation = 2
+size = Vector3(2, 4, 4)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 7.777, 0)
+operation = 2
+size = Vector3(4, 2, 14)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 7.777, 0)
+operation = 2
+size = Vector3(4, 2, 14)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.777, 5)
+operation = 2
+size = Vector3(14, 2, 4)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.777, -5)
+operation = 2
+size = Vector3(14, 2, 4)
+
+[node name="BaseCollectiblePositionHack" parent="." instance=ExtResource("3_aa2rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="RandomizedDecoration" parent="." instance=ExtResource("4_jg2da")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -5)
+
+[node name="RandomizedDecoration2" parent="." instance=ExtResource("4_jg2da")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 2)

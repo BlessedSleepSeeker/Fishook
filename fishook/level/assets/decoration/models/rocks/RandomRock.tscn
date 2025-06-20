@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2tsnwudtwncu"]
+
+[ext_resource type="Script" uid="uid://dxxq2q1toibjm" path="res://level/assets/decoration/models/random_asset.gd" id="1_psrhg"]
+[ext_resource type="PackedScene" uid="uid://bufgfitu7r2tc" path="res://level/assets/decoration/models/rocks/Rock.glb" id="2_g54n4"]
+[ext_resource type="Resource" uid="uid://bxoxi6dq6ylrj" path="res://level/assets/decoration/models/rocks/rock_random_rotation_values.tres" id="3_g54n4"]
+
+[node name="RandomizedRock" type="StaticBody3D" groups=["DecorativeRock"]]
+script = ExtResource("1_psrhg")
+asset_models = Array[PackedScene]([ExtResource("2_g54n4")])
+random_rotation_values = ExtResource("3_g54n4")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcgxqrrrdjuxs"]
+
+[ext_resource type="Script" uid="uid://d1tsr31cm6uc0" path="res://level/assets/decoration/randomized_decoration.gd" id="1_yxgs0"]
+
+[node name="RandomizedDecoration" type="Node3D"]
+script = ExtResource("1_yxgs0")
+decoration_chance = 10.0

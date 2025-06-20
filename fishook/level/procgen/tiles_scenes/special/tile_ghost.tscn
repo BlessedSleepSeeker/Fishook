@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://beg1cobks8lyw"]
+
+[ext_resource type="Script" uid="uid://b4xkjk0mahknm" path="res://level/procgen/tile_scene.gd" id="1_7418t"]
+[ext_resource type="Shader" uid="uid://hafl6rc6msin" path="res://level/template_assets/shaders/sobel_outline.gdshader" id="2_qtg4x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hnrhw"]
+render_priority = 0
+shader = ExtResource("2_qtg4x")
+shader_parameter/outline_color = Color(0, 1, 0.933333, 1)
+shader_parameter/outline_threshold = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6176q"]
+next_pass = SubResource("ShaderMaterial_hnrhw")
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.529412)
+
+[node name="TileGhost" type="Node3D"]
+script = ExtResource("1_7418t")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+material_override = SubResource("StandardMaterial3D_6176q")
+use_collision = true
+collision_layer = 4
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, -2)
+smooth_faces = false
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7, 5)
+radius = 0.75
+smooth_faces = false
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 12, -2)
+radius = 1.0
+smooth_faces = false

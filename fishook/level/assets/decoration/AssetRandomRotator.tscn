@@ -4,8 +4,3 @@
 
 [node name="AssetRandomRotator" type="Node"]
 script = ExtResource("1_xfpps")
-rotation_x_min = -360.0
-rotation_x_max = 360.0
-rotation_y_min = -360.0
-rotation_z_min = -360.0
-rotation_z_max = 360.0

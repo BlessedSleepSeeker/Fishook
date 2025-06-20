@@ -43,6 +43,12 @@ func load_grid_into_world(parent: Node3D) -> void:
 		instance.position = tile.grid_position * tile_size
 		instance.rotation_degrees.y = tile.chosen_tile_definition.rotation_score * 90
 
+func add_decorations(parent: Node3D) -> void:
+	print("Adding decorations...")
+	for child: AlgorithmTileScene in parent.get_children():
+		print(child)
+		child.randomize_decoration()
+
 func clean() -> void:
 	pass
 

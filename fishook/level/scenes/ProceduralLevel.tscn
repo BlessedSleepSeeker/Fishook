@@ -92,3 +92,4 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="DebugCanvasLayer" parent="." instance=ExtResource("10_773w7")]
+visible = false

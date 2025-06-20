@@ -12,10 +12,10 @@ can_be_rotated_horizontaly = true
 rotation_score = 0
 tile_socket = 1
 sockets = Dictionary[Vector3i, Array]({
-Vector3i(-1, 0, 0): [0, 1, 2],
+Vector3i(-1, 0, 0): [0, 1, 2, 4],
 Vector3i(0, -1, 0): [0, 1],
-Vector3i(0, 0, -1): [0, 1, 2],
-Vector3i(0, 0, 1): [0, 1, 2],
-Vector3i(0, 1, 0): [0, 1, 2],
-Vector3i(1, 0, 0): [0, 1, 2]
+Vector3i(0, 0, -1): [0, 1, 2, 4],
+Vector3i(0, 0, 1): [0, 1, 2, 4],
+Vector3i(0, 1, 0): [0, 1, 2, 4],
+Vector3i(1, 0, 0): [0, 1, 2, 4]
 })

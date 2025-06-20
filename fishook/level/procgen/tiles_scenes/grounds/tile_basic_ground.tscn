@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dt1bggvlga1t7"]
+[gd_scene load_steps=5 format=3 uid="uid://dt1bggvlga1t7"]
 
 [ext_resource type="Script" uid="uid://b4xkjk0mahknm" path="res://level/procgen/tile_scene.gd" id="1_xts1o"]
 [ext_resource type="Material" uid="uid://cj4lsj2ubhfek" path="res://level/template_assets/material/sobel_outline_base.tres" id="1_xya8a"]
+[ext_resource type="PackedScene" uid="uid://bcgxqrrrdjuxs" path="res://level/assets/decoration/RandomizedDecoration.tscn" id="3_owat6"]
+[ext_resource type="PackedScene" uid="uid://brlwv2xwfbtle" path="res://level/assets/decoration/models/trees/RandomTree.tscn" id="4_dydgm"]
 
-[node name="TileBasicGround" type="Node3D"]
+[node name="TileBasicGround" type="Node3D" node_paths=PackedStringArray("random_decoration_spots")]
 script = ExtResource("1_xts1o")
+random_decoration_spots = [NodePath("RandomizedDecoration"), NodePath("RandomizedDecoration2"), NodePath("RandomizedDecoration3"), NodePath("RandomizedDecoration5"), NodePath("RandomizedDecoration6"), NodePath("RandomizedDecoration4")]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 material_override = ExtResource("1_xya8a")
@@ -16,3 +19,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 use_collision = true
 collision_layer = 6
 size = Vector3(16, 1, 16)
+
+[node name="RandomizedDecoration" parent="." instance=ExtResource("3_owat6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -3)
+
+[node name="RandomizedDecoration2" parent="." instance=ExtResource("3_owat6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 3)
+
+[node name="RandomizedDecoration3" parent="." instance=ExtResource("3_owat6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -4)
+
+[node name="RandomizedDecoration5" parent="." instance=ExtResource("3_owat6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.82992, 1, -4)
+
+[node name="RandomizedDecoration6" parent="." instance=ExtResource("3_owat6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.07342, 1, -3.09556)
+
+[node name="RandomizedDecoration4" parent="." instance=ExtResource("3_owat6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -5)
+decoration_scene = ExtResource("4_dydgm")
+decoration_chance = 5.0

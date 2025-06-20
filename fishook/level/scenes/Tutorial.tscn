@@ -1,0 +1,218 @@
+[gd_scene load_steps=20 format=3 uid="uid://blqblyst28eku"]
+
+[ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_xroqs"]
+[ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_6ainc"]
+[ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="3_bkwdk"]
+[ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/huds/level_hud/LevelHUD.tscn" id="4_3f3lf"]
+[ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="5_8snt5"]
+[ext_resource type="Material" uid="uid://h0r4shlt6jqo" path="res://level/template_assets/material/dark_grid_texture.tres" id="6_d21nb"]
+[ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="11_016wd"]
+[ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="12_laaud"]
+[ext_resource type="PackedScene" uid="uid://c7pg5cdosq1p1" path="res://level/assets/decoration/AssetRandomRotator.tscn" id="13_7puqx"]
+[ext_resource type="PackedScene" uid="uid://khpkfqnos2o" path="res://level/utils/debug_ui/DebugCanvas.tscn" id="14_hkna7"]
+
+[sub_resource type="Gradient" id="Gradient_3ue7i"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.595745, 0.648936)
+colors = PackedColorArray(0.46, 0.964, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_36jh6"]
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_36jh6"]
+seamless = true
+color_ramp = SubResource("Gradient_3ue7i")
+noise = SubResource("FastNoiseLite_36jh6")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_36jh6"]
+sky_top_color = Color(0.11, 1, 0.881333, 1)
+sky_horizon_color = Color(0.883333, 0.65, 1, 1)
+sky_cover = SubResource("NoiseTexture2D_36jh6")
+ground_bottom_color = Color(0.306, 0.6, 0.4089, 1)
+ground_horizon_color = Color(0.883333, 0.65, 1, 1)
+ground_curve = 0.109283
+
+[sub_resource type="Sky" id="Sky_ec3ai"]
+sky_material = SubResource("ProceduralSkyMaterial_36jh6")
+
+[sub_resource type="Environment" id="Environment_8nujw"]
+background_mode = 2
+sky = SubResource("Sky_ec3ai")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 2
+tonemap_exposure = 1.05
+tonemap_white = 0.95
+ssao_enabled = true
+ssao_radius = 2.0
+ssao_intensity = 1.4
+
+[sub_resource type="Animation" id="Animation_vowa1"]
+resource_name = "move_around"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGBox3D2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-185, 25, 15), Vector3(-185, 25, -15), Vector3(-185, 25, 15)]
+}
+
+[sub_resource type="Animation" id="Animation_eo4ju"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGBox3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-185, 25, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eo4ju"]
+_data = {
+&"RESET": SubResource("Animation_eo4ju"),
+&"move_around": SubResource("Animation_vowa1")
+}
+
+[node name="Tutorial" type="Node3D"]
+script = ExtResource("1_xroqs")
+level_down_limit = -40.0
+
+[node name="CharacterInstance" parent="." instance=ExtResource("2_6ainc")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+unique_name_in_owner = true
+environment = SubResource("Environment_8nujw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shadow_enabled = true
+
+[node name="LevelMusicPlayer" parent="." instance=ExtResource("3_bkwdk")]
+
+[node name="LevelHud" parent="." instance=ExtResource("4_3f3lf")]
+unique_name_in_owner = true
+
+[node name="FirstCheckpoint" parent="." instance=ExtResource("5_8snt5")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.513, 0)
+
+[node name="Checkpoint2" parent="." instance=ExtResource("5_8snt5")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 5.513, 0)
+
+[node name="Checkpoint3" parent="." instance=ExtResource("5_8snt5")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136, 5.513, 0)
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="CSGGrounds" type="CSGCombiner3D" parent="Geometry"]
+material_override = ExtResource("6_d21nb")
+use_collision = true
+collision_layer = 6
+
+[node name="StartingPlatform" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
+size = Vector3(21, 1, 16)
+material = ExtResource("6_d21nb")
+
+[node name="StartingPlatform3" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.5, -9)
+size = Vector3(32, 6, 2)
+material = ExtResource("6_d21nb")
+
+[node name="StartingPlatform4" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.5, 9)
+size = Vector3(32, 6, 2)
+material = ExtResource("6_d21nb")
+
+[node name="StartingPlatform5" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.5, 0)
+size = Vector3(2, 6, 20)
+material = ExtResource("6_d21nb")
+
+[node name="StartingPlatform7" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 0)
+operation = 2
+size = Vector3(3, 1, 6)
+material = ExtResource("6_d21nb")
+
+[node name="StartingPlatform6" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5, 2.5, 0)
+size = Vector3(11, 6, 20)
+material = ExtResource("6_d21nb")
+
+[node name="StartingPlatform2" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0.5, 0)
+size = Vector3(16, 2, 16)
+material = ExtResource("6_d21nb")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -56, 3.125, 0)
+radius = 8.0
+height = 4.75
+sides = 12
+smooth_faces = false
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -136, 3.125, 0)
+radius = 8.0
+height = 4.75
+sides = 12
+smooth_faces = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91, 25, 0)
+size = Vector3(4, 4, 4)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185, 25, 0)
+use_collision = true
+collision_layer = 6
+size = Vector3(4, 4, 4)
+material = ExtResource("6_d21nb")
+
+[node name="Collectibles" type="Node3D" parent="."]
+
+[node name="BaseCollectiblePositionHack" parent="Collectibles" instance=ExtResource("11_016wd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2, 0)
+
+[node name="LevelStopwatch" parent="." instance=ExtResource("12_laaud")]
+unique_name_in_owner = true
+
+[node name="FlowerRandomRotator" parent="." instance=ExtResource("13_7puqx")]
+models = Array[NodePath]([NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")])
+rotation_x_min = -0.174533
+rotation_x_max = 0.174533
+rotation_z_min = -0.174533
+rotation_z_max = 0.174533
+
+[node name="RockRandomRotator" parent="." instance=ExtResource("13_7puqx")]
+models = Array[NodePath]([NodePath(""), NodePath(""), NodePath(""), NodePath("")])
+
+[node name="TreeRandomRotator" parent="." instance=ExtResource("13_7puqx")]
+models = Array[NodePath]([NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")])
+rotation_x_max = 0.0872665
+rotation_z_max = 0.0872665
+
+[node name="DebugCanvasLayer" parent="." instance=ExtResource("14_hkna7")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_eo4ju")
+}
+autoplay = "move_around"

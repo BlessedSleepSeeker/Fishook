@@ -1,21 +1,21 @@
-[gd_resource type="Resource" script_class="AlgorithmTileDefinition" load_steps=2 format=3 uid="uid://hyk2ysjygvie"]
+[gd_resource type="Resource" script_class="AlgorithmTileDefinition" load_steps=2 format=3 uid="uid://cg4k5g7b3qv1o"]
 
 [ext_resource type="Script" uid="uid://dcn4j0n71cwxv" path="res://level/procgen/tile_definition.gd" id="1_sg3ri"]
 
 [resource]
 script = ExtResource("1_sg3ri")
 tile_name = "BasicStairs"
-scene_path = "uid://b64ibfkbnont0"
+scene_path = "uid://do7cu6xlo8dn2"
 generation_weight = 5.0
 generation_weight_height_multiplier = 1.0
 can_be_rotated_horizontaly = true
 rotation_score = 0
-tile_socket = 2
+tile_socket = 4
 sockets = Dictionary[Vector3i, Array]({
-Vector3i(-1, 0, 0): [1],
-Vector3i(0, -1, 0): [0, 1],
-Vector3i(0, 0, -1): [0, 1],
-Vector3i(0, 0, 1): [0, 1],
-Vector3i(0, 1, 0): [0],
-Vector3i(1, 0, 0): [0, 1]
+Vector3i(-1, 0, 0): [0, 1, 2, 4],
+Vector3i(0, -1, 0): [0, 1, 4],
+Vector3i(0, 0, -1): [0, 1, 2, 4],
+Vector3i(0, 0, 1): [0, 1, 2, 4],
+Vector3i(0, 1, 0): [0, 4],
+Vector3i(1, 0, 0): [0, 1, 2, 4]
 })

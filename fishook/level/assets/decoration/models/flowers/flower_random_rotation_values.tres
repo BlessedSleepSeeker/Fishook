@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RandomRotationValues" load_steps=2 format=3 uid="uid://cecvm3q1mqxqk"]
+
+[ext_resource type="Script" uid="uid://bedaxn7awgbr4" path="res://level/assets/decoration/random_rotation_values.gd" id="1_l253e"]
+
+[resource]
+script = ExtResource("1_l253e")
+rotation_x_min = -0.174533
+rotation_x_max = 0.174533
+rotation_y_min = 0.0
+rotation_y_max = 6.28319
+rotation_z_min = -0.174533
+rotation_z_max = 0.174533
+metadata/_custom_type_script = "uid://bedaxn7awgbr4"

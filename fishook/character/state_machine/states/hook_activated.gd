@@ -10,6 +10,7 @@ var fishook: Node3D = null
 
 @onready var reel_sound_player: AudioStreamPlayer = %ReelSoundPlayer
 
+var hookshot_node: Node3D = Node3D.new()
 var hookshot_raycast: RayCast3D = null
 var hookshot_point: Vector3 = Vector3.ZERO
 var distance: float
@@ -18,20 +19,28 @@ var frame_nbr: int = 0
 
 var can_reset_dj: bool = false
 
+func _ready():
+	super()
+	self.add_child(hookshot_node)
+
 func enter(_msg := {}) -> void:
 	super()
 	## reset double jump
 	hookshot_raycast = character.camera.raycast
 	if hookshot_raycast.is_colliding():
+		var collider: Node3D = hookshot_raycast.get_collider()
+		hookshot_node.reparent(collider)
+		print(collider)
 		hookshot_point = hookshot_raycast.get_collision_point()
+		hookshot_node.global_position = hookshot_point
 		distance = character.global_position.distance_to(hookshot_point)
 		character.hud_canvas.tween_reel_value(distance, physics_parameters.GRAPPLE_MAX_RANGE, 0.1)
 		spawn_fishook()
+		character.skin.toggle_hookline(true, fishook)
+		character.particles_manager.emit("HookTrail")
 	else:
 		state_machine.transition_to("Fall")
 		return
-	character.skin.toggle_hookline(true, fishook)
-	character.particles_manager.emit("HookTrail")
 	if character.skin.animation_tree.active:
 		character.skin.animation_tree.animation_finished.connect(play_animation)
 	else:
@@ -66,6 +75,11 @@ func physics_update(_delta: float, _move_character: bool = true):
 	if can_reset_dj && character.velocity.y > 0:
 		character.did_double_jump = false
 	character.move_and_slide()
+	
+	hookshot_point = hookshot_node.global_position
+	#print(hookshot_node.global_position)
+	update_fishook_position(hookshot_point)
+
 	#character.skin.swing_with_hookshot(character.velocity, character.velocity.length() * physics_parameters.GRAPPLE_ROTATION_SPEED, _delta)
 	if character.is_on_floor():
 		state_machine.transition_to("Land")
@@ -111,6 +125,9 @@ func spawn_fishook() -> void:
 	add_child(inst)
 	inst.global_position = hookshot_point
 	fishook = inst
+
+func update_fishook_position(new_position: Vector3) -> void:
+	fishook.global_position = new_position
 
 func exit():
 	character.particles_manager.stop("HookTrail")

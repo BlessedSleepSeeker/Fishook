@@ -24,6 +24,7 @@ func generate_full_level() -> void:
 		algorithm.reset_generation()
 		return generate_full_level()
 	algorithm.load_grid_into_world(geometry_parent)
+	algorithm.add_decorations(geometry_parent)
 	algorithm.clean()
 	super._ready()
 

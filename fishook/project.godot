@@ -40,7 +40,10 @@ folder_colors={
 [global_group]
 
 Collectible="a pickable item"
-Checkpoint=""
+Checkpoint="respawn point"
+DecorativeTree=""
+DecorativeFlower="decorative flower"
+DecorativeRock=""
 
 [input]
 
