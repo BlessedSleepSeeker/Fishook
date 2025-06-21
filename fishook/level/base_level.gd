@@ -8,6 +8,7 @@ class_name BaseLevel
 @export var register_collectibles_: bool = true
 @export var register_checkpoints_: bool = true
 @export var randomize_spawn_point: bool = false
+@export var register_dialog_boxes_: bool = true 
 
 @onready var character: CharacterInstance = %CharacterInstance
 @onready var current_checkpoint = null
@@ -26,14 +27,14 @@ func _ready():
 		register_collectibles()
 	if register_checkpoints_:
 		register_checkpoints()
+	if register_dialog_boxes_:
+		register_dialog_boxes()
 	if randomize_spawn_point:
 		randomize_spawn()
 	else:
 		find_spawn()
+	
 	character.debug_canvas = debug_canvas
-	if dialog_hud != null:
-		dialog_hud.hide()
-		dialog_hud.update_dialog(" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet bibendum mauris, sed molestie magna. Duis id malesuada velit. Maecenas imperdiet quis tellus eget sagittis. Nulla mi mi, luctus a tellus nec, tincidunt mattis quam. Curabitur porttitor in ligula ut blandit. Donec cursus felis sed nisi volutpat, ac ornare nisl molestie. Sed erat sapien, aliquam nec elit a, rutrum dictum leo. Duis accumsan rhoncus eleifend. ")
 
 func register_collectibles() -> void:
 	for collectible: BaseCollectible in get_tree().get_nodes_in_group("Collectible"):
@@ -55,6 +56,18 @@ func register_checkpoints() -> void:
 
 func reached_checkpoint(checkpoint: BaseCheckpoint) -> void:
 	current_checkpoint = checkpoint
+
+func register_dialog_boxes() -> void:
+	for trigger_box: DialogTriggerBox in get_tree().get_nodes_in_group("DialogTriggerBox"):
+		trigger_box.display_dialog.connect(display_dialog)
+		trigger_box.hide_dialog.connect(hide_dialog_if_needed)
+
+func display_dialog(dialog_text: String, fade_dialog_after: float, use_letter_by_letter: bool) -> void:
+	dialog_hud.update_dialog(dialog_text, fade_dialog_after, use_letter_by_letter)
+
+func hide_dialog_if_needed(dialog_text: String) -> void:
+	if dialog_hud.get_dialog_text() == dialog_text:
+		dialog_hud.hide_dialog()
 
 func randomize_spawn() -> void:
 	var checkpoints: Array = get_tree().get_nodes_in_group("Checkpoint")

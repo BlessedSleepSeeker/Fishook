@@ -44,6 +44,7 @@ Checkpoint="respawn point"
 DecorativeTree=""
 DecorativeFlower="decorative flower"
 DecorativeRock=""
+DialogTriggerBox="Area3D which triggers a dialog when walked into"
 
 [input]
 

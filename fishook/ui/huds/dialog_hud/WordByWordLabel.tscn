@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://bgsvu8t4igd73" path="res://sounds_effects/personal/shortboop5.mp3" id="6_kf06v"]
 
 [node name="WordByWordLabel" type="Label"]
+custom_minimum_size = Vector2(10, 10)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -18,7 +19,7 @@ size_flags_vertical = 1
 text = "Something went wrong..."
 autowrap_mode = 3
 script = ExtResource("1_pnfxj")
-noises_on_word = Array[AudioStream]([ExtResource("2_nywrd"), ExtResource("3_owxb6"), ExtResource("4_3m8c1"), ExtResource("5_68pji"), ExtResource("6_kf06v")])
+noises_on_progress = Array[AudioStream]([ExtResource("2_nywrd"), ExtResource("3_owxb6"), ExtResource("4_3m8c1"), ExtResource("5_68pji"), ExtResource("6_kf06v")])
 
 [node name="RandomStreamPlayer" parent="." instance=ExtResource("2_0knnw")]
 bus = &"SoundEffectLow"

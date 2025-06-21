@@ -9,6 +9,8 @@ class_name RandomStreamPlayer
 @export var no_repeat: bool = true
 
 func play_random(from_position: float = 0.0) -> void:
+	if streams.size() == 0:
+		return
 	pick_random_stream()
 	play(from_position)
 

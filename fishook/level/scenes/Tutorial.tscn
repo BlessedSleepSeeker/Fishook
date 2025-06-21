@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://blqblyst28eku"]
+[gd_scene load_steps=34 format=3 uid="uid://blqblyst28eku"]
 
 [ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_xroqs"]
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_6ainc"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="5_8snt5"]
 [ext_resource type="Material" uid="uid://h0r4shlt6jqo" path="res://level/template_assets/material/dark_grid_texture.tres" id="6_d21nb"]
 [ext_resource type="Material" uid="uid://bvexudfc4kmcx" path="res://level/template_assets/material/half_transparent.tres" id="7_eo4ju"]
+[ext_resource type="PackedScene" uid="uid://2xkr2xm5tji6" path="res://level/assets/tutorial/DialogTriggerBox.tscn" id="8_qqic6"]
 [ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="11_016wd"]
 [ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="12_laaud"]
 [ext_resource type="PackedScene" uid="uid://bsssnsrsqpssb" path="res://ui/huds/dialog_hud/DialogHUD.tscn" id="12_rrasd"]
@@ -49,6 +50,54 @@ ssao_enabled = true
 ssao_radius = 2.0
 ssao_intensity = 1.4
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_xroqs"]
+size = Vector3(4, 1, 17)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qqic6"]
+size = Vector3(4, 3, 17)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ainc"]
+size = Vector3(4, 3, 17)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bkwdk"]
+size = Vector3(4, 3, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3f3lf"]
+size = Vector3(5, 1, 17)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8snt5"]
+size = Vector3(5, 47, 17)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d21nb"]
+size = Vector3(10, 2, 17)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fhh37"]
+size = Vector3(22, 26, 89)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3nd4r"]
+size = Vector3(7, 1, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u1bnp"]
+size = Vector3(10, 1, 14)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wesa1"]
+size = Vector3(11, 1, 16)
+
+[sub_resource type="Animation" id="Animation_eo4ju"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Geometry/CSGBox3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-185, 25, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_vowa1"]
 resource_name = "move_around"
 length = 4.0
@@ -64,21 +113,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(-185, 25, 15), Vector3(-185, 25, -15), Vector3(-185, 25, 15)]
-}
-
-[sub_resource type="Animation" id="Animation_eo4ju"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Geometry/CSGBox3D2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-185, 25, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eo4ju"]
@@ -249,6 +283,102 @@ collision_layer = 4
 size = Vector3(4, 96, 74)
 material = ExtResource("7_eo4ju")
 
+[node name="DialogBox" type="Node3D" parent="Geometry"]
+
+[node name="MovementDialogTriggerBox2" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
+dialog_text = "Use WASD to Move Around and the Mouse to look around"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/MovementDialogTriggerBox2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_xroqs")
+
+[node name="JumpDialogTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -3.0598e-07)
+dialog_text = "Use Space To Jump"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/JumpDialogTriggerBox"]
+shape = SubResource("BoxShape3D_xroqs")
+
+[node name="DoubleJumpDialogTriggerBox3" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 3, -9.61651e-07)
+dialog_text = "Use Jump in MidAir to Double Jump and reach higher areas !"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/DoubleJumpDialogTriggerBox3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_qqic6")
+
+[node name="DJ2DialogTriggerBox4" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 7, -1.31134e-06)
+dialog_text = "Congrats, now, do it again !"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/DJ2DialogTriggerBox4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4.37115e-08)
+shape = SubResource("BoxShape3D_6ainc")
+
+[node name="CheckpointDialogTriggerBox5" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 7, -2.44784e-06)
+dialog_text = "This is a checkpoint. You will respawn here if you fall too far down. Walk on it !"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/CheckpointDialogTriggerBox5"]
+shape = SubResource("BoxShape3D_bkwdk")
+
+[node name="HookDialogTriggerBox6" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62, 7, -2.71011e-06)
+dialog_text = "Now jump into the void, aim for the black cube, and launch your Fishing Rod using LeftClick !"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/HookDialogTriggerBox6"]
+shape = SubResource("BoxShape3D_3f3lf")
+
+[node name="HookYipeeTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 7, -4.10887e-06)
+dialog_text = "Yipeeee !"
+fade_dialog_after = 2.0
+fade_dialog_on_exit = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/HookYipeeTriggerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+shape = SubResource("BoxShape3D_8snt5")
+
+[node name="BulletTimeTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -141, 7, -6.16331e-06)
+dialog_text = "Need to aim precisely ? Try using BulletTime by holding LShift down."
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/BulletTimeTriggerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 0)
+shape = SubResource("BoxShape3D_d21nb")
+
+[node name="BulletTimeYipeeTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185, 7, -8.08661e-06)
+dialog_text = "Yiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiipppppppppppppppppeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee!"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/BulletTimeYipeeTriggerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, -1.81899e-12)
+shape = SubResource("BoxShape3D_fhh37")
+
+[node name="ReelInOutTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247, 7, -1.07967e-05)
+dialog_text = "When attached with the FishingRod, you can Reel In or Out by using respectively Right or Left Click. Use this to reach upward !"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/ReelInOutTriggerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+shape = SubResource("BoxShape3D_3nd4r")
+
+[node name="PhantomTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -278, 30, -1.21518e-05)
+dialog_text = "Some blocks wont stop you, but can still be attached with the Fishing Rod. Reach the other side !"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/PhantomTriggerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -2, 0)
+shape = SubResource("BoxShape3D_u1bnp")
+
+[node name="FinishTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -337, 30, -1.47307e-05)
+dialog_text = "Congratulations, you've reached the end of the tutorial ! Did you get all the cans of bait on the way ? There's a few left in front of you !"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/FinishTriggerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, -5.96629e-09)
+shape = SubResource("BoxShape3D_wesa1")
+
 [node name="Collectibles" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
@@ -266,6 +396,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247, 45, 0)
 
 [node name="BaseCollectiblePositionHack4" parent="Collectibles" instance=ExtResource("11_016wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247, 39, 0)
+
+[node name="BaseCollectiblePositionHack6" parent="Collectibles" instance=ExtResource("11_016wd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -360, 31, -4.93939e-06)
+
+[node name="BaseCollectiblePositionHack7" parent="Collectibles" instance=ExtResource("11_016wd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -360, 31, 1.99999)
+
+[node name="BaseCollectiblePositionHack8" parent="Collectibles" instance=ExtResource("11_016wd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -360, 31, -2.00001)
 
 [node name="LevelStopwatch" parent="." instance=ExtResource("12_laaud")]
 unique_name_in_owner = true
