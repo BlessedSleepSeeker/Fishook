@@ -4,7 +4,7 @@ class_name DialogHUD
 @export var show_hide_speed: float = 0.3
 
 @onready var dialog_panel: PanelContainer = %DialogPanel
-@onready var dialog_label: WordByWordLabel = %WordByWordLabel
+@onready var dialog_label: PlayerControlLabel = %PlayerControlLabel
 @onready var top_container: Container = %TopContainer
 
 func _ready():
@@ -35,3 +35,6 @@ func animate_dialog_box(forward: bool = true) -> void:
 
 func get_dialog_text() -> String:
 	return dialog_label.text
+
+func is_text_currently_displayed(text: String) -> bool:
+	return dialog_label.original_text == text

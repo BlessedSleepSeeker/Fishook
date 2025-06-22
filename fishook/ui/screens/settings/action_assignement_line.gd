@@ -4,8 +4,6 @@ class_name ActionAssignementLine
 @onready var current_input_lbl: Label = %FakeLabel
 @onready var rebind_btn: Button = $RebindButton
 @onready var remove_btn: Button = $RemoveButton
-	
-
 
 @export var controler_input_text_template: String = "%s"
 

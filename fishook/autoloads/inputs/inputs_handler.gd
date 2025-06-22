@@ -17,6 +17,8 @@ var controls_file_path := "%s%s" % [settings_folder_path, controls_file_name]
 
 var camera_sensitivity: float = 0.5
 
+signal input_mode_changed(new_input_mode: INPUT_MODE)
+
 @export var last_input_mode: INPUT_MODE = INPUT_MODE.KEYBOARD
 enum INPUT_MODE {
 	KEYBOARD,
@@ -37,10 +39,14 @@ func _ready():
 #region Inputs
 
 func _unhandled_input(event: InputEvent):
-	if event is InputEventJoypadButton or event is InputEventJoypadMotion && last_input_mode != INPUT_MODE.CONTROLLER:
+	if (event is InputEventJoypadButton or event is InputEventJoypadMotion) && last_input_mode != INPUT_MODE.CONTROLLER:
 		last_input_mode = INPUT_MODE.CONTROLLER
-	if event is InputEventMouseMotion or event is InputEventMouseButton or event is InputEventKey && last_input_mode != INPUT_MODE.KEYBOARD:
+		input_mode_changed.emit(last_input_mode)
+		print("CONTROLLER MODE")
+	if (event is InputEventMouseMotion or event is InputEventMouseButton or event is InputEventKey) && last_input_mode != INPUT_MODE.KEYBOARD:
 		last_input_mode = INPUT_MODE.KEYBOARD
+		input_mode_changed.emit(last_input_mode)
+		print("KEYBOARD MODE")
 
 func handle_mouse(mode: bool) -> void:
 	if last_input_mode == INPUT_MODE.KEYBOARD:
@@ -96,6 +102,28 @@ func print_actions() -> void:
 		if not act.begins_with("ui_"):
 			print(act)
 	print_debug("___________")
+
+func convert_event_to_human_readable(event: InputEvent) -> String:
+	var event_name: String = event.as_text()
+	if event_name.contains("Joypad"):
+		return convert_joypad_input_to_human_readable(event_name)
+	else:
+		return "keyboard/" + localize_keyboard_input(event).to_lower()
+
+func convert_joypad_input_to_human_readable(event_name: String) -> String:
+	if event_name.contains("Left Stick") and event_name.contains("Joypad Motion"):
+		return "xbox/left_stick"
+	if event_name.contains("Right Stick") and event_name.contains("Joypad Motion"):
+		return "xbox/right_stick"
+	return ""
+
+func localize_keyboard_input(event: InputEvent):
+	if event is InputEventKey:
+		return event.as_text().substr(0, event.as_text().find(" "))
+	if event is InputEventMouseButton:
+		print(event.as_text())
+		return event.as_text().replace(" ", "_")
+
 #endregion
 
 #region File

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://blqblyst28eku"]
+[gd_scene load_steps=35 format=3 uid="uid://blqblyst28eku"]
 
 [ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_xroqs"]
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_6ainc"]
@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/huds/level_hud/LevelHUD.tscn" id="4_3f3lf"]
 [ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="5_8snt5"]
 [ext_resource type="Material" uid="uid://h0r4shlt6jqo" path="res://level/template_assets/material/dark_grid_texture.tres" id="6_d21nb"]
-[ext_resource type="Material" uid="uid://bvexudfc4kmcx" path="res://level/template_assets/material/half_transparent.tres" id="7_eo4ju"]
 [ext_resource type="PackedScene" uid="uid://2xkr2xm5tji6" path="res://level/assets/tutorial/DialogTriggerBox.tscn" id="8_qqic6"]
+[ext_resource type="PackedScene" uid="uid://brlwv2xwfbtle" path="res://level/assets/decoration/models/trees/RandomTree.tscn" id="10_6ainc"]
 [ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="11_016wd"]
+[ext_resource type="PackedScene" uid="uid://pd1lku6503f" path="res://level/assets/decoration/models/flowers/RandomFlower.tscn" id="11_bkwdk"]
+[ext_resource type="PackedScene" uid="uid://b2tsnwudtwncu" path="res://level/assets/decoration/models/rocks/RandomRock.tscn" id="12_bkwdk"]
 [ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="12_laaud"]
 [ext_resource type="PackedScene" uid="uid://bsssnsrsqpssb" path="res://ui/huds/dialog_hud/DialogHUD.tscn" id="12_rrasd"]
 [ext_resource type="PackedScene" uid="uid://c7pg5cdosq1p1" path="res://level/assets/decoration/AssetRandomRotator.tscn" id="13_7puqx"]
@@ -76,9 +78,6 @@ size = Vector3(22, 26, 89)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3nd4r"]
 size = Vector3(7, 1, 8)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_u1bnp"]
-size = Vector3(10, 1, 14)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wesa1"]
 size = Vector3(11, 1, 16)
@@ -276,57 +275,52 @@ collision_layer = 6
 size = Vector3(4, 4, 4)
 material = ExtResource("6_d21nb")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -302.5, 48, 0.999998)
-use_collision = true
-collision_layer = 4
-size = Vector3(4, 96, 74)
-material = ExtResource("7_eo4ju")
-
 [node name="DialogBox" type="Node3D" parent="Geometry"]
 
-[node name="MovementDialogTriggerBox2" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
-dialog_text = "Use WASD to Move Around and the Mouse to look around"
+[node name="MovementDialogTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
+dialog_text = "[ctrl]forward[/ctrl] [ctrl]left[/ctrl] [ctrl]back[/ctrl] [ctrl]right[/ctrl] to [b]Move Around[/b]
+ [ctrl]camera[/ctrl] to [b]Look Around[/b]"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/MovementDialogTriggerBox2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/MovementDialogTriggerBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_xroqs")
 
 [node name="JumpDialogTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -3.0598e-07)
-dialog_text = "Use Space To Jump"
+dialog_text = " [ctrl]jump[/ctrl] to Jump"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/JumpDialogTriggerBox"]
 shape = SubResource("BoxShape3D_xroqs")
 
-[node name="DoubleJumpDialogTriggerBox3" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
+[node name="DoubleJumpDialogTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 3, -9.61651e-07)
-dialog_text = "Use Jump in MidAir to Double Jump and reach higher areas !"
+dialog_text = " [ctrl]jump[/ctrl] while Airborne to [b]Double Jump[/b]"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/DoubleJumpDialogTriggerBox3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/DoubleJumpDialogTriggerBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_qqic6")
 
-[node name="DJ2DialogTriggerBox4" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
+[node name="DJ2DialogTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 7, -1.31134e-06)
 dialog_text = "Congrats, now, do it again !"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/DJ2DialogTriggerBox4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/DJ2DialogTriggerBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4.37115e-08)
 shape = SubResource("BoxShape3D_6ainc")
 
-[node name="CheckpointDialogTriggerBox5" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
+[node name="CheckpointDialogTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 7, -2.44784e-06)
-dialog_text = "This is a checkpoint. You will respawn here if you fall too far down. Walk on it !"
+dialog_text = "This is a [b]checkpoint[/b]. You will respawn here if you fall too far down. [b]Walk on it[/b] !"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/CheckpointDialogTriggerBox5"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/CheckpointDialogTriggerBox"]
 shape = SubResource("BoxShape3D_bkwdk")
 
-[node name="HookDialogTriggerBox6" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
+[node name="HookDialogTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62, 7, -2.71011e-06)
-dialog_text = "Now jump into the void, aim for the black cube, and launch your Fishing Rod using LeftClick !"
+dialog_text = "While AirBorne :  [ctrl]throw_hook[/ctrl] on a piece of the map : Throw the Fishing Rod and start [b]Swinging[/b]
+[ctrl]jump[/ctrl] while Swinging : [b]Stop[/b] Swinging"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/HookDialogTriggerBox6"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/HookDialogTriggerBox"]
 shape = SubResource("BoxShape3D_3f3lf")
 
 [node name="HookYipeeTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
@@ -341,7 +335,7 @@ shape = SubResource("BoxShape3D_8snt5")
 
 [node name="BulletTimeTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -141, 7, -6.16331e-06)
-dialog_text = "Need to aim precisely ? Try using BulletTime by holding LShift down."
+dialog_text = "Holding [ctrl]bullet_time[/ctrl] down : [b]Bullet Time[/b]"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/BulletTimeTriggerBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 0)
@@ -357,54 +351,176 @@ shape = SubResource("BoxShape3D_fhh37")
 
 [node name="ReelInOutTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247, 7, -1.07967e-05)
-dialog_text = "When attached with the FishingRod, you can Reel In or Out by using respectively Right or Left Click. Use this to reach upward !"
+dialog_text = "When Swinging, [b]Reel In[/b] [ctrl]reel_in[/ctrl] or [b]Reel Out[/b] [ctrl]reel_out[/ctrl]"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/ReelInOutTriggerBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 shape = SubResource("BoxShape3D_3nd4r")
 
-[node name="PhantomTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -278, 30, -1.21518e-05)
-dialog_text = "Some blocks wont stop you, but can still be attached with the Fishing Rod. Reach the other side !"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/PhantomTriggerBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -2, 0)
-shape = SubResource("BoxShape3D_u1bnp")
-
 [node name="FinishTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -337, 30, -1.47307e-05)
-dialog_text = "Congratulations, you've reached the end of the tutorial ! Did you get all the cans of bait on the way ? There's a few left in front of you !"
+dialog_text = "Congratulations, you've reached the end of the tutorial ! Did you get all the [b]Cans of Bait[/b] on the way ? There's a few left in front of you !"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/FinishTriggerBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, -5.96629e-09)
 shape = SubResource("BoxShape3D_wesa1")
 
-[node name="Collectibles" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+[node name="Collectibles" type="Node3D" parent="Geometry"]
 
-[node name="BaseCollectiblePositionHack" parent="Collectibles" instance=ExtResource("11_016wd")]
+[node name="BaseCollectiblePositionHack" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2, 0)
 
-[node name="BaseCollectiblePositionHack5" parent="Collectibles" instance=ExtResource("11_016wd")]
+[node name="BaseCollectiblePositionHack5" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10175e-14, -4, -4.80825e-07)
 
-[node name="BaseCollectiblePositionHack2" parent="Collectibles" instance=ExtResource("11_016wd")]
+[node name="BaseCollectiblePositionHack2" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247, 7, 0)
 
-[node name="BaseCollectiblePositionHack3" parent="Collectibles" instance=ExtResource("11_016wd")]
+[node name="BaseCollectiblePositionHack3" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247, 45, 0)
 
-[node name="BaseCollectiblePositionHack4" parent="Collectibles" instance=ExtResource("11_016wd")]
+[node name="BaseCollectiblePositionHack4" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247, 39, 0)
 
-[node name="BaseCollectiblePositionHack6" parent="Collectibles" instance=ExtResource("11_016wd")]
+[node name="BaseCollectiblePositionHack6" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -360, 31, -4.93939e-06)
 
-[node name="BaseCollectiblePositionHack7" parent="Collectibles" instance=ExtResource("11_016wd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -360, 31, 1.99999)
+[node name="BaseCollectiblePositionHack7" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -360, 30, 1.99999)
 
-[node name="BaseCollectiblePositionHack8" parent="Collectibles" instance=ExtResource("11_016wd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -360, 31, -2.00001)
+[node name="BaseCollectiblePositionHack8" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -360, 30, -2.00001)
+
+[node name="Decorations" type="Node3D" parent="Geometry"]
+
+[node name="RandomTree" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12, 0.5, -7)
+
+[node name="RandomTree2" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.14561, 0.5, -7)
+
+[node name="RandomFlower" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0.5, 6)
+
+[node name="RandomFlower2" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.78, 0.5, 5.269)
+
+[node name="RandomFlower3" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.388, 0.5, 5.362)
+
+[node name="RandomFlower4" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.144, 0.5, 4.862)
+
+[node name="RandomizedRock" parent="Geometry/Decorations" instance=ExtResource("12_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.09203, 5.49999, -9.01572)
+
+[node name="RandomFlower5" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.4458, 1.50001, 4.66564)
+
+[node name="RandomFlower6" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.5032, 1.50001, 3.64211)
+
+[node name="RandomFlower7" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.3271, 1.50001, 4.36043)
+
+[node name="RandomFlower8" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.1707, 5.49999, -6.9162)
+
+[node name="RandomizedRock2" parent="Geometry/Decorations" instance=ExtResource("12_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30.9053, 5.49999, 6.38886)
+
+[node name="RandomTree3" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26.8778, 5.5, -8.64986)
+
+[node name="RandomTree4" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -135.643, 5.49999, 5.45986)
+
+[node name="RandomFlower9" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -134.878, 5.5, 4.99028)
+
+[node name="RandomFlower10" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -135.472, 5.49999, 4.73079)
+
+[node name="RandomFlower11" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -136.81, 5.5, 5.10722)
+
+[node name="RandomFlower12" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -136.619, 5.49999, 6.62395)
+
+[node name="RandomFlower13" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -139.084, 5.49999, -5.71331)
+
+[node name="RandomizedRock3" parent="Geometry/Decorations" instance=ExtResource("12_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -137.542, 5.49999, -5.50736)
+
+[node name="RandomFlower14" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -136.764, 5.49999, -5.05436)
+
+[node name="RandomTree5" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -252.125, 5.49999, 2.6643)
+
+[node name="RandomTree6" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -253.2, 5.5, -0.56948)
+
+[node name="RandomTree7" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -252.473, 5.49999, -3.60647)
+
+[node name="RandomTree8" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -249.777, 5.49999, -6.43206)
+
+[node name="RandomTree9" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -249.587, 5.49999, 4.55091)
+
+[node name="RandomizedRock4" parent="Geometry/Decorations" instance=ExtResource("12_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -258.331, 27, -5.47068)
+
+[node name="RandomTree10" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -266.734, 27, 6.54498)
+
+[node name="RandomFlower15" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -264.451, 27, 6.09536)
+
+[node name="RandomFlower16" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -265.193, 27, 4.87466)
+
+[node name="RandomFlower17" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -263.438, 27, 4.91655)
+
+[node name="RandomTree11" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -246.912, 46.625, -0.180376)
+
+[node name="RandomFlower18" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -244.307, 46.625, -2.14171)
+
+[node name="RandomFlower19" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -249.554, 46.625, -2.17578)
+
+[node name="RandomFlower20" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -247.181, 46.625, -3.33523)
+
+[node name="RandomFlower21" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -243.733, 46.625, -0.117229)
+
+[node name="RandomFlower22" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -245.675, 46.625, 3.15761)
+
+[node name="RandomFlower23" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -249.778, 46.625, 2.0924)
+
+[node name="RandomizedRock5" parent="Geometry/Decorations" instance=ExtResource("12_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -58.641, 5.5, -4.51432)
+
+[node name="RandomTree12" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -55.3649, 5.49999, 5.23215)
+
+[node name="RandomFlower24" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -90.4109, 27, 0.521654)
+
+[node name="RandomFlower25" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -91.4085, 27, -0.290528)
+
+[node name="RandomFlower26" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -90.3691, 27, -0.869778)
 
 [node name="LevelStopwatch" parent="." instance=ExtResource("12_laaud")]
 unique_name_in_owner = true

@@ -8,16 +8,18 @@
 [ext_resource type="AudioStream" uid="uid://cqkf41dnsoqia" path="res://sounds_effects/personal/shortboop4.mp3" id="5_68pji"]
 [ext_resource type="AudioStream" uid="uid://bgsvu8t4igd73" path="res://sounds_effects/personal/shortboop5.mp3" id="6_kf06v"]
 
-[node name="WordByWordLabel" type="Label"]
+[node name="WordByWordLabel" type="RichTextLabel"]
 custom_minimum_size = Vector2(10, 10)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_vertical = 1
-text = "Something went wrong..."
-autowrap_mode = 3
+bbcode_enabled = true
+fit_content = true
+visible_characters = 0
+visible_characters_behavior = 1
+visible_ratio = 0.978723
 script = ExtResource("1_pnfxj")
 noises_on_progress = Array[AudioStream]([ExtResource("2_nywrd"), ExtResource("3_owxb6"), ExtResource("4_3m8c1"), ExtResource("5_68pji"), ExtResource("6_kf06v")])
 

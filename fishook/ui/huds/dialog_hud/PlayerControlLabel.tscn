@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dexdewvs8y6nc"]
+
+[ext_resource type="Script" uid="uid://dugwjqbbk283l" path="res://ui/huds/dialog_hud/player_control_label.gd" id="1_w1xrw"]
+[ext_resource type="PackedScene" uid="uid://co75xjj6oudb4" path="res://sounds_effects/random_stream_player.tscn" id="2_76p8a"]
+
+[node name="PlayerControlLabel" type="RichTextLabel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "Use [img=50]res://ui/assets/controller_prompts/keyboard/w.png[/img] [img=50]res://ui/assets/controller_prompts/keyboard/a.png[/img] [img=50]res://ui/assets/controller_prompts/keyboard/s.png[/img] [img=50]res://ui/assets/controller_prompts/keyboard/d.png[/img] to [b]Move Around[/b] and [img=50]res://ui/assets/controller_prompts/keyboard/mouse_simple.png[/img] to [b]Look Around[/b]
+"
+fit_content = true
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_w1xrw")
+control_opening_marker = "[ctrl]"
+control_closing_marker = "[/ctrl]"
+disable_all_animations = true
+metadata/_custom_type_script = "uid://dado4uvm410rr"
+
+[node name="RandomStreamPlayer" parent="." instance=ExtResource("2_76p8a")]

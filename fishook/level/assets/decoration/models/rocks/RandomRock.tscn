@@ -8,3 +8,6 @@
 script = ExtResource("1_psrhg")
 asset_models = Array[PackedScene]([ExtResource("2_g54n4")])
 random_rotation_values = ExtResource("3_g54n4")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+gizmo_extents = 0.15

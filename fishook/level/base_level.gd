@@ -66,7 +66,7 @@ func display_dialog(dialog_text: String, fade_dialog_after: float, use_letter_by
 	dialog_hud.update_dialog(dialog_text, fade_dialog_after, use_letter_by_letter)
 
 func hide_dialog_if_needed(dialog_text: String) -> void:
-	if dialog_hud.get_dialog_text() == dialog_text:
+	if dialog_hud.is_text_currently_displayed(dialog_text):
 		dialog_hud.hide_dialog()
 
 func randomize_spawn() -> void:

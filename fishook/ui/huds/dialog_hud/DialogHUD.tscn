@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://if0oa6qprpaj" path="res://ui/themes/dialog_box_theme.tres" id="1_jdgnu"]
 [ext_resource type="Script" uid="uid://7hl2ob0sier7" path="res://ui/huds/dialog_hud/dialog_hud.gd" id="1_lp0hq"]
-[ext_resource type="PackedScene" uid="uid://bsy2brcc5c7qq" path="res://ui/huds/dialog_hud/WordByWordLabel.tscn" id="2_4vrsf"]
+[ext_resource type="PackedScene" uid="uid://dexdewvs8y6nc" path="res://ui/huds/dialog_hud/PlayerControlLabel.tscn" id="3_lp0hq"]
 
 [node name="DialogHUD" type="CanvasLayer"]
 layer = 2
@@ -36,7 +36,7 @@ theme = ExtResource("1_jdgnu")
 [node name="MarginContainer" type="MarginContainer" parent="TopContainer/VBoxContainer/DialogPanel"]
 layout_mode = 2
 
-[node name="WordByWordLabel" parent="TopContainer/VBoxContainer/DialogPanel/MarginContainer" instance=ExtResource("2_4vrsf")]
+[node name="PlayerControlLabel" parent="TopContainer/VBoxContainer/DialogPanel/MarginContainer" instance=ExtResource("3_lp0hq")]
 unique_name_in_owner = true
 layout_mode = 2
 

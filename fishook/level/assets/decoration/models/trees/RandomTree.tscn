@@ -4,7 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://e3v4w5akncfy" path="res://level/assets/decoration/models/trees/Tree.glb" id="2_021ox"]
 [ext_resource type="Resource" uid="uid://cbh76taojujaf" path="res://level/assets/decoration/models/trees/tree_random_rotation_values.tres" id="3_021ox"]
 
-[node name="RandomTree" type="StaticBody3D"]
+[node name="RandomTree" type="StaticBody3D" groups=["DecorativeTree"]]
 script = ExtResource("1_j0l82")
 asset_models = Array[PackedScene]([ExtResource("2_021ox")])
 random_rotation_values = ExtResource("3_021ox")
+
+[node name="Marker3D" type="Marker3D" parent="."]
