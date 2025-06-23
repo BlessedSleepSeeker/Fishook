@@ -12,3 +12,5 @@ albedo_texture = ExtResource("1_36ht6")
 metallic = 0.5
 texture_filter = 0
 texture_repeat = false
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
