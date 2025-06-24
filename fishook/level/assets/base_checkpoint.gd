@@ -25,7 +25,9 @@ func _ready():
 	if model:
 		mesh = model.mesh
 
-func _on_checkpoint_reached(_body):
+func _on_checkpoint_reached(_body: Node3D) -> void:
+	if not _body is CharacterInstance:
+		return
 	reached.emit(self)
 	if picked_up_particles:
 		picked_up_particles.emitting = true

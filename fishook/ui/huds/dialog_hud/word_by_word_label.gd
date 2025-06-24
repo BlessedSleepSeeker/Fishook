@@ -23,6 +23,7 @@ class_name WordByWordLabel
 
 @onready var sound_player: RandomStreamPlayer = $RandomStreamPlayer
 
+signal word_progression
 signal all_text_displayed
 
 ## Transforming real text to allow [img][/img] to count only has one character.
@@ -34,7 +35,7 @@ func _ready():
 	self.visible_characters = 0
 	sound_player.streams = noises_on_progress
 
-func update_dialog(new_text: String, launch_animation: bool = true, use_letter_by_letter: bool = false):
+func update_text(new_text: String, launch_animation: bool = true, use_letter_by_letter: bool = false):
 	original_text = new_text
 	var parsed_text = parse_text(new_text)
 	if disable_all_animations:
@@ -62,6 +63,7 @@ func display_text(use_letter_by_letter: bool = false) -> void:
 
 func display_one_more_word() -> void:
 	self.visible_characters = find_next_separator()
+	word_progression.emit()
 
 func find_next_separator() -> int:
 	var next_separator_position: int = transformed_text.find(word_separator, self.visible_characters + word_separator.length())

@@ -23,7 +23,7 @@ signal play_transition(direction: bool, wait_for_tween: bool)
 var is_paused: bool = true
 
 func _ready():
-	toggle_pause()
+	toggle_pause(false)
 	pause_ui.continue_game.connect(toggle_pause)
 	pause_ui.go_to_settings.connect(go_to_settings)
 	pause_ui.go_to_level_selector.connect(go_to_level_selector)
@@ -34,10 +34,10 @@ func _ready():
 #region Pausing
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") && settings_ui_layer.visible == false:
-		toggle_pause()
+		toggle_pause(true)
 
-func toggle_pause() -> void:
-	is_paused = !is_paused
+func toggle_pause(pausing: bool) -> void:
+	is_paused = pausing
 	if is_paused:
 		InputHandler.handle_mouse(true)
 		level_holder.process_mode = PROCESS_MODE_DISABLED
@@ -85,6 +85,8 @@ func load_level() -> void:
 	var level_scene: PackedScene = load(build_level_path())
 	var level_instance = level_scene.instantiate()
 	level_holder.add_child(level_instance)
+	level_instance.replay.connect(restart_level)
+	level_instance.go_to_level_selector.connect(go_to_level_selector)
 
 func build_level_path() -> String:
 	return level_scene_path + level_scene_name + level_scene_extension
@@ -98,6 +100,6 @@ func restart_level() -> void:
 	if root:
 		root.play_fade(false, false)
 	pause_ui.restart_btn.disabled = false
-	toggle_pause()
+	toggle_pause(false)
 
 #endregion

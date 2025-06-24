@@ -12,7 +12,7 @@ signal go_to_main_menu
 signal restart
 
 func _on_continue_pressed():
-	continue_game.emit()
+	continue_game.emit(false)
 
 func _on_settings_pressed():
 	go_to_settings.emit()

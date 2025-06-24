@@ -63,4 +63,4 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_f734n")
 draw_pass_1 = ExtResource("4_i6ltm")
 
-[node name="FishBair" parent="Area3D" instance=ExtResource("4_f734n")]
+[node name="FishBait" parent="Area3D" instance=ExtResource("4_f734n")]

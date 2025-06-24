@@ -13,7 +13,7 @@ class_name PlayerControlLabel
 func _ready():
 	InputHandler.input_mode_changed.connect(on_input_mode_changed)
 
-func update_dialog(new_text: String, launch_animation: bool = true, use_letter_by_letter: bool = false):
+func update_text(new_text: String, launch_animation: bool = true, use_letter_by_letter: bool = false):
 	original_text = new_text
 	var text_: String = parse_controls(new_text)
 	var parsed_text = parse_text(text_)

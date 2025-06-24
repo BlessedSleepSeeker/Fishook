@@ -1,4 +1,5 @@
 extends CharacterState
+class_name CinematicState
 
 func enter(_msg := {}) -> void:
 	super()

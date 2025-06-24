@@ -1,28 +1,45 @@
 extends Node3D
 class_name BaseLevel
 
-@export var debug_collectible_timer_template: String = "Collectible %s : %s"
+enum LevelType {
+	REACH_THE_END,
+	COLLECTATHON
+}
+@export var level_type: LevelType = LevelType.REACH_THE_END
 
 @export var level_down_limit: float = 50
 
 @export var register_collectibles_: bool = true
 @export var register_checkpoints_: bool = true
 @export var randomize_spawn_point: bool = false
-@export var register_dialog_boxes_: bool = true 
+@export var register_dialog_boxes_: bool = true
+@export_node_path("BaseEndOfLevel") var end_level_trigger_path
+
+@export var debug_collectible_timer_template: String = "Collectible %s : %s"
+
+@export var meta_data: LevelData = LevelData.new()
 
 @onready var character: CharacterInstance = %CharacterInstance
 @onready var current_checkpoint = null
-@onready var hud: LevelHUD = %LevelHud
 @onready var level_stopwatch: Stopwatch = %LevelStopwatch
 @onready var debug_canvas: DebugCanvas = $DebugCanvasLayer
+@onready var level_hud: LevelHUD = %LevelHud
 @onready var dialog_hud: DialogHUD = %DialogHUD
+@onready var end_level_hud: EndLevelScreen = %EndLevelScreen
 
 @onready var root: CustomRoot = get_tree().root.get_node("Root")
+
+var end_level_trigger: BaseEndOfLevel = null
 
 var total_collectibles: int = 0
 var collected_amount: int = 0
 
+signal replay
+signal go_to_level_selector
+
 func _ready():
+	InputHandler.handle_mouse(false)
+	Engine.time_scale = 1
 	if register_collectibles_:
 		register_collectibles()
 	if register_checkpoints_:
@@ -33,18 +50,22 @@ func _ready():
 		randomize_spawn()
 	else:
 		find_spawn()
-	
+	if self.level_type == LevelType.REACH_THE_END:
+		register_end_of_level()
+	setup_end_screen()
+
 	character.debug_canvas = debug_canvas
 
+#region Registering
 func register_collectibles() -> void:
 	for collectible: BaseCollectible in get_tree().get_nodes_in_group("Collectible"):
 		collectible.collected.connect(picked_up_collectible)
 	total_collectibles = get_tree().get_nodes_in_group("Collectible").size()
-	hud.update_collectible(collected_amount, total_collectibles)
+	level_hud.update_collectible(collected_amount, total_collectibles)
 
 func picked_up_collectible(_collectible: BaseCollectible) -> void:
 	collected_amount += 1
-	hud.update_collectible(collected_amount, total_collectibles)
+	level_hud.update_collectible(collected_amount, total_collectibles)
 	print_debug(debug_collectible_timer_template % [collected_amount, level_stopwatch.get_current_time_as_string()])
 	if collected_amount >= total_collectibles:
 		level_stopwatch.pause = true
@@ -82,6 +103,18 @@ func find_spawn() -> void:
 		if checkpoint.name == "FirstCheckpoint":
 			current_checkpoint = checkpoint
 
+func register_end_of_level() -> void:
+	end_level_trigger = get_node(end_level_trigger_path)
+	end_level_trigger.end_of_level_reached.connect(_on_end_of_level_reached)
+
+func setup_end_screen() -> void:
+	end_level_hud.setup(meta_data, total_collectibles)
+	end_level_hud.replay.connect(self.replay.emit)
+	end_level_hud.level_select.connect(self.go_to_level_selector.emit)
+
+#endregion
+
+#region Processing
 func _process(_delta):
 	update_timer()
 
@@ -105,4 +138,20 @@ func teleport_player_to_checkpoint() -> void:
 
 func update_timer() -> void:
 	var time_dict = level_stopwatch.get_current_time_dict()
-	hud.update_timer(time_dict)
+	level_hud.update_timer(time_dict)
+
+func _on_end_of_level_reached():
+	level_stopwatch.pause = true
+	dialog_hud.hide_dialog()
+	level_hud.fade_hud()
+	#var tween: Tween = get_tree().create_tween()
+	#tween.tween_property(Engine, "time_scale", 0.1, 0.5).set_trans(Tween.TRANS_CUBIC)
+	character.tween_velocity(Vector3.ZERO, 1)
+	await character.velocity_tweened
+	character.state_machine.transition_to("UncontrollableCinematic", {"animation_name": "FishingIdle"})
+	end_level_hud.start_recap({
+		"final_time": level_stopwatch.get_current_time_dict(),
+		"collected_amount": collected_amount
+	})
+
+#endregion

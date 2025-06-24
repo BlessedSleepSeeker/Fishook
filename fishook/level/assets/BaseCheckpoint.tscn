@@ -8,12 +8,12 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_44ggx"]
 size = Vector3(1, 0.1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44ggx"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_el323"]
 resource_local_to_scene = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_20vtb"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_44ggx")
+material = SubResource("StandardMaterial3D_el323")
 
 [node name="BaseCheckpoint" type="Marker3D" groups=["Checkpoint"]]
 script = ExtResource("1_44ggx")

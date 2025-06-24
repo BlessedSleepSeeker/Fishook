@@ -14,7 +14,7 @@ func _ready():
 func update_dialog(new_text: String, hide_after: float = -1, use_letter_by_letter: bool = false) -> void:
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(top_container, "modulate:a", 1, show_hide_speed)
-	dialog_label.update_dialog(new_text, true, use_letter_by_letter)
+	dialog_label.update_text(new_text, true, use_letter_by_letter)
 	if hide_after >= 0:
 		dialog_label.all_text_displayed.connect(delay_hide.bind(hide_after), CONNECT_ONE_SHOT)
 

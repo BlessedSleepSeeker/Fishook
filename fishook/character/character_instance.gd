@@ -26,6 +26,7 @@ var did_double_jump: bool = false:
 		else:
 			hud_canvas.tween_double_jump_cooldown(1, 1, 0.1)
 
+signal velocity_tweened
 
 func _ready():
 	## deactivated for gameplay reason -> add in gameplay/accessibility option
@@ -51,3 +52,9 @@ func set_hitbox_shape(shape: Shape3D) -> void:
 func respawn(respawn_global_position: Vector3) -> void:
 	self.global_position = respawn_global_position
 	self.velocity = Vector3.ZERO
+
+func tween_velocity(new_velocity: Vector3, tween_speed: float) -> void:
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(self, "velocity", new_velocity, tween_speed)
+	await tween.finished
+	velocity_tweened.emit()

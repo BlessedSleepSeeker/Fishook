@@ -17,9 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
 fit_content = true
-visible_characters = 0
 visible_characters_behavior = 1
-visible_ratio = 0.978723
 script = ExtResource("1_pnfxj")
 noises_on_progress = Array[AudioStream]([ExtResource("2_nywrd"), ExtResource("3_owxb6"), ExtResource("4_3m8c1"), ExtResource("5_68pji"), ExtResource("6_kf06v")])
 

@@ -42,11 +42,9 @@ func _unhandled_input(event: InputEvent):
 	if (event is InputEventJoypadButton or event is InputEventJoypadMotion) && last_input_mode != INPUT_MODE.CONTROLLER:
 		last_input_mode = INPUT_MODE.CONTROLLER
 		input_mode_changed.emit(last_input_mode)
-		print("CONTROLLER MODE")
 	if (event is InputEventMouseMotion or event is InputEventMouseButton or event is InputEventKey) && last_input_mode != INPUT_MODE.KEYBOARD:
 		last_input_mode = INPUT_MODE.KEYBOARD
 		input_mode_changed.emit(last_input_mode)
-		print("KEYBOARD MODE")
 
 func handle_mouse(mode: bool) -> void:
 	if last_input_mode == INPUT_MODE.KEYBOARD:
@@ -115,6 +113,16 @@ func convert_joypad_input_to_human_readable(event_name: String) -> String:
 		return "xbox/left_stick"
 	if event_name.contains("Right Stick") and event_name.contains("Joypad Motion"):
 		return "xbox/right_stick"
+	if event_name.contains("Button 0"):
+		return "xbox/a"
+	if event_name.contains("Xbox RT"):
+		return "xbox/rt"
+	if event_name.contains("Xbox LT"):
+		return "xbox/lt"
+	if event_name.contains("Xbox RB"):
+		return "xbox/rb"
+	if event_name.contains("Xbox LB"):
+		return "xbox/lb"
 	return ""
 
 func localize_keyboard_input(event: InputEvent):

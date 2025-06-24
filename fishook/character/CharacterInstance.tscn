@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://bcvho024kiqga"]
+[gd_scene load_steps=67 format=3 uid="uid://bcvho024kiqga"]
 
 [ext_resource type="Script" uid="uid://dprgwt0j2p82d" path="res://character/character_instance.gd" id="1_vgy44"]
 [ext_resource type="PackedScene" uid="uid://uh75ppgcvkw1" path="res://character/model/CharacterSkin.tscn" id="2_1bt4p"]
@@ -166,6 +166,8 @@ CAMERA_TOO_CLOSE_OFFSET = Vector3(0, 2.75, 0)
 CAMERA_TOO_CLOSE_BEHIND_MULTIPLICATOR = 10.0
 CAMERA_TOO_CLOSE_MOVEMENT_TWEEN_SPEED = 0.3
 metadata/_custom_type_script = "uid://vu5siov5wkt1"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w8puf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7jo2n"]
 radius = 0.3
@@ -345,6 +347,17 @@ default_physics = false
 apply_gravity = false
 physics_parameters = SubResource("Resource_g8u6d")
 camera_parameters = SubResource("Resource_w8puf")
+
+[node name="UncontrollableCinematic" type="Node" parent="StateMachine"]
+script = ExtResource("36_w8puf")
+default_physics = false
+apply_gravity = false
+handle_movements_input = false
+handle_camera_input = false
+rotate_player_skin = false
+allow_bullet_time = false
+should_play_animation_on_enter = false
+crosshair_texture = SubResource("CompressedTexture2D_w8puf")
 
 [node name="Cinematic" type="Node" parent="StateMachine"]
 script = ExtResource("36_w8puf")

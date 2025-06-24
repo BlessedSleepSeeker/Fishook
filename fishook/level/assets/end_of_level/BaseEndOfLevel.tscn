@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://qn6ffcswfedb"]
+
+[ext_resource type="Script" uid="uid://bru0qp5di7j3e" path="res://level/assets/end_of_level/base_end_of_level.gd" id="1_w5rhx"]
+[ext_resource type="AudioStream" uid="uid://dvcu3ttj6aujd" path="res://sounds_effects/kenney_jingles/jingles_NES08.ogg" id="4_tuxaa"]
+
+[node name="BaseEndOfLevel" type="Area3D"]
+script = ExtResource("1_w5rhx")
+
+[node name="EnteredAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_tuxaa")
+bus = &"Sound Effect"

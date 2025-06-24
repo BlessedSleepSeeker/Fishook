@@ -10,8 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "Use [img=50]res://ui/assets/controller_prompts/keyboard/w.png[/img] [img=50]res://ui/assets/controller_prompts/keyboard/a.png[/img] [img=50]res://ui/assets/controller_prompts/keyboard/s.png[/img] [img=50]res://ui/assets/controller_prompts/keyboard/d.png[/img] to [b]Move Around[/b] and [img=50]res://ui/assets/controller_prompts/keyboard/mouse_simple.png[/img] to [b]Look Around[/b]
-"
 fit_content = true
 shortcut_keys_enabled = false
 horizontal_alignment = 1

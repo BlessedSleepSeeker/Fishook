@@ -1,11 +1,13 @@
-[gd_scene load_steps=35 format=3 uid="uid://blqblyst28eku"]
+[gd_scene load_steps=41 format=3 uid="uid://blqblyst28eku"]
 
 [ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_xroqs"]
+[ext_resource type="Script" uid="uid://bhcn1srajolcg" path="res://level/data/LevelData.gd" id="2_3f3lf"]
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_6ainc"]
 [ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="3_bkwdk"]
 [ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/huds/level_hud/LevelHUD.tscn" id="4_3f3lf"]
 [ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="5_8snt5"]
 [ext_resource type="Material" uid="uid://h0r4shlt6jqo" path="res://level/template_assets/material/dark_grid_texture.tres" id="6_d21nb"]
+[ext_resource type="PackedScene" uid="uid://qn6ffcswfedb" path="res://level/assets/end_of_level/BaseEndOfLevel.tscn" id="7_bkwdk"]
 [ext_resource type="PackedScene" uid="uid://2xkr2xm5tji6" path="res://level/assets/tutorial/DialogTriggerBox.tscn" id="8_qqic6"]
 [ext_resource type="PackedScene" uid="uid://brlwv2xwfbtle" path="res://level/assets/decoration/models/trees/RandomTree.tscn" id="10_6ainc"]
 [ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="11_016wd"]
@@ -13,8 +15,15 @@
 [ext_resource type="PackedScene" uid="uid://b2tsnwudtwncu" path="res://level/assets/decoration/models/rocks/RandomRock.tscn" id="12_bkwdk"]
 [ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="12_laaud"]
 [ext_resource type="PackedScene" uid="uid://bsssnsrsqpssb" path="res://ui/huds/dialog_hud/DialogHUD.tscn" id="12_rrasd"]
-[ext_resource type="PackedScene" uid="uid://c7pg5cdosq1p1" path="res://level/assets/decoration/AssetRandomRotator.tscn" id="13_7puqx"]
 [ext_resource type="PackedScene" uid="uid://khpkfqnos2o" path="res://level/utils/debug_ui/DebugCanvas.tscn" id="14_hkna7"]
+[ext_resource type="PackedScene" uid="uid://dunvbupwox01v" path="res://ui/screens/end_level_screen/EndLevelScreen.tscn" id="17_3f3lf"]
+
+[sub_resource type="Resource" id="Resource_8snt5"]
+script = ExtResource("2_3f3lf")
+name = "Tutorial"
+scene_name = "Tutorial"
+difficulty = 0
+metadata/_custom_type_script = "uid://bhcn1srajolcg"
 
 [sub_resource type="Gradient" id="Gradient_3ue7i"]
 interpolation_mode = 2
@@ -51,36 +60,6 @@ tonemap_white = 0.95
 ssao_enabled = true
 ssao_radius = 2.0
 ssao_intensity = 1.4
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_xroqs"]
-size = Vector3(4, 1, 17)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qqic6"]
-size = Vector3(4, 3, 17)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6ainc"]
-size = Vector3(4, 3, 17)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_bkwdk"]
-size = Vector3(4, 3, 5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3f3lf"]
-size = Vector3(5, 1, 17)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8snt5"]
-size = Vector3(5, 47, 17)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_d21nb"]
-size = Vector3(10, 2, 17)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fhh37"]
-size = Vector3(22, 26, 89)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3nd4r"]
-size = Vector3(7, 1, 8)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wesa1"]
-size = Vector3(11, 1, 16)
 
 [sub_resource type="Animation" id="Animation_eo4ju"]
 length = 0.001
@@ -120,9 +99,54 @@ _data = {
 &"move_around": SubResource("Animation_vowa1")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_u1bnp"]
+size = Vector3(16, 6, 0.074707)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bkwdk"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.493667, 1, 0.38, 1)
+proximity_fade_distance = 5.0
+distance_fade_min_distance = 5.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_bkwdk"]
+material = SubResource("StandardMaterial3D_bkwdk")
+size = Vector3(16, 6, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xroqs"]
+size = Vector3(4, 1, 17)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qqic6"]
+size = Vector3(4, 3, 17)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ainc"]
+size = Vector3(4, 3, 17)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bkwdk"]
+size = Vector3(4, 3, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3f3lf"]
+size = Vector3(5, 1, 17)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8snt5"]
+size = Vector3(5, 47, 17)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d21nb"]
+size = Vector3(10, 2, 17)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fhh37"]
+size = Vector3(22, 26, 89)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3nd4r"]
+size = Vector3(7, 1, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wesa1"]
+size = Vector3(11, 1, 16)
+
 [node name="Tutorial" type="Node3D"]
 script = ExtResource("1_xroqs")
 level_down_limit = -40.0
+end_level_trigger_path = NodePath("Geometry/EndOfLevel")
+meta_data = SubResource("Resource_8snt5")
 
 [node name="CharacterInstance" parent="." instance=ExtResource("2_6ainc")]
 unique_name_in_owner = true
@@ -139,6 +163,24 @@ shadow_enabled = true
 [node name="LevelMusicPlayer" parent="." instance=ExtResource("3_bkwdk")]
 
 [node name="LevelHud" parent="." instance=ExtResource("4_3f3lf")]
+unique_name_in_owner = true
+
+[node name="DebugCanvasLayer" parent="." instance=ExtResource("14_hkna7")]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_eo4ju")
+}
+autoplay = "move_around"
+
+[node name="DialogHUD" parent="." instance=ExtResource("12_rrasd")]
+unique_name_in_owner = true
+
+[node name="EndLevelScreen" parent="." instance=ExtResource("17_3f3lf")]
+unique_name_in_owner = true
+
+[node name="LevelStopwatch" parent="." instance=ExtResource("12_laaud")]
 unique_name_in_owner = true
 
 [node name="Geometry" type="Node3D" parent="."]
@@ -194,6 +236,10 @@ smooth_faces = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Geometry/CSGGrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91, 25, 0)
+size = Vector3(4, 4, 4)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -306, 45, -9.39795e-06)
 size = Vector3(4, 4, 4)
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
@@ -274,6 +320,19 @@ use_collision = true
 collision_layer = 6
 size = Vector3(4, 4, 4)
 material = ExtResource("6_d21nb")
+
+[node name="EndOfLevel" parent="Geometry" instance=ExtResource("7_bkwdk")]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.4145, 1.97246, -5.42657e-07)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/EndOfLevel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -0.462646)
+shape = SubResource("BoxShape3D_u1bnp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Geometry/EndOfLevel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4561, -0.465729)
+transparency = 0.71
+mesh = SubResource("BoxMesh_bkwdk")
 
 [node name="DialogBox" type="Node3D" parent="Geometry"]
 
@@ -370,6 +429,21 @@ shape = SubResource("BoxShape3D_wesa1")
 [node name="BaseCollectiblePositionHack" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2, 0)
 
+[node name="BaseCollectiblePositionHack9" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, -2, -2.92866e-06)
+
+[node name="BaseCollectiblePositionHack10" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 11, -2.92866e-06)
+
+[node name="BaseCollectiblePositionHack11" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, -1, -4.15258e-06)
+
+[node name="BaseCollectiblePositionHack13" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98, -1, -4.76454e-06)
+
+[node name="BaseCollectiblePositionHack12" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91, -2, -4.45856e-06)
+
 [node name="BaseCollectiblePositionHack5" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10175e-14, -4, -4.80825e-07)
 
@@ -383,13 +457,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247, 45, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247, 39, 0)
 
 [node name="BaseCollectiblePositionHack6" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -360, 31, -4.93939e-06)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -350, 31, -4.50228e-06)
 
 [node name="BaseCollectiblePositionHack7" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -360, 30, 1.99999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -348, 30, -9.48952e-06)
 
 [node name="BaseCollectiblePositionHack8" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -360, 30, -2.00001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -352, 30, -9.66437e-06)
 
 [node name="Decorations" type="Node3D" parent="Geometry"]
 
@@ -521,33 +595,3 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -91.40
 
 [node name="RandomFlower26" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -90.3691, 27, -0.869778)
-
-[node name="LevelStopwatch" parent="." instance=ExtResource("12_laaud")]
-unique_name_in_owner = true
-
-[node name="FlowerRandomRotator" parent="." instance=ExtResource("13_7puqx")]
-models = Array[NodePath]([NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")])
-rotation_x_min = -0.174533
-rotation_x_max = 0.174533
-rotation_z_min = -0.174533
-rotation_z_max = 0.174533
-
-[node name="RockRandomRotator" parent="." instance=ExtResource("13_7puqx")]
-models = Array[NodePath]([NodePath(""), NodePath(""), NodePath(""), NodePath("")])
-
-[node name="TreeRandomRotator" parent="." instance=ExtResource("13_7puqx")]
-models = Array[NodePath]([NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")])
-rotation_x_max = 0.0872665
-rotation_z_max = 0.0872665
-
-[node name="DebugCanvasLayer" parent="." instance=ExtResource("14_hkna7")]
-visible = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_eo4ju")
-}
-autoplay = "move_around"
-
-[node name="DialogHUD" parent="." instance=ExtResource("12_rrasd")]
-unique_name_in_owner = true

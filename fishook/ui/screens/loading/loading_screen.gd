@@ -21,12 +21,12 @@ func _ready():
 
 func update_bar(amount: float, info: String) -> void:
 	var tween_bar_progress: Tween = get_tree().create_tween()
-	tween_bar_progress.tween_property(progress_bar, "value", amount, animation_speed).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween_bar_progress.tween_property(progress_bar, "value", amount, animation_speed).set_ease(Tween.EASE_OUT)
 
 	var theme_box: StyleBoxFlat = progress_bar.theme.get_stylebox("fill", "ProgressBar")
 	var tween_bar_bg_color: Tween = get_tree().create_tween()
 	var color_: Color = bar_color_tweak_with_progress.sample(amount / 100)
-	tween_bar_bg_color.tween_property(theme_box, "bg_color", color_, animation_speed).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween_bar_bg_color.tween_property(theme_box, "bg_color", color_, animation_speed).set_ease(Tween.EASE_OUT)
 
 	var tween_label: Tween = get_tree().create_tween()
-	tween_label.tween_property(bar_label, "text", bar_label_template % info, animation_speed).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween_label.tween_property(bar_label, "text", bar_label_template % info, animation_speed).set_ease(Tween.EASE_OUT)

@@ -1,0 +1,200 @@
+[gd_scene load_steps=14 format=3 uid="uid://dunvbupwox01v"]
+
+[ext_resource type="Theme" uid="uid://b1hqt805ka1h0" path="res://ui/themes/end_level_screen.tres" id="1_tgtrx"]
+[ext_resource type="Script" uid="uid://d2xbdstvlo6a5" path="res://ui/screens/end_level_screen/end_level_screen.gd" id="1_x5frk"]
+[ext_resource type="PackedScene" uid="uid://bsy2brcc5c7qq" path="res://ui/huds/dialog_hud/WordByWordLabel.tscn" id="3_6dbeb"]
+[ext_resource type="PackedScene" uid="uid://dkbt6m7p33p5f" path="res://ui/screens/end_level_screen/CollectedCollectibles.tscn" id="4_6vcs6"]
+
+[sub_resource type="Curve" id="Curve_6dbeb"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0260586, 1), 0.0, 0.0, 0, 0, Vector2(0.42671, 1), -5.64517, -5.64517, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_6vcs6"]
+curve = SubResource("Curve_6dbeb")
+
+[sub_resource type="Gradient" id="Gradient_6dbeb"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8)
+colors = PackedColorArray(0.45, 1, 0, 1, 0.00779999, 0.50973, 0.78, 1, 0.57408, 0.00779999, 0.78, 1, 0.78, 0.63843, 0.00779999, 1, 0.78, 0.00779999, 0.0206698, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6vcs6"]
+gradient = SubResource("Gradient_6dbeb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_60hf2"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 360.0
+spread = 180.0
+initial_velocity_min = 300.0
+initial_velocity_max = 400.0
+orbit_velocity_min = 0.5
+orbit_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_min = 10.0
+scale_max = 15.0
+color_initial_ramp = SubResource("GradientTexture1D_6vcs6")
+alpha_curve = SubResource("CurveTexture_6vcs6")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l7sn7"]
+
+[sub_resource type="Sky" id="Sky_mr0ae"]
+sky_material = SubResource("ProceduralSkyMaterial_l7sn7")
+
+[sub_resource type="Environment" id="Environment_l7sn7"]
+background_mode = 2
+sky = SubResource("Sky_mr0ae")
+
+[sub_resource type="World3D" id="World3D_60hf2"]
+environment = SubResource("Environment_l7sn7")
+
+[node name="EndLevelScreen" type="CanvasLayer"]
+layer = 3
+script = ExtResource("1_x5frk")
+
+[node name="TopContainer" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="TopContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13, 0.13, 0.13, 0.509804)
+
+[node name="MarginContainer" type="MarginContainer" parent="TopContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tgtrx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TopContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TopRow" type="HBoxContainer" parent="TopContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LevelNameLabel" type="RichTextLabel" parent="TopContainer/MarginContainer/VBoxContainer/TopRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "LevelName"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TopContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PhotoHalf" type="HBoxContainer" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RecapHalf" type="HBoxContainer" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/RecapHalf"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/RecapHalf/VBoxContainer"]
+layout_mode = 2
+
+[node name="TimerLabel" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/RecapHalf/VBoxContainer/MarginContainer" instance=ExtResource("3_6dbeb")]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+text = "Final Time"
+horizontal_alignment = 1
+vertical_alignment = 1
+word_separator = ":"
+word_delay = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/RecapHalf/VBoxContainer/MarginContainer/TimerLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/RecapHalf/VBoxContainer/MarginContainer/TimerLabel/CenterContainer"]
+layout_mode = 2
+
+[node name="TimerParticleEmitter" type="GPUParticles2D" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/RecapHalf/VBoxContainer/MarginContainer/TimerLabel/CenterContainer/Control"]
+unique_name_in_owner = true
+emitting = false
+amount = 75
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_60hf2")
+
+[node name="MarginContainer2" type="MarginContainer" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/RecapHalf/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="VBoxContainer" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/RecapHalf/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="LabelCollectibles" type="RichTextLabel" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/RecapHalf/VBoxContainer/MarginContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "Collectibles : X/X"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/RecapHalf/VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/RecapHalf/VBoxContainer/MarginContainer2/HBoxContainer/SubViewportContainer"]
+world_3d = SubResource("World3D_60hf2")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(494, 288)
+
+[node name="CollectedCollectibles" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/RecapHalf/VBoxContainer/MarginContainer2/HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("4_6vcs6")]
+unique_name_in_owner = true
+
+[node name="ButtonContainer" type="HBoxContainer" parent="TopContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ReplayButton" type="Button" parent="TopContainer/MarginContainer/VBoxContainer/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Replay"
+
+[node name="Control" type="Control" parent="TopContainer/MarginContainer/VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(40, 10)
+layout_mode = 2
+
+[node name="LevelSelectButton" type="Button" parent="TopContainer/MarginContainer/VBoxContainer/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Level Select"
