@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdi548mxk3mx2"]
+[gd_scene load_steps=11 format=3 uid="uid://cdi548mxk3mx2"]
 
 [ext_resource type="PackedScene" uid="uid://8mrhitx8ws2s" path="res://level/collectibles/assets/base/fishbait.glb" id="1_81g7a"]
 [ext_resource type="Script" uid="uid://5crcpw5ij5mk" path="res://level/collectibles/scene/rigidbody_collectible.gd" id="1_es3ye"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://lka0yuq63dwr" path="res://sounds_effects/kenney_impact-sounds/impactWood_medium_002.ogg" id="6_2bdth"]
 [ext_resource type="AudioStream" uid="uid://cdu1840ptxt7y" path="res://sounds_effects/kenney_impact-sounds/impactWood_medium_003.ogg" id="7_ssab8"]
 [ext_resource type="AudioStream" uid="uid://binbjsufyl030" path="res://sounds_effects/kenney_impact-sounds/impactWood_medium_004.ogg" id="8_lx2tx"]
+[ext_resource type="AudioStream" uid="uid://linrxtfh38hx" path="res://sounds_effects/kenney_impact-sounds/impactGlass_medium_000.ogg" id="9_478ql"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_81g7a"]
 points = PackedVector3Array(-0.1875, -0.125, -0.0776723, -0.1875, -0.125, 0.0776356, -0.1875, 0.5, -0.0776723, -0.0776723, -0.125, -0.1875, -0.0776723, -0.125, 0.1875, -0.1875, 0.5, 0.0776356, -0.0776723, 0.5, -0.1875, 0.0776356, -0.125, -0.1875, 0.0776356, -0.125, 0.1875, -0.0776723, 0.5, 0.1875, 0.0776356, 0.5, -0.1875, 0.1875, -0.125, -0.0776723, 0.1875, -0.125, 0.0776356, 0.0776356, 0.5, 0.1875, 0.1875, 0.5, -0.0776723, 0.1875, 0.5, 0.0776356)
@@ -37,3 +38,8 @@ unique_name_in_owner = true
 process_callback = 0
 wait_time = 0.3
 one_shot = true
+
+[node name="SpawnStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_478ql")
+bus = &"Sound Effect"

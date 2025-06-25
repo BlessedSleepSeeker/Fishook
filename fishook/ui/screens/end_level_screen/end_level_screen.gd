@@ -23,8 +23,12 @@ class_name EndLevelScreen
 
 @onready var collected_collectibles_3d: CollectedCollectibles = %CollectedCollectibles
 
+@onready var pictures_slideshow: PictureSlideshow = %PicturesSlideshow
+
 var max_collectibles: int = 0
 var spawned_collectibles: int = 0
+
+var pictures: Array[Image] = []
 
 signal replay
 signal level_select
@@ -86,7 +90,12 @@ func add_collectible_amount_to_label() -> void:
 	else:
 		collectible_label.text = collectibles_template_animated_zero % text
 
+func spawn_collectible_picture() -> void:
+	var texture: ImageTexture = ImageTexture.create_from_image(pictures[spawned_collectibles])
+	pictures_slideshow.display_picture(texture)
+
 func _on_collectible_spawned() -> void:
+	spawn_collectible_picture()
 	spawned_collectibles += 1
 	add_collectible_amount_to_label()
 

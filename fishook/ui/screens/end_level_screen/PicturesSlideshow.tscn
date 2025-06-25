@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd2khscvbkvu"]
+
+[ext_resource type="Script" uid="uid://pmtj73totth7" path="res://ui/screens/end_level_screen/pictures_slideshow.gd" id="1_a05eb"]
+
+[node name="PicturesSlideshow" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_a05eb")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2

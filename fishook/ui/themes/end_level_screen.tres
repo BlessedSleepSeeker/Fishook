@@ -6,7 +6,7 @@
 [ext_resource type="StyleBox" uid="uid://c62wxphwn56k3" path="res://ui/themes/main_menu/button_style_box_flat.tres" id="4_6pnfx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_el66k"]
-draw_center = false
+bg_color = Color(0.1344, 0.1305, 0.15, 0.25098)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3

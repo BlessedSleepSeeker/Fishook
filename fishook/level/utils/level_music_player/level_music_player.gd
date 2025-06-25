@@ -25,11 +25,15 @@ var audio_stream_id: int = 0:
 			audio_stream_id = value
 		play_by_id(audio_stream_id)
 
+var input_disabled: bool = false
+
 func _ready():
 	if random_play_on_load:
 		random_play()
 
 func _unhandled_input(_event):
+	if input_disabled:
+		return
 	if Input.is_action_just_pressed("music_next"):
 		audio_stream_id += 1
 	if Input.is_action_just_pressed("music_prev"):
@@ -77,3 +81,10 @@ func calculate_song_position(future_stream: AudioStream, _current_player: AudioS
 
 func _on_song_end():
 	audio_stream_id += 1
+
+func change_volume(volume_mod: float, duration: float) -> void:
+	var fade_current_tween = get_tree().create_tween()
+	var fade_unused_tween = get_tree().create_tween()
+
+	fade_current_tween.tween_property(current_player, "volume_db", crossfade_in_volume + volume_mod , duration)
+	fade_unused_tween.tween_property(unused_player, "volume_db", crossfade_out_volume + volume_mod, duration)

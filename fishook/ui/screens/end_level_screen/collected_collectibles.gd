@@ -4,7 +4,7 @@ class_name CollectedCollectibles
 @export var collected_amount: int = 8
 @export var collectible_scene: PackedScene = preload("res://level/collectibles/scene/RigidbodyCollectible.tscn")
 
-@export var initial_spawn_delay: float = 0.3
+@export var initial_spawn_delay: float = 1
 ## Every spawned collectible will decrease the cooldown by this much
 @export var spawn_delay_accel: float = 0.02
 

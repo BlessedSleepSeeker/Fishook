@@ -9,6 +9,8 @@ class_name MouseFollowCamera
 @onready var behind: Marker3D = %Behind
 @onready var camera_position: Node3D = %CameraPosition
 
+@onready var screenshot_camera: ScreenshotCamera = %ScreenshotCamera
+
 # @onready var sphere_indicator: Node3D = %ShpereIndicator
 
 signal is_colliding(is_colliding: bool)

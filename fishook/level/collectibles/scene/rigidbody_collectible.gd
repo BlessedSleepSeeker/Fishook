@@ -8,9 +8,12 @@ class_name RigidbodyCollectible
 
 @export var randomize_on_ready: bool = true
 @export var play_sound_on_collision: bool = true
+@export var play_sound_on_spawn: bool = true
 
 @onready var stream_player: RandomStreamPlayer = %RandomStreamPlayer
+@onready var spawn_stream_player: AudioStreamPlayer = %SpawnStreamPlayer
 @onready var stream_cooldown: Timer = %SoundCooldown
+
 
 func _ready():
 	if randomize_on_ready:
@@ -18,6 +21,8 @@ func _ready():
 		randomize_position()
 	if play_sound_on_collision:
 		self.body_entered.connect(play_sound)
+	if play_sound_on_spawn:
+		spawn_stream_player.play()
 
 func randomize_orientation() -> void:
 	var rng: RandomNumberGenerator = RandomNumberGenerator.new()

@@ -26,6 +26,7 @@ enum LevelType {
 @onready var level_hud: LevelHUD = %LevelHud
 @onready var dialog_hud: DialogHUD = %DialogHUD
 @onready var end_level_hud: EndLevelScreen = %EndLevelScreen
+@onready var music_player: LevelMusicPlayer = %LevelMusicPlayer
 
 @onready var root: CustomRoot = get_tree().root.get_node("Root")
 
@@ -70,6 +71,10 @@ func picked_up_collectible(_collectible: BaseCollectible) -> void:
 	if collected_amount >= total_collectibles:
 		level_stopwatch.pause = true
 		print_debug("Final Time : %s" % [level_stopwatch.get_current_time_as_string()])
+	## screenshots
+	var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+	await get_tree().create_timer(rng.randf_range(0.1, 0.5)).timeout
+	character.camera.screenshot_camera.snap_picture()
 
 func register_checkpoints() -> void:
 	for checkpoint: BaseCheckpoint in get_tree().get_nodes_in_group("Checkpoint"):
@@ -141,6 +146,9 @@ func update_timer() -> void:
 	level_hud.update_timer(time_dict)
 
 func _on_end_of_level_reached():
+	end_level_hud.pictures = character.camera.screenshot_camera.pictures
+	music_player.change_volume(-12, 3)
+	music_player.input_disabled = true
 	level_stopwatch.pause = true
 	dialog_hud.hide_dialog()
 	level_hud.fade_hud()

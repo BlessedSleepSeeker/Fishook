@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dunvbupwox01v"]
+[gd_scene load_steps=12 format=3 uid="uid://dunvbupwox01v"]
 
 [ext_resource type="Theme" uid="uid://b1hqt805ka1h0" path="res://ui/themes/end_level_screen.tres" id="1_tgtrx"]
 [ext_resource type="Script" uid="uid://d2xbdstvlo6a5" path="res://ui/screens/end_level_screen/end_level_screen.gd" id="1_x5frk"]
 [ext_resource type="PackedScene" uid="uid://bsy2brcc5c7qq" path="res://ui/huds/dialog_hud/WordByWordLabel.tscn" id="3_6dbeb"]
+[ext_resource type="PackedScene" uid="uid://cd2khscvbkvu" path="res://ui/screens/end_level_screen/PicturesSlideshow.tscn" id="3_60hf2"]
 [ext_resource type="PackedScene" uid="uid://dkbt6m7p33p5f" path="res://ui/screens/end_level_screen/CollectedCollectibles.tscn" id="4_6vcs6"]
 
 [sub_resource type="Curve" id="Curve_6dbeb"]
@@ -37,17 +38,7 @@ scale_max = 15.0
 color_initial_ramp = SubResource("GradientTexture1D_6vcs6")
 alpha_curve = SubResource("CurveTexture_6vcs6")
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l7sn7"]
-
-[sub_resource type="Sky" id="Sky_mr0ae"]
-sky_material = SubResource("ProceduralSkyMaterial_l7sn7")
-
-[sub_resource type="Environment" id="Environment_l7sn7"]
-background_mode = 2
-sky = SubResource("Sky_mr0ae")
-
 [sub_resource type="World3D" id="World3D_60hf2"]
-environment = SubResource("Environment_l7sn7")
 
 [node name="EndLevelScreen" type="CanvasLayer"]
 layer = 3
@@ -98,15 +89,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="TopContainer/MarginContainer/VBoxContainer"]
+show_behind_parent = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="PhotoHalf" type="HBoxContainer" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="PhotoHalf" type="MarginContainer" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="PicturesSlideshow" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PhotoHalf" instance=ExtResource("3_60hf2")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="RecapHalf" type="HBoxContainer" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -177,6 +173,7 @@ world_3d = SubResource("World3D_60hf2")
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(494, 288)
+render_target_update_mode = 4
 
 [node name="CollectedCollectibles" parent="TopContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/RecapHalf/VBoxContainer/MarginContainer2/HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("4_6vcs6")]
 unique_name_in_owner = true
