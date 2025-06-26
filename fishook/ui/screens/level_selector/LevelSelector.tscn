@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ciqi6ctu5bu60"]
+[gd_scene load_steps=20 format=3 uid="uid://ciqi6ctu5bu60"]
 
 [ext_resource type="Theme" uid="uid://d3kms72g8lsqf" path="res://ui/themes/base_ui_theme.tres" id="1_ey0nq"]
 [ext_resource type="Script" uid="uid://bu6dq3162m11d" path="res://ui/screens/level_selector/level_selector.gd" id="1_lq5ei"]
@@ -11,6 +11,32 @@
 [ext_resource type="Resource" uid="uid://c6lw766si7fmg" path="res://level/data/files/Procedural.tres" id="9_76wlg"]
 [ext_resource type="PackedScene" uid="uid://s213q8goj53c" path="res://ui/screens/level_selector/LevelCarroussel.tscn" id="10_c0n6j"]
 [ext_resource type="PackedScene" uid="uid://b2mubf1uianr1" path="res://ui/screens/level_selector/LevelDataDisplay.tscn" id="11_tq5iu"]
+[ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="12_7j1c0"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_7j1c0"]
+button_index = 9
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_m6cwo"]
+events = [SubResource("InputEventJoypadButton_7j1c0")]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_8tynd"]
+button_index = 10
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_i6jeg"]
+events = [SubResource("InputEventJoypadButton_8tynd")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_7j1c0"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_m6cwo"]
+button_index = 1
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_8tynd"]
+events = [SubResource("InputEventKey_7j1c0"), SubResource("InputEventJoypadButton_m6cwo")]
 
 [node name="LevelSelector" type="Control"]
 layout_mode = 3
@@ -77,15 +103,25 @@ size_flags_vertical = 3
 [node name="HBoxContainer" type="HBoxContainer" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-
-[node name="LevelCarroussel" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/ScrollContainer" instance=ExtResource("10_c0n6j")]
+[node name="LevelCarroussel" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("10_c0n6j")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_stretch_ratio = 2.0
+
+[node name="LeftButton" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/LevelCarroussel/VBoxContainer" index="0"]
+focus_neighbor_left = NodePath("../../../DataContainer/LevelDataDisplay/PanelContainer/MarginContainer/VBoxContainer/PlayButton")
+focus_neighbor_top = NodePath("../../../../../HB/ReturnButton")
+focus_neighbor_right = NodePath("../../VBoxContainer2/RightButton")
+focus_neighbor_bottom = NodePath("../../../../../HB/ReturnButton")
+focus_next = NodePath("../../VBoxContainer2/RightButton")
+focus_previous = NodePath("../../../DataContainer/LevelDataDisplay/PanelContainer/MarginContainer/VBoxContainer/PlayButton")
+shortcut = SubResource("Shortcut_m6cwo")
+
+[node name="SubViewport" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/LevelCarroussel/MarginContainer/VBoxContainer/MiniLevelHolder" index="0"]
+size = Vector2i(470, 255)
+
+[node name="RightButton" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/LevelCarroussel/VBoxContainer2" index="0"]
+shortcut = SubResource("Shortcut_i6jeg")
 
 [node name="DataContainer" type="ScrollContainer" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -96,6 +132,22 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="SpeedrunOption" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/DataContainer/LevelDataDisplay/PanelContainer/MarginContainer/VBoxContainer" index="5"]
+focus_neighbor_left = NodePath("../../../../../../LevelCarroussel/VBoxContainer2/RightButton")
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_right = NodePath("../../../../../../LevelCarroussel/VBoxContainer/LeftButton")
+focus_neighbor_bottom = NodePath("../PlayButton")
+focus_next = NodePath("../PlayButton")
+focus_previous = NodePath("../PlayButton")
+
+[node name="PlayButton" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/DataContainer/LevelDataDisplay/PanelContainer/MarginContainer/VBoxContainer" index="6"]
+focus_neighbor_left = NodePath("../../../../../../LevelCarroussel/VBoxContainer2/RightButton")
+focus_neighbor_top = NodePath("../SpeedrunOption")
+focus_neighbor_right = NodePath("../../../../../../LevelCarroussel/VBoxContainer/LeftButton")
+focus_neighbor_bottom = NodePath("../../../../../../../../HB/Random")
+focus_next = NodePath("../SpeedrunOption")
+focus_previous = NodePath("../SpeedrunOption")
+
 [node name="HB" type="HBoxContainer" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
@@ -103,6 +155,13 @@ alignment = 1
 [node name="ReturnButton" type="Button" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/HB"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../Random")
+focus_neighbor_top = NodePath("../../MarginContainer/HBoxContainer/LevelCarroussel/VBoxContainer2/RightButton")
+focus_neighbor_right = NodePath("../Random")
+focus_neighbor_bottom = NodePath("../../MarginContainer/HBoxContainer/LevelCarroussel/VBoxContainer2/RightButton")
+focus_next = NodePath("../Random")
+focus_previous = NodePath("../Random")
+shortcut = SubResource("Shortcut_8tynd")
 text = "Go Back"
 
 [node name="Control" type="Control" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/HB"]
@@ -112,7 +171,19 @@ layout_mode = 2
 [node name="Random" type="Button" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/HB"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../ReturnButton")
+focus_neighbor_top = NodePath("../../MarginContainer/HBoxContainer/LevelCarroussel/VBoxContainer2/RightButton")
+focus_neighbor_right = NodePath("../../MarginContainer/HBoxContainer/DataContainer/LevelDataDisplay/PanelContainer/MarginContainer/VBoxContainer/PlayButton")
+focus_neighbor_bottom = NodePath("../../MarginContainer/HBoxContainer/LevelCarroussel/VBoxContainer2/RightButton")
+focus_next = NodePath("../ReturnButton")
+focus_previous = NodePath("../ReturnButton")
 text = "Choose for me"
+
+[node name="LevelMusicPlayer" parent="." instance=ExtResource("12_7j1c0")]
 
 [connection signal="pressed" from="MC/VB/SettingsTab/MarginContainer/VBoxContainer/HB/ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="MC/VB/SettingsTab/MarginContainer/VBoxContainer/HB/Random" to="." method="_on_random_pressed"]
+
+[editable path="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/LevelCarroussel"]
+[editable path="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/LevelCarroussel/MarginContainer/VBoxContainer/MiniLevelHolder/SubViewport/CarrouselRender"]
+[editable path="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/DataContainer/LevelDataDisplay"]

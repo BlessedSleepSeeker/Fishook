@@ -54,7 +54,6 @@ func display_text(use_letter_by_letter: bool = false) -> void:
 				sound_player.play_random()
 			await get_tree().create_timer(letter_delay).timeout
 		else:
-			print(visible_characters)
 			display_one_more_word()
 			if play_sound_on_progress:
 				sound_player.play_random()
@@ -67,9 +66,7 @@ func display_one_more_word() -> void:
 	word_progression.emit()
 
 func find_next_separator() -> int:
-	print(transformed_text)
 	var next_separator_position: int = transformed_text.find(word_separator, self.visible_characters + word_separator.length())
-	print("next_separator_pos %d" % next_separator_position)
 	return (next_separator_position if next_separator_position > 0 else -1)
 
 
@@ -97,7 +94,6 @@ func replace_tag_at_pos(_text: String, tag_start_pos: int) -> String:
 	var tag_data: String = _text.substr(tag_start_offset_pos, tag_length)
 	
 	var bbcode_txt: String = icons_bbcode_template % icons_path_template % tag_data
-	print(bbcode_txt)
 
 	var replace_length = icons_opening_marker.length() + tag_length + icons_closing_marker.length()
 	return _text.replace(_text.substr(tag_start_pos, replace_length), bbcode_txt)

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_xcu2o")
-name = "Tutorial"
+name = "The Tutorial"
 comment = "Learn about Fishook mechanics !"
 scene_name = "Tutorial"
 difficulty = 0

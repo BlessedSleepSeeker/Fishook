@@ -18,6 +18,7 @@ signal level_chosen(level_data: LevelData, speedrun_mode: bool)
 
 func _ready():
 	play_button.pressed.connect(_on_play_pressed)
+	play_button.grab_focus()
 
 func build() -> void:
 	comment_label.update_text(comment_template % level_data.comment)

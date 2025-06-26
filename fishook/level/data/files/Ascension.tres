@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_dn8tw")
-name = "Ascension"
+name = "The Ascension"
 comment = "The ultimate fishing rod challenge"
 scene_name = "Ascension"
 difficulty = 4

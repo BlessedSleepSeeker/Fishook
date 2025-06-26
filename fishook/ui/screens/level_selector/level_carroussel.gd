@@ -1,7 +1,11 @@
 extends HBoxContainer
 class_name LevelCarrousel
 
-@export var levels: Array[LevelData] = []
+@export var levels: Array[LevelData] = []:
+	set(data):
+		levels = data
+		carrousel_render.levels = levels
+		carrousel_render.build()
 
 @export var level_title_template: String = "[font_size=70]%s[/font_size]"
 
@@ -10,6 +14,8 @@ class_name LevelCarrousel
 
 @onready var left_button: TextureButton = %LeftButton
 @onready var right_button: TextureButton = %RightButton
+
+@onready var carrousel_render: CarrouselRender = %CarrouselRender
 
 var current_level: LevelData = null
 var current_level_index: int = -1
@@ -39,6 +45,7 @@ func set_level(level: LevelData) -> void:
 	changed_carrousel_level.emit(level)
 	level_title_label.text = level_title_template % level.name
 	current_level_index = levels.find(level)
+	carrousel_render.rotate_for_index(current_level_index)
 
 func pick_random_level():
 	pass

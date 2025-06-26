@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_qy405")
 name = "Back And Forth"
-comment = "Formely known as Alpha 0.0.1"
+comment = "You come from one way, and go back in another. Formely known as Alpha 0.0.1"
 scene_name = "BackAndForth"
 difficulty = 1
 metadata/_custom_type_script = "uid://bhcn1srajolcg"
