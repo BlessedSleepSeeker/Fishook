@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://8cngf1vhlojk"]
+
+[ext_resource type="Script" uid="uid://bhcn1srajolcg" path="res://level/data/LevelData.gd" id="1_xcu2o"]
+
+[resource]
+script = ExtResource("1_xcu2o")
+name = "Tutorial"
+comment = "Learn about Fishook mechanics !"
+scene_name = "Tutorial"
+difficulty = 0
+metadata/_custom_type_script = "uid://bhcn1srajolcg"

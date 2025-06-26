@@ -69,8 +69,9 @@ func picked_up_collectible(_collectible: BaseCollectible) -> void:
 	level_hud.update_collectible(collected_amount, total_collectibles)
 	print_debug(debug_collectible_timer_template % [collected_amount, level_stopwatch.get_current_time_as_string()])
 	if collected_amount >= total_collectibles:
-		level_stopwatch.pause = true
 		print_debug("Final Time : %s" % [level_stopwatch.get_current_time_as_string()])
+		if level_type == LevelType.COLLECTATHON:
+			_on_end_of_level_reached()
 	## screenshots
 	var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 	await get_tree().create_timer(rng.randf_range(0.1, 0.5)).timeout
@@ -147,11 +148,14 @@ func update_timer() -> void:
 
 func _on_end_of_level_reached():
 	end_level_hud.pictures = character.camera.screenshot_camera.pictures
-	music_player.change_volume(-12, 3)
-	music_player.input_disabled = true
+	if music_player:
+		music_player.change_volume(-12, 3)
+		music_player.input_disabled = true
 	level_stopwatch.pause = true
-	dialog_hud.hide_dialog()
-	level_hud.fade_hud()
+	if dialog_hud:
+		dialog_hud.hide_dialog()
+	if level_hud:
+		level_hud.fade_hud()
 	#var tween: Tween = get_tree().create_tween()
 	#tween.tween_property(Engine, "time_scale", 0.1, 0.5).set_trans(Tween.TRANS_CUBIC)
 	character.tween_velocity(Vector3.ZERO, 1)

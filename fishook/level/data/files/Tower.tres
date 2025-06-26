@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://xv8sj2ct4kb8"]
+
+[ext_resource type="Script" uid="uid://bhcn1srajolcg" path="res://level/data/LevelData.gd" id="1_plky7"]
+
+[resource]
+script = ExtResource("1_plky7")
+name = "The Tower"
+comment = "What's up there ?"
+scene_name = "Tower"
+difficulty = 4
+metadata/_custom_type_script = "uid://bhcn1srajolcg"

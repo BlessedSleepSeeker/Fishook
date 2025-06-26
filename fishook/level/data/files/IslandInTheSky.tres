@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://cds8h8k82co60"]
+
+[ext_resource type="Script" uid="uid://bhcn1srajolcg" path="res://level/data/LevelData.gd" id="1_k7guq"]
+
+[resource]
+script = ExtResource("1_k7guq")
+name = "Island in the Sky"
+comment = "A little stroll. Formerly known as Alpha 0.0.2"
+scene_name = "IslandInTheSky"
+difficulty = 2
+metadata/_custom_type_script = "uid://bhcn1srajolcg"

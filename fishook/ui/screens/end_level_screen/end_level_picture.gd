@@ -13,7 +13,7 @@ func add_texture(_texture: ImageTexture) -> void:
 	if self.texture == null:
 		push_error("Can't create EndLevelPicture, texture is null")
 	randomize_rotation()
-	shader_rect.size = _texture.get_size()
+	shader_rect.set_deferred("size", _texture.get_size())
 	tween_shader_param("Alpha", 0, 1.5)
 
 func randomize_rotation() -> void:

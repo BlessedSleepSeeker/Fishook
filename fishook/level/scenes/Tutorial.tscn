@@ -21,6 +21,7 @@
 [sub_resource type="Resource" id="Resource_8snt5"]
 script = ExtResource("2_3f3lf")
 name = "Tutorial"
+comment = "No Comment"
 scene_name = "Tutorial"
 difficulty = 0
 metadata/_custom_type_script = "uid://bhcn1srajolcg"
@@ -102,14 +103,14 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_u1bnp"]
 size = Vector3(16, 6, 0.074707)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bkwdk"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3f3lf"]
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.493667, 1, 0.38, 1)
 proximity_fade_distance = 5.0
 distance_fade_min_distance = 5.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_bkwdk"]
-material = SubResource("StandardMaterial3D_bkwdk")
+material = SubResource("StandardMaterial3D_3f3lf")
 size = Vector3(16, 6, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xroqs"]
@@ -169,17 +170,17 @@ unique_name_in_owner = true
 [node name="DebugCanvasLayer" parent="." instance=ExtResource("14_hkna7")]
 visible = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_eo4ju")
-}
-autoplay = "move_around"
-
 [node name="DialogHUD" parent="." instance=ExtResource("12_rrasd")]
 unique_name_in_owner = true
 
 [node name="EndLevelScreen" parent="." instance=ExtResource("17_3f3lf")]
 unique_name_in_owner = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_eo4ju")
+}
+autoplay = "move_around"
 
 [node name="LevelStopwatch" parent="." instance=ExtResource("12_laaud")]
 unique_name_in_owner = true
@@ -324,7 +325,7 @@ material = ExtResource("6_d21nb")
 
 [node name="EndOfLevel" parent="Geometry" instance=ExtResource("7_bkwdk")]
 unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.4145, 1.97246, -5.42657e-07)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -356.414, 26.9725, -1.55794e-05)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/EndOfLevel"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -0.462646)
@@ -429,18 +430,6 @@ shape = SubResource("BoxShape3D_wesa1")
 
 [node name="BaseCollectiblePositionHack" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2, 0)
-
-[node name="BaseCollectiblePositionHack14" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -3.49691e-07)
-
-[node name="BaseCollectiblePositionHack15" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, -3.0598e-07)
-
-[node name="BaseCollectiblePositionHack16" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, -2.62268e-07)
-
-[node name="BaseCollectiblePositionHack17" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, -2.18557e-07)
 
 [node name="BaseCollectiblePositionHack9" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, -2, -2.92866e-06)

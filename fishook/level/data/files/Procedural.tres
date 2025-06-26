@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://c6lw766si7fmg"]
+
+[ext_resource type="Script" uid="uid://bhcn1srajolcg" path="res://level/data/LevelData.gd" id="1_ipi10"]
+
+[resource]
+script = ExtResource("1_ipi10")
+name = "Draw Me A Level"
+comment = "Proceduraly generated level, just for you... "
+scene_name = "ProceduralLevel"
+difficulty = 3
+metadata/_custom_type_script = "uid://bhcn1srajolcg"

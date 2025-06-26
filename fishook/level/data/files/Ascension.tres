@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://cavvyqh6texvt"]
+
+[ext_resource type="Script" uid="uid://bhcn1srajolcg" path="res://level/data/LevelData.gd" id="1_dn8tw"]
+
+[resource]
+script = ExtResource("1_dn8tw")
+name = "Ascension"
+comment = "The ultimate fishing rod challenge"
+scene_name = "Ascension"
+difficulty = 4
+metadata/_custom_type_script = "uid://bhcn1srajolcg"

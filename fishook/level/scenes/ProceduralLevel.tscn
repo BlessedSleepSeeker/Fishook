@@ -1,14 +1,16 @@
-[gd_scene load_steps=19 format=3 uid="uid://bmx438bhm112h"]
+[gd_scene load_steps=21 format=3 uid="uid://bmx438bhm112h"]
 
 [ext_resource type="Script" uid="uid://23kwl6ahfbxf" path="res://level/procgen/procgen_level.gd" id="1_mugtj"]
 [ext_resource type="Script" uid="uid://cce5ncid3uwij" path="res://level/procgen/tile_generation.gd" id="2_eyylu"]
 [ext_resource type="Script" uid="uid://dt0ebj6ks0gku" path="res://level/procgen/procgen_level_algorithm.gd" id="2_p13vr"]
 [ext_resource type="Script" uid="uid://dkpama1ui05al" path="res://level/procgen/generation_rules/algorithm_wfc.gd" id="3_773w7"]
 [ext_resource type="Resource" uid="uid://c6s71fhohi3lw" path="res://level/procgen/tiles_definitions/all_tiles.tres" id="3_ajvnm"]
+[ext_resource type="Resource" uid="uid://c6lw766si7fmg" path="res://level/data/files/Procedural.tres" id="6_eyylu"]
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="8_2wn7o"]
 [ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="9_sdfvu"]
 [ext_resource type="PackedScene" uid="uid://khpkfqnos2o" path="res://level/utils/debug_ui/DebugCanvas.tscn" id="10_773w7"]
 [ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="10_w18c5"]
+[ext_resource type="PackedScene" uid="uid://dunvbupwox01v" path="res://ui/screens/end_level_screen/EndLevelScreen.tscn" id="12_5xox2"]
 [ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/huds/level_hud/LevelHUD.tscn" id="13_ewfnn"]
 
 [sub_resource type="Resource" id="Resource_eyylu"]
@@ -66,8 +68,10 @@ ssao_intensity = 1.4
 [node name="ProceduralLevel" type="Node3D"]
 script = ExtResource("1_mugtj")
 algorithm = SubResource("Resource_kb2o8")
+level_type = 1
 level_down_limit = -30.0
 randomize_spawn_point = true
+meta_data = ExtResource("6_eyylu")
 
 [node name="CharacterInstance" parent="." instance=ExtResource("8_2wn7o")]
 unique_name_in_owner = true
@@ -82,6 +86,7 @@ transform = Transform3D(0.866025, -0.433013, -0.25, 0, -0.5, 0.866025, -0.5, -0.
 shadow_enabled = true
 
 [node name="LevelMusicPlayer" parent="." instance=ExtResource("9_sdfvu")]
+unique_name_in_owner = true
 
 [node name="LevelStopwatch" parent="." instance=ExtResource("10_w18c5")]
 unique_name_in_owner = true
@@ -93,3 +98,6 @@ unique_name_in_owner = true
 
 [node name="DebugCanvasLayer" parent="." instance=ExtResource("10_773w7")]
 visible = false
+
+[node name="EndLevelScreen" parent="." instance=ExtResource("12_5xox2")]
+unique_name_in_owner = true

@@ -1,6 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://bfvhhew1rxjs0"]
+[gd_scene load_steps=35 format=3 uid="uid://bfvhhew1rxjs0"]
 
 [ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_ehgmg"]
+[ext_resource type="Resource" uid="uid://xv8sj2ct4kb8" path="res://level/data/files/Tower.tres" id="2_21non"]
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_og642"]
 [ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="3_1booi"]
 [ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/huds/level_hud/LevelHUD.tscn" id="4_ove64"]
@@ -17,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://c7pg5cdosq1p1" path="res://level/assets/decoration/AssetRandomRotator.tscn" id="10_8dqi2"]
 [ext_resource type="PackedScene" uid="uid://pd1lku6503f" path="res://level/assets/decoration/models/flowers/RandomFlower.tscn" id="15_58hut"]
 [ext_resource type="PackedScene" uid="uid://khpkfqnos2o" path="res://level/utils/debug_ui/DebugCanvas.tscn" id="17_4jlt8"]
+[ext_resource type="PackedScene" uid="uid://qn6ffcswfedb" path="res://level/assets/end_of_level/BaseEndOfLevel.tscn" id="19_8dqi2"]
+[ext_resource type="PackedScene" uid="uid://dunvbupwox01v" path="res://ui/screens/end_level_screen/EndLevelScreen.tscn" id="20_kohfh"]
 
 [sub_resource type="Gradient" id="Gradient_3ue7i"]
 interpolation_mode = 2
@@ -81,9 +84,24 @@ _limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_kohfh"]
+size = Vector3(4, 3, 0.074707)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_me3wb"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.493667, 1, 0.38, 1)
+proximity_fade_distance = 5.0
+distance_fade_min_distance = 5.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_o0wn6"]
+material = SubResource("StandardMaterial3D_me3wb")
+size = Vector3(4, 3, 0.1)
+
 [node name="LevelTower" type="Node3D"]
 script = ExtResource("1_ehgmg")
 level_down_limit = -40.0
+end_level_trigger_path = NodePath("EndOfLevel")
+meta_data = ExtResource("2_21non")
 
 [node name="CharacterInstance" parent="." instance=ExtResource("2_og642")]
 unique_name_in_owner = true
@@ -98,8 +116,15 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.679
 shadow_enabled = true
 
 [node name="LevelMusicPlayer" parent="." instance=ExtResource("3_1booi")]
+unique_name_in_owner = true
 
 [node name="LevelHud" parent="." instance=ExtResource("4_ove64")]
+unique_name_in_owner = true
+
+[node name="DebugCanvasLayer" parent="." instance=ExtResource("17_4jlt8")]
+visible = false
+
+[node name="EndLevelScreen" parent="." instance=ExtResource("20_kohfh")]
 unique_name_in_owner = true
 
 [node name="Geometry" type="Node3D" parent="."]
@@ -682,10 +707,6 @@ rotation_z_max = 0.174533
 
 [node name="RockRandomRotator" parent="." instance=ExtResource("10_8dqi2")]
 models = Array[NodePath]([NodePath("../Geometry/Decoration/Rock"), NodePath("../Geometry/Decoration/Rock2"), NodePath("../Geometry/Decoration/Rock3"), NodePath("../Geometry/Decoration/Rock4"), NodePath("../Geometry/Decoration/Rock5"), NodePath("../Geometry/Decoration/Rock6"), NodePath("../Geometry/Decoration/Rock7"), NodePath("../Geometry/Decoration/Rock7"), NodePath("../Geometry/Decoration/Rock7"), NodePath("../Geometry/Decoration/Rock7")])
-rotation_x_min = 0.0
-rotation_x_max = 0.0
-rotation_z_min = 0.0
-rotation_z_max = 0.0
 
 [node name="TreeRandomRotator" parent="." instance=ExtResource("10_8dqi2")]
 models = Array[NodePath]([NodePath("../Geometry/Decoration/Tree"), NodePath("../Geometry/Decoration/Tree2"), NodePath("../Geometry/Decoration/Tree5"), NodePath("../Geometry/Decoration/Tree6")])
@@ -706,6 +727,15 @@ transform = Transform3D(0.973846, -0.132668, -0.184456, 0.134707, 0.990884, -0.0
 [node name="RandomFlower4" parent="." instance=ExtResource("15_58hut")]
 transform = Transform3D(0.336173, -0.0018179, 0.941798, -0.119129, 0.991884, 0.0444374, -0.934235, -0.127134, 0.333228, 15.5007, 144.495, 266.491)
 
-[node name="DebugCanvasLayer" parent="." instance=ExtResource("17_4jlt8")]
+[node name="EndOfLevel" parent="." instance=ExtResource("19_8dqi2")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -11.5479, 160.344, 243.777)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EndOfLevel"]
+shape = SubResource("BoxShape3D_kohfh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EndOfLevel"]
+transparency = 0.71
+mesh = SubResource("BoxMesh_o0wn6")
 
 [editable path="Geometry/CSGTower/godot_plushV2"]
