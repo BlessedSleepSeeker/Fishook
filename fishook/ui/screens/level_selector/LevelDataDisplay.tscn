@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2mubf1uianr1"]
+
+[ext_resource type="Theme" uid="uid://d3kms72g8lsqf" path="res://ui/themes/base_ui_theme.tres" id="1_hgj1y"]
+[ext_resource type="Script" uid="uid://desi42e4e7ijv" path="res://ui/screens/level_selector/level_data_display.gd" id="2_oq2cy"]
+[ext_resource type="PackedScene" uid="uid://bsy2brcc5c7qq" path="res://ui/huds/dialog_hud/WordByWordLabel.tscn" id="3_s28xg"]
+
+[node name="LevelDataDisplay" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_hgj1y")
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+script = ExtResource("2_oq2cy")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="CommentLabel" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_s28xg")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "Comment"
+icons_path_template = "res://ui/assets/on_screen_controls/%s.png"
+
+[node name="DifficultyLabel" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_s28xg")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "Difficulty"
+play_sound_on_progress = false
+icons_path_template = "res://ui/assets/on_screen_controls/%s.png"
+
+[node name="Separator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Separator2" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SpeedrunOption" type="CheckButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Speedrun Mode"
+
+[node name="PlayButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Play"

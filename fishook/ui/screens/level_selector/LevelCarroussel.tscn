@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://s213q8goj53c"]
+
+[ext_resource type="Theme" uid="uid://d3kms72g8lsqf" path="res://ui/themes/base_ui_theme.tres" id="1_kshit"]
+[ext_resource type="Script" uid="uid://c4jb4etenr1jo" path="res://ui/screens/level_selector/level_carroussel.gd" id="2_vbsvf"]
+[ext_resource type="Texture2D" uid="uid://cjmxnst6q22lv" path="res://ui/assets/on_screen_controls/line-light/lineLight22.png" id="3_vbsvf"]
+[ext_resource type="Texture2D" uid="uid://fsjwqwyjwvp2" path="res://ui/assets/on_screen_controls/flat-dark/flatDark23.png" id="4_us0t1"]
+[ext_resource type="Texture2D" uid="uid://dq4h14517hkgd" path="res://ui/assets/on_screen_controls/transparent-light/transparentLight22.png" id="5_ow8fa"]
+[ext_resource type="Texture2D" uid="uid://bcu7enmgkrdwk" path="res://ui/assets/on_screen_controls/line-light/lineLight23.png" id="6_js431"]
+[ext_resource type="Texture2D" uid="uid://dr3m7w1e1jlbu" path="res://ui/assets/on_screen_controls/flat-dark/flatDark24.png" id="7_vbsvf"]
+[ext_resource type="Texture2D" uid="uid://cxm66gioyo56t" path="res://ui/assets/on_screen_controls/transparent-light/transparentLight23.png" id="8_va1t7"]
+
+[node name="LevelCarroussel" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kshit")
+script = ExtResource("2_vbsvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="LeftButton" type="TextureButton" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("3_vbsvf")
+texture_pressed = ExtResource("4_us0t1")
+texture_hover = ExtResource("5_ow8fa")
+texture_focused = ExtResource("5_ow8fa")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MiniLevelHolder" type="Control" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MiniLevelTitle" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=50]LEVEL TITLE[/font_size]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="RightButton" type="TextureButton" parent="VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("6_js431")
+texture_pressed = ExtResource("7_vbsvf")
+texture_hover = ExtResource("8_va1t7")
+texture_focused = ExtResource("8_va1t7")

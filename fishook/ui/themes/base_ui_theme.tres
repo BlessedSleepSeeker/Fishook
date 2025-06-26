@@ -1,4 +1,21 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://d3kms72g8lsqf"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://d3kms72g8lsqf"]
+
+[ext_resource type="FontFile" uid="uid://cm7uiypoce1r1" path="res://ui/themes/fonts/SeaGreen.ttf" id="1_1c8oy"]
+[ext_resource type="StyleBox" uid="uid://qdxg6ceetby6" path="res://ui/themes/main_menu/button_box_focused.tres" id="2_ykfty"]
+[ext_resource type="StyleBox" uid="uid://c62wxphwn56k3" path="res://ui/themes/main_menu/button_style_box_flat.tres" id="3_84mi6"]
+[ext_resource type="StyleBox" uid="uid://bkh2g2nh3im1t" path="res://ui/themes/main_menu/button_box_pressed.tres" id="4_d5r4m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykfty"]
+bg_color = Color(0, 0, 0, 0.192157)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.1943, 0.511433, 0.67, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8teyw"]
 bg_color = Color(0.160267, 0.152, 0.4, 0.788235)
@@ -8,8 +25,16 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [resource]
-MarginContainer/constants/margin_bottom = 10
-MarginContainer/constants/margin_left = 10
-MarginContainer/constants/margin_right = 10
-MarginContainer/constants/margin_top = 10
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("1_1c8oy")
+Button/styles/focus = ExtResource("2_ykfty")
+Button/styles/hover = ExtResource("2_ykfty")
+Button/styles/normal = ExtResource("3_84mi6")
+Button/styles/pressed = ExtResource("4_d5r4m")
+MarginContainer/constants/margin_bottom = 20
+MarginContainer/constants/margin_left = 20
+MarginContainer/constants/margin_right = 20
+MarginContainer/constants/margin_top = 20
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_ykfty")
 PopupPanel/styles/panel = SubResource("StyleBoxFlat_8teyw")
+RichTextLabel/fonts/normal_font = ExtResource("1_1c8oy")

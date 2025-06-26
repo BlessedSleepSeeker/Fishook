@@ -7,5 +7,5 @@ script = ExtResource("1_plky7")
 name = "The Tower"
 comment = "What's up there ?"
 scene_name = "Tower"
-difficulty = 4
+difficulty = 3
 metadata/_custom_type_script = "uid://bhcn1srajolcg"

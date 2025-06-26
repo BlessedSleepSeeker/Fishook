@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ciqi6ctu5bu60"]
+[gd_scene load_steps=12 format=3 uid="uid://ciqi6ctu5bu60"]
 
 [ext_resource type="Theme" uid="uid://d3kms72g8lsqf" path="res://ui/themes/base_ui_theme.tres" id="1_ey0nq"]
 [ext_resource type="Script" uid="uid://bu6dq3162m11d" path="res://ui/screens/level_selector/level_selector.gd" id="1_lq5ei"]
@@ -9,6 +9,8 @@
 [ext_resource type="Resource" uid="uid://xv8sj2ct4kb8" path="res://level/data/files/Tower.tres" id="7_tq5iu"]
 [ext_resource type="Resource" uid="uid://cavvyqh6texvt" path="res://level/data/files/Ascension.tres" id="8_7j1c0"]
 [ext_resource type="Resource" uid="uid://c6lw766si7fmg" path="res://level/data/files/Procedural.tres" id="9_76wlg"]
+[ext_resource type="PackedScene" uid="uid://s213q8goj53c" path="res://ui/screens/level_selector/LevelCarroussel.tscn" id="10_c0n6j"]
+[ext_resource type="PackedScene" uid="uid://b2mubf1uianr1" path="res://ui/screens/level_selector/LevelDataDisplay.tscn" id="11_tq5iu"]
 
 [node name="LevelSelector" type="Control"]
 layout_mode = 3
@@ -29,7 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.192157, 0.192157, 0.192157, 1)
+color = Color(0.352, 0.8624, 0.88, 1)
 
 [node name="MC" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -42,9 +44,20 @@ grow_vertical = 2
 [node name="VB" type="VBoxContainer" parent="MC"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MC/VB"]
+[node name="MarginContainer" type="MarginContainer" parent="MC/VB"]
 layout_mode = 2
-text = "Pick a Level !"
+
+[node name="Panel" type="PanelContainer" parent="MC/VB/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MC/VB/MarginContainer/Panel"]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="MC/VB/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=50][wave amp=40.0 freq=5 connected=1]Pick a Level ![/wave][/font_size]"
+fit_content = true
 horizontal_alignment = 1
 
 [node name="SettingsTab" type="PanelContainer" parent="MC/VB"]
@@ -54,23 +67,52 @@ size_flags_vertical = 3
 [node name="MarginContainer" type="MarginContainer" parent="MC/VB/SettingsTab"]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="MC/VB/SettingsTab/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MC/VB/SettingsTab/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="LevelCarroussel" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/ScrollContainer" instance=ExtResource("10_c0n6j")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Random" type="Button" parent="MC/VB/SettingsTab/MarginContainer/GridContainer"]
+[node name="DataContainer" type="ScrollContainer" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LevelDataDisplay" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/DataContainer" instance=ExtResource("11_tq5iu")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Random Level"
 
-[node name="HB" type="HBoxContainer" parent="MC/VB"]
+[node name="HB" type="HBoxContainer" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer"]
 layout_mode = 2
+alignment = 1
 
-[node name="ReturnButton" type="Button" parent="MC/VB/HB"]
+[node name="ReturnButton" type="Button" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/HB"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 2
 text = "Go Back"
 
-[connection signal="pressed" from="MC/VB/SettingsTab/MarginContainer/GridContainer/Random" to="." method="_on_random_pressed"]
-[connection signal="pressed" from="MC/VB/HB/ReturnButton" to="." method="_on_return_button_pressed"]
+[node name="Control" type="Control" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/HB"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="Random" type="Button" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/HB"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Choose for me"
+
+[connection signal="pressed" from="MC/VB/SettingsTab/MarginContainer/VBoxContainer/HB/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="MC/VB/SettingsTab/MarginContainer/VBoxContainer/HB/Random" to="." method="_on_random_pressed"]
