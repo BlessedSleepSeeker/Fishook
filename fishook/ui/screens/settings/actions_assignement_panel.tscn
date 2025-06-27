@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://deilqxh4w887j"]
+[gd_scene load_steps=3 format=3 uid="uid://deilqxh4w887j"]
 
+[ext_resource type="Script" uid="uid://p5dg0ytht70r" path="res://ui/screens/settings/img_rich_text_label.gd" id="2_glhtt"]
 [ext_resource type="Script" uid="uid://cudu623syulgs" path="res://ui/screens/settings/actions_assignement_panel.gd" id="2_ywso3"]
 
 [node name="ActionsAssignementPanel" type="PanelContainer"]
@@ -35,8 +36,14 @@ layout_mode = 2
 [node name="C2" type="CenterContainer" parent="MC/VB"]
 layout_mode = 2
 
-[node name="CurrentInputLabel" type="Label" parent="MC/VB/C2"]
+[node name="CurrentInputLabel" type="RichTextLabel" parent="MC/VB/C2"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+script = ExtResource("2_glhtt")
+icons_bbcode_template = "[img=100]%s[/img]"
+metadata/_custom_type_script = "uid://p5dg0ytht70r"
 
 [node name="C3" type="CenterContainer" parent="MC/VB"]
 layout_mode = 2

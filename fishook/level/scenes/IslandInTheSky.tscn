@@ -71,8 +71,8 @@ size = Vector3(4, 3, 0.1)
 
 [node name="Level2" type="Node3D"]
 script = ExtResource("1_8a02v")
-end_level_trigger_path = NodePath("EndOfLevel")
 meta_data = ExtResource("2_sh0vh")
+end_level_trigger_path = NodePath("EndOfLevel")
 
 [node name="CharacterInstance" parent="." instance=ExtResource("2_q602t")]
 unique_name_in_owner = true

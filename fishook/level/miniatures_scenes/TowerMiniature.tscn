@@ -1,0 +1,116 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjhlookbyudyr"]
+
+[sub_resource type="Animation" id="Animation_8t2iw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationNode:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationNode:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_abv17"]
+resource_name = "idle"
+length = 30.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationNode:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 30),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationNode:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 15, 30),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.4, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8l6j4"]
+_data = {
+&"RESET": SubResource("Animation_8t2iw"),
+&"idle": SubResource("Animation_abv17")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjjhk"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.133333, 0.129412, 0.14902, 1)
+
+[node name="TowerMiniature" type="Node3D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8l6j4")
+}
+autoplay = "idle"
+
+[node name="AnimationNode" type="Node3D" parent="."]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="AnimationNode"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_mjjhk")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="AnimationNode/CSGCombiner3D"]
+smooth_faces = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="AnimationNode/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.909889, -0.414852, 0, 0.414852, 0.909889, 0.553212, -0.293633, -0.054309)
+size = Vector3(0.1, 0.1, 0.303833)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="AnimationNode/CSGCombiner3D"]
+transform = Transform3D(0.687506, 0, 0.726179, 0.301257, 0.909889, -0.285213, -0.660742, 0.414852, 0.625554, 0.438278, -0.150562, -0.368106)
+size = Vector3(0.1, 0.1, 0.303833)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="AnimationNode/CSGCombiner3D"]
+transform = Transform3D(0.179403, 0.314435, 0.932172, 0.408121, 0.838373, -0.361341, -0.895127, 0.445265, 0.022079, 0.0891279, -0.0100213, -0.514029)
+size = Vector3(0.1, 0.1, 0.303833)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="AnimationNode/CSGCombiner3D"]
+transform = Transform3D(-0.397786, 0.431956, 0.809432, 0.0618663, 0.892856, -0.446072, -0.91539, -0.127364, -0.381889, -0.260898, 0.136846, -0.442287)
+size = Vector3(0.1, 0.1, 0.303833)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="AnimationNode/CSGCombiner3D"]
+transform = Transform3D(-0.96389, 0.127941, 0.233554, 0.0489348, 0.947191, -0.316914, -0.261767, -0.294041, -0.919248, -0.508677, 0.359974, -0.121751)
+size = Vector3(0.1, 0.1, 0.303833)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="AnimationNode/CSGCombiner3D"]
+transform = Transform3D(-0.906781, 0.0590375, -0.417447, 0.243315, 0.881894, -0.403808, 0.344304, -0.467737, -0.814049, -0.570644, 0.597238, 0.271749)
+size = Vector3(0.1, 0.1, 0.303833)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="AnimationNode/CSGCombiner3D"]
+transform = Transform3D(-0.906781, 0.0590375, -0.417447, 0.243315, 0.881894, -0.403808, 0.344304, -0.467737, -0.814049, -0.463485, 0.822046, 0.395102)
+size = Vector3(0.1, 0.1, 0.0996704)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="AnimationNode/CSGCombiner3D"]
+transform = Transform3D(-0.573044, -0.0907953, -0.814479, -0.0538767, 0.995868, -0.0731097, 0.817752, 0.00198656, -0.575568, -0.388846, 0.990208, 0.453161)
+size = Vector3(0.1, 0.1, 0.0996704)

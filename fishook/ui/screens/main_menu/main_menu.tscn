@@ -1,8 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://chgfq0kn0onbo"]
+[gd_scene load_steps=12 format=3 uid="uid://chgfq0kn0onbo"]
 
 [ext_resource type="Theme" uid="uid://dow3yf2y5jff7" path="res://ui/themes/main_menu_theme.tres" id="1_aiivd"]
 [ext_resource type="PackedScene" uid="uid://dg2lu8hd15uey" path="res://ui/screens/main_menu/main_menu_background.tscn" id="2_0xe1w"]
 [ext_resource type="Script" uid="uid://bsuusk6hp5bge" path="res://ui/screens/main_menu/main_menu.gd" id="2_20ujx"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_aiivd"]
+device = -1
+keycode = 80
+unicode = 112
+
+[sub_resource type="Shortcut" id="Shortcut_dxroe"]
+events = [SubResource("InputEventKey_aiivd")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_kadtk"]
+device = -1
+keycode = 83
+unicode = 115
+
+[sub_resource type="Shortcut" id="Shortcut_k0wwq"]
+events = [SubResource("InputEventKey_kadtk")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_hut5v"]
+device = -1
+keycode = 67
+unicode = 99
+
+[sub_resource type="Shortcut" id="Shortcut_uck36"]
+events = [SubResource("InputEventKey_hut5v")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_xvp6o"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_8facs"]
+events = [SubResource("InputEventKey_xvp6o")]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -34,7 +65,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
-text = "[center][font_size=150][wave amp=30.0 freq=1.5 connected=1][rainbow freq=0.1 sat=0.8 val=0.8 speed=1.0]Fishook[/rainbow][/wave][/font_size][center]"
+text = "[center][font_size=150][wave amp=30.0 freq=1.5 connected=1][rainbow freq=0.1 sat=0.8 val=0.8 speed=1.0][font_size=200]F[/font_size]ishook[/rainbow][/wave][/font_size][center]"
 fit_content = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMenu"]
@@ -53,6 +84,7 @@ focus_neighbor_top = NodePath("../Exit")
 focus_neighbor_bottom = NodePath("../Settings")
 focus_next = NodePath("../Settings")
 focus_previous = NodePath("../Exit")
+shortcut = SubResource("Shortcut_dxroe")
 text = "Play"
 
 [node name="Settings" type="Button" parent="MainMenu/HBoxContainer/VBox"]
@@ -61,6 +93,7 @@ focus_neighbor_top = NodePath("../Play")
 focus_neighbor_bottom = NodePath("../Credits")
 focus_next = NodePath("../Credits")
 focus_previous = NodePath("../Play")
+shortcut = SubResource("Shortcut_k0wwq")
 text = "Settings"
 
 [node name="Credits" type="Button" parent="MainMenu/HBoxContainer/VBox"]
@@ -69,6 +102,7 @@ focus_neighbor_top = NodePath("../Settings")
 focus_neighbor_bottom = NodePath("../Exit")
 focus_next = NodePath("../Exit")
 focus_previous = NodePath("../Settings")
+shortcut = SubResource("Shortcut_uck36")
 text = "Credits"
 
 [node name="Exit" type="Button" parent="MainMenu/HBoxContainer/VBox"]
@@ -77,6 +111,7 @@ focus_neighbor_top = NodePath("../Credits")
 focus_neighbor_bottom = NodePath("../Play")
 focus_next = NodePath("../Play")
 focus_previous = NodePath("../Credits")
+shortcut = SubResource("Shortcut_8facs")
 text = "Exit"
 
 [connection signal="pressed" from="MainMenu/HBoxContainer/VBox/Play" to="." method="_on_play_button_pressed"]

@@ -1,0 +1,46 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bmjg1574lxkq"]
+
+[ext_resource type="StyleBox" uid="uid://b2167u6dvspw7" path="res://ui/themes/setting_screen/tab_hover.tres" id="1_3vu25"]
+[ext_resource type="FontFile" uid="uid://cm7uiypoce1r1" path="res://ui/themes/fonts/SeaGreen.ttf" id="1_jvmon"]
+[ext_resource type="StyleBox" uid="uid://dbgf36k0gajiw" path="res://ui/themes/setting_screen/tab_selected.tres" id="1_supqq"]
+[ext_resource type="StyleBox" uid="uid://qdxg6ceetby6" path="res://ui/themes/main_menu/button_box_focused.tres" id="2_idwmr"]
+[ext_resource type="StyleBox" uid="uid://bkh2g2nh3im1t" path="res://ui/themes/main_menu/button_box_pressed.tres" id="3_glvc7"]
+[ext_resource type="StyleBox" uid="uid://ts1f2vkncqnx" path="res://ui/themes/setting_screen/tab_unselected.tres" id="3_xln1i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvmon"]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.6688, 0.87296, 0.88, 1)
+corner_radius_top_left = 5
+corner_radius_bottom_right = 5
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pc74o"]
+bg_color = Color(0.1344, 0.1305, 0.15, 0.458824)
+border_color = Color(0, 0.850667, 0.88, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[resource]
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("1_jvmon")
+Button/styles/focus = ExtResource("2_idwmr")
+Button/styles/hover = ExtResource("2_idwmr")
+Button/styles/normal = SubResource("StyleBoxFlat_jvmon")
+Button/styles/pressed = ExtResource("3_glvc7")
+Label/font_sizes/font_size = 25
+Label/fonts/font = ExtResource("1_jvmon")
+RichTextLabel/font_sizes/normal_font_size = 25
+RichTextLabel/fonts/normal_font = ExtResource("1_jvmon")
+TabContainer/font_sizes/font_size = 40
+TabContainer/fonts/font = ExtResource("1_jvmon")
+TabContainer/styles/panel = SubResource("StyleBoxFlat_pc74o")
+TabContainer/styles/tab_hovered = ExtResource("1_3vu25")
+TabContainer/styles/tab_selected = ExtResource("1_supqq")
+TabContainer/styles/tab_unselected = ExtResource("3_xln1i")

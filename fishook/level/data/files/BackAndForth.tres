@@ -8,4 +8,5 @@ name = "Back And Forth"
 comment = "You come from one way, and go back in another. Formely known as Alpha 0.0.1"
 scene_name = "BackAndForth"
 difficulty = 1
+miniature_scene_path = "uid://b7yqxgswxr55x"
 metadata/_custom_type_script = "uid://bhcn1srajolcg"

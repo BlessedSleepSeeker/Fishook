@@ -1,16 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://nlhyall8ult7"]
+[gd_scene load_steps=3 format=3 uid="uid://nlhyall8ult7"]
 
 [ext_resource type="Script" uid="uid://bhaqjqbbynx5j" path="res://ui/screens/level_selector/carrousel_render.gd" id="1_48ydk"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_48ydk"]
-sky_top_color = Color(0.352, 0.8624, 0.88, 1)
-
-[sub_resource type="Sky" id="Sky_8tynd"]
-sky_material = SubResource("ProceduralSkyMaterial_48ydk")
-
 [sub_resource type="Environment" id="Environment_wcie7"]
-background_mode = 2
-sky = SubResource("Sky_8tynd")
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
 
 [node name="Origin" type="Node3D"]
 script = ExtResource("1_48ydk")
@@ -29,3 +24,6 @@ visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wcie7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.642667, -0.700083, 0.311229, 0, 0.406226, 0.913772, -0.766145, -0.587252, 0.261068, 0, 0, 0)

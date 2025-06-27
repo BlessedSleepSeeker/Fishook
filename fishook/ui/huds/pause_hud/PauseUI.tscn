@@ -1,7 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbhkdaifd8q8t"]
+[gd_scene load_steps=9 format=3 uid="uid://cbhkdaifd8q8t"]
 
 [ext_resource type="Script" uid="uid://dmktmx3gyr5rx" path="res://ui/huds/pause_hud/pause_ui.gd" id="1_nnkm3"]
 [ext_resource type="Theme" uid="uid://dow3yf2y5jff7" path="res://ui/themes/main_menu_theme.tres" id="1_rqn4q"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_rqn4q"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_mdsg6"]
+button_index = 6
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_eupvf"]
+events = [SubResource("InputEventKey_rqn4q"), SubResource("InputEventJoypadButton_mdsg6")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_kofxb"]
+device = -1
+keycode = 82
+unicode = 114
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_4oka6"]
+button_index = 4
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_8wbfe"]
+events = [SubResource("InputEventKey_kofxb"), SubResource("InputEventJoypadButton_4oka6")]
 
 [node name="PauseUi" type="Control"]
 layout_mode = 3
@@ -38,11 +61,13 @@ layout_mode = 2
 [node name="Continue" type="Button" parent="MainMenu/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
+shortcut = SubResource("Shortcut_eupvf")
 text = "Continue"
 
 [node name="Restart" type="Button" parent="MainMenu/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
+shortcut = SubResource("Shortcut_8wbfe")
 text = "Restart
 "
 

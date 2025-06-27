@@ -47,6 +47,12 @@ DecorativeFlower="decorative flower"
 DecorativeRock=""
 DialogTriggerBox="Area3D which triggers a dialog when walked into"
 
+[importer_defaults]
+
+scene={
+&"gltf/embedded_image_handling": 3
+}
+
 [input]
 
 ui_accept={

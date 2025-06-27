@@ -1,7 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://vd1entiph7b0"]
+[gd_scene load_steps=8 format=3 uid="uid://vd1entiph7b0"]
 
 [ext_resource type="Theme" uid="uid://dow3yf2y5jff7" path="res://ui/themes/main_menu_theme.tres" id="1_78omw"]
 [ext_resource type="Script" uid="uid://b2t3vnokogo41" path="res://ui/screens/credits/credit_scene.gd" id="3_fjgl6"]
+[ext_resource type="Texture2D" uid="uid://coleraeg5ij5i" path="res://ui_assets/screenshots/tower.png" id="3_lfpbk"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_lfpbk"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_b80d8"]
+button_index = 1
+pressed = true
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_0djde"]
+button_index = 6
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_v7div"]
+events = [SubResource("InputEventKey_lfpbk"), SubResource("InputEventJoypadButton_b80d8"), SubResource("InputEventJoypadButton_0djde")]
 
 [node name="CreditsScene" type="Control"]
 layout_mode = 3
@@ -13,14 +29,24 @@ grow_vertical = 2
 theme = ExtResource("1_78omw")
 script = ExtResource("3_fjgl6")
 
-[node name="TextureRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.215902, 0.215902, 0.215902, 1)
+texture = ExtResource("3_lfpbk")
+expand_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
 
 [node name="M" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -37,7 +63,9 @@ alignment = 1
 [node name="RichTextLabel" type="RichTextLabel" parent="M/VBoxContainer"]
 layout_mode = 2
 bbcode_enabled = true
-text = "[font_size=50][b][u][wave amp=50.0 freq=1.5 connected=1][rainbow freq=0.1 sat=0.8 val=0.8 speed=1.0]Blessed Sleep Studio[/rainbow][/wave][/u][/b][/font_size]
+text = "[font_size=50][b][u][wave amp=50.0 freq=4
+
+ connected=1][rainbow freq=0.01 sat=0.8 val=0.8 speed=4]Blessed Sleep Studio[/rainbow][/wave][/u][/b][/font_size]
 
 [font_size=30]Camille Gouneau - Everything not mentioned afterwards[/font_size]
 
@@ -53,10 +81,12 @@ horizontal_alignment = 1
 [node name="MarginContainer" type="MarginContainer" parent="M"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="M/MarginContainer"]
+[node name="ReturnButton" type="Button" parent="M/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+shortcut = SubResource("Shortcut_v7div")
 text = "Return"
 
-[connection signal="pressed" from="M/MarginContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="M/MarginContainer/ReturnButton" to="." method="_on_button_pressed"]

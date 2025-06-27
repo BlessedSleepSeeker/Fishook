@@ -8,4 +8,5 @@ name = "The Tower"
 comment = "What's up there ?"
 scene_name = "Tower"
 difficulty = 3
+miniature_scene_path = "uid://bjhlookbyudyr"
 metadata/_custom_type_script = "uid://bhcn1srajolcg"

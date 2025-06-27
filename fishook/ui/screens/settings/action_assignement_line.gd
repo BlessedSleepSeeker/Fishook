@@ -1,7 +1,7 @@
 extends HBoxContainer
 class_name ActionAssignementLine
 
-@onready var current_input_lbl: Label = %FakeLabel
+@onready var current_input_lbl: ImgRichTextLabel = %FakeLabel
 @onready var rebind_btn: Button = $RebindButton
 @onready var remove_btn: Button = $RemoveButton
 
@@ -10,7 +10,7 @@ class_name ActionAssignementLine
 @export var input_event: InputEvent = null:
 	set(value):
 		input_event = value
-		current_input_lbl.text = translate_controler_input_to_text(input_event)
+		current_input_lbl.add_text_icons("[img]%s[/img]" % InputHandler.convert_event_to_human_readable(input_event))
 
 signal rebind(input: InputEvent)
 signal remove(input: InputEvent)

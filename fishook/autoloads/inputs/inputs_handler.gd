@@ -113,8 +113,18 @@ func convert_joypad_input_to_human_readable(event_name: String) -> String:
 		return "xbox/left_stick"
 	if event_name.contains("Right Stick") and event_name.contains("Joypad Motion"):
 		return "xbox/right_stick"
-	if event_name.contains("Button 0"):
+	if event_name.contains("Xbox A"):
 		return "xbox/a"
+	if event_name.contains("Xbox B"):
+		return "xbox/b"
+	if event_name.contains("Xbox X"):
+		return "xbox/x"
+	if event_name.contains("Xbox Y"):
+		return "xbox/y"
+	if event_name.contains("Button 4"):
+		return "xbox/view"
+	if event_name.contains("Button 15"):
+		return "xbox/share"
 	if event_name.contains("Xbox RT"):
 		return "xbox/rt"
 	if event_name.contains("Xbox LT"):
@@ -123,6 +133,16 @@ func convert_joypad_input_to_human_readable(event_name: String) -> String:
 		return "xbox/rb"
 	if event_name.contains("Xbox LB"):
 		return "xbox/lb"
+	if event_name.contains("Xbox Menu"):
+		return "xbox/menu"
+	if event_name.contains("D-pad Left"):
+		return "xbox/dpad_left"
+	if event_name.contains("D-pad Right"):
+		return "xbox/dpad_right"
+	if event_name.contains("D-pad Up"):
+		return "xbox/dpad_up"
+	if event_name.contains("D-pad Down"):
+		return "xbox/dpad_down"
 	return ""
 
 func localize_keyboard_input(event: InputEvent):

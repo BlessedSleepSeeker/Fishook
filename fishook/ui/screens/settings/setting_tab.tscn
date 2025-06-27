@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3kwxhhwlgeix"]
+[gd_scene load_steps=3 format=3 uid="uid://d3kwxhhwlgeix"]
 
 [ext_resource type="Script" uid="uid://0w4tegeqicpm" path="res://ui/screens/settings/setting_tab.gd" id="1_e2f36"]
+[ext_resource type="Theme" uid="uid://bmjg1574lxkq" path="res://ui/themes/settings_theme.tres" id="1_tined"]
 
 [node name="SettingTab" type="MarginContainer"]
 anchors_preset = 15
@@ -10,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_tined")
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5

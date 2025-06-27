@@ -247,11 +247,11 @@ bones/12/rotation = Quaternion(-0.0435779, 0.00190265, 0.0435779, 0.998097)
 bones/14/rotation = Quaternion(0.0871557, 0, 0, 0.996195)
 bones/18/rotation = Quaternion(-0.142611, 0.000554733, -0.135984, 0.980393)
 bones/20/rotation = Quaternion(0, 0, 0.130526, 0.991445)
-bones/22/rotation = Quaternion(-0.36822, -0.0993026, 0.279213, 0.881245)
+bones/22/rotation = Quaternion(-0.390731, -0.106479, 0.276435, 0.871536)
 bones/24/rotation = Quaternion(-0.581119, -0.447662, 0.358204, 0.577572)
 bones/26/rotation = Quaternion(0, 0, 0.19509, 0.980785)
 bones/38/rotation = Quaternion(0.0871557, 0, 0, 0.996195)
-bones/43/position = Vector3(0.547683, -0.0236058, -0.318622)
+bones/43/position = Vector3(0.547683, -0.0201728, -0.318622)
 bones/45/rotation = Quaternion(-0.0871557, 0, 0, 0.996195)
 
 [node name="torso" parent="FishermanModel/Skeleton3D" index="0"]
@@ -285,34 +285,34 @@ transform = Transform3D(0.963016, 0.266476, 0.0398733, -0.266793, 0.922341, 0.27
 transform = Transform3D(0.999171, 0.00814949, 0.0398733, -0.0189827, 0.959964, 0.279479, -0.0359993, -0.280005, 0.959323, -0.315571, 0.906217, 0.163063)
 
 [node name="interior_2" parent="FishermanModel/Skeleton3D" index="10"]
-transform = Transform3D(0.824358, -0.41898, -0.380644, 0.565241, 0.572907, 0.593532, -0.0306043, -0.704438, 0.709105, 0.360995, 1.0224, 0.260485)
+transform = Transform3D(0.824492, -0.398636, -0.401623, 0.565055, 0.541826, 0.622204, -0.0304228, -0.739941, 0.671983, 0.355909, 1.03017, 0.26936)
 
 [node name="exterior_2" parent="FishermanModel/Skeleton3D" index="11"]
-transform = Transform3D(-0.147317, 0.436915, -0.887357, 0.788598, -0.489621, -0.372, -0.597001, -0.75457, -0.272421, 0.367542, 1.01345, 0.271491)
+transform = Transform3D(-0.130383, 0.459124, -0.878752, 0.762393, -0.520196, -0.384907, -0.633843, -0.72014, -0.282208, 0.362138, 1.0217, 0.280922)
 
 [node name="canne_corps" parent="FishermanModel/Skeleton3D" index="12"]
-transform = Transform3D(0.887357, 0.0310974, -0.460033, 0.372, 0.5412, 0.754134, 0.272421, -0.840319, 0.468669, 0.280654, 1.02041, 0.544088)
+transform = Transform3D(0.878752, 0.0552409, -0.474071, 0.384907, 0.505289, 0.772354, 0.282208, -0.86118, 0.422761, 0.267319, 1.04, 0.550331)
 
 [node name="guide1" parent="FishermanModel/Skeleton3D" index="13"]
-transform = Transform3D(-0.460033, -0.0310974, 0.887357, 0.754134, -0.5412, 0.372, 0.468669, 0.840319, 0.272421, 0.295898, 1.53208, -0.20427)
+transform = Transform3D(-0.474071, -0.0552409, 0.878752, 0.772354, -0.505289, 0.384907, 0.422761, 0.86118, 0.282208, 0.304048, 1.51964, -0.218223)
 
 [node name="guide2" parent="FishermanModel/Skeleton3D" index="14"]
-transform = Transform3D(-0.460033, -0.0310974, 0.887357, 0.754134, -0.5412, 0.372, 0.468669, 0.840319, 0.272421, 0.312378, 1.76414, -0.574839)
+transform = Transform3D(-0.474071, -0.0552409, 0.878752, 0.772354, -0.505289, 0.384907, 0.422761, 0.86118, 0.282208, 0.331179, 1.73588, -0.597632)
 
 [node name="guide3" parent="FishermanModel/Skeleton3D" index="15"]
-transform = Transform3D(-0.460033, -0.0310974, 0.887357, 0.754134, -0.5412, 0.372, 0.468669, 0.840319, 0.272421, 0.340014, 2.16297, -1.20947)
+transform = Transform3D(-0.474071, -0.0552409, 0.878752, 0.772354, -0.505289, 0.384907, 0.422761, 0.86118, 0.282208, 0.377054, 2.1076, -1.24748)
 
 [node name="guide4" parent="FishermanModel/Skeleton3D" index="16"]
-transform = Transform3D(-0.460033, -0.0310974, 0.887357, 0.754134, -0.5412, 0.372, 0.468669, 0.840319, 0.272421, 0.327797, 1.98869, -0.931691)
+transform = Transform3D(-0.474071, -0.0552409, 0.878752, 0.772354, -0.505289, 0.384907, 0.422761, 0.86118, 0.282208, 0.356854, 1.94518, -0.963056)
 
 [node name="canne_moulinet" parent="FishermanModel/Skeleton3D" index="17"]
-transform = Transform3D(0.0310974, -0.887357, -0.460033, 0.5412, -0.372, 0.754134, -0.840319, -0.272421, 0.468669, 0.306742, 1.41409, 0.0362406)
+transform = Transform3D(0.0552409, -0.878752, -0.474071, 0.505289, -0.384907, 0.772354, -0.86118, -0.282208, 0.422761, 0.307947, 1.41193, 0.0272735)
 
 [node name="canne_spin" parent="FishermanModel/Skeleton3D" index="18"]
-transform = Transform3D(-0.271882, 0.372395, -0.887357, 0.899331, -0.229824, -0.372, -0.342467, -0.899168, -0.272421, 0.306742, 1.41409, 0.0362406)
+transform = Transform3D(-0.26241, 0.398668, -0.878752, 0.883533, -0.266864, -0.384907, -0.387957, -0.87741, -0.282208, 0.307947, 1.41193, 0.0272735)
 
 [node name="canne_spin2" parent="FishermanModel/Skeleton3D" index="19"]
-transform = Transform3D(0.372395, 0.271882, -0.887357, -0.229824, -0.899331, -0.372, -0.899168, 0.342467, -0.272421, 0.251282, 1.39084, 0.0192143)
+transform = Transform3D(0.398668, 0.26241, -0.878752, -0.266864, -0.883533, -0.384907, -0.87741, 0.387957, -0.282208, 0.253025, 1.38787, 0.00963551)
 
 [node name="cranium" parent="FishermanModel/Skeleton3D" index="20"]
 transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 1.59899, 0.0085675)
@@ -324,7 +324,7 @@ transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 
 transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 1.65156, 0.104335)
 
 [node name="circle_selection" parent="FishermanModel/Skeleton3D" index="23"]
-transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 1.64812, 0.103727)
+transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 1.6515, 0.104323)
 
 [node name="fil_2" parent="FishermanModel/Skeleton3D" index="24"]
 transform = Transform3D(1, 0, 0, 0, 0.422618, -0.906308, 0, 0.906308, 0.422618, 0, 1.58761, 0.107826)
@@ -340,16 +340,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69097, 0)
 visible = false
 
 [node name="wing_left" parent="FlyingFishKite/Node" index="1"]
-transform = Transform3D(0.997246, -0.0741787, 0, 0.0741787, 0.997246, 0, 0, 0, 1, 0.470264, -0.0111293, 1.8103)
+transform = Transform3D(0.999924, -0.0123748, 0, 0.0123748, 0.999924, 0, 0, 0, 1, 0.470264, -0.0111293, 1.8103)
 
 [node name="small_wing_left" parent="FlyingFishKite/Node" index="2"]
-transform = Transform3D(0.997633, 0.068764, 0, -0.068764, 0.997633, 0, 0, 0, 1, 0.470264, -0.0111293, -0.527197)
+transform = Transform3D(0.999923, 0.0123748, 0, -0.0123748, 0.999923, 0, 0, 0, 1, 0.470264, -0.0111293, -0.527197)
 
 [node name="wing_right" parent="FlyingFishKite/Node" index="3"]
-transform = Transform3D(0.997678, 0.0681206, 0, -0.0681206, 0.997678, 0, 0, 0, 1, -0.529736, -0.0111293, 1.8103)
+transform = Transform3D(0.999924, 0.0123748, 0, -0.0123748, 0.999924, 0, 0, 0, 1, -0.529736, -0.0111293, 1.8103)
 
 [node name="small_wing_right" parent="FlyingFishKite/Node" index="4"]
-transform = Transform3D(0.997246, -0.0741787, 0, 0.0741787, 0.997246, 0, 0, 0, 1, -0.529736, -0.0111293, -0.527197)
+transform = Transform3D(0.999924, -0.0123748, 0, 0.0123748, 0.999924, 0, 0, 0, 1, -0.529736, -0.0111293, -0.527197)
 
 [node name="AnimationTreeKite" type="AnimationTree" parent="."]
 unique_name_in_owner = true

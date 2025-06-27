@@ -21,11 +21,11 @@ func build() -> void:
 ## Return degrees
 func get_rotation_for_index(index: int) -> float:
 	var per_level: float = 360.0 / levels.size()
-	return (per_level * index) * -1
+	return (per_level * index)
 
 
 func rotate_for_index(index: int) -> void:
-	var rotation_target: float = lerp_angle(carrousel.rotation.y, deg_to_rad(get_rotation_for_index(index)), 1)
+	var rotation_target: float = lerp_angle(carrousel.rotation.y, deg_to_rad(get_rotation_for_index(index) * -1), 1)
 
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(carrousel, "rotation:y", rotation_target, rotation_speed).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)

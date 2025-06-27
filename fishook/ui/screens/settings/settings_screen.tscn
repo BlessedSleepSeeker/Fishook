@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dalktguxudra8"]
+[gd_scene load_steps=6 format=3 uid="uid://dalktguxudra8"]
 
-[ext_resource type="Theme" uid="uid://d3kms72g8lsqf" path="res://ui/themes/base_ui_theme.tres" id="1_3ioqg"]
+[ext_resource type="Theme" uid="uid://bmjg1574lxkq" path="res://ui/themes/settings_theme.tres" id="1_3ioqg"]
 [ext_resource type="Script" uid="uid://c1ve6qkwvohlw" path="res://ui/screens/settings/settings_screen.gd" id="2_ehjt7"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_3ioqg"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_tmx33"]
+button_index = 6
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_cf5cc"]
+events = [SubResource("InputEventKey_3ioqg"), SubResource("InputEventJoypadButton_tmx33")]
 
 [node name="SettingScreen" type="Control"]
 layout_mode = 3
@@ -20,7 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.192157, 0.192157, 0.192157, 1)
+color = Color(0.232, 0.5684, 0.58, 1)
 
 [node name="MC" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -52,6 +63,7 @@ focus_neighbor_left = NodePath("../SaveButton")
 focus_neighbor_right = NodePath("../SaveButton")
 focus_next = NodePath("../SaveButton")
 focus_previous = NodePath("../SaveButton")
+shortcut = SubResource("Shortcut_cf5cc")
 text = "Go Back"
 
 [node name="SaveButton" type="Button" parent="MC/VB/HB"]
