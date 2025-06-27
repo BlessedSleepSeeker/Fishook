@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cs123o0e0pb0w"
 path.s3tc="res://.godot/imported/CloudMesh_0.png-44b50af34f1d42322bce720eb3a21497.s3tc.ctex"
+path.etc2="res://.godot/imported/CloudMesh_0.png-44b50af34f1d42322bce720eb3a21497.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://level/assets/grabbable/clouds/CloudMesh_0.png"
-dest_files=["res://.godot/imported/CloudMesh_0.png-44b50af34f1d42322bce720eb3a21497.s3tc.ctex"]
+dest_files=["res://.godot/imported/CloudMesh_0.png-44b50af34f1d42322bce720eb3a21497.s3tc.ctex", "res://.godot/imported/CloudMesh_0.png-44b50af34f1d42322bce720eb3a21497.etc2.ctex"]
 
 [params]
 

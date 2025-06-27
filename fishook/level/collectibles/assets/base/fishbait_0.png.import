@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d4ja7gbue1urv"
 path.s3tc="res://.godot/imported/fishbait_0.png-07ef2a76e749d634407ca7a129bc2abf.s3tc.ctex"
+path.etc2="res://.godot/imported/fishbait_0.png-07ef2a76e749d634407ca7a129bc2abf.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://level/collectibles/assets/base/fishbait_0.png"
-dest_files=["res://.godot/imported/fishbait_0.png-07ef2a76e749d634407ca7a129bc2abf.s3tc.ctex"]
+dest_files=["res://.godot/imported/fishbait_0.png-07ef2a76e749d634407ca7a129bc2abf.s3tc.ctex", "res://.godot/imported/fishbait_0.png-07ef2a76e749d634407ca7a129bc2abf.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dxi1ki5yr2j34"
 path.s3tc="res://.godot/imported/fisherman_1.png-0c33ec50f34be62a30bed6e682a22858.s3tc.ctex"
+path.etc2="res://.godot/imported/fisherman_1.png-0c33ec50f34be62a30bed6e682a22858.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://character/model/fisherman_1.png"
-dest_files=["res://.godot/imported/fisherman_1.png-0c33ec50f34be62a30bed6e682a22858.s3tc.ctex"]
+dest_files=["res://.godot/imported/fisherman_1.png-0c33ec50f34be62a30bed6e682a22858.s3tc.ctex", "res://.godot/imported/fisherman_1.png-0c33ec50f34be62a30bed6e682a22858.etc2.ctex"]
 
 [params]
 

@@ -1,12 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://du5lfj2lpryh8"]
+[gd_scene load_steps=8 format=3 uid="uid://du5lfj2lpryh8"]
 
 [ext_resource type="Script" uid="uid://ve25t5t7lumb" path="res://ui/huds/level_hud/level_hud.gd" id="1_o1pp8"]
+[ext_resource type="Theme" uid="uid://d3kms72g8lsqf" path="res://ui/themes/base_ui_theme.tres" id="2_345ha"]
 [ext_resource type="AudioStream" uid="uid://dowbsr08jbn7v" path="res://sounds_effects/kenney_interface-sounds/Audio/back_004.ogg" id="2_yi3xl"]
 [ext_resource type="AudioStream" uid="uid://c2raukbcv88q1" path="res://sounds_effects/kenney_interface-sounds/Audio/back_003.ogg" id="3_ag4bk"]
 
-[sub_resource type="World3D" id="World3D_sdvmq"]
+[sub_resource type="FontFile" id="FontFile_345ha"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+cache/0/30/0/ascent = 0.0
+cache/0/30/0/descent = 0.0
+cache/0/30/0/underline_position = 0.0
+cache/0/30/0/underline_thickness = 0.0
+cache/0/30/0/scale = 1.0
 
 [sub_resource type="Environment" id="Environment_sdvmq"]
+
+[sub_resource type="World3D" id="World3D_sdvmq"]
+environment = SubResource("Environment_sdvmq")
 
 [node name="LevelHud" type="CanvasLayer"]
 script = ExtResource("1_o1pp8")
@@ -17,6 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_345ha")
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -45,6 +70,8 @@ size_flags_horizontal = 3
 [node name="TimerLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/TopRow/PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/normal_font = SubResource("FontFile_345ha")
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "aaa"
 fit_content = true
@@ -139,10 +166,12 @@ vertical_alignment = 1
 [node name="SpeedrunStartPlayer" type="AudioStreamPlayer" parent="MarginContainer/VBoxContainer/Spacer/SpeedrunStartLabel"]
 unique_name_in_owner = true
 stream = ExtResource("2_yi3xl")
+bus = &"Sound Effect"
 
 [node name="SpeedrunReadyPlayer" type="AudioStreamPlayer" parent="MarginContainer/VBoxContainer/Spacer/SpeedrunStartLabel"]
 unique_name_in_owner = true
 stream = ExtResource("3_ag4bk")
+bus = &"Sound Effect"
 
 [node name="BottomRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3cwfqks76ke8"
 path.s3tc="res://.godot/imported/godot_plushV2_godot_plush_normal.png-d9da09ea845092e6eab8dea285bc6999.s3tc.ctex"
+path.etc2="res://.godot/imported/godot_plushV2_godot_plush_normal.png-d9da09ea845092e6eab8dea285bc6999.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://level/collectibles/assets/base/godot_plushV2_godot_plush_normal.png"
-dest_files=["res://.godot/imported/godot_plushV2_godot_plush_normal.png-d9da09ea845092e6eab8dea285bc6999.s3tc.ctex"]
+dest_files=["res://.godot/imported/godot_plushV2_godot_plush_normal.png-d9da09ea845092e6eab8dea285bc6999.s3tc.ctex", "res://.godot/imported/godot_plushV2_godot_plush_normal.png-d9da09ea845092e6eab8dea285bc6999.etc2.ctex"]
 
 [params]
 

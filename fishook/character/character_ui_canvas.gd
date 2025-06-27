@@ -11,7 +11,7 @@ class_name CharacterHUD
 @onready var bullet_time_screen_fx: ColorRect = %BulletTimeVFX
 
 @export_group("Crosshair")
-@export var crosshair_base_texture: Texture2D = preload("res://character/ui_assets/PNG/Outline/crosshair009.png")
+@export var crosshair_base_texture: Texture2D = preload("res://character/ui_assets/PNG/Outline/crosshair001.png")
 @export var crosshair_base_color: Color = Color("ffffff")
 @export var crosshair_color_on_colliding: Color = Color("70ff7c")
 
