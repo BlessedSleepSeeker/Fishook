@@ -6,9 +6,11 @@ enum LevelType {
 	COLLECTATHON
 }
 @export var level_type: LevelType = LevelType.REACH_THE_END
+@export var meta_data: LevelData = LevelData.new()
 
 @export var level_down_limit: float = 50
 
+@export var speedrun_mode: bool = false
 @export var register_collectibles_: bool = true
 @export var register_checkpoints_: bool = true
 @export var randomize_spawn_point: bool = false
@@ -17,7 +19,6 @@ enum LevelType {
 
 @export var debug_collectible_timer_template: String = "Collectible %s : %s"
 
-@export var meta_data: LevelData = LevelData.new()
 
 @onready var character: CharacterInstance = %CharacterInstance
 @onready var current_checkpoint = null
@@ -54,8 +55,13 @@ func _ready():
 	if self.level_type == LevelType.REACH_THE_END:
 		register_end_of_level()
 	setup_end_screen()
-
 	character.debug_canvas = debug_canvas
+
+	if speedrun_mode:
+		setup_speedrun_mode()
+	else:
+		level_stopwatch.pause = false
+
 
 #region Registering
 func register_collectibles() -> void:
@@ -117,6 +123,13 @@ func setup_end_screen() -> void:
 	end_level_hud.setup(meta_data, total_collectibles)
 	end_level_hud.replay.connect(self.replay.emit)
 	end_level_hud.level_select.connect(self.go_to_level_selector.emit)
+
+func setup_speedrun_mode() -> void:
+	character.state_machine.transition_to("UncontrollableCinematic")
+	level_hud.setup_speedrun_mode()
+	await level_hud.speedrun_animation_finished
+	character.state_machine.transition_to("Idle")
+	level_stopwatch.pause = false
 
 #endregion
 

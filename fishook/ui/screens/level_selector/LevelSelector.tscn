@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ciqi6ctu5bu60"]
+[gd_scene load_steps=22 format=3 uid="uid://ciqi6ctu5bu60"]
 
 [ext_resource type="Theme" uid="uid://d3kms72g8lsqf" path="res://ui/themes/base_ui_theme.tres" id="1_ey0nq"]
 [ext_resource type="Script" uid="uid://bu6dq3162m11d" path="res://ui/screens/level_selector/level_selector.gd" id="1_lq5ei"]
@@ -9,9 +9,12 @@
 [ext_resource type="Resource" uid="uid://xv8sj2ct4kb8" path="res://level/data/files/Tower.tres" id="7_tq5iu"]
 [ext_resource type="Resource" uid="uid://cavvyqh6texvt" path="res://level/data/files/Ascension.tres" id="8_7j1c0"]
 [ext_resource type="Resource" uid="uid://c6lw766si7fmg" path="res://level/data/files/Procedural.tres" id="9_76wlg"]
+[ext_resource type="PackedScene" uid="uid://nlhyall8ult7" path="res://ui/screens/level_selector/CarrouselRender.tscn" id="10_8tynd"]
 [ext_resource type="PackedScene" uid="uid://s213q8goj53c" path="res://ui/screens/level_selector/LevelCarroussel.tscn" id="10_c0n6j"]
 [ext_resource type="PackedScene" uid="uid://b2mubf1uianr1" path="res://ui/screens/level_selector/LevelDataDisplay.tscn" id="11_tq5iu"]
 [ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="12_7j1c0"]
+
+[sub_resource type="World3D" id="World3D_1hu8c"]
 
 [sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_7j1c0"]
 button_index = 9
@@ -59,6 +62,26 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.352, 0.8624, 0.88, 1)
 
+[node name="MiniLevelHolder" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="MiniLevelHolder"]
+world_3d = SubResource("World3D_1hu8c")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="CarrouselRender" parent="MiniLevelHolder/SubViewport" instance=ExtResource("10_8tynd")]
+unique_name_in_owner = true
+
 [node name="MC" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -92,6 +115,10 @@ size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="MC/VB/SettingsTab"]
 layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MC/VB/SettingsTab/MarginContainer"]
 layout_mode = 2
@@ -99,6 +126,10 @@ layout_mode = 2
 [node name="MarginContainer" type="MarginContainer" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -116,9 +147,6 @@ focus_neighbor_bottom = NodePath("../../../../../HB/ReturnButton")
 focus_next = NodePath("../../VBoxContainer2/RightButton")
 focus_previous = NodePath("../../../DataContainer/LevelDataDisplay/PanelContainer/MarginContainer/VBoxContainer/PlayButton")
 shortcut = SubResource("Shortcut_m6cwo")
-
-[node name="SubViewport" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/LevelCarroussel/MarginContainer/VBoxContainer/MiniLevelHolder" index="0"]
-size = Vector2i(470, 255)
 
 [node name="RightButton" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/LevelCarroussel/VBoxContainer2" index="0"]
 shortcut = SubResource("Shortcut_i6jeg")
@@ -185,5 +213,4 @@ text = "Choose for me"
 [connection signal="pressed" from="MC/VB/SettingsTab/MarginContainer/VBoxContainer/HB/Random" to="." method="_on_random_pressed"]
 
 [editable path="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/LevelCarroussel"]
-[editable path="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/LevelCarroussel/MarginContainer/VBoxContainer/MiniLevelHolder/SubViewport/CarrouselRender"]
 [editable path="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/DataContainer/LevelDataDisplay"]

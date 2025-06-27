@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://s213q8goj53c"]
+[gd_scene load_steps=9 format=3 uid="uid://s213q8goj53c"]
 
 [ext_resource type="Theme" uid="uid://d3kms72g8lsqf" path="res://ui/themes/base_ui_theme.tres" id="1_kshit"]
 [ext_resource type="Script" uid="uid://c4jb4etenr1jo" path="res://ui/screens/level_selector/level_carroussel.gd" id="2_vbsvf"]
@@ -6,11 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://fsjwqwyjwvp2" path="res://ui/assets/on_screen_controls/flat-dark/flatDark23.png" id="4_us0t1"]
 [ext_resource type="Texture2D" uid="uid://dq4h14517hkgd" path="res://ui/assets/on_screen_controls/transparent-light/transparentLight22.png" id="5_ow8fa"]
 [ext_resource type="Texture2D" uid="uid://bcu7enmgkrdwk" path="res://ui/assets/on_screen_controls/line-light/lineLight23.png" id="6_js431"]
-[ext_resource type="PackedScene" uid="uid://nlhyall8ult7" path="res://ui/screens/level_selector/CarrouselRender.tscn" id="6_us0t1"]
 [ext_resource type="Texture2D" uid="uid://dr3m7w1e1jlbu" path="res://ui/assets/on_screen_controls/flat-dark/flatDark24.png" id="7_vbsvf"]
 [ext_resource type="Texture2D" uid="uid://cxm66gioyo56t" path="res://ui/assets/on_screen_controls/transparent-light/transparentLight23.png" id="8_va1t7"]
-
-[sub_resource type="World3D" id="World3D_us0t1"]
 
 [node name="LevelCarroussel" type="HBoxContainer"]
 anchors_preset = 15
@@ -35,30 +32,11 @@ texture_pressed = ExtResource("4_us0t1")
 texture_hover = ExtResource("5_ow8fa")
 texture_focused = ExtResource("5_ow8fa")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="MiniLevelHolder" type="SubViewportContainer" parent="MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="MarginContainer/VBoxContainer/MiniLevelHolder"]
-world_3d = SubResource("World3D_us0t1")
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(944, 560)
-render_target_update_mode = 4
-
-[node name="CarrouselRender" parent="MarginContainer/VBoxContainer/MiniLevelHolder/SubViewport" instance=ExtResource("6_us0t1")]
-unique_name_in_owner = true
-
-[node name="MiniLevelTitle" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="MiniLevelTitle" type="RichTextLabel" parent="VBoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 bbcode_enabled = true

@@ -67,8 +67,8 @@ size = Vector3(16, 16, 0.1)
 
 [node name="Ascension" type="Node3D"]
 script = ExtResource("1_0j7lo")
-end_level_trigger_path = NodePath("EndOfLevel")
 meta_data = ExtResource("2_kckc1")
+end_level_trigger_path = NodePath("EndOfLevel")
 
 [node name="CharacterInstance" parent="." instance=ExtResource("1_cvcm1")]
 unique_name_in_owner = true
@@ -87,6 +87,7 @@ unique_name_in_owner = true
 
 [node name="LevelStopwatch" parent="." instance=ExtResource("5_7isi1")]
 unique_name_in_owner = true
+paused_at_load = true
 
 [node name="LevelHud" parent="." instance=ExtResource("7_alplb")]
 unique_name_in_owner = true

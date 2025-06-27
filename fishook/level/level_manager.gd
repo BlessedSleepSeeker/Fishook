@@ -6,8 +6,11 @@ class_name LevelManager
 @export var level_scene_extension: String = ".tscn"
 
 @export var settings_ui_scene: PackedScene = preload("res://ui/screens/settings/settings_screen.tscn")
+@export var level_manager_scene_path: String = "res://level/LevelManager.tscn"
 @export_file(".tscn") var level_selector_path: String = "res://ui/screens/level_selector/LevelSelector.tscn"
 @export_file(".tscn") var main_menu_path: String = "res://ui/screens/main_menu/main_menu.tscn"
+
+@export var speedrun_mode: bool = false
 
 @onready var level_holder: Node3D = %LevelHolder
 @onready var ui_layer: CanvasLayer = %PauseUILayer
@@ -68,7 +71,7 @@ func go_back_from_settings() -> void:
 
 
 func go_to_level_selector() -> void:
-	transition_by_path.emit(level_selector_path, {}, true, "transition")
+	transition_by_path.emit(level_selector_path, {}, false, "transition")
 
 func go_to_main_menu() -> void:
 	transition_by_path.emit(main_menu_path, {}, false, "transition")
@@ -84,22 +87,19 @@ func flush_level() -> void:
 func load_level() -> void:
 	var level_scene: PackedScene = load(build_level_path())
 	var level_instance = level_scene.instantiate()
+	level_instance.speedrun_mode = speedrun_mode
 	level_holder.add_child(level_instance)
 	level_instance.replay.connect(restart_level)
 	level_instance.go_to_level_selector.connect(go_to_level_selector)
 
+
+
 func build_level_path() -> String:
 	return level_scene_path + level_scene_name + level_scene_extension
 
+## We are cheating and simply loading the current scene with the level parameters from our root
 func restart_level() -> void:
-	if root:
-		await root.play_fade(true, true)
-	flush_level()
-	await get_tree().process_frame
-	load_level()
-	if root:
-		root.play_fade(false, false)
-	pause_ui.restart_btn.disabled = false
-	toggle_pause(false)
+	var level_param_dict: Dictionary = {"level_scene_name": level_scene_name, "speedrun_mode": speedrun_mode}
+	transition_by_path.emit(level_manager_scene_path, level_param_dict, true, "transition")
 
 #endregion

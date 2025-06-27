@@ -21,7 +21,7 @@ func build() -> void:
 ## Return degrees
 func get_rotation_for_index(index: int) -> float:
 	var per_level: float = 360.0 / levels.size()
-	return per_level * index
+	return (per_level * index) * -1
 
 
 func rotate_for_index(index: int) -> void:

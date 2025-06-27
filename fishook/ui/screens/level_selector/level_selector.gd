@@ -2,7 +2,6 @@ extends Control
 class_name LevelSelector
 
 @export var levels: Array[LevelData] = []
-@export var level_button_scene: PackedScene = preload("res://ui/screens/level_selector/button/LevelSelectButton.tscn")
 @export var level_manager_scene_path: String = "res://level/LevelManager.tscn"
 @export var main_menu_scene_path: String = "res://ui/screens/main_menu/main_menu.tscn"
 
@@ -13,6 +12,7 @@ class_name LevelSelector
 @onready var carrousel: LevelCarrousel = %LevelCarroussel
 @onready var data_display: LevelDataDisplay = %LevelDataDisplay
 @onready var random_btn: Button = %Random
+@onready var carrousel_render: CarrouselRender = %CarrouselRender
 
 signal transition_by_path(new_scene_path: String, scene_parameters: Dictionary, toggle_loading_screen: bool, animation: String)
 
@@ -20,6 +20,7 @@ func _ready():
 	build()
 
 func build() -> void:
+	carrousel.setup_render(carrousel_render)
 	carrousel.levels = levels
 	carrousel.changed_carrousel_level.connect(_on_carrousel_level_changed)
 	carrousel.set_level(levels[0])

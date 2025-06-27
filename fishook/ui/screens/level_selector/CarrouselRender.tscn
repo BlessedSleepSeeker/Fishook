@@ -5,23 +5,27 @@
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_48ydk"]
 sky_top_color = Color(0.352, 0.8624, 0.88, 1)
 
-[sub_resource type="Sky" id="Sky_us0t1"]
+[sub_resource type="Sky" id="Sky_8tynd"]
 sky_material = SubResource("ProceduralSkyMaterial_48ydk")
 
 [sub_resource type="Environment" id="Environment_wcie7"]
 background_mode = 2
-sky = SubResource("Sky_us0t1")
+sky = SubResource("Sky_8tynd")
 
 [node name="Origin" type="Node3D"]
 script = ExtResource("1_48ydk")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.682458, -0.224084, 0.695728, 0, 0.951846, 0.306576, -0.730925, -0.209225, 0.649595, 6.8693, 0.732194, 6.75683)
+transform = Transform3D(0.682458, -0.224084, 0.695728, 0, 0.951846, 0.306576, -0.730925, -0.209225, 0.649595, 7.72582, 1.31868, 6.68062)
 current = true
 fov = 37.8493
 
 [node name="Carrousel" type="Node3D" parent="."]
 unique_name_in_owner = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Carrousel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wcie7")

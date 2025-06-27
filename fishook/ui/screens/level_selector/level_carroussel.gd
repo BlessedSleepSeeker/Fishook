@@ -9,13 +9,12 @@ class_name LevelCarrousel
 
 @export var level_title_template: String = "[font_size=70]%s[/font_size]"
 
-@onready var level_minia_holder: Control = %MiniLevelHolder
 @onready var level_title_label: RichTextLabel = %MiniLevelTitle
 
 @onready var left_button: TextureButton = %LeftButton
 @onready var right_button: TextureButton = %RightButton
 
-@onready var carrousel_render: CarrouselRender = %CarrouselRender
+@onready var carrousel_render: CarrouselRender = null
 
 var current_level: LevelData = null
 var current_level_index: int = -1
@@ -26,6 +25,9 @@ func _ready():
 	left_button.pressed.connect(turn_carrousel_left)
 	right_button.pressed.connect(turn_carrousel_right)
 
+
+func setup_render(_carrousel_render: CarrouselRender) -> void:
+	carrousel_render = _carrousel_render
 
 func turn_carrousel_left() -> void:
 	current_level_index -= 1

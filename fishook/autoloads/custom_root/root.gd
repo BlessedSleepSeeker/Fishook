@@ -12,6 +12,8 @@ class_name CustomRoot
 
 @onready var thread: Thread = Thread.new()
 
+signal transition_finished
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_packed_scene_to_tree(first_scene)
@@ -50,7 +52,7 @@ func change_scene(new_scene_path: String, scene_parameters: Dictionary = {}) -> 
 	add_packed_scene_to_tree(new_scene, scene_parameters)
 
 func add_scene_with_loading_screen(new_scene_path: String, scene_parameters: Dictionary = {}) -> void:
-	print("adding scene async")
+	#print("adding scene async")
 	ResourceLoader.load_threaded_request(new_scene_path)
 	var progress = []
 
@@ -58,13 +60,13 @@ func add_scene_with_loading_screen(new_scene_path: String, scene_parameters: Dic
 
 	while progress[0] != 1:
 		#print("progress = %d" % progress[0])
-		loading_screen.update_bar(progress[0] * 50, "Loading...")
+		loading_screen.update_bar(progress[0] * 100, "Loading...")
 		ResourceLoader.load_threaded_get_status(new_scene_path, progress)
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.01).timeout
 	
 	var new_scene: PackedScene = ResourceLoader.load_threaded_get(new_scene_path)
 
-	print("finished loading, now adding scene")
+	#print("finished loading, now adding scene")
 	add_packed_scene_to_tree(new_scene, scene_parameters, true)
 	await get_tree().create_timer(0.2).timeout
 
@@ -101,6 +103,7 @@ func play_fade(direction: bool = true, wait_for_tween: bool = true) -> void:
 # 		change_scene(new_scene)
 
 func _on_transition_by_path(new_scene_path: String, scene_parameters: Dictionary = {}, toggle_loading_screen: bool = true, animation: String = "") -> void:
+	#print("going to %s with %s, %s, %s" % [new_scene_path, scene_parameters, toggle_loading_screen, animation])
 	if animation != "":
 		await play_transition(true)
 		if toggle_loading_screen:
@@ -112,12 +115,14 @@ func _on_transition_by_path(new_scene_path: String, scene_parameters: Dictionary
 		else:
 			change_scene(new_scene_path, scene_parameters)
 			await get_tree().create_timer(0.2).timeout
-		play_transition(false, false)
+		play_transition(false, true)
 	else:
 		if toggle_loading_screen:
 			await change_scene_with_loading_screen(new_scene_path, scene_parameters)
 		else:
 			change_scene(new_scene_path, scene_parameters)
+	transition_finished.emit()
+	
 
 # func _on_transition_by_instance(new_instance: Node) -> void:
 # 	await play_transition(true)

@@ -4,3 +4,4 @@
 
 [node name="Stopwatch" type="Node"]
 script = ExtResource("1_p5jkq")
+paused_at_load = true
