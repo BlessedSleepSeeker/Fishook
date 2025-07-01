@@ -34,3 +34,10 @@ func _on_visibility_changed():
 func _on_restart_pressed():
 	restart_btn.disabled = true
 	restart.emit()
+
+
+func tween_ui_visibility(direction: int, time: float) -> void:
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(self, "modulate:a", direction, time)
+
+	await tween.finished

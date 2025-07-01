@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://s213q8goj53c"]
+[gd_scene load_steps=15 format=3 uid="uid://s213q8goj53c"]
 
 [ext_resource type="Theme" uid="uid://d3kms72g8lsqf" path="res://ui/themes/base_ui_theme.tres" id="1_kshit"]
 [ext_resource type="Script" uid="uid://c4jb4etenr1jo" path="res://ui/screens/level_selector/level_carroussel.gd" id="2_vbsvf"]
@@ -8,6 +8,28 @@
 [ext_resource type="Texture2D" uid="uid://bcu7enmgkrdwk" path="res://ui/assets/on_screen_controls/line-light/lineLight23.png" id="6_js431"]
 [ext_resource type="Texture2D" uid="uid://dr3m7w1e1jlbu" path="res://ui/assets/on_screen_controls/flat-dark/flatDark24.png" id="7_vbsvf"]
 [ext_resource type="Texture2D" uid="uid://cxm66gioyo56t" path="res://ui/assets/on_screen_controls/transparent-light/transparentLight23.png" id="8_va1t7"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_vbsvf"]
+button_index = 9
+pressed = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_us0t1"]
+device = -1
+keycode = 4194319
+
+[sub_resource type="Shortcut" id="Shortcut_ow8fa"]
+events = [SubResource("InputEventJoypadButton_vbsvf"), SubResource("InputEventKey_us0t1")]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_js431"]
+button_index = 10
+pressed = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_va1t7"]
+device = -1
+keycode = 4194321
+
+[sub_resource type="Shortcut" id="Shortcut_th2lb"]
+events = [SubResource("InputEventJoypadButton_js431"), SubResource("InputEventKey_va1t7")]
 
 [node name="LevelCarroussel" type="HBoxContainer"]
 anchors_preset = 15
@@ -27,6 +49,12 @@ alignment = 1
 [node name="LeftButton" type="TextureButton" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Previous Level"
+focus_neighbor_left = NodePath("../../VBoxContainer2/RightButton")
+focus_neighbor_right = NodePath("../../VBoxContainer2/RightButton")
+focus_next = NodePath("../../VBoxContainer2/RightButton")
+focus_previous = NodePath("../../VBoxContainer2/RightButton")
+shortcut = SubResource("Shortcut_ow8fa")
 texture_normal = ExtResource("3_vbsvf")
 texture_pressed = ExtResource("4_us0t1")
 texture_hover = ExtResource("5_ow8fa")
@@ -52,6 +80,12 @@ alignment = 1
 [node name="RightButton" type="TextureButton" parent="VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Next Level"
+focus_neighbor_left = NodePath("../../VBoxContainer/LeftButton")
+focus_neighbor_right = NodePath("../../VBoxContainer/LeftButton")
+focus_next = NodePath("../../VBoxContainer/LeftButton")
+focus_previous = NodePath("../../VBoxContainer/LeftButton")
+shortcut = SubResource("Shortcut_th2lb")
 texture_normal = ExtResource("6_js431")
 texture_pressed = ExtResource("7_vbsvf")
 texture_hover = ExtResource("8_va1t7")

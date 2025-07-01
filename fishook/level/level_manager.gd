@@ -19,6 +19,7 @@ class_name LevelManager
 @onready var settings_ui_layer: CanvasLayer = %SettingsUILayer
 
 @onready var root: CustomRoot = get_tree().root.get_node("Root")
+@onready var settings: Settings = root.settings
 
 signal transition_by_path(new_scene_path: String, scene_parameters: Dictionary, toggle_loading_screen: bool, animation: String)
 signal play_transition(direction: bool, wait_for_tween: bool)
@@ -45,19 +46,21 @@ func toggle_pause(pausing: bool) -> void:
 		InputHandler.handle_mouse(true)
 		level_holder.process_mode = PROCESS_MODE_DISABLED
 		ui_layer.show()
+		pause_ui.tween_ui_visibility(1, 0.3)
 	else:
 		InputHandler.handle_mouse(false)
 		level_holder.process_mode = PROCESS_MODE_PAUSABLE
+		await pause_ui.tween_ui_visibility(0, 0.3)
 		ui_layer.hide()
 
 func go_to_settings() -> void:
 	play_transition.emit(true, false)
 	settings_ui_layer.show()
 	await get_tree().create_timer(0.5).timeout
-	var settings: ClientSettingsUI = settings_ui_scene.instantiate()
-	settings.going_back.connect(go_back_from_settings)
-	settings.transition_on_back = false
-	settings_container.add_child(settings)
+	var _settings: ClientSettingsUI = settings_ui_scene.instantiate()
+	_settings.going_back.connect(go_back_from_settings)
+	_settings.transition_on_back = false
+	settings_container.add_child(_settings)
 	play_transition.emit(false, false)
 
 func go_back_from_settings() -> void:
@@ -87,7 +90,7 @@ func flush_level() -> void:
 func load_level() -> void:
 	var level_scene: PackedScene = load(build_level_path())
 	var level_instance = level_scene.instantiate()
-	level_instance.speedrun_mode = speedrun_mode
+	level_instance.speedrun_mode = settings.read_setting_value_by_key("SPEEDRUN_MODE")
 	level_holder.add_child(level_instance)
 	level_instance.replay.connect(restart_level)
 	level_instance.go_to_level_selector.connect(go_to_level_selector)

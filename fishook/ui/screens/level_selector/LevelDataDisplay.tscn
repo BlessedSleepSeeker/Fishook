@@ -42,23 +42,3 @@ theme_override_font_sizes/normal_font_size = 30
 text = "Difficulty"
 play_sound_on_progress = false
 icons_path_template = "res://ui/assets/on_screen_controls/%s.png"
-
-[node name="Separator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Separator2" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="SpeedrunOption" type="CheckButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Speedrun Mode"
-
-[node name="PlayButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Play"

@@ -114,45 +114,8 @@ transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819
 play_animation_on_load = "FishingIdle"
 
 [node name="Skeleton3D" parent="Geometry/CharacterSkin/FishermanModel" index="0"]
-bones/6/rotation = Quaternion(-0.0435779, -0.00190265, -0.0435779, 0.998097)
-bones/8/rotation = Quaternion(0.0871557, 0, 0, 0.996195)
-bones/12/rotation = Quaternion(-0.0435779, 0.00190265, 0.0435779, 0.998097)
-bones/14/rotation = Quaternion(0.0871557, 0, 0, 0.996195)
-bones/18/rotation = Quaternion(-0.142611, 0.000554733, -0.135984, 0.980393)
-bones/20/rotation = Quaternion(0, 0, 0.130526, 0.991445)
 bones/22/rotation = Quaternion(-0.357178, -0.0958012, 0.280445, 0.885775)
-bones/24/rotation = Quaternion(-0.581119, -0.447662, 0.358204, 0.577572)
-bones/26/rotation = Quaternion(0, 0, 0.19509, 0.980785)
-bones/38/rotation = Quaternion(0.0871557, 0, 0, 0.996195)
 bones/43/position = Vector3(0.547683, -0.0254056, -0.318622)
-bones/45/rotation = Quaternion(-0.0871557, 0, 0, 0.996195)
-
-[node name="beveled_cuboid" parent="Geometry/CharacterSkin/FishermanModel/Skeleton3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.957061, -0.183356)
-
-[node name="cuisse" parent="Geometry/CharacterSkin/FishermanModel/Skeleton3D" index="2"]
-transform = Transform3D(0.996195, 0.0871557, 2.32831e-10, -0.0868241, 0.992404, 0.0871557, 0.00759612, -0.0868241, 0.996195, -0.152236, 0.346124, 0.120883)
-
-[node name="mollet_2" parent="Geometry/CharacterSkin/FishermanModel/Skeleton3D" index="3"]
-transform = Transform3D(0.996195, 0.0858316, -0.0151344, -0.0868241, 0.992461, -0.0864975, 0.00759612, 0.0874824, 0.996137, -0.179059, 0.0359796, 0.0935443)
-
-[node name="boot" parent="Geometry/CharacterSkin/FishermanModel/Skeleton3D" index="4"]
-transform = Transform3D(0.996195, 0.0858316, -0.0151344, -0.0868241, 0.992461, -0.0864975, 0.00759612, 0.0874824, 0.996137, -0.183082, -0.010542, 0.0894435)
-
-[node name="cuisse_2" parent="Geometry/CharacterSkin/FishermanModel/Skeleton3D" index="5"]
-transform = Transform3D(0.996195, -0.0871557, -2.32831e-10, 0.0868241, 0.992404, 0.0871557, -0.00759612, -0.0868241, 0.996195, 0.152236, 0.346124, 0.120883)
-
-[node name="mollet_3" parent="Geometry/CharacterSkin/FishermanModel/Skeleton3D" index="6"]
-transform = Transform3D(0.996195, -0.0858316, 0.0151344, 0.0868241, 0.992461, -0.0864975, -0.00759612, 0.0874824, 0.996137, 0.179059, 0.0359796, 0.0935443)
-
-[node name="boot_2" parent="Geometry/CharacterSkin/FishermanModel/Skeleton3D" index="7"]
-transform = Transform3D(0.996195, -0.0858316, 0.0151344, 0.0868241, 0.992461, -0.0864975, -0.00759612, 0.0874824, 0.996137, 0.183082, -0.010542, 0.0894435)
-
-[node name="interior" parent="Geometry/CharacterSkin/FishermanModel/Skeleton3D" index="8"]
-transform = Transform3D(0.963016, 0.266476, 0.0398733, -0.266793, 0.922341, 0.279479, 0.0376979, -0.279781, 0.959323, -0.311408, 0.920628, 0.158692)
-
-[node name="exterior" parent="Geometry/CharacterSkin/FishermanModel/Skeleton3D" index="9"]
-transform = Transform3D(0.999171, 0.00814949, 0.0398733, -0.0189827, 0.959964, 0.279479, -0.0359993, -0.280005, 0.959323, -0.315571, 0.906217, 0.163063)
 
 [node name="interior_2" parent="Geometry/CharacterSkin/FishermanModel/Skeleton3D" index="10"]
 transform = Transform3D(0.824345, -0.428386, -0.370054, 0.565258, 0.587549, 0.579025, -0.0306211, -0.686493, 0.726492, 0.363346, 1.01874, 0.255998)
@@ -184,20 +147,8 @@ transform = Transform3D(-0.275895, 0.359443, -0.89145, 0.906358, -0.211474, -0.3
 [node name="canne_spin2" parent="Geometry/CharacterSkin/FishermanModel/Skeleton3D" index="19"]
 transform = Transform3D(0.359443, 0.275895, -0.89145, -0.211474, -0.906358, -0.365778, -0.908889, 0.319995, -0.267439, 0.250562, 1.39214, 0.0239422)
 
-[node name="cranium" parent="Geometry/CharacterSkin/FishermanModel/Skeleton3D" index="20"]
-transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 1.59899, 0.0085675)
-
-[node name="circling" parent="Geometry/CharacterSkin/FishermanModel/Skeleton3D" index="21"]
-transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 1.68675, 0.110539)
-
-[node name="hat_2" parent="Geometry/CharacterSkin/FishermanModel/Skeleton3D" index="22"]
-transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 1.65156, 0.104335)
-
 [node name="circle_selection" parent="Geometry/CharacterSkin/FishermanModel/Skeleton3D" index="23"]
 transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 1.64634, 0.103415)
-
-[node name="fil_2" parent="Geometry/CharacterSkin/FishermanModel/Skeleton3D" index="24"]
-transform = Transform3D(1, 0, 0, 0, 0.422618, -0.906308, 0, 0.906308, 0.422618, 0, 1.58761, 0.107826)
 
 [node name="wing_left" parent="Geometry/CharacterSkin/FlyingFishKite/Node" index="1"]
 transform = Transform3D(0.996653, 0.0817458, 0, -0.0817458, 0.996653, 0, 0, 0, 1, 0.470264, -0.0111293, 1.8103)

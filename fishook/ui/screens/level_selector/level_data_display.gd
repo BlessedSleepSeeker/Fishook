@@ -11,14 +11,7 @@ class_name LevelDataDisplay
 
 @onready var comment_label: WordByWordLabel = %CommentLabel
 @onready var difficulty_label: WordByWordLabel = %DifficultyLabel
-@onready var speedrun_option: CheckButton = %SpeedrunOption
-@onready var play_button: Button = %PlayButton
 
-signal level_chosen(level_data: LevelData, speedrun_mode: bool)
-
-func _ready():
-	play_button.pressed.connect(_on_play_pressed)
-	play_button.grab_focus()
 
 func build() -> void:
 	comment_label.update_text(comment_template % level_data.comment)
@@ -29,9 +22,3 @@ func build_difficulty_label() -> void:
 	for i in range(0, level_data.difficulty):
 		difficulty += difficulty_star_rich_tag
 	difficulty_label.update_text(difficulty, true, true)
-
-func get_speedrun_state() -> bool:
-	return speedrun_option.button_pressed
-
-func _on_play_pressed() -> void:
-	level_chosen.emit(level_data, get_speedrun_state())

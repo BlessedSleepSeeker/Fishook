@@ -26,6 +26,7 @@ func generate_full_level() -> void:
 	algorithm.load_grid_into_world(geometry_parent)
 	algorithm.add_decorations(geometry_parent)
 	algorithm.clean()
+	debug_canvas.set_seed(RNGHandler.MAIN_SEED)
 	super._ready()
 
 func generate_chunk() -> void:

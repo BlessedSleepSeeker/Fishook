@@ -24,6 +24,7 @@ name = "Tutorial"
 comment = "No Comment"
 scene_name = "Tutorial"
 difficulty = 0
+miniature_scene_path = ""
 metadata/_custom_type_script = "uid://bhcn1srajolcg"
 
 [sub_resource type="Gradient" id="Gradient_3ue7i"]
@@ -145,9 +146,9 @@ size = Vector3(11, 1, 16)
 
 [node name="Tutorial" type="Node3D"]
 script = ExtResource("1_xroqs")
-level_down_limit = -40.0
-end_level_trigger_path = NodePath("Geometry/EndOfLevel")
 meta_data = SubResource("Resource_8snt5")
+level_down_limit = -50.0
+end_level_trigger_path = NodePath("Geometry/EndOfLevel")
 
 [node name="CharacterInstance" parent="." instance=ExtResource("2_6ainc")]
 unique_name_in_owner = true
@@ -378,7 +379,7 @@ shape = SubResource("BoxShape3D_bkwdk")
 
 [node name="HookDialogTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62, 7, -2.71011e-06)
-dialog_text = "While AirBorne :  [ctrl]throw_hook[/ctrl] on a piece of the map : Throw the Fishing Rod and start [b]Swinging[/b]
+dialog_text = "While AirBorne :  Releasing [ctrl]throw_hook[/ctrl] on a piece of the map : Throw the Fishing Rod and start [b]Swinging[/b]
 [ctrl]jump[/ctrl] while Swinging : [b]Stop[/b] Swinging"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/HookDialogTriggerBox"]

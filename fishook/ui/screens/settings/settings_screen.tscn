@@ -53,10 +53,15 @@ layout_mode = 2
 size_flags_vertical = 3
 tab_alignment = 1
 
-[node name="HB" type="HBoxContainer" parent="MC/VB"]
+[node name="MarginContainer" type="MarginContainer" parent="MC/VB"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.15
+
+[node name="HB" type="HBoxContainer" parent="MC/VB/MarginContainer"]
 layout_mode = 2
 
-[node name="QuitButton" type="Button" parent="MC/VB/HB"]
+[node name="QuitButton" type="Button" parent="MC/VB/MarginContainer/HB"]
 layout_mode = 2
 size_flags_horizontal = 2
 focus_neighbor_left = NodePath("../SaveButton")
@@ -66,7 +71,7 @@ focus_previous = NodePath("../SaveButton")
 shortcut = SubResource("Shortcut_cf5cc")
 text = "Go Back"
 
-[node name="SaveButton" type="Button" parent="MC/VB/HB"]
+[node name="SaveButton" type="Button" parent="MC/VB/MarginContainer/HB"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
@@ -97,5 +102,5 @@ content_scale_stretch = 1
 ok_button_text = "Go Back"
 cancel_button_text = "Stay !"
 
-[connection signal="pressed" from="MC/VB/HB/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="MC/VB/HB/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="MC/VB/MarginContainer/HB/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MC/VB/MarginContainer/HB/SaveButton" to="." method="_on_save_button_pressed"]

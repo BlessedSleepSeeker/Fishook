@@ -6,6 +6,9 @@
 [ext_resource type="AudioStream" uid="uid://c2raukbcv88q1" path="res://sounds_effects/kenney_interface-sounds/Audio/back_003.ogg" id="3_ag4bk"]
 
 [sub_resource type="FontFile" id="FontFile_345ha"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -27,10 +30,9 @@ cache/0/30/0/underline_position = 0.0
 cache/0/30/0/underline_thickness = 0.0
 cache/0/30/0/scale = 1.0
 
-[sub_resource type="Environment" id="Environment_sdvmq"]
-
 [sub_resource type="World3D" id="World3D_sdvmq"]
-environment = SubResource("Environment_sdvmq")
+
+[sub_resource type="Environment" id="Environment_sdvmq"]
 
 [node name="LevelHud" type="CanvasLayer"]
 script = ExtResource("1_o1pp8")
@@ -63,11 +65,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/TopRow"]
+[node name="TimerContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/TopRow"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TimerLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/TopRow/PanelContainer"]
+[node name="TimerLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/TopRow/TimerContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/normal_font = SubResource("FontFile_345ha")

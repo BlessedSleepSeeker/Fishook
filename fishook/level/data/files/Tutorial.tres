@@ -7,6 +7,6 @@ script = ExtResource("1_xcu2o")
 name = "The Tutorial"
 comment = "Learn about Fishook mechanics !"
 scene_name = "Tutorial"
-difficulty = 0
+difficulty = 1
 miniature_scene_path = "uid://de62c26dlmlno"
 metadata/_custom_type_script = "uid://bhcn1srajolcg"

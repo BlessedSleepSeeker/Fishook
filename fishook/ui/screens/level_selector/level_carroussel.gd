@@ -44,6 +44,7 @@ func turn_carrousel_right() -> void:
 
 
 func set_level(level: LevelData) -> void:
+	current_level = level
 	changed_carrousel_level.emit(level)
 	level_title_label.text = level_title_template % level.name
 	current_level_index = levels.find(level)

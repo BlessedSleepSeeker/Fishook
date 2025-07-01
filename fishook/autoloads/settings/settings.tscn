@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://s46wqxnh4dnl"]
+[gd_scene load_steps=13 format=3 uid="uid://s46wqxnh4dnl"]
 
 [ext_resource type="Script" uid="uid://7pud10826kcg" path="res://autoloads/settings/settings.gd" id="1_dbr6m"]
 [ext_resource type="Script" uid="uid://n1ryqrkueeuw" path="res://autoloads/settings/settings_scripts/window/Resolution.gd" id="2_g3vyq"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://mf1p16q2yo7l" path="res://autoloads/settings/settings_scripts/game/Language.gd" id="9_bqloj"]
 [ext_resource type="Script" uid="uid://c27adpcx3gjxr" path="res://autoloads/settings/settings_scripts/UI/scale.gd" id="9_nhd6j"]
 [ext_resource type="Script" uid="uid://d0jsuxpy73a0g" path="res://autoloads/settings/settings_scripts/game/disable_bullet_time_visuals_effects.gd" id="10_6rgcf"]
+[ext_resource type="Script" uid="uid://bialeqqx1d5cc" path="res://autoloads/settings/generic_settings/generic_bool_setting.gd" id="11_gokex"]
 
 [node name="Settings" type="Node"]
 script = ExtResource("1_dbr6m")
@@ -85,6 +86,12 @@ max_value_range = 1000
 script = ExtResource("10_6rgcf")
 key = "DISABLE_BULLET_TIME_VISUALS"
 tooltip = "This will disable the chroma aberration effect when using bullet time."
+
+[node name="Speedrun Mode" type="Node" parent="Game"]
+script = ExtResource("11_gokex")
+base_value = false
+key = "SPEEDRUN_MODE"
+tooltip = "Speedrun Mode add a countdown at the start of a level, and your current level time stay displayed on top of the UI."
 
 [node name="UI" type="Node" parent="."]
 

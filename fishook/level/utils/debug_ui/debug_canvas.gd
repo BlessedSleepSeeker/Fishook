@@ -14,6 +14,8 @@ class_name DebugCanvas
 @export var world_position_template: String = "Character Position : [%.2f:%.2f:%.2f]"
 @onready var world_position: Label = %WorldPosition
 
+@onready var seed_lbl: Label = %CurrentSeed
+
 @export var tile_name_template: String = "Current Tile : %s"
 @onready var tile_name: Label = %CurrentTileName
 
@@ -32,6 +34,9 @@ func set_speedometer(value: Vector3) -> void:
 func set_world_position(value: Vector3) -> void:
 	world_position.text = world_position_template % [value.x, value.y, value.z]
 
+
+func set_seed(seed_str: String) -> void:
+	seed_lbl.text = seed_str
 
 func set_tile_infos(tile_infos: Dictionary[String, String]) -> void:
 	tile_name.text = tile_name_template % tile_infos["tile_type"]

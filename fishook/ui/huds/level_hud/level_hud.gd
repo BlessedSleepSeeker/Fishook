@@ -10,6 +10,7 @@ class_name LevelHUD
 @onready var model_holder: Node3D = %ModelHolder
 @onready var collectible_label: Label = %CollectibleLabel
 
+@onready var timer_container: Control = %TimerContainer
 @onready var timer_label: RichTextLabel = %TimerLabel
 @onready var top_container: Control = $MarginContainer
 @onready var speedrun_start_label: RichTextLabel = %SpeedrunStartLabel
@@ -26,7 +27,7 @@ func _ready():
 	inst.remove_from_group("Collectible")
 	model_holder.add_child(inst)
 	inst.animation_player.play(collectible_animation)
-	timer_label.hide()
+	timer_container.hide()
 	speedrun_start_label.hide()
 
 func update_collectible(amount: int, _max: int) -> void:
@@ -41,7 +42,7 @@ func fade_hud() -> void:
 	tween.tween_property(top_container, "modulate:a", 0, 0.3)
 
 func setup_speedrun_mode() -> void:
-	timer_label.show()
+	timer_container.show()
 	speedrun_start_label.show()
 	await root.transition_finished
 	play_speedrun_animation()
