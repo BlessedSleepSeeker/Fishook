@@ -4,6 +4,7 @@ signal main_seed_changed(new_value: String)
 
 var MAIN_SEED: String = '':
 	set(value):
+		print("main_seed:", MAIN_SEED)
 		if value != '':
 			main_seed_changed.emit(value)
 			MAIN_SEED = value

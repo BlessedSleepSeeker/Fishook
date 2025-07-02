@@ -46,7 +46,6 @@ func load_grid_into_world(parent: Node3D) -> void:
 func add_decorations(parent: Node3D) -> void:
 	print("Adding decorations...")
 	for child: AlgorithmTileScene in parent.get_children():
-		print(child)
 		child.randomize_decoration()
 
 func clean() -> void:

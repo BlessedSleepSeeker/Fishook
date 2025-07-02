@@ -149,7 +149,6 @@ func localize_keyboard_input(event: InputEvent):
 	if event is InputEventKey:
 		return event.as_text().substr(0, event.as_text().find(" "))
 	if event is InputEventMouseButton:
-		print(event.as_text())
 		return event.as_text().replace(" ", "_")
 
 #endregion

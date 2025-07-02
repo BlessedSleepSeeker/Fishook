@@ -44,6 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_aiivd")
 script = ExtResource("2_20ujx")
+autopress_play_button = true
 
 [node name="MainMenuBg" parent="." instance=ExtResource("2_0xe1w")]
 layout_mode = 1

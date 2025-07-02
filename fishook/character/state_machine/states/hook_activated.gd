@@ -106,7 +106,7 @@ func swing(_delta: float) -> void:
 func reel_in(_delta: float) -> void:
 	var displacement = distance - physics_parameters.GRAPPLE_REST_LENGTH
 	if displacement > 0:
-		distance = character.global_position.distance_to(hookshot_point) - (physics_parameters.GRAPPLE_REELING_SPEED * _delta)
+		distance = character.global_position.distance_to(hookshot_point) - (physics_parameters.GRAPPLE_REEL_IN_SPEED * _delta)
 		if reel_sound_player.playing == false:
 			tween_reel_sound_player_volume(0, 0.05)
 			reel_sound_player.play()
@@ -116,7 +116,7 @@ func reel_in(_delta: float) -> void:
 func reel_out(_delta: float) -> void:
 	var displacement = physics_parameters.GRAPPLE_MAX_RANGE - distance
 	if displacement > 0:
-		distance = character.global_position.distance_to(hookshot_point) + (physics_parameters.GRAPPLE_REELING_SPEED * _delta)
+		distance = character.global_position.distance_to(hookshot_point) + (physics_parameters.GRAPPLE_REEL_OUT_SPEED * _delta)
 		if reel_sound_player.playing == false:
 			tween_reel_sound_player_volume(0, 0.05)
 			reel_sound_player.play()

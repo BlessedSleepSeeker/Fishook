@@ -25,6 +25,8 @@ func _ready():
 	random_btn.pressed.connect(_on_random_pressed)
 	play_btn.grab_focus()
 	build()
+	if autopress_random_button:
+		_on_random_pressed()
 
 func build() -> void:
 	carrousel.setup_render(carrousel_render)
@@ -49,7 +51,7 @@ func _on_random_pressed() -> void:
 	random_btn.disabled = true
 	if force_random_level:
 		for level: LevelData in levels:
-			if level.name == forced_random_level_name:
+			if level.scene_name == forced_random_level_name:
 				level_picked(level)
 	else:
 		var level: LevelData = levels.pick_random()

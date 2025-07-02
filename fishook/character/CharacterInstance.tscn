@@ -55,7 +55,8 @@ ROTATION_SPEED = 6.0
 GRAPPLE_MAX_RANGE = 45.0
 GRAPPLE_REST_LENGTH = 0.1
 GRAPPLE_SWING_SPEED = 70.0
-GRAPPLE_REELING_SPEED = 3.0
+GRAPPLE_REEL_IN_SPEED = 3.0
+GRAPPLE_REEL_OUT_SPEED = 3.0
 GRAPPLE_FRICTION = 0.995
 GRAPPLE_ROTATION_SPEED = 0.1
 metadata/_custom_type_script = "uid://dba7awsrs6b6y"
@@ -73,7 +74,8 @@ ROTATION_SPEED = 6.0
 GRAPPLE_MAX_RANGE = 45.0
 GRAPPLE_REST_LENGTH = 0.1
 GRAPPLE_SWING_SPEED = 70.0
-GRAPPLE_REELING_SPEED = 3.0
+GRAPPLE_REEL_IN_SPEED = 3.0
+GRAPPLE_REEL_OUT_SPEED = 3.0
 GRAPPLE_FRICTION = 0.995
 GRAPPLE_ROTATION_SPEED = 0.1
 metadata/_custom_type_script = "uid://dba7awsrs6b6y"
@@ -91,7 +93,8 @@ ROTATION_SPEED = 6.0
 GRAPPLE_MAX_RANGE = 45.0
 GRAPPLE_REST_LENGTH = 0.1
 GRAPPLE_SWING_SPEED = 70.0
-GRAPPLE_REELING_SPEED = 3.0
+GRAPPLE_REEL_IN_SPEED = 3.0
+GRAPPLE_REEL_OUT_SPEED = 3.0
 GRAPPLE_FRICTION = 0.995
 GRAPPLE_ROTATION_SPEED = 0.1
 metadata/_custom_type_script = "uid://dba7awsrs6b6y"
@@ -109,7 +112,8 @@ ROTATION_SPEED = 6.0
 GRAPPLE_MAX_RANGE = 45.0
 GRAPPLE_REST_LENGTH = 0.1
 GRAPPLE_SWING_SPEED = 70.0
-GRAPPLE_REELING_SPEED = 3.0
+GRAPPLE_REEL_IN_SPEED = 3.0
+GRAPPLE_REEL_OUT_SPEED = 3.0
 GRAPPLE_FRICTION = 0.995
 GRAPPLE_ROTATION_SPEED = 0.1
 metadata/_custom_type_script = "uid://dba7awsrs6b6y"
@@ -127,7 +131,8 @@ ROTATION_SPEED = 6.0
 GRAPPLE_MAX_RANGE = 45.0
 GRAPPLE_REST_LENGTH = 0.1
 GRAPPLE_SWING_SPEED = 70.0
-GRAPPLE_REELING_SPEED = 3.0
+GRAPPLE_REEL_IN_SPEED = 7.0
+GRAPPLE_REEL_OUT_SPEED = 3.0
 GRAPPLE_FRICTION = 0.995
 GRAPPLE_ROTATION_SPEED = 0.1
 metadata/_custom_type_script = "uid://dba7awsrs6b6y"
@@ -145,7 +150,8 @@ ROTATION_SPEED = 6.0
 GRAPPLE_MAX_RANGE = 45.0
 GRAPPLE_REST_LENGTH = 0.1
 GRAPPLE_SWING_SPEED = 70.0
-GRAPPLE_REELING_SPEED = 3.0
+GRAPPLE_REEL_IN_SPEED = 3.0
+GRAPPLE_REEL_OUT_SPEED = 3.0
 GRAPPLE_FRICTION = 0.995
 GRAPPLE_ROTATION_SPEED = 0.1
 metadata/_custom_type_script = "uid://dba7awsrs6b6y"
@@ -289,7 +295,6 @@ streams = Array[AudioStream]([ExtResource("14_m6vje"), ExtResource("15_bjf1r"), 
 no_repeat = false
 
 [node name="Stopwatch" parent="StateMachine/Jump" instance=ExtResource("35_2c7bb")]
-paused_at_load = true
 
 [node name="DoubleJump" type="Node" parent="StateMachine"]
 script = ExtResource("6_7jo2n")
@@ -412,6 +417,5 @@ ignore_time_scale = true
 
 [node name="BulletTimeStopwatch" parent="Timers" instance=ExtResource("35_2c7bb")]
 unique_name_in_owner = true
-paused_at_load = true
 
 [editable path="MouseFollowCamera"]

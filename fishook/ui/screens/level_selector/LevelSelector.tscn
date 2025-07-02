@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ciqi6ctu5bu60"]
+[gd_scene load_steps=20 format=3 uid="uid://ciqi6ctu5bu60"]
 
 [ext_resource type="Theme" uid="uid://d3kms72g8lsqf" path="res://ui/themes/base_ui_theme.tres" id="1_ey0nq"]
 [ext_resource type="Script" uid="uid://bu6dq3162m11d" path="res://ui/screens/level_selector/level_selector.gd" id="1_lq5ei"]
@@ -14,7 +14,16 @@
 [ext_resource type="PackedScene" uid="uid://b2mubf1uianr1" path="res://ui/screens/level_selector/LevelDataDisplay.tscn" id="11_tq5iu"]
 [ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="12_7j1c0"]
 
+[sub_resource type="Sky" id="Sky_48ydk"]
+
+[sub_resource type="Environment" id="Environment_wcie7"]
+sky = SubResource("Sky_48ydk")
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+
 [sub_resource type="World3D" id="World3D_1hu8c"]
+environment = SubResource("Environment_wcie7")
 
 [sub_resource type="InputEventKey" id="InputEventKey_7j1c0"]
 device = -1
@@ -37,7 +46,9 @@ grow_vertical = 2
 theme = ExtResource("1_ey0nq")
 script = ExtResource("1_lq5ei")
 levels = Array[ExtResource("2_gl7ew")]([ExtResource("4_0gt2j"), ExtResource("5_76wlg"), ExtResource("6_c0n6j"), ExtResource("7_tq5iu"), ExtResource("8_7j1c0"), ExtResource("9_76wlg")])
-forced_random_level_name = "Tutorial"
+autopress_random_button = true
+force_random_level = true
+forced_random_level_name = "ProceduralLevel"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
