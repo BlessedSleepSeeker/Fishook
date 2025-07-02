@@ -1,13 +1,6 @@
 extends Node
 
-signal main_seed_changed(new_value: String)
-
-var MAIN_SEED: String = '':
-	set(value):
-		print("main_seed:", MAIN_SEED)
-		if value != '':
-			main_seed_changed.emit(value)
-			MAIN_SEED = value
+var main_seed: String = ''
 
 @onready var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
@@ -16,13 +9,13 @@ func _ready():
 	pass#generate_seeds()
 
 func generate_seeds():
-	if (MAIN_SEED == ''):
+	if (main_seed == ''):
 		rng.randomize()
 		rng.seed = hash(rng.randi())
-		MAIN_SEED = str(rng.seed)
+		main_seed = str(rng.seed)
 	else:
-		rng.seed = int(MAIN_SEED)
+		rng.seed = int(main_seed)
 
 func reset_seeds():
-	MAIN_SEED = ''
+	main_seed = ''
 	generate_seeds()

@@ -38,6 +38,7 @@ var collected_amount: int = 0
 
 signal replay
 signal go_to_level_selector
+signal level_loading_finished
 
 func _ready():
 	InputHandler.handle_mouse(false)
@@ -56,6 +57,8 @@ func _ready():
 		register_end_of_level()
 	setup_end_screen()
 	character.debug_canvas = debug_canvas
+
+	level_loading_finished.emit()
 
 	if speedrun_mode:
 		setup_speedrun_mode()

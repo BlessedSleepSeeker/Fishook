@@ -25,8 +25,9 @@ func setup() -> void:
 	setup_rng()
 
 func setup_rng():
-	RNGHandler.MAIN_SEED = generation_seed
+	RNGHandler.main_seed = generation_seed
 	RNGHandler.generate_seeds()
+	print(RNGHandler.main_seed)
 
 func generate_full_grid() -> void:
 	rules.loop()
