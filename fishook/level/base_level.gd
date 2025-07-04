@@ -1,11 +1,7 @@
 extends Node3D
 class_name BaseLevel
 
-enum LevelType {
-	REACH_THE_END,
-	COLLECTATHON
-}
-@export var level_type: LevelType = LevelType.REACH_THE_END
+
 @export var meta_data: LevelData = LevelData.new()
 
 @export var level_down_limit: float = 50
@@ -21,7 +17,7 @@ enum LevelType {
 
 
 @onready var character: CharacterInstance = %CharacterInstance
-@onready var current_checkpoint = null
+@onready var current_checkpoint: BaseCheckpoint = null
 @onready var level_stopwatch: Stopwatch = %LevelStopwatch
 @onready var debug_canvas: DebugCanvas = $DebugCanvasLayer
 @onready var level_hud: LevelHUD = %LevelHud
@@ -39,6 +35,7 @@ var collected_amount: int = 0
 signal replay
 signal go_to_level_selector
 signal level_loading_finished
+signal finished
 
 func _ready():
 	InputHandler.handle_mouse(false)
@@ -53,7 +50,7 @@ func _ready():
 		randomize_spawn()
 	else:
 		find_spawn()
-	if self.level_type == LevelType.REACH_THE_END:
+	if meta_data.type == meta_data.LevelType.REACH_THE_END:
 		register_end_of_level()
 	setup_end_screen()
 	character.debug_canvas = debug_canvas
@@ -79,7 +76,7 @@ func picked_up_collectible(_collectible: BaseCollectible) -> void:
 	print_debug(debug_collectible_timer_template % [collected_amount, level_stopwatch.get_current_time_as_string()])
 	if collected_amount >= total_collectibles:
 		print_debug("Final Time : %s" % [level_stopwatch.get_current_time_as_string()])
-		if level_type == LevelType.COLLECTATHON:
+		if meta_data.type == meta_data.LevelType.COLLECTATHON:
 			_on_end_of_level_reached()
 	## screenshots
 	var rng: RandomNumberGenerator = RandomNumberGenerator.new()
@@ -91,7 +88,9 @@ func register_checkpoints() -> void:
 		checkpoint.reached.connect(reached_checkpoint)
 
 func reached_checkpoint(checkpoint: BaseCheckpoint) -> void:
+	current_checkpoint.is_active = false
 	current_checkpoint = checkpoint
+	current_checkpoint.is_active = true
 
 func register_dialog_boxes() -> void:
 	for trigger_box: DialogTriggerBox in get_tree().get_nodes_in_group("DialogTriggerBox"):
@@ -115,7 +114,7 @@ func randomize_spawn() -> void:
 func find_spawn() -> void:
 	var checkpoints: Array = get_tree().get_nodes_in_group("Checkpoint")
 	for checkpoint: BaseCheckpoint in checkpoints:
-		if checkpoint.name == "FirstCheckpoint":
+		if checkpoint.is_active:
 			current_checkpoint = checkpoint
 
 func register_end_of_level() -> void:
@@ -163,6 +162,7 @@ func update_timer() -> void:
 	level_hud.update_timer(time_dict)
 
 func _on_end_of_level_reached():
+	finished.emit()
 	end_level_hud.pictures = character.camera.screenshot_camera.pictures
 	if music_player:
 		music_player.change_volume(-12, 3)

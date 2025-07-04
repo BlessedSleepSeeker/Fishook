@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbhkdaifd8q8t"]
+[gd_scene load_steps=7 format=3 uid="uid://cbhkdaifd8q8t"]
 
 [ext_resource type="Script" uid="uid://dmktmx3gyr5rx" path="res://ui/huds/pause_hud/pause_ui.gd" id="1_nnkm3"]
 [ext_resource type="Theme" uid="uid://dow3yf2y5jff7" path="res://ui/themes/main_menu_theme.tres" id="1_rqn4q"]
+[ext_resource type="PackedScene" uid="uid://b2mubf1uianr1" path="res://ui/screens/level_selector/LevelDataDisplay.tscn" id="3_mdsg6"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_kofxb"]
 device = -1
@@ -50,31 +51,45 @@ layout_mode = 2
 [node name="Continue" type="Button" parent="MainMenu/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Continue"
+text = "PAUSE_CONTINUE"
 
 [node name="Restart" type="Button" parent="MainMenu/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
 shortcut = SubResource("Shortcut_8wbfe")
-text = "Restart
-"
+text = "PAUSE_RESTART"
 
 [node name="ChangeLevel" type="Button" parent="MainMenu/VBox"]
 layout_mode = 2
-text = "Change Level"
+text = "PAUSE_CHANGE_LEVEL"
 
 [node name="Settings" type="Button" parent="MainMenu/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Settings"
+text = "SETTINGS"
 
 [node name="MainMenu" type="Button" parent="MainMenu/VBox"]
 layout_mode = 2
-text = "Main Menu"
+text = "PAUSE_MAIN_MENU"
 
 [node name="Exit" type="Button" parent="MainMenu/VBox"]
 layout_mode = 2
-text = "Exit"
+text = "EXIT"
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 0.59
+offset_left = -385.0
+offset_bottom = -0.320007
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="LevelDataDisplay" parent="Margin" instance=ExtResource("3_mdsg6")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="MainMenu/VBox/Continue" to="." method="_on_continue_pressed"]

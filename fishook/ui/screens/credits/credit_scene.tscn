@@ -28,6 +28,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_78omw")
 script = ExtResource("3_fjgl6")
+credit_template = "[font_size=50][b][u][wave amp=50.0 freq=4
+
+ connected=1][rainbow freq=0.01 sat=0.8 val=0.8 speed=4]%s[/rainbow][/wave][/u][/b][/font_size]
+
+[font_size=30]%s[/font_size]
+
+[font_size=40][b][u][wave amp=50.0 freq=2.0 connected=1]%s[/wave][/u][/b][/font_size]
+
+[font_size=30]%s
+%s
+%s
+[url=https://godotshaders.com/shader/chromatic-abberation/]%s[/url][/font_size]"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -61,6 +73,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="M/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 bbcode_enabled = true
 text = "[font_size=50][b][u][wave amp=50.0 freq=4
@@ -87,6 +100,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 shortcut = SubResource("Shortcut_v7div")
-text = "Return"
+text = "RETURN"
 
 [connection signal="pressed" from="M/MarginContainer/ReturnButton" to="." method="_on_button_pressed"]

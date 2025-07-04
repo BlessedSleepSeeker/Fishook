@@ -1,22 +1,21 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dow3yf2y5jff7"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dow3yf2y5jff7"]
 
-[ext_resource type="FontFile" uid="uid://cm7uiypoce1r1" path="res://ui/themes/fonts/SeaGreen.ttf" id="1_upqhl"]
 [ext_resource type="StyleBox" uid="uid://qdxg6ceetby6" path="res://ui/themes/main_menu/button_box_focused.tres" id="2_5u052"]
 [ext_resource type="StyleBox" uid="uid://c62wxphwn56k3" path="res://ui/themes/main_menu/button_style_box_flat.tres" id="2_uxdiy"]
 [ext_resource type="StyleBox" uid="uid://bkh2g2nh3im1t" path="res://ui/themes/main_menu/button_box_pressed.tres" id="4_dai5q"]
+[ext_resource type="FontFile" uid="uid://diajfaw4k72ov" path="res://ui/themes/fonts/DeliusUnicase-Bold.ttf" id="5_loktw"]
+[ext_resource type="FontFile" uid="uid://2alin7pjikf1" path="res://ui/themes/fonts/DeliusUnicase-Regular.ttf" id="6_7ltij"]
 
 [resource]
-Button/font_sizes/font_size = 48
-Button/fonts/font = ExtResource("1_upqhl")
+default_font = ExtResource("6_7ltij")
+Button/font_sizes/font_size = 30
 Button/styles/focus = ExtResource("2_5u052")
 Button/styles/hover = ExtResource("2_5u052")
 Button/styles/normal = ExtResource("2_uxdiy")
 Button/styles/pressed = ExtResource("4_dai5q")
-Label/fonts/font = ExtResource("1_upqhl")
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 20
 MarginContainer/constants/margin_right = 20
 MarginContainer/constants/margin_top = 10
-RichTextLabel/fonts/bold_font = ExtResource("1_upqhl")
-RichTextLabel/fonts/normal_font = ExtResource("1_upqhl")
+RichTextLabel/fonts/bold_font = ExtResource("5_loktw")
 VBoxContainer/constants/separation = 10

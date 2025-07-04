@@ -25,6 +25,7 @@ signal transition_by_path(new_scene_path: String, scene_parameters: Dictionary, 
 signal play_transition(direction: bool, wait_for_tween: bool)
 
 var is_paused: bool = true
+var level_finished: bool = false
 
 func _ready():
 	toggle_pause(false)
@@ -41,6 +42,8 @@ func _input(event: InputEvent) -> void:
 		toggle_pause(true)
 
 func toggle_pause(pausing: bool) -> void:
+	if level_finished:
+		return
 	is_paused = pausing
 	if is_paused:
 		InputHandler.handle_mouse(true)
@@ -88,14 +91,18 @@ func flush_level() -> void:
 
 ## connect to signal like "level_finished" or things like that
 func load_level() -> void:
+	level_finished = false
 	var level_scene: PackedScene = load(build_level_path())
 	var level_instance = level_scene.instantiate()
 	level_instance.speedrun_mode = settings.read_setting_value_by_key("SPEEDRUN_MODE")
+	pause_ui.build_data_display(level_instance.meta_data)
+	level_instance.finished.connect(_on_level_finished)
 	level_holder.add_child(level_instance)
 	level_instance.replay.connect(restart_level)
 	level_instance.go_to_level_selector.connect(go_to_level_selector)
 
-
+func _on_level_finished() -> void:
+	level_finished = true
 
 func build_level_path() -> String:
 	return level_scene_path + level_scene_name + level_scene_extension

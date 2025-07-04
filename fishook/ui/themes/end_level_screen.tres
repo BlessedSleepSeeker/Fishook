@@ -1,9 +1,9 @@
 [gd_resource type="Theme" load_steps=6 format=3 uid="uid://b1hqt805ka1h0"]
 
-[ext_resource type="FontFile" uid="uid://cm7uiypoce1r1" path="res://ui/themes/fonts/SeaGreen.ttf" id="1_el66k"]
 [ext_resource type="StyleBox" uid="uid://qdxg6ceetby6" path="res://ui/themes/main_menu/button_box_focused.tres" id="2_empqw"]
 [ext_resource type="StyleBox" uid="uid://bkh2g2nh3im1t" path="res://ui/themes/main_menu/button_box_pressed.tres" id="3_jyhi2"]
 [ext_resource type="StyleBox" uid="uid://c62wxphwn56k3" path="res://ui/themes/main_menu/button_style_box_flat.tres" id="4_6pnfx"]
+[ext_resource type="FontFile" uid="uid://2alin7pjikf1" path="res://ui/themes/fonts/DeliusUnicase-Regular.ttf" id="4_empqw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_el66k"]
 bg_color = Color(0.1344, 0.1305, 0.15, 0.25098)
@@ -18,8 +18,8 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [resource]
+default_font = ExtResource("4_empqw")
 Button/font_sizes/font_size = 32
-Button/fonts/font = ExtResource("1_el66k")
 Button/styles/focus = ExtResource("2_empqw")
 Button/styles/hover = ExtResource("3_jyhi2")
 Button/styles/normal = ExtResource("4_6pnfx")
@@ -29,5 +29,4 @@ MarginContainer/constants/margin_left = 20
 MarginContainer/constants/margin_right = 20
 MarginContainer/constants/margin_top = 20
 RichTextLabel/font_sizes/normal_font_size = 50
-RichTextLabel/fonts/normal_font = ExtResource("1_el66k")
 RichTextLabel/styles/normal = SubResource("StyleBoxFlat_el66k")

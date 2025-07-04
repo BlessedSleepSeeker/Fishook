@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://s46wqxnh4dnl"]
+[gd_scene load_steps=14 format=3 uid="uid://s46wqxnh4dnl"]
 
 [ext_resource type="Script" uid="uid://7pud10826kcg" path="res://autoloads/settings/settings.gd" id="1_dbr6m"]
 [ext_resource type="Script" uid="uid://n1ryqrkueeuw" path="res://autoloads/settings/settings_scripts/window/Resolution.gd" id="2_g3vyq"]
@@ -12,90 +12,124 @@
 [ext_resource type="Script" uid="uid://c27adpcx3gjxr" path="res://autoloads/settings/settings_scripts/UI/scale.gd" id="9_nhd6j"]
 [ext_resource type="Script" uid="uid://d0jsuxpy73a0g" path="res://autoloads/settings/settings_scripts/game/disable_bullet_time_visuals_effects.gd" id="10_6rgcf"]
 [ext_resource type="Script" uid="uid://bialeqqx1d5cc" path="res://autoloads/settings/generic_settings/generic_bool_setting.gd" id="11_gokex"]
+[ext_resource type="Script" uid="uid://bephea4q1fcg5" path="res://autoloads/settings/generic_settings/generic_range_setting.gd" id="13_4gjnl"]
 
 [node name="Settings" type="Node"]
 script = ExtResource("1_dbr6m")
 
-[node name="Window" type="Node" parent="."]
+[node name="SETTING_TAB_WINDOW" type="Node" parent="."]
 
-[node name="WindowType" type="Node" parent="Window"]
+[node name="WindowType" type="Node" parent="SETTING_TAB_WINDOW"]
 script = ExtResource("5_h84ts")
 type = 2
 key = "WINDOW_TYPE"
+possible_values_strings = ["WINDOW_TYPE_SETTING_WINDOWED", "WINDOW_TYPE_SETTING_FULLSCREEN", "WINDOW_TYPE_SETTING_BORDERLESS"]
 
-[node name="Resolution" type="Node" parent="Window"]
+[node name="Resolution" type="Node" parent="SETTING_TAB_WINDOW"]
 script = ExtResource("2_g3vyq")
 base_value = "1280x720"
 type = 2
-key = "RESOLUTION"
-tooltip = "Only applied when mode is Windowed"
+key = "WINDOW_RESOLUTION"
+tooltip = "WINDOW_RESOLUTION_TOOLTIP"
 
-[node name="Vsync" type="Node" parent="Window"]
+[node name="Vsync" type="Node" parent="SETTING_TAB_WINDOW"]
 script = ExtResource("3_b8qgr")
 key = "VSYNC"
 
-[node name="MaxFrameRate" type="Node" parent="Window"]
+[node name="MaxFrameRate" type="Node" parent="SETTING_TAB_WINDOW"]
 script = ExtResource("4_07xv1")
 type = 2
 key = "MAX_FRAME_RATE"
 
-[node name="Sound" type="Node" parent="."]
+[node name="SETTING_TAB_SOUND" type="Node" parent="."]
 
-[node name="MasterVolume" type="Node" parent="Sound"]
+[node name="MasterVolume" type="Node" parent="SETTING_TAB_SOUND"]
 script = ExtResource("5_c4hqd")
 type = 1
 key = "MASTER_VOLUME"
+tooltip = "MASTER_VOLUME_TOOLTIP"
+step_range = 5.0
 
-[node name="MusicVolume" type="Node" parent="Sound"]
+[node name="MusicVolume" type="Node" parent="SETTING_TAB_SOUND"]
 script = ExtResource("5_c4hqd")
 bus_name = "Music"
 base_value = 10
 type = 1
 key = "MUSIC_VOLUME"
+tooltip = "MUSIC_VOLUME_TOOLTIP"
+step_range = 5.0
 
-[node name="SoundEffectVolume" type="Node" parent="Sound"]
+[node name="SoundEffectVolume" type="Node" parent="SETTING_TAB_SOUND"]
 script = ExtResource("5_c4hqd")
 bus_name = "Sound Effect"
-base_value = 50
+base_value = 10
 type = 1
 key = "SOUND_EFFECT_VOLUME"
+tooltip = "SOUND_EFFECT_VOLUME_TOOLTIP"
+step_range = 5.0
 
-[node name="MuteInBackground" type="Node" parent="Sound"]
+[node name="MuteInBackground" type="Node" parent="SETTING_TAB_SOUND"]
 script = ExtResource("6_dhgul")
 key = "MUTE_IN_BACKGROUND"
-tooltip = "Mute the Game when the window isn't focused"
+tooltip = "MUTE_IN_BACKGROUND_TOOLTIP"
 
-[node name="Game" type="Node" parent="."]
+[node name="SETTING_TAB_GAME" type="Node" parent="."]
 
-[node name="Language" type="Node" parent="Game"]
+[node name="Language" type="Node" parent="SETTING_TAB_GAME"]
 script = ExtResource("9_bqloj")
 type = 2
 key = "LANGUAGE"
-tooltip = "Sorry... Only English for now..."
+tooltip = "LANGUAGE_TOOLTIP"
+possible_values = ["auto", "en", "fr"]
+possible_values_strings = ["LANGUAGE_SETTING_DETECT_LOCALE", "English", "Français"]
 
-[node name="Camera Sensitivity" type="Node" parent="Game"]
+[node name="Camera Sensitivity" type="Node" parent="SETTING_TAB_GAME"]
 script = ExtResource("9_8e0ev")
-base_value = 500.0
 type = 1
-key = "CAMERA_SENSIBILITY"
-tooltip = "Affect the speed at which the camera rotate around the player"
-min_value_range = 1
-max_value_range = 1000
+key = "CAMERA_SENSITIVITY"
+tooltip = "CAMERA_SENSITIVITY_TOOLTIP"
+min_value_range = 0.5
+max_value_range = 10.0
+step_range = 0.5
+display_floating_precision = 1
 
-[node name="Disable Bullet Time Visuals Effects" type="Node" parent="Game"]
+[node name="Disable Bullet Time Visuals Effects" type="Node" parent="SETTING_TAB_GAME"]
 script = ExtResource("10_6rgcf")
 key = "DISABLE_BULLET_TIME_VISUALS"
-tooltip = "This will disable the chroma aberration effect when using bullet time."
+tooltip = "DISABLE_BULLET_TIME_VISUALS_TOOLTIP"
 
-[node name="Speedrun Mode" type="Node" parent="Game"]
+[node name="Speedrun Mode" type="Node" parent="SETTING_TAB_GAME"]
 script = ExtResource("11_gokex")
 base_value = false
 key = "SPEEDRUN_MODE"
-tooltip = "Speedrun Mode add a countdown at the start of a level, and your current level time stay displayed on top of the UI."
+tooltip = "SPEEDRUN_MODE_TOOLTIP"
 
-[node name="UI" type="Node" parent="."]
+[node name="SETTING_TAB_HUD" type="Node" parent="."]
 
-[node name="Scale" type="Node" parent="UI"]
+[node name="Scale" type="Node" parent="SETTING_TAB_HUD"]
 script = ExtResource("9_nhd6j")
 type = 2
-key = "UI_SCALE"
+key = "HUD_SCALE"
+tooltip = "HUD_SCALE_TOOLTIP"
+
+[node name="CrosshairSize" type="Node" parent="SETTING_TAB_HUD"]
+script = ExtResource("13_4gjnl")
+base_value = 1.0
+type = 1
+key = "CROSSHAIR_SIZE"
+tooltip = "CROSSHAIR_SIZE_TOOLTIP"
+min_value_range = 1.0
+max_value_range = 5.0
+step_range = 0.5
+display_floating_precision = 1
+
+[node name="IndicatorsSize" type="Node" parent="SETTING_TAB_HUD"]
+script = ExtResource("13_4gjnl")
+base_value = 1.0
+type = 1
+key = "INDICATORS_SIZE"
+tooltip = "INDICATORS_SIZE_TOOLTIP"
+min_value_range = 0.5
+max_value_range = 5.0
+step_range = 0.5
+display_floating_precision = 1

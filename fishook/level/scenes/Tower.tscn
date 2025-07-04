@@ -99,9 +99,9 @@ size = Vector3(4, 3, 0.1)
 
 [node name="LevelTower" type="Node3D"]
 script = ExtResource("1_ehgmg")
+meta_data = ExtResource("2_21non")
 level_down_limit = -40.0
 end_level_trigger_path = NodePath("EndOfLevel")
-meta_data = ExtResource("2_21non")
 
 [node name="CharacterInstance" parent="." instance=ExtResource("2_og642")]
 unique_name_in_owner = true
@@ -676,21 +676,21 @@ transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 
 
 [node name="Checkpoints" type="Node3D" parent="."]
 
-[node name="FirstCheckpoint" parent="Checkpoints" instance=ExtResource("8_4jlt8")]
-unique_name_in_owner = true
+[node name="Checkpoint1" parent="Checkpoints" instance=ExtResource("8_4jlt8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.477898, 0)
+is_active = true
 
 [node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("8_4jlt8")]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.522102, -33)
 
 [node name="Checkpoint3" parent="Checkpoints" instance=ExtResource("8_4jlt8")]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 12.51, -18)
 
 [node name="Checkpoint5" parent="Checkpoints" instance=ExtResource("8_4jlt8")]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8167, 12.51, 251.931)
+
+[node name="Checkpoint6" parent="Checkpoints" instance=ExtResource("8_4jlt8")]
+transform = Transform3D(0.918156, 0, 0.396219, 0.0709196, 0.983851, -0.164342, -0.38982, 0.178991, 0.903329, 26.5872, 69.7353, 248.749)
 
 [node name="Checkpoint4" parent="Checkpoints" instance=ExtResource("8_4jlt8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26879, 160.38, 257.219)

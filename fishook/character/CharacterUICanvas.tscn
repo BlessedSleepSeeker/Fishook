@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://b005j3c3vu2s2" path="res://character/character_ui_canvas.gd" id="1_8qiw1"]
 [ext_resource type="Shader" uid="uid://bs8nax4sphxxm" path="res://character/ui_assets/Shaders/cooldown.gdshader" id="2_8qiw1"]
 [ext_resource type="Theme" uid="uid://lwpyypu4qtj" path="res://ui/themes/character_ui_theme.tres" id="3_6hg2s"]
-[ext_resource type="Texture2D" uid="uid://m43ay4wc4ouq" path="res://character/ui_assets/PNG/Outline/crosshair001.png" id="3_ny6jb"]
 [ext_resource type="Texture2D" uid="uid://dwu7dl4h0u76y" path="res://character/ui_assets/Vector/double_jump.svg" id="3_pdutl"]
 [ext_resource type="Texture2D" uid="uid://bblvtkthnjx8s" path="res://character/ui_assets/Vector/bullet_time.svg" id="4_ny6jb"]
+[ext_resource type="Texture2D" uid="uid://m43ay4wc4ouq" path="res://character/ui_assets/PNG/Outline/crosshair001.png" id="6_ywu5b"]
 [ext_resource type="Shader" uid="uid://d3xvaquegfyoh" path="res://character/ui_assets/Shaders/chroma_abberation.gdshader" id="7_6hg2s"]
 [ext_resource type="Texture2D" uid="uid://dm50sy2burkra" path="res://character/ui_assets/PNG/Outline/crosshair008.png" id="7_ywu5b"]
 
@@ -34,7 +34,6 @@ shader_parameter/spread = 0.01
 
 [node name="UICanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_8qiw1")
-crosshair_base_texture = ExtResource("3_ny6jb")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -88,7 +87,7 @@ grow_vertical = 2
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_ywu5b")
 layout_mode = 2
-texture = ExtResource("3_ny6jb")
+texture = ExtResource("6_ywu5b")
 
 [node name="CollisionCrosshair" type="TextureRect" parent="CrosshairContainer"]
 unique_name_in_owner = true

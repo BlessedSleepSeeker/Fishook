@@ -1,7 +1,7 @@
 extends Setting
 
 const MAX_FRAME_RATE: Array = [30, 60, 120, 144, 0]
-const VALUE_STRING: Array = ["30", "60", "120", "144", "Uncapped"]
+const VALUE_STRING: Array = ["30", "60", "120", "144", "MAX_FRAME_RATE_UNCAPPED"]
 var base_value: int = 60
 
 func _ready():

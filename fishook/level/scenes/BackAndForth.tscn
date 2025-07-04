@@ -55,7 +55,6 @@ ssao_intensity = 1.4
 
 [node name="Back and Forth" type="Node3D"]
 script = ExtResource("1_n1q37")
-level_type = 1
 meta_data = ExtResource("2_n1q37")
 
 [node name="CharacterInstance" parent="." instance=ExtResource("3_1j0k5")]
@@ -82,11 +81,11 @@ unique_name_in_owner = true
 [node name="LevelMusicPlayer" parent="." instance=ExtResource("4_g2rv6")]
 unique_name_in_owner = true
 
-[node name="FirstCheckpoint" parent="." instance=ExtResource("6_wvc8l")]
-unique_name_in_owner = true
+[node name="Checkpoint1" parent="." instance=ExtResource("6_wvc8l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100.513, 0)
+is_active = true
 
-[node name="BaseCheckpoint2" parent="." instance=ExtResource("6_wvc8l")]
+[node name="Checkpoint2" parent="." instance=ExtResource("6_wvc8l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100.513, 49)
 
 [node name="Geometry" type="Node3D" parent="."]

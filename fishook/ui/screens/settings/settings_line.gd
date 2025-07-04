@@ -57,7 +57,7 @@ func tear_down() -> void:
 
 
 func build() -> void:
-	setting_name.text = setting.key.capitalize()
+	setting_name.text = setting.key
 	setting_name.tooltip_text = setting.tooltip
 	match setting.type:
 		setting.SETTING_TYPE.BOOLEAN:
@@ -99,7 +99,7 @@ func build_range() -> void:
 
 
 func _on_slider_value_changed(value: float) -> void:
-	lbl.text = "%03d" % value
+	lbl.text = "%03.*f" % [setting.display_floating_precision, value]
 
 
 func build_options() -> void:
@@ -187,7 +187,7 @@ func add_input_event_to_action() -> void:
 func add_input(event: InputEvent):
 	var action_name: String = setting.key.to_lower()
 	InputMap.action_add_event(action_name, event)
-	print(InputMap.action_get_events(action_name))
+	#print(InputMap.action_get_events(action_name))
 
 	tear_down()
 	build()

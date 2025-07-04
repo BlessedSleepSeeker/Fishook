@@ -9,6 +9,11 @@ class_name LevelSelector
 @export var force_random_level: bool = false
 @export var forced_random_level_name: String = ""
 
+@export var title_tr_key: String = "LEVEL_SELECTOR_TITLE"
+@export var title_template: String = "[font_size=50][wave amp=40.0 freq=5 connected=1]%s[/wave][/font_size]"
+
+@onready var title_label: RichTextLabel = %TitleLabel
+
 @onready var carrousel: LevelCarrousel = %LevelCarroussel
 @onready var carrousel_render: CarrouselRender = %CarrouselRender
 @onready var data_display: LevelDataDisplay = %LevelDataDisplay
@@ -20,6 +25,7 @@ class_name LevelSelector
 signal transition_by_path(new_scene_path: String, scene_parameters: Dictionary, toggle_loading_screen: bool, animation: String)
 
 func _ready():
+	localize_title()
 	return_btn.pressed.connect(_on_return_button_pressed)
 	play_btn.pressed.connect(_on_play_button_pressed)
 	random_btn.pressed.connect(_on_random_pressed)
@@ -56,3 +62,12 @@ func _on_random_pressed() -> void:
 	else:
 		var level: LevelData = levels.pick_random()
 		level_picked(level)
+
+func localize_title() -> void:
+	title_label.text = title_template % tr(title_tr_key)
+
+func _notification(what):
+	if what == Node.NOTIFICATION_TRANSLATION_CHANGED:
+		if not is_node_ready():
+			await ready # Wait until ready signal.
+		localize_title()

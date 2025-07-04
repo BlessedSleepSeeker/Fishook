@@ -4,9 +4,10 @@
 
 [resource]
 script = ExtResource("1_k7guq")
-name = "Island in the Sky"
-comment = "A little stroll. Formerly known as Alpha 0.0.2"
+name = "LEVEL_ISLAND_IN_THE_SKY_NAME"
+comment = "LEVEL_ISLAND_IN_THE_SKY_COMMENT"
 scene_name = "IslandInTheSky"
 difficulty = 2
+type = 0
 miniature_scene_path = "uid://o03qet41ymv"
 metadata/_custom_type_script = "uid://bhcn1srajolcg"

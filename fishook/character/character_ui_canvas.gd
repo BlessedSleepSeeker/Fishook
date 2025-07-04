@@ -1,22 +1,49 @@
 extends CanvasLayer
 class_name CharacterHUD
 
-@onready var crosshair_container: Container = %CrosshairContainer
-
-@onready var crosshair: TextureRect = %Crosshair
-@onready var collision_crosshair: TextureRect = %CollisionCrosshair
-@onready var double_jump_indicator: TextureRect = %DoubleJumpIndicator
-
-@onready var bullet_time_indicator: TextureRect = %BulletTimeIndicator
-@onready var bullet_time_screen_fx: ColorRect = %BulletTimeVFX
-
 @export_group("Crosshair")
 @export var crosshair_base_texture: Texture2D = preload("res://character/ui_assets/PNG/Outline/crosshair001.png")
 @export var crosshair_base_color: Color = Color("ffffff")
 @export var crosshair_color_on_colliding: Color = Color("70ff7c")
 
+@export_group("Settings")
+@export var base_indicator_size: int = 48
+
+@onready var crosshair_container: Container = %CrosshairContainer
+
+@onready var crosshair: TextureRect = %Crosshair
+@onready var collision_crosshair: TextureRect = %CollisionCrosshair
+
+@onready var double_jump_indicator: TextureRect = %DoubleJumpIndicator
+@onready var bullet_time_indicator: TextureRect = %BulletTimeIndicator
+
+@onready var bullet_time_screen_fx: ColorRect = %BulletTimeVFX
+
+
 @onready var settings: Settings = get_tree().root.get_node("Root").settings
 
+#region Settings
+func _ready():
+	settings.settings_changed.connect(apply_settings)
+	apply_settings()
+
+func apply_settings() -> void:
+	set_crosshair_size()
+	set_indicators_size()
+
+func set_crosshair_size() -> void:
+	var multiplier: float = settings.read_setting_value_by_key("CROSSHAIR_SIZE")
+	crosshair.custom_minimum_size = multiplier * crosshair_base_texture.get_size()
+	collision_crosshair.custom_minimum_size = multiplier * crosshair_base_texture.get_size()
+
+func set_indicators_size() -> void:
+	var multiplier: float = settings.read_setting_value_by_key("INDICATORS_SIZE")
+	double_jump_indicator.custom_minimum_size = Vector2(base_indicator_size, base_indicator_size) * multiplier
+	bullet_time_indicator.custom_minimum_size = Vector2(base_indicator_size, base_indicator_size) * multiplier
+
+#endregion
+
+#region Tweening
 func set_double_jump_base_color(new_color: Color) -> void:
 	double_jump_indicator.modulate = new_color
 
@@ -80,3 +107,5 @@ func tween_bullet_time(wanted_time: float, max_time: float, tween_speed: float):
 
 static func inverse_number_around_another(number: float, axis: float) -> float:
 	return axis - (number - axis)
+
+#endregion

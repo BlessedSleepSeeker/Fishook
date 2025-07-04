@@ -4,9 +4,10 @@
 
 [resource]
 script = ExtResource("1_dn8tw")
-name = "The Ascension"
-comment = "The ultimate fishing rod challenge"
+name = "LEVEL_ASCENSION_NAME"
+comment = "LEVEL_ASCENSION_COMMENT"
 scene_name = "Ascension"
 difficulty = 4
+type = 0
 miniature_scene_path = "uid://cc55cf1bcafpd"
 metadata/_custom_type_script = "uid://bhcn1srajolcg"

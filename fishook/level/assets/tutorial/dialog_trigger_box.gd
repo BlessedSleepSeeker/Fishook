@@ -17,6 +17,7 @@ func _ready():
 
 func _body_entered(body: Node3D) -> void:
 	if body is CharacterInstance:
+		
 		display_dialog.emit(dialog_text, fade_dialog_after, dialog_use_letter_by_letter)
 
 func _body_exited(body: Node3D) -> void:

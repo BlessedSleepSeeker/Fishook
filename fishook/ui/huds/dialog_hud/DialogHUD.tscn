@@ -41,6 +41,7 @@ layout_mode = 2
 [node name="PlayerControlLabel" parent="TopContainer/VBoxContainer/DialogPanel/MarginContainer" instance=ExtResource("3_lp0hq")]
 unique_name_in_owner = true
 layout_mode = 2
+disable_all_animations = false
 
 [node name="Control2" type="Control" parent="TopContainer/VBoxContainer"]
 layout_mode = 2

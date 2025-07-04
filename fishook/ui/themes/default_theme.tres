@@ -1,3 +1,6 @@
-[gd_resource type="Theme" format=3 uid="uid://bwqqwng1lmv3i"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bwqqwng1lmv3i"]
+
+[ext_resource type="FontFile" uid="uid://2alin7pjikf1" path="res://ui/themes/fonts/DeliusUnicase-Regular.ttf" id="1_815yr"]
 
 [resource]
+default_font = ExtResource("1_815yr")

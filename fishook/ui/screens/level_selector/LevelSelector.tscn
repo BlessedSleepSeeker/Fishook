@@ -89,10 +89,11 @@ layout_mode = 2
 [node name="MarginContainer" type="MarginContainer" parent="MC/VB/MarginContainer/Panel"]
 layout_mode = 2
 
-[node name="Label" type="RichTextLabel" parent="MC/VB/MarginContainer/Panel/MarginContainer"]
+[node name="TitleLabel" type="RichTextLabel" parent="MC/VB/MarginContainer/Panel/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 bbcode_enabled = true
-text = "[font_size=50][wave amp=40.0 freq=5 connected=1]Pick a Level ![/wave][/font_size]"
+text = "[font_size=50][wave amp=40.0 freq=5 connected=1] LEVEL_SELECTOR_TITLE [/wave][/font_size]"
 fit_content = true
 horizontal_alignment = 1
 
@@ -142,6 +143,7 @@ size_flags_vertical = 3
 [node name="LevelDataDisplay" parent="MC/VB/SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/DataContainer" instance=ExtResource("11_tq5iu")]
 unique_name_in_owner = true
 layout_mode = 2
+display_name = false
 
 [node name="MarginContainer2" type="MarginContainer" parent="MC/VB"]
 layout_mode = 2
@@ -159,7 +161,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_bottom = NodePath("../../../SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/LevelCarroussel/VBoxContainer/LeftButton")
 shortcut = SubResource("Shortcut_8tynd")
-text = "Go Back"
+text = "RETURN"
 
 [node name="Control" type="Control" parent="MC/VB/MarginContainer2/HB"]
 layout_mode = 2
@@ -171,7 +173,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 focus_neighbor_bottom = NodePath("../../../SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/LevelCarroussel/VBoxContainer2/RightButton")
-text = "Play"
+text = "PLAY"
 
 [node name="Control2" type="Control" parent="MC/VB/MarginContainer2/HB"]
 layout_mode = 2
@@ -182,7 +184,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_bottom = NodePath("../../../SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/LevelCarroussel/VBoxContainer2/RightButton")
-text = "Choose for me"
+text = "LEVEL_SELECTOR_RANDOM_BTN"
 
 [node name="LevelMusicPlayer" parent="." instance=ExtResource("12_7j1c0")]
 

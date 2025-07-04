@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bejbp2b2uyrfi"
+
+[deps]
+
+files=["res://translations/fishook_translations.en.translation", "res://translations/fishook_translations.fr.translation"]
+
+source_file="res://translations/fishook_translations.csv"
+dest_files=["res://translations/fishook_translations.en.translation", "res://translations/fishook_translations.fr.translation"]
+
+[params]
+
+compress=true
+delimiter=0

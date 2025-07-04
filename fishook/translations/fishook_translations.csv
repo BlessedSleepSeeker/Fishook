@@ -1,0 +1,120 @@
+keys,en,fr
+PLAY,Play,Jouer
+REPLAY,Replay,Rejouer
+SETTINGS,Settings,Paramètres
+CREDITS,Credits,Crédits
+LEVEL_SELECT,"Level Select","Choix du Niveau"
+EXIT,Exit,Quitter
+RETURN,"Return","Retour"
+
+SETTING_TAB_WINDOW,Window,Fenetre
+SETTING_TAB_SOUND,Sound,Son
+SETTING_TAB_GAME,Game,Jeu
+SETTING_TAB_HUD,HUD,ATH
+SETTING_TAB_CONTROLS,Controls,Controles
+
+WINDOW_TYPE,"Window Type","Type de Fenêtre"
+WINDOW_TYPE_SETTING_WINDOWED,"Windowed","Fenêtré"
+WINDOW_TYPE_SETTING_FULLSCREEN,"Full Screen","Plein Ecran"
+WINDOW_TYPE_SETTING_BORDERLESS,"Borderless Full Screen","Plein Ecran Fenêtré"
+
+WINDOW_RESOLUTION,"Window Resolution","Résolution de la Fenêtre"
+WINDOW_RESOLUTION_TOOLTIP,"Only applied when window type is Windowed","Appliqué uniquement quand le type de fenêtre est Fenêtré"
+
+MAX_FRAME_RATE,"Maximum Framerate","Limite d'image par seconde"
+MAX_FRAME_RATE_UNCAPPED,"Uncapped","Sans limite"
+
+MASTER_VOLUME,"Master","Général"
+MASTER_VOLUME_TOOLTIP,"Tweak the volume of every sounds","Modifie le volume de tout les sons"
+
+MUSIC_VOLUME,"Music","Musique"
+MUSIC_VOLUME_TOOLTIP,"Tweak the volume of the music","Modifie le volume de la musique"
+
+SOUND_EFFECT_VOLUME,"Sound Effects","Effets Sonores"
+SOUND_EFFECT_VOLUME_TOOLTIP,"Tweak the volume of sound effects","Modifie le volume des effets sonores"
+
+MUTE_IN_BACKGROUND,"Mute In Background","Rendre muet en arrière plan"
+MUTE_IN_BACKGROUND_TOOLTIP,"Mute the Game when the window isn't focused","Rend le jeu muet lorsqu'il n'est pas au premier plan"
+
+LANGUAGE,Language,Langue
+LANGUAGE_SETTING_DETECT_LOCALE,"Automatically detect based on OS","Detecté automatiquement selon le système d'exploitation"
+LANGUAGE_TOOLTIP,"Select the language","Choisissez la langue"
+
+CAMERA_SENSITIVITY,"Camera Sensitivity","Sensibilité de la Caméra"
+CAMERA_SENSITIVITY_TOOLTIP,"Affect the speed at which the camera rotate around the player","Accélère ou ralenti le mouvement de la caméra"
+
+DISABLE_BULLET_TIME_VISUALS,"Disable Bullet Time Visuals","Désactiver les effets du Bullet Time"
+DISABLE_BULLET_TIME_VISUALS_TOOLTIP,"Disable the visual effect when using bullet time","Désactive l'effet visuel du Bullet Time"
+
+SPEEDRUN_MODE,"Speedrun Mode","Mode Speedrun"
+SPEEDRUN_MODE_TOOLTIP,"Speedrun Mode add a countdown at the start of a level, and your current level time stay displayed on top of the HUD","Le Mode Speedrun rajoute un compte à rebours au début des niveaux et un timer dans l'ATH"
+
+HUD_SCALE,"HUD Scale","Taille de l'ATH"
+HUD_SCALE_TOOLTIP,"Scale the HUD size up","Augmente la taille de l'ATH"
+UI_SCALE_NORMAL,"Classic","Classique"
+UI_SCALE_BIG,"Huge","Considérable"
+UI_SCALE_BIGGER,"Humongous","Massive"
+
+CROSSHAIR_SIZE,"Crosshair Size","Taille de la Mire"
+CROSSHAIR_SIZE_TOOLTIP,"Multiply the crosshair's size by this number","Multiplie la taille de la Mire par ce nombre"
+
+INDICATORS_SIZE,"Indicators Size","Taille des Indicateurs"
+INDICATORS_SIZE_TOOLTIP,"Multiply the indicators size by this number","Multiplie la taille des indicateurs par ce nombre"
+
+LEVEL_ASCENSION_NAME,"The Ascension","L'Ascension"
+LEVEL_ASCENSION_COMMENT,"The ultimate fishing rod challenge","Le challenge ultime du maniement de canne à pêche"
+
+LEVEL_BACK_AND_FORTH_NAME,"Back and Forth","Aller-Retour"
+LEVEL_BACK_AND_FORTH_COMMENT,"You come from one way, and go back in another. Formely known as Alpha 0.0.1","Va dans une direction, et reviens par l'autre. Anciennement connu sous le nom d'Alpha 0.0.1"
+
+LEVEL_ISLAND_IN_THE_SKY_NAME,"Island In The Sky","L'Ile dans le Ciel"
+LEVEL_ISLAND_IN_THE_SKY_COMMENT,"A little stroll. Formerly known as Alpha 0.0.2","Petite balade. Anciennement connu sous le nom d'Alpha 0.0.2"
+
+LEVEL_PROCEDURAL_NAME,"Generate me a Level","Génère moi un Niveau"
+LEVEL_PROCEDURAL_COMMENT,"Proceduraly generated level, just for you... ","Niveau géneré procéduralement, juste pour vous..."
+
+LEVEL_TOWER_NAME,"The Tower","La Tour"
+LEVEL_TOWER_COMMENT,"What's up there ?","Qui y a t-il là haut ?"
+
+LEVEL_TUTORIAL_NAME,"The Tutorial","Le Tutoriel"
+LEVEL_TUTORIAL_COMMENT,"Learn how to play Fishook !","Apprenez comment jouer à Fishook !"
+
+LEVEL_SELECTOR_TITLE,"Pick a Level !","Choisissez un niveau !"
+LEVEL_OBJECTIVE,"Objective","Objectif"
+LEVEL_DIFFICULTY,"Difficulty ","Difficulté "
+LEVEL_REACH_THE_END,"Reach the End !","Atteignez la Fin !"
+LEVEL_COLLECT_EVERYTHING,"Collect Everything !","Attrapez les tous !"
+LEVEL_SELECTOR_CARROUSEL_LEFT_BTN,"Previous Level","Niveau Précédent"
+LEVEL_SELECTOR_CARROUSEL_RIGHT_BTN,"Next Level","Niveau Suivant"
+
+LEVEL_SELECTOR_RANDOM_BTN,"Random Level","Niveau Aléatoire"
+
+PAUSE_CONTINUE,"Continue","Continuer"
+PAUSE_RESTART,"Restart","Recommencer"
+PAUSE_CHANGE_LEVEL,"Change Level","Changer de niveau"
+PAUSE_MAIN_MENU,"Main Menu","Menu Principal"
+
+CREDIT_STUDIO_NAME,"Blessed Sleep Studio","Blessed Sleep Studio"
+CREDIT_DEV_NAME,"Camille Gouneau - Game Director, Designer, Developper and Artist","Camille Gouneau - Réalisateur, Concepteur, Développeur et Artiste"
+CREDIT_EXT_ASSET_TITLE,"Externals Assets","Ressources Extérieures"
+CREDIT_EXT_ASSET1,"Kenney - Various UI and SFX Assets","Kenney - Sons et Textures d'UI variées"
+CREDIT_EXT_ASSET2,"Home (Before the Night & Odyssey) -  Levels Musics","Home (Before the Night & Odyssey) - Musiques de Niveaux"
+CREDIT_EXT_ASSET3,"Patricia Taxxon (WaveTable) - Level Music","Patricia Taxxon (WaveTable) - Musique de Niveau"
+CREDIT_EXT_SHADER_LINK,"Chromatic Aberation Shader","Shader d'Aberation Chromatique"
+
+TUTORIAL_MOVE_AROUND,"Move Around","Se Déplacer"
+TUTORIAL_TO,"To","Pour"
+TUTORIAL_LOOK_AROUND,"Look Around","Observer les environs"
+TUTORIAL_JUMP,"[ctrl]jump[/ctrl] to Jump !","[ctrl]jump[/ctrl] pour Sauter"
+TUTORIAL_DOUBLE_JUMP,"[ctrl]jump[/ctrl] while Airborne to [b]Double Jump[/b]","[ctrl]jump[/ctrl] en l'Air pour faire un [b]Double Saut[/b]"
+TUTORIAL_CONGRATS_1,"Congrats !", "Bravo !"
+TUTORIAL_CHECKPOINT,"This is a [b]checkpoint[/b]. You will respawn here if you fall too far down. [b]Walk on it to activate it[/b] !","Ceci est un [b]checkpoint[/b]. Vous vous retrouverez ici si vous tombez. Il suffit de [b]marcher dessus[/b] pour l'activer !"
+TUTORIAL_FISHOOK,"While AirBorne : [b]Releasing[/b] [ctrl]throw_hook[/ctrl] while aiming at something solid : Throw the Fishing Rod and start [b]Swinging[/b].[br][ctrl]jump[/ctrl] while Swinging : [b]Stop[/b] Swinging","En l'air, [b]Relacher[/b] [ctrl]throw_hook[/ctrl] en visant sur du solide : Envoie la canne à pêche et commence à se [b]Balancer[/b][ctrl]jump[/ctrl] pendant le Balancement : [b]Arreter[/b] de se balancer"
+TUTORIAL_YIPEE_1,"Yipeee !","Youpiii !"
+TUTORIAL_BULLET_TIME,"Holding [ctrl]bullet_time[/ctrl] down : [b]Bullet Time[/b]","Maintenir [ctrl]bullet_time[/ctrl] : [b]Bullet Time[/b]"
+TUTORIAL_YIPEE_2,"Yiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiipppppppppppppppppeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee!","Yooooooouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuupppppppppppiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+TUTORIAL_REELING,"When Swinging, [b]Reel In[/b][ctrl]reel_in[/ctrl] or [b]Reel Out[/b][ctrl]reel_out[/ctrl]","Lorsqu'on se balance, [b]Raccourcir[/b][ctrl]reel_in[/ctrl] ou [b]Rallonger[/b][ctrl]reel_out[/ctrl] la ligne"
+TUTORIAL_CANS,"Congratulations, you've reached the end of the tutorial ! Did you get all the [b]Cans of Bait[/b] on the way ? There's a few left in front of you !","Bravo, vous êtes à la fin du tutoriel ! Avez vous récupéré toutes les [b]Conserves d'Appats[/b] sur le chemin ? En voilà 3 devant vous !"
+
+END_OF_LEVEL_COLLECTIBLES_TEMPLATE,"Collected %d of %d","Obtenu %d sur %d"
+END_OF_LEVEL_TIMER_FINAL,"Final Time : %02.0f:%02.0f:%02d","Temps Final : %02.0f:%02.0f:%02d"

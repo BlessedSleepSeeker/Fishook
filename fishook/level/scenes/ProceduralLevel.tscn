@@ -68,7 +68,6 @@ ssao_intensity = 1.4
 [node name="ProceduralLevel" type="Node3D"]
 script = ExtResource("1_mugtj")
 algorithm = SubResource("Resource_kb2o8")
-level_type = 1
 meta_data = ExtResource("6_eyylu")
 level_down_limit = -50.0
 randomize_spawn_point = true

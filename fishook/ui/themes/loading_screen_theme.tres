@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://vm3mea5ipjys"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://vm3mea5ipjys"]
 
-[ext_resource type="FontFile" uid="uid://cm7uiypoce1r1" path="res://ui/themes/fonts/SeaGreen.ttf" id="1_a2ye3"]
+[ext_resource type="FontFile" uid="uid://diajfaw4k72ov" path="res://ui/themes/fonts/DeliusUnicase-Bold.ttf" id="1_ijqp7"]
+[ext_resource type="FontFile" uid="uid://2alin7pjikf1" path="res://ui/themes/fonts/DeliusUnicase-Regular.ttf" id="2_ijqp7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2ye3"]
 bg_color = Color(0.6, 0.6, 0.6, 0.541176)
@@ -25,6 +26,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [resource]
+default_font = ExtResource("2_ijqp7")
 MarginContainer/constants/margin_bottom = 20
 MarginContainer/constants/margin_left = 20
 MarginContainer/constants/margin_right = 20
@@ -32,4 +34,4 @@ MarginContainer/constants/margin_top = 20
 ProgressBar/colors/font_color = Color(0.388235, 0.454902, 0.52549, 1)
 ProgressBar/styles/background = SubResource("StyleBoxFlat_a2ye3")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_ijqp7")
-RichTextLabel/fonts/normal_font = ExtResource("1_a2ye3")
+RichTextLabel/fonts/bold_font = ExtResource("1_ijqp7")

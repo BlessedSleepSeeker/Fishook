@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cm7uiypoce1r1"
-path="res://.godot/imported/SeaGreen.ttf-5cb61246250dc711b4bf555c30740312.fontdata"
+uid="uid://2alin7pjikf1"
+path="res://.godot/imported/DeliusUnicase-Regular.ttf-f48d42ca1f7edabb2914174b61798f05.fontdata"
 
 [deps]
 
-source_file="res://ui/themes/fonts/SeaGreen.ttf"
-dest_files=["res://.godot/imported/SeaGreen.ttf-5cb61246250dc711b4bf555c30740312.fontdata"]
+source_file="res://ui/themes/fonts/DeliusUnicase-Regular.ttf"
+dest_files=["res://.godot/imported/DeliusUnicase-Regular.ttf-f48d42ca1f7edabb2914174b61798f05.fontdata"]
 
 [params]
 

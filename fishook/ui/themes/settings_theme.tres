@@ -1,11 +1,12 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bmjg1574lxkq"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://bmjg1574lxkq"]
 
 [ext_resource type="StyleBox" uid="uid://b2167u6dvspw7" path="res://ui/themes/setting_screen/tab_hover.tres" id="1_3vu25"]
-[ext_resource type="FontFile" uid="uid://cm7uiypoce1r1" path="res://ui/themes/fonts/SeaGreen.ttf" id="1_jvmon"]
 [ext_resource type="StyleBox" uid="uid://dbgf36k0gajiw" path="res://ui/themes/setting_screen/tab_selected.tres" id="1_supqq"]
 [ext_resource type="StyleBox" uid="uid://qdxg6ceetby6" path="res://ui/themes/main_menu/button_box_focused.tres" id="2_idwmr"]
+[ext_resource type="FontFile" uid="uid://diajfaw4k72ov" path="res://ui/themes/fonts/DeliusUnicase-Bold.ttf" id="3_72p2g"]
 [ext_resource type="StyleBox" uid="uid://bkh2g2nh3im1t" path="res://ui/themes/main_menu/button_box_pressed.tres" id="3_glvc7"]
 [ext_resource type="StyleBox" uid="uid://ts1f2vkncqnx" path="res://ui/themes/setting_screen/tab_unselected.tres" id="3_xln1i"]
+[ext_resource type="FontFile" uid="uid://2alin7pjikf1" path="res://ui/themes/fonts/DeliusUnicase-Regular.ttf" id="7_3fv28"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvmon"]
 draw_center = false
@@ -28,22 +29,20 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [resource]
+default_font = ExtResource("7_3fv28")
 Button/font_sizes/font_size = 30
-Button/fonts/font = ExtResource("1_jvmon")
 Button/styles/focus = ExtResource("2_idwmr")
 Button/styles/hover = ExtResource("2_idwmr")
 Button/styles/normal = SubResource("StyleBoxFlat_jvmon")
 Button/styles/pressed = ExtResource("3_glvc7")
 Label/font_sizes/font_size = 25
-Label/fonts/font = ExtResource("1_jvmon")
 MarginContainer/constants/margin_bottom = 20
 MarginContainer/constants/margin_left = 20
 MarginContainer/constants/margin_right = 20
 MarginContainer/constants/margin_top = 20
 RichTextLabel/font_sizes/normal_font_size = 25
-RichTextLabel/fonts/normal_font = ExtResource("1_jvmon")
+RichTextLabel/fonts/bold_font = ExtResource("3_72p2g")
 TabContainer/font_sizes/font_size = 40
-TabContainer/fonts/font = ExtResource("1_jvmon")
 TabContainer/styles/panel = SubResource("StyleBoxFlat_pc74o")
 TabContainer/styles/tab_hovered = ExtResource("1_3vu25")
 TabContainer/styles/tab_selected = ExtResource("1_supqq")

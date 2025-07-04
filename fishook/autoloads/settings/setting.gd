@@ -18,9 +18,10 @@ enum SETTING_TYPE {
 }
 
 @export_group("Range Type")
-@export var min_value_range: int = 0
-@export var max_value_range: int = 100
+@export var min_value_range: float = 0
+@export var max_value_range: float = 100
 @export var step_range: float = 1
+@export var display_floating_precision: int = 0
 
 @export_group("Option Type")
 @export var possible_values: Array:

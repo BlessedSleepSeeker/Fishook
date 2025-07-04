@@ -3,6 +3,7 @@ class_name BaseCheckpoint
 
 signal reached(checkpoint: BaseCheckpoint)
 
+@export var is_active: bool = false
 @export var override_shape: CollisionShape3D = null
 @export var override_model: MeshInstance3D = null
 
@@ -26,7 +27,7 @@ func _ready():
 		mesh = model.mesh
 
 func _on_checkpoint_reached(_body: Node3D) -> void:
-	if not _body is CharacterInstance:
+	if not _body is CharacterInstance or is_active:
 		return
 	reached.emit(self)
 	if picked_up_particles:

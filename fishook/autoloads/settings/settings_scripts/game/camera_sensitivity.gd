@@ -1,7 +1,7 @@
 extends Setting
 class_name CameraSensitivitySetting
 
-@export var base_value: float = 0.5
+@export var base_value: float = 5
 
 func _ready():
 	value = base_value

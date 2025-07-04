@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://s213q8goj53c"]
+[gd_scene load_steps=13 format=3 uid="uid://s213q8goj53c"]
 
 [ext_resource type="Theme" uid="uid://d3kms72g8lsqf" path="res://ui/themes/base_ui_theme.tres" id="1_kshit"]
 [ext_resource type="Script" uid="uid://c4jb4etenr1jo" path="res://ui/screens/level_selector/level_carroussel.gd" id="2_vbsvf"]
@@ -13,23 +13,15 @@
 button_index = 9
 pressed = true
 
-[sub_resource type="InputEventKey" id="InputEventKey_us0t1"]
-device = -1
-keycode = 4194319
-
 [sub_resource type="Shortcut" id="Shortcut_ow8fa"]
-events = [SubResource("InputEventJoypadButton_vbsvf"), SubResource("InputEventKey_us0t1")]
+events = [SubResource("InputEventJoypadButton_vbsvf")]
 
 [sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_js431"]
 button_index = 10
 pressed = true
 
-[sub_resource type="InputEventKey" id="InputEventKey_va1t7"]
-device = -1
-keycode = 4194321
-
 [sub_resource type="Shortcut" id="Shortcut_th2lb"]
-events = [SubResource("InputEventJoypadButton_js431"), SubResource("InputEventKey_va1t7")]
+events = [SubResource("InputEventJoypadButton_js431")]
 
 [node name="LevelCarroussel" type="HBoxContainer"]
 anchors_preset = 15
@@ -49,7 +41,7 @@ alignment = 1
 [node name="LeftButton" type="TextureButton" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-tooltip_text = "Previous Level"
+tooltip_text = "LEVEL_SELECTOR_CARROUSEL_LEFT_BTN"
 focus_neighbor_left = NodePath("../../VBoxContainer2/RightButton")
 focus_neighbor_right = NodePath("../../VBoxContainer2/RightButton")
 focus_next = NodePath("../../VBoxContainer2/RightButton")
@@ -80,7 +72,7 @@ alignment = 1
 [node name="RightButton" type="TextureButton" parent="VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-tooltip_text = "Next Level"
+tooltip_text = "LEVEL_SELECTOR_CARROUSEL_RIGHT_BTN"
 focus_neighbor_left = NodePath("../../VBoxContainer/LeftButton")
 focus_neighbor_right = NodePath("../../VBoxContainer/LeftButton")
 focus_next = NodePath("../../VBoxContainer/LeftButton")

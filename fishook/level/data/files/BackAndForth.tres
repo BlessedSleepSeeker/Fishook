@@ -4,9 +4,10 @@
 
 [resource]
 script = ExtResource("1_qy405")
-name = "Back And Forth"
-comment = "You come from one way, and go back in another. Formely known as Alpha 0.0.1"
+name = "LEVEL_BACK_AND_FORTH_NAME"
+comment = "LEVEL_BACK_AND_FORTH_COMMENT"
 scene_name = "BackAndForth"
 difficulty = 1
+type = 1
 miniature_scene_path = "uid://b7yqxgswxr55x"
 metadata/_custom_type_script = "uid://bhcn1srajolcg"

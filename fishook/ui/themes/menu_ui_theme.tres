@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://srf2bpfdjwwr"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://srf2bpfdjwwr"]
+
+[ext_resource type="FontFile" uid="uid://2alin7pjikf1" path="res://ui/themes/fonts/DeliusUnicase-Regular.ttf" id="1_gmm3p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfh8j"]
 bg_color = Color(0.2001, 0.87, 0.769515, 1)
@@ -7,5 +9,6 @@ bg_color = Color(0.2001, 0.87, 0.769515, 1)
 bg_color = Color(0.930867, 0.372729, 0.605018, 1)
 
 [resource]
+default_font = ExtResource("1_gmm3p")
 AcceptDialog/styles/panel = SubResource("StyleBoxFlat_bfh8j")
 Window/styles/embedded_border = SubResource("StyleBoxFlat_1473x")

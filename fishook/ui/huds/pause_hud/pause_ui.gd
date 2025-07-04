@@ -4,12 +4,16 @@ class_name PauseUI
 @onready var continue_btn: Button = %Continue
 @onready var settings_btn: Button = %Settings
 @onready var restart_btn: Button = %Restart
+@onready var level_data_display: LevelDataDisplay = %LevelDataDisplay
 
 signal continue_game
 signal go_to_settings
 signal go_to_level_selector
 signal go_to_main_menu
 signal restart
+
+func build_data_display(level_data: LevelData) -> void:
+	level_data_display.level_data = level_data
 
 func _on_continue_pressed():
 	continue_game.emit(false)

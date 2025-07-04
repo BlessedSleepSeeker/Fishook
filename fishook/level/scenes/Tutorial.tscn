@@ -1,7 +1,7 @@
 [gd_scene load_steps=41 format=3 uid="uid://blqblyst28eku"]
 
 [ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_xroqs"]
-[ext_resource type="Script" uid="uid://bhcn1srajolcg" path="res://level/data/LevelData.gd" id="2_3f3lf"]
+[ext_resource type="Resource" uid="uid://8cngf1vhlojk" path="res://level/data/files/Tutorial.tres" id="2_3f3lf"]
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_6ainc"]
 [ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="3_bkwdk"]
 [ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/huds/level_hud/LevelHUD.tscn" id="4_3f3lf"]
@@ -17,15 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bsssnsrsqpssb" path="res://ui/huds/dialog_hud/DialogHUD.tscn" id="12_rrasd"]
 [ext_resource type="PackedScene" uid="uid://khpkfqnos2o" path="res://level/utils/debug_ui/DebugCanvas.tscn" id="14_hkna7"]
 [ext_resource type="PackedScene" uid="uid://dunvbupwox01v" path="res://ui/screens/end_level_screen/EndLevelScreen.tscn" id="17_3f3lf"]
-
-[sub_resource type="Resource" id="Resource_8snt5"]
-script = ExtResource("2_3f3lf")
-name = "Tutorial"
-comment = "No Comment"
-scene_name = "Tutorial"
-difficulty = 0
-miniature_scene_path = ""
-metadata/_custom_type_script = "uid://bhcn1srajolcg"
+[ext_resource type="Material" uid="uid://bwr2uhkx8pf3h" path="res://level/template_assets/material/water.tres" id="18_8snt5"]
 
 [sub_resource type="Gradient" id="Gradient_3ue7i"]
 interpolation_mode = 2
@@ -80,7 +72,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_vowa1"]
 resource_name = "move_around"
-length = 4.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -89,10 +80,10 @@ tracks/0/path = NodePath("Geometry/CSGBox3D2:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 4),
+"times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-185, 25, 15), Vector3(-185, 25, -15), Vector3(-185, 25, 15)]
+"values": [Vector3(-175, 25, 15), Vector3(-175, 25, -15), Vector3(-175, 25, 15)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eo4ju"]
@@ -146,7 +137,7 @@ size = Vector3(11, 1, 16)
 
 [node name="Tutorial" type="Node3D"]
 script = ExtResource("1_xroqs")
-meta_data = SubResource("Resource_8snt5")
+meta_data = ExtResource("2_3f3lf")
 level_down_limit = -50.0
 end_level_trigger_path = NodePath("Geometry/EndOfLevel")
 
@@ -242,7 +233,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91, 25, 0)
 size = Vector3(4, 4, 4)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Geometry/CSGGrounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -306, 45, -9.39795e-06)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -287, 45, -8.56743e-06)
 size = Vector3(4, 4, 4)
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
@@ -253,37 +244,37 @@ sides = 12
 smooth_faces = false
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -247, 3.125, 0)
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -228, 3.125, 8.30516e-07)
 radius = 8.0
 height = 4.75
 sides = 12
 smooth_faces = false
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -247, 26.125, 0)
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -228, 26.125, 8.30516e-07)
 radius = 8.0
 height = 4.75
 sides = 12
 smooth_faces = false
 
 [node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -277, 26, 0)
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -258, 26, 8.30517e-07)
 radius = 8.0
 sides = 12
 smooth_faces = false
 
 [node name="StartingPlatform8" type="CSGBox3D" parent="Geometry/CSGGrounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -262, 26, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -243, 26, 8.30516e-07)
 size = Vector3(34, 2, 16)
 material = ExtResource("6_d21nb")
 
 [node name="StartingPlatform9" type="CSGBox3D" parent="Geometry/CSGGrounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -349, 26, -3.80289e-06)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -330, 26, -2.97237e-06)
 size = Vector3(34, 2, 16)
 material = ExtResource("6_d21nb")
 
 [node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -247, 26.125, 0)
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -228, 26.125, 8.30516e-07)
 operation = 2
 radius = 6.0
 height = 4.75
@@ -291,31 +282,41 @@ sides = 12
 smooth_faces = false
 
 [node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -247, 45.125, 0)
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -228, 45.125, 8.30516e-07)
 radius = 4.0
 height = 3.0
 sides = 12
 smooth_faces = false
 
 [node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -247, 45.9231, 0)
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -228, 45.9231, 8.30516e-07)
 operation = 2
 radius = 3.0
-height = 3.5
+height = 3.0
 sides = 12
 smooth_faces = false
 
-[node name="FirstCheckpoint" parent="Geometry" instance=ExtResource("5_8snt5")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.513, 0)
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Geometry/CSGGrounds"]
+transform = Transform3D(-0.965926, 8.44439e-08, -0.258819, -8.74228e-08, -1, -3.82137e-15, -0.258819, 2.26267e-08, 0.965926, -342, 26, -1.49493e-05)
+operation = 2
+radius = 5.0
+cone = true
+smooth_faces = false
 
-[node name="Checkpoint2" parent="Geometry" instance=ExtResource("5_8snt5")]
-unique_name_in_owner = true
+[node name="Node3D" type="Node3D" parent="Geometry"]
+
+[node name="Checkpoint1" parent="Geometry/Node3D" instance=ExtResource("5_8snt5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.513, 0)
+is_active = true
+
+[node name="Checkpoint2" parent="Geometry/Node3D" instance=ExtResource("5_8snt5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 5.513, 0)
 
-[node name="Checkpoint3" parent="Geometry" instance=ExtResource("5_8snt5")]
-unique_name_in_owner = true
+[node name="Checkpoint3" parent="Geometry/Node3D" instance=ExtResource("5_8snt5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136, 5.513, 0)
+
+[node name="Checkpoint4" parent="Geometry/Node3D" instance=ExtResource("5_8snt5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -228, 5.513, -4.02145e-06)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185, 25, 0)
@@ -329,19 +330,19 @@ unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -356.414, 26.9725, -1.55794e-05)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/EndOfLevel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -0.462646)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -19.4626)
 shape = SubResource("BoxShape3D_u1bnp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Geometry/EndOfLevel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4561, -0.465729)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4561, -19.4657)
 transparency = 0.71
 mesh = SubResource("BoxMesh_bkwdk")
 
 [node name="DialogBox" type="Node3D" parent="Geometry"]
 
 [node name="MovementDialogTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
-dialog_text = "[ctrl]forward[/ctrl] [ctrl]left[/ctrl] [ctrl]back[/ctrl] [ctrl]right[/ctrl] to [b]Move Around[/b]
- [ctrl]camera[/ctrl] to [b]Look Around[/b]"
+dialog_text = "[ctrl]forward[/ctrl] [ctrl]left[/ctrl] [ctrl]back[/ctrl] [ctrl]right[/ctrl] [tr]TUTORIAL_TO[/tr] [b][tr]TUTORIAL_MOVE_AROUND[/tr][/b]
+ [ctrl]camera[/ctrl] [tr]TUTORIAL_TO[/tr] [b][tr]TUTORIAL_LOOK_AROUND[/tr][/b]"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/MovementDialogTriggerBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -349,14 +350,14 @@ shape = SubResource("BoxShape3D_xroqs")
 
 [node name="JumpDialogTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -3.0598e-07)
-dialog_text = " [ctrl]jump[/ctrl] to Jump"
+dialog_text = "[tr]TUTORIAL_JUMP[/tr]"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/JumpDialogTriggerBox"]
 shape = SubResource("BoxShape3D_xroqs")
 
 [node name="DoubleJumpDialogTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 3, -9.61651e-07)
-dialog_text = " [ctrl]jump[/ctrl] while Airborne to [b]Double Jump[/b]"
+dialog_text = "[tr]TUTORIAL_DOUBLE_JUMP[/tr]"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/DoubleJumpDialogTriggerBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -364,7 +365,7 @@ shape = SubResource("BoxShape3D_qqic6")
 
 [node name="DJ2DialogTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 7, -1.31134e-06)
-dialog_text = "Congrats, now, do it again !"
+dialog_text = "[tr]TUTORIAL_CONGRATS_1[/tr]"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/DJ2DialogTriggerBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4.37115e-08)
@@ -372,22 +373,21 @@ shape = SubResource("BoxShape3D_6ainc")
 
 [node name="CheckpointDialogTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 7, -2.44784e-06)
-dialog_text = "This is a [b]checkpoint[/b]. You will respawn here if you fall too far down. [b]Walk on it[/b] !"
+dialog_text = "[tr]TUTORIAL_CHECKPOINT[/tr]"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/CheckpointDialogTriggerBox"]
 shape = SubResource("BoxShape3D_bkwdk")
 
 [node name="HookDialogTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62, 7, -2.71011e-06)
-dialog_text = "While AirBorne :  Releasing [ctrl]throw_hook[/ctrl] on a piece of the map : Throw the Fishing Rod and start [b]Swinging[/b]
-[ctrl]jump[/ctrl] while Swinging : [b]Stop[/b] Swinging"
+dialog_text = "[tr]TUTORIAL_FISHOOK[/tr]"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/HookDialogTriggerBox"]
 shape = SubResource("BoxShape3D_3f3lf")
 
 [node name="HookYipeeTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 7, -4.10887e-06)
-dialog_text = "Yipeeee !"
+dialog_text = "[tr]TUTORIAL_YIPEE_1[/tr]"
 fade_dialog_after = 2.0
 fade_dialog_on_exit = false
 
@@ -397,7 +397,7 @@ shape = SubResource("BoxShape3D_8snt5")
 
 [node name="BulletTimeTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -141, 7, -6.16331e-06)
-dialog_text = "Holding [ctrl]bullet_time[/ctrl] down : [b]Bullet Time[/b]"
+dialog_text = "[tr]TUTORIAL_BULLET_TIME[/tr]"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/BulletTimeTriggerBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 0)
@@ -405,7 +405,7 @@ shape = SubResource("BoxShape3D_d21nb")
 
 [node name="BulletTimeYipeeTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185, 7, -8.08661e-06)
-dialog_text = "Yiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiipppppppppppppppppeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee!"
+dialog_text = "[tr]TUTORIAL_YIPEE_2[/tr]"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/BulletTimeYipeeTriggerBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, -1.81899e-12)
@@ -413,18 +413,18 @@ shape = SubResource("BoxShape3D_fhh37")
 
 [node name="ReelInOutTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247, 7, -1.07967e-05)
-dialog_text = "When Swinging, [b]Reel In[/b] [ctrl]reel_in[/ctrl] or [b]Reel Out[/b] [ctrl]reel_out[/ctrl]"
+dialog_text = "[tr]TUTORIAL_REELING[/tr]"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/ReelInOutTriggerBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -0.499999)
 shape = SubResource("BoxShape3D_3nd4r")
 
 [node name="FinishTriggerBox" parent="Geometry/DialogBox" instance=ExtResource("8_qqic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -337, 30, -1.47307e-05)
-dialog_text = "Congratulations, you've reached the end of the tutorial ! Did you get all the [b]Cans of Bait[/b] on the way ? There's a few left in front of you !"
+dialog_text = "[tr]TUTORIAL_CANS[/tr]"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/DialogBox/FinishTriggerBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, -5.96629e-09)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -2, 8.24551e-07)
 shape = SubResource("BoxShape3D_wesa1")
 
 [node name="Collectibles" type="Node3D" parent="Geometry"]
@@ -451,22 +451,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91, -2, -4.45856e-06)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10175e-14, -4, -4.80825e-07)
 
 [node name="BaseCollectiblePositionHack2" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247, 7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -228, 7, 8.30516e-07)
 
 [node name="BaseCollectiblePositionHack3" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247, 45, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -228, 45, 8.30516e-07)
 
 [node name="BaseCollectiblePositionHack4" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247, 39, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -228, 39, 8.30516e-07)
 
 [node name="BaseCollectiblePositionHack6" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -350, 31, -4.50228e-06)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -331, 31, -3.67176e-06)
 
 [node name="BaseCollectiblePositionHack7" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -348, 30, -9.48952e-06)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -329, 30, -8.659e-06)
 
 [node name="BaseCollectiblePositionHack8" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -352, 30, -9.66437e-06)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -333, 30, -8.83385e-06)
 
 [node name="Decorations" type="Node3D" parent="Geometry"]
 
@@ -534,55 +534,55 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -137.5
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -136.764, 5.49999, -5.05436)
 
 [node name="RandomTree5" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -252.125, 5.49999, 2.6643)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -233.125, 5.49999, 2.6643)
 
 [node name="RandomTree6" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -253.2, 5.5, -0.56948)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -234.2, 5.5, -0.569479)
 
 [node name="RandomTree7" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -252.473, 5.49999, -3.60647)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -233.473, 5.49999, -3.60647)
 
 [node name="RandomTree8" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -249.777, 5.49999, -6.43206)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -230.777, 5.49999, -6.43206)
 
 [node name="RandomTree9" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -249.587, 5.49999, 4.55091)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -230.587, 5.49999, 4.55091)
 
 [node name="RandomizedRock4" parent="Geometry/Decorations" instance=ExtResource("12_bkwdk")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -258.331, 27, -5.47068)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -239.331, 27, -5.47068)
 
 [node name="RandomTree10" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -266.734, 27, 6.54498)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -247.734, 27, 6.54498)
 
 [node name="RandomFlower15" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -264.451, 27, 6.09536)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -245.451, 27, 6.09536)
 
 [node name="RandomFlower16" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -265.193, 27, 4.87466)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -246.193, 27, 4.87466)
 
 [node name="RandomFlower17" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -263.438, 27, 4.91655)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -244.438, 27, 4.91655)
 
 [node name="RandomTree11" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -246.912, 46.625, -0.180376)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -227.912, 46.625, -0.180375)
 
 [node name="RandomFlower18" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -244.307, 46.625, -2.14171)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -225.307, 46.625, -2.14171)
 
 [node name="RandomFlower19" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -249.554, 46.625, -2.17578)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -230.554, 46.625, -2.17578)
 
 [node name="RandomFlower20" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -247.181, 46.625, -3.33523)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -228.181, 46.625, -3.33523)
 
 [node name="RandomFlower21" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -243.733, 46.625, -0.117229)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -224.733, 46.625, -0.117228)
 
 [node name="RandomFlower22" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -245.675, 46.625, 3.15761)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -226.675, 46.625, 3.15761)
 
 [node name="RandomFlower23" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -249.778, 46.625, 2.0924)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -230.778, 46.625, 2.0924)
 
 [node name="RandomizedRock5" parent="Geometry/Decorations" instance=ExtResource("12_bkwdk")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -58.641, 5.5, -4.51432)
@@ -598,3 +598,8 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -91.40
 
 [node name="RandomFlower26" parent="Geometry/Decorations" instance=ExtResource("11_bkwdk")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -90.3691, 27, -0.869778)
+
+[node name="HotWorter" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -342.142, 26.5213, 0.654883)
+size = Vector3(9, 0.01, 9)
+material = ExtResource("18_8snt5")

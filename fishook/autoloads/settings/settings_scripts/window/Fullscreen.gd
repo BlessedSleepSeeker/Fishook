@@ -1,7 +1,7 @@
 extends Setting
 
-const WINDOW_MODE = ["Windowed", "Fullscreen", "Borderless Fullscreen"]
-@export var base_value: String = "Windowed"
+const WINDOW_MODE = ["WINDOWED", "FULLSCREEN", "BORDERLESS"]
+@export var base_value: String = "WINDOWED"
 
 
 func _ready():
@@ -13,12 +13,12 @@ func _ready():
 # called when settings.apply_settings() is triggered
 func apply():
 	match value:
-		"Windowed":
+		"WINDOWED":
 			DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_WINDOWED)
 			DisplayServer.window_set_flag(DisplayServer.WindowFlags.WINDOW_FLAG_BORDERLESS, false)
-		"Fullscreen":
+		"FULLSCREEN":
 			DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 			DisplayServer.window_set_flag(DisplayServer.WindowFlags.WINDOW_FLAG_BORDERLESS, false)
-		"Borderless Fullscreen":
+		"BORDERLESS":
 			DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 			DisplayServer.window_set_flag(DisplayServer.WindowFlags.WINDOW_FLAG_BORDERLESS, true)

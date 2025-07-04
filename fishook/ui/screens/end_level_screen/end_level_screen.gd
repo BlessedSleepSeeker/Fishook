@@ -4,7 +4,7 @@ class_name EndLevelScreen
 @export var level_name_template: String = "[font_size=100][wave amp=50.0 freq=0.75 connected=1]%s[/wave][/font_size]"
 @export var timer_template: String = "[wave amp=50.0 freq=1.5 connected=1][rainbow freq=0.1 sat=0.8 val=0.8 speed=1.0]%s[/rainbow][/wave]"
 
-@export var collectibles_template_simple: String = "Collected %d of %d"
+@export var collectibles_template_simple: String = "END_OF_LEVEL_COLLECTIBLES_TEMPLATE"
 @export var collectibles_template_animated_perfect: String = "[wave amp=60.0 freq=3 connected=1][rainbow freq=0.3 sat=0.8 val=0.8 speed=2.0]%s[/rainbow][/wave]"
 @export var collectibles_template_animated_good: String = "[wave amp=50.0 freq=2 connected=1][rainbow freq=0.2 sat=0.7 val=0.7 speed=1.7]%s[/rainbow][/wave]"
 @export var collectibles_template_animated_mid: String = "[wave amp=40.0 freq=1.5 connected=1][rainbow freq=0.1 sat=0.6 val=0.6 speed=1.5]%s[/rainbow][/wave]"
@@ -46,9 +46,9 @@ func _on_level_select_pressed() -> void:
 	level_select.emit()
 
 func setup(meta_data: LevelData, total_collectibles: int) -> void:
-	level_name_label.text = level_name_template % meta_data.name
+	level_name_label.text = level_name_template % tr(meta_data.name)
 	max_collectibles = total_collectibles
-	collectible_label.text = collectibles_template_simple % [0, max_collectibles]
+	collectible_label.text = tr(collectibles_template_simple) % [0, max_collectibles]
 	timer_label.word_progression.connect(_on_word_progress)
 	collected_collectibles_3d.spawned_collectible.connect(_on_collectible_spawned)
 	collected_collectibles_3d.finished_spawning.connect(_on_collectibles_finished)
@@ -68,7 +68,7 @@ func animate_data(data: Dictionary):
 
 func animate_timer(final_time: Dictionary) -> void:
 	var ms: int = final_time["millisecond"] * 100
-	var time_str: String = "Final Time : %02.0f:%02.0f:%02d" % [final_time["minute"], final_time["second"], ms]
+	var time_str: String = tr("END_OF_LEVEL_TIMER_FINAL") % [final_time["minute"], final_time["second"], ms]
 
 	timer_label.update_text(time_str)
 	await timer_label.all_text_displayed
@@ -80,7 +80,7 @@ func animate_collectibles(amount: int) -> void:
 
 
 func add_collectible_amount_to_label() -> void:
-	var text: String = collectibles_template_simple % [spawned_collectibles, max_collectibles]
+	var text: String = tr(collectibles_template_simple) % [spawned_collectibles, max_collectibles]
 	if (float(spawned_collectibles) / float(max_collectibles)) == 1:
 		collectible_label.text = collectibles_template_animated_perfect % text
 	elif (float(spawned_collectibles) / float(max_collectibles)) >= 0.75:

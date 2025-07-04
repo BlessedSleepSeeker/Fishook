@@ -87,7 +87,6 @@ unique_name_in_owner = true
 
 [node name="LevelStopwatch" parent="." instance=ExtResource("5_7isi1")]
 unique_name_in_owner = true
-paused_at_load = true
 
 [node name="LevelHud" parent="." instance=ExtResource("7_alplb")]
 unique_name_in_owner = true
@@ -100,9 +99,9 @@ visible = false
 
 [node name="Clouds" type="Node3D" parent="."]
 
-[node name="FirstCheckpoint" parent="." instance=ExtResource("6_x7o3b")]
-unique_name_in_owner = true
+[node name="Checkpoint1" parent="." instance=ExtResource("6_x7o3b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 101.004, 0)
+is_active = true
 
 [node name="Geometry" type="Node3D" parent="."]
 

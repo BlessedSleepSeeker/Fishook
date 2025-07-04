@@ -44,7 +44,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_aiivd")
 script = ExtResource("2_20ujx")
-autopress_play_button = true
 
 [node name="MainMenuBg" parent="." instance=ExtResource("2_0xe1w")]
 layout_mode = 1
@@ -86,7 +85,7 @@ focus_neighbor_bottom = NodePath("../Settings")
 focus_next = NodePath("../Settings")
 focus_previous = NodePath("../Exit")
 shortcut = SubResource("Shortcut_dxroe")
-text = "Play"
+text = "PLAY"
 
 [node name="Settings" type="Button" parent="MainMenu/HBoxContainer/VBox"]
 layout_mode = 2
@@ -95,7 +94,7 @@ focus_neighbor_bottom = NodePath("../Credits")
 focus_next = NodePath("../Credits")
 focus_previous = NodePath("../Play")
 shortcut = SubResource("Shortcut_k0wwq")
-text = "Settings"
+text = "SETTINGS"
 
 [node name="Credits" type="Button" parent="MainMenu/HBoxContainer/VBox"]
 layout_mode = 2
@@ -104,7 +103,7 @@ focus_neighbor_bottom = NodePath("../Exit")
 focus_next = NodePath("../Exit")
 focus_previous = NodePath("../Settings")
 shortcut = SubResource("Shortcut_uck36")
-text = "Credits"
+text = "CREDITS"
 
 [node name="Exit" type="Button" parent="MainMenu/HBoxContainer/VBox"]
 layout_mode = 2
@@ -113,7 +112,7 @@ focus_neighbor_bottom = NodePath("../Play")
 focus_next = NodePath("../Play")
 focus_previous = NodePath("../Credits")
 shortcut = SubResource("Shortcut_8facs")
-text = "Exit"
+text = "EXIT"
 
 [connection signal="pressed" from="MainMenu/HBoxContainer/VBox/Play" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenu/HBoxContainer/VBox/Settings" to="." method="_on_settings_pressed"]

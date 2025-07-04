@@ -98,17 +98,17 @@ visible = false
 [node name="EndLevelScreen" parent="." instance=ExtResource("18_sh0vh")]
 unique_name_in_owner = true
 
-[node name="FirstCheckpoint" parent="." instance=ExtResource("5_revhr")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100.513, 0)
-
 [node name="Checkpoint1" parent="." instance=ExtResource("5_revhr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22553, 110.514, 61.0392)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100.513, 0)
+is_active = true
 
 [node name="Checkpoint2" parent="." instance=ExtResource("5_revhr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.3145, 146.704, 30.0118)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22553, 110.514, 61.0392)
 
 [node name="Checkpoint3" parent="." instance=ExtResource("5_revhr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.3145, 146.704, 30.0118)
+
+[node name="Checkpoint4" parent="." instance=ExtResource("5_revhr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.4808, 126.52, 59.1173)
 
 [node name="Geometry" type="Node3D" parent="."]

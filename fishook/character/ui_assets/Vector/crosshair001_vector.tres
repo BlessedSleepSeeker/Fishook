@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cufwsabn4f77d"]
+
+[ext_resource type="Texture2D" uid="uid://c8avaepbh2edq" path="res://character/ui_assets/Vector/crosshairs_vector.svg" id="1_2t3gk"]
+
+[resource]
+atlas = ExtResource("1_2t3gk")
+region = Rect2(28, 30, 4, 4)

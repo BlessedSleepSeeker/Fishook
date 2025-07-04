@@ -4,9 +4,10 @@
 
 [resource]
 script = ExtResource("1_plky7")
-name = "The Tower"
-comment = "What's up there ?"
+name = "LEVEL_TOWER_NAME"
+comment = "LEVEL_TOWER_COMMENT"
 scene_name = "Tower"
 difficulty = 3
+type = 0
 miniature_scene_path = "uid://bjhlookbyudyr"
 metadata/_custom_type_script = "uid://bhcn1srajolcg"

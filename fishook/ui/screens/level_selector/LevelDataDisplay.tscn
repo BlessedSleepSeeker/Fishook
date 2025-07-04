@@ -28,10 +28,10 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="CommentLabel" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_s28xg")]
+[node name="NameLabel" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_s28xg")]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/normal_font_size = 60
 text = "Comment"
 icons_path_template = "res://ui/assets/on_screen_controls/%s.png"
 
@@ -41,4 +41,23 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 30
 text = "Difficulty"
 play_sound_on_progress = false
+icons_path_template = "res://ui/assets/on_screen_controls/%s.png"
+icons_bbcode_template = "[img=34]%s[/img]"
+
+[node name="ObjectiveLabel" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_s28xg")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "Objective"
+play_sound_on_progress = false
+icons_path_template = "res://ui/assets/on_screen_controls/%s.png"
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CommentLabel" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_s28xg")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 35
+text = "Comment"
 icons_path_template = "res://ui/assets/on_screen_controls/%s.png"

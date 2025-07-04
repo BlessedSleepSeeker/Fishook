@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://lwpyypu4qtj"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://lwpyypu4qtj"]
+
+[ext_resource type="FontFile" uid="uid://2alin7pjikf1" path="res://ui/themes/fonts/DeliusUnicase-Regular.ttf" id="1_w0bcp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vensd"]
 bg_color = Color(0, 0, 0, 0.384314)
@@ -9,6 +11,7 @@ corner_radius_bottom_left = 2
 anti_aliasing = false
 
 [resource]
+default_font = ExtResource("1_w0bcp")
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10

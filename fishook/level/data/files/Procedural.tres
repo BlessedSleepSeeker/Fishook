@@ -4,9 +4,10 @@
 
 [resource]
 script = ExtResource("1_ipi10")
-name = "Generate Me A Level"
-comment = "Proceduraly generated level, just for you... "
+name = "LEVEL_PROCEDURAL_NAME"
+comment = "LEVEL_PROCEDURAL_COMMENT"
 scene_name = "ProceduralLevel"
 difficulty = 5
+type = 1
 miniature_scene_path = "uid://fahpdabxc8c0"
 metadata/_custom_type_script = "uid://bhcn1srajolcg"

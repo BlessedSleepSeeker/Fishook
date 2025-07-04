@@ -9,6 +9,8 @@ class_name Settings
 
 var settings_node: Node = null
 
+signal settings_changed
+
 ## On boot, we first create the basic settings due to them being defined in our scene tree.
 ## Then we load the setting file and change the values of our settings based on the value inside the file.
 ## We then apply the settings and save the settings value to the settings file.
@@ -141,6 +143,7 @@ func apply_settings() -> void:
 		for setting in section.get_children():
 			if setting.has_method("apply"):
 				setting.apply()
+	settings_changed.emit()
 #endregion
 
 #region UserInput

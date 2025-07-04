@@ -1,9 +1,13 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://d3kms72g8lsqf"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://d3kms72g8lsqf"]
 
-[ext_resource type="FontFile" uid="uid://cm7uiypoce1r1" path="res://ui/themes/fonts/SeaGreen.ttf" id="1_1c8oy"]
 [ext_resource type="StyleBox" uid="uid://qdxg6ceetby6" path="res://ui/themes/main_menu/button_box_focused.tres" id="2_ykfty"]
 [ext_resource type="StyleBox" uid="uid://c62wxphwn56k3" path="res://ui/themes/main_menu/button_style_box_flat.tres" id="3_84mi6"]
 [ext_resource type="StyleBox" uid="uid://bkh2g2nh3im1t" path="res://ui/themes/main_menu/button_box_pressed.tres" id="4_d5r4m"]
+[ext_resource type="FontFile" uid="uid://2alin7pjikf1" path="res://ui/themes/fonts/DeliusUnicase-Regular.ttf" id="4_ykfty"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ykfty"]
+color = Color(0.1943, 0.511433, 0.67, 1)
+thickness = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykfty"]
 bg_color = Color(0, 0, 0, 0.192157)
@@ -25,17 +29,16 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [resource]
+default_font = ExtResource("4_ykfty")
+default_font_size = 30
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_focus_color = Color(0.133333, 0.129412, 0.14902, 1)
 Button/colors/font_hover_color = Color(0.133333, 0.129412, 0.14902, 1)
-Button/font_sizes/font_size = 30
-Button/fonts/font = ExtResource("1_1c8oy")
 Button/styles/focus = ExtResource("2_ykfty")
 Button/styles/hover = ExtResource("2_ykfty")
 Button/styles/normal = ExtResource("3_84mi6")
 Button/styles/pressed = ExtResource("4_d5r4m")
-Label/font_sizes/font_size = 30
-Label/fonts/font = ExtResource("1_1c8oy")
+HSeparator/styles/separator = SubResource("StyleBoxLine_ykfty")
 MarginContainer/constants/margin_bottom = 20
 MarginContainer/constants/margin_left = 20
 MarginContainer/constants/margin_right = 20
@@ -43,4 +46,3 @@ MarginContainer/constants/margin_top = 20
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_ykfty")
 PopupPanel/styles/panel = SubResource("StyleBoxFlat_8teyw")
 RichTextLabel/font_sizes/normal_font_size = 50
-RichTextLabel/fonts/normal_font = ExtResource("1_1c8oy")
