@@ -19,12 +19,6 @@ func _ready():
 	rebind_btn.pressed.connect(_on_rebind_pressed)
 	remove_btn.pressed.connect(_on_remove_pressed)
 
-func translate_controler_input_to_text(_input_event: InputEvent) -> String:
-	if _input_event.as_text().contains("Joypad"):
-		pass
-	return _input_event.as_text()
-
-
 func _on_rebind_pressed():
 	rebind.emit(input_event)
 

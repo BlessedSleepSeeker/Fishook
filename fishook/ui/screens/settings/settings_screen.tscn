@@ -69,7 +69,7 @@ focus_neighbor_right = NodePath("../SaveButton")
 focus_next = NodePath("../SaveButton")
 focus_previous = NodePath("../SaveButton")
 shortcut = SubResource("Shortcut_cf5cc")
-text = "Go Back"
+text = "SETTING_SCREEN_GO_BACK"
 
 [node name="SaveButton" type="Button" parent="MC/VB/MarginContainer/HB"]
 unique_name_in_owner = true
@@ -79,28 +79,30 @@ focus_neighbor_left = NodePath("../QuitButton")
 focus_neighbor_right = NodePath("../QuitButton")
 focus_next = NodePath("../QuitButton")
 focus_previous = NodePath("../QuitButton")
-text = "Save"
+text = "SETTING_SCREEN_SAVE"
 
 [node name="SaveDialog" type="ConfirmationDialog" parent="."]
-title = "Save and Apply Settings"
+title = "SETTINGS_SAVE_DIALOG_TITLE"
 initial_position = 2
-size = Vector2i(300, 100)
+size = Vector2i(420, 103)
 content_scale_mode = 2
 content_scale_aspect = 1
-content_scale_stretch = 1
+dialog_text = "SETTINGS_SAVE_DIALOG_TEXT"
+cancel_button_text = "CANCEL"
 
 [node name="QuitDialog" type="ConfirmationDialog" parent="."]
-title = "You have unsaved settings !"
+title = "SETTINGS_UNSAVED_DIALOG_TITLE"
 initial_position = 2
-size = Vector2i(300, 80)
+size = Vector2i(1224, 103)
 unresizable = true
 popup_window = true
 min_size = Vector2i(300, 30)
 content_scale_mode = 2
 content_scale_aspect = 1
 content_scale_stretch = 1
-ok_button_text = "Go Back"
-cancel_button_text = "Stay !"
+ok_button_text = "SETTINGS_UNSAVED_DIALOG_GO_BACK"
+dialog_text = "SETTINGS_UNSAVED_DIALOG_TEXT"
+cancel_button_text = "SETTINGS_UNSAVED_DIALOG_STAY"
 
 [connection signal="pressed" from="MC/VB/MarginContainer/HB/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="MC/VB/MarginContainer/HB/SaveButton" to="." method="_on_save_button_pressed"]

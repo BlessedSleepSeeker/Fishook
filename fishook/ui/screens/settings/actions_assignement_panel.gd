@@ -6,7 +6,7 @@ extends PanelContainer
 @onready var accept_input_btn: Button = $MC/VB/C3/Ok
 @onready var error_lbl: Label = $MC/VB/C4/ErrorLabel
 
-@export var current_input_template: String = "Player %s, please input %s"
+
 
 @onready var action_name: String = "If you see this_I fucked up":
 	set(val):

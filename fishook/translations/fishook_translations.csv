@@ -6,12 +6,16 @@ CREDITS,Credits,Crédits
 LEVEL_SELECT,"Level Select","Choix du Niveau"
 EXIT,Exit,Quitter
 RETURN,"Return","Retour"
+CANCEL,"Cancel","Annuler"
 
 SETTING_TAB_WINDOW,Window,Fenetre
 SETTING_TAB_SOUND,Sound,Son
 SETTING_TAB_GAME,Game,Jeu
 SETTING_TAB_HUD,HUD,ATH
-SETTING_TAB_CONTROLS,Controls,Controles
+SETTING_TAB_CONTROLS,Controls,Contrôles
+
+SETTING_SCREEN_GO_BACK,"Go Back","Retour"
+SETTING_SCREEN_SAVE,"Save & Apply","Sauvegarder & Appliquer"
 
 WINDOW_TYPE,"Window Type","Type de Fenêtre"
 WINDOW_TYPE_SETTING_WINDOWED,"Windowed","Fenêtré"
@@ -61,6 +65,31 @@ CROSSHAIR_SIZE_TOOLTIP,"Multiply the crosshair's size by this number","Multiplie
 INDICATORS_SIZE,"Indicators Size","Taille des Indicateurs"
 INDICATORS_SIZE_TOOLTIP,"Multiply the indicators size by this number","Multiplie la taille des indicateurs par ce nombre"
 
+SETTINGS_CONTROLS_TOOLTIP_TEMPLATE,"The %s action","L'action %s"
+KEYBIND_FORWARD,"Go Forward","Avancer"
+KEYBIND_BACK,"Go Back","Reculer"
+KEYBIND_RIGHT,"Strafe Right","Se décaler vers la Droite"
+KEYBIND_LEFT,"Strafe Left","Se décaler vers la Gauche"
+KEYBIND_JUMP,"Jump","Sauter"
+KEYBIND_THROW_HOOK,"Throw the Fishook","Utiliser la Canne à Grapêche"
+KEYBIND_REEL_IN,"Reel In","Remonter la ligne"
+KEYBIND_REEL_OUT,"Reel Out","Donner du mou à la ligne"
+KEYBIND_BULLET_TIME,"Bullet Time","Bullet Time"
+KEYBIND_MUSIC_NEXT,"Next Song","Chanson Suivante"
+KEYBIND_MUSIC_PREV,"Previous Song","Chanson Précédente"
+KEYBIND_PAUSE,"Pause","Pause"
+KEYBIND_CONTROLLER_CAMERA_UP,"Only on Controller : Camera Up","Seulement sur Manette : Caméra vers le Haut"
+KEYBIND_CONTROLLER_CAMERA_DOWN,"Only on Controller : Camera Down","Seulement sur Manette : Caméra vers le Bas"
+KEYBIND_CONTROLLER_CAMERA_UP,"Only on Controller : Camera Right","Seulement sur Manette : Caméra vers la Droite"
+KEYBIND_CONTROLLER_CAMERA_UP,"Only on Controller : Camera Left","Seulement sur Manette : Caméra vers la Gauche"
+
+SETTINGS_SAVE_DIALOG_TITLE,"Settings","Paramètres"
+SETTINGS_SAVE_DIALOG_TEXT,"Save and Apply Settings","Sauvegarder et Appliquer les Paramètres"
+SETTINGS_UNSAVED_DIALOG_TITLE,"Unsaved Settings Alert","Alerte : paramêtres non sauvegardé"
+SETTINGS_UNSAVED_DIALOG_TEXT,"You have unsaved settings !","Les parametres modifiés ne seront pas sauvegardé !"
+SETTINGS_UNSAVED_DIALOG_STAY,"Stay !","Rester içi"
+SETTINGS_UNSAVED_DIALOG_GO_BACK,"Go Back","Continuer quand même"
+
 LEVEL_ASCENSION_NAME,"The Ascension","L'Ascension"
 LEVEL_ASCENSION_COMMENT,"The ultimate fishing rod challenge","Le challenge ultime du maniement de canne à pêche"
 
@@ -109,7 +138,7 @@ TUTORIAL_JUMP,"[ctrl]jump[/ctrl] to Jump !","[ctrl]jump[/ctrl] pour Sauter"
 TUTORIAL_DOUBLE_JUMP,"[ctrl]jump[/ctrl] while Airborne to [b]Double Jump[/b]","[ctrl]jump[/ctrl] en l'Air pour faire un [b]Double Saut[/b]"
 TUTORIAL_CONGRATS_1,"Congrats !", "Bravo !"
 TUTORIAL_CHECKPOINT,"This is a [b]checkpoint[/b]. You will respawn here if you fall too far down. [b]Walk on it to activate it[/b] !","Ceci est un [b]checkpoint[/b]. Vous vous retrouverez ici si vous tombez. Il suffit de [b]marcher dessus[/b] pour l'activer !"
-TUTORIAL_FISHOOK,"While AirBorne : [b]Releasing[/b] [ctrl]throw_hook[/ctrl] while aiming at something solid : Throw the Fishing Rod and start [b]Swinging[/b].[br][ctrl]jump[/ctrl] while Swinging : [b]Stop[/b] Swinging","En l'air, [b]Relacher[/b] [ctrl]throw_hook[/ctrl] en visant sur du solide : Envoie la canne à pêche et commence à se [b]Balancer[/b][ctrl]jump[/ctrl] pendant le Balancement : [b]Arreter[/b] de se balancer"
+TUTORIAL_FISHOOK,"While AirBorne : [b]Releasing[/b] [ctrl]throw_hook[/ctrl] while aiming at something solid : Throw the Fishing Rod and start [b]Swinging[/b]\n[ctrl]jump[/ctrl] while Swinging : [b]Stop[/b] Swinging","En l'air, [b]Relacher[/b] [ctrl]throw_hook[/ctrl] en visant sur du solide : Envoie la canne à pêche et commence à se [b]Balancer[/b]\n[ctrl]jump[/ctrl] pendant le Balancement : [b]Arreter[/b] de se balancer"
 TUTORIAL_YIPEE_1,"Yipeee !","Youpiii !"
 TUTORIAL_BULLET_TIME,"Holding [ctrl]bullet_time[/ctrl] down : [b]Bullet Time[/b]","Maintenir [ctrl]bullet_time[/ctrl] : [b]Bullet Time[/b]"
 TUTORIAL_YIPEE_2,"Yiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiipppppppppppppppppeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee!","Yooooooouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuupppppppppppiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"

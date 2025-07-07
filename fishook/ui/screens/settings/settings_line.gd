@@ -136,6 +136,8 @@ func build_number() -> void:
 #region Input
 func build_input() -> void:
 	input_plus_button.show()
+	setting_name.text = tr(setting.name)
+	setting_name.tooltip_text = tr(setting.tooltip) % tr(setting.name)
 	for action: InputEvent in InputMap.action_get_events(setting.action):
 		var inst: ActionAssignementLine = action_assignement_line.instantiate()
 		inst.remove.connect(_on_remove_input)
@@ -233,3 +235,11 @@ func save() -> void:
 			setting.value = text.text
 		setting.SETTING_TYPE.NUMBER:
 			setting.value = number.value
+
+func _notification(what):
+	if what == Node.NOTIFICATION_TRANSLATION_CHANGED:
+		if not is_node_ready():
+			await ready # Wait until ready signal.
+		if setting != null:
+			tear_down()
+			build()
