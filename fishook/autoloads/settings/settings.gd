@@ -150,14 +150,14 @@ func apply_settings() -> void:
 
 func create_input_tab():
 	settings_node = Node.new()
-	settings_node.name = "SETTING_TAB_CONTROLS"
+	settings_node.name = "SETTING_TAB_KEYBINDS"
 	add_child(settings_node)
 	for action: String in InputHandler.possible_actions:
 		var input_sett: GenericInputSetting = GenericInputSetting.new()
 		input_sett.name = "KEYBIND_" + action.to_upper()
 		input_sett.key = action.to_upper()
 		input_sett.type = Setting.SETTING_TYPE.INPUT
-		input_sett.tooltip = "SETTINGS_CONTROLS_TOOLTIP_TEMPLATE"
+		input_sett.tooltip = "SETTINGS_KEYBINDS_TOOLTIP_TEMPLATE"
 		input_sett.action = action
 		settings_node.add_child(input_sett)
 

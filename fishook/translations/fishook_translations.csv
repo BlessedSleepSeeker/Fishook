@@ -12,7 +12,8 @@ SETTING_TAB_WINDOW,Window,Fenetre
 SETTING_TAB_SOUND,Sound,Son
 SETTING_TAB_GAME,Game,Jeu
 SETTING_TAB_HUD,HUD,ATH
-SETTING_TAB_CONTROLS,Controls,Contrôles
+SETTING_TAB_KEYBINDS,Keybinds,Touches
+SETTING_TAB_CAMERA,Camera,Caméra
 
 SETTING_SCREEN_GO_BACK,"Go Back","Retour"
 SETTING_SCREEN_SAVE,"Save & Apply","Sauvegarder & Appliquer"
@@ -44,9 +45,6 @@ LANGUAGE,Language,Langue
 LANGUAGE_SETTING_DETECT_LOCALE,"Automatically detect based on OS","Detecté automatiquement selon le système d'exploitation"
 LANGUAGE_TOOLTIP,"Select the language","Choisissez la langue"
 
-CAMERA_SENSITIVITY,"Camera Sensitivity","Sensibilité de la Caméra"
-CAMERA_SENSITIVITY_TOOLTIP,"Affect the speed at which the camera rotate around the player","Accélère ou ralenti le mouvement de la caméra"
-
 DISABLE_BULLET_TIME_VISUALS,"Disable Bullet Time Visuals","Désactiver les effets du Bullet Time"
 DISABLE_BULLET_TIME_VISUALS_TOOLTIP,"Disable the visual effect when using bullet time","Désactive l'effet visuel du Bullet Time"
 
@@ -65,7 +63,13 @@ CROSSHAIR_SIZE_TOOLTIP,"Multiply the crosshair's size by this number","Multiplie
 INDICATORS_SIZE,"Indicators Size","Taille des Indicateurs"
 INDICATORS_SIZE_TOOLTIP,"Multiply the indicators size by this number","Multiplie la taille des indicateurs par ce nombre"
 
-SETTINGS_CONTROLS_TOOLTIP_TEMPLATE,"The %s action","L'action %s"
+CAMERA_SENSITIVITY,"Camera Sensitivity","Sensibilité de la Caméra"
+CAMERA_SENSITIVITY_TOOLTIP,"Affect the speed at which the camera rotate around the player","Accélère ou ralenti le mouvement de la caméra"
+
+INVERSE_CAMERA,"Inverse the Camera","Inverser la Caméra"
+INVERSE_CAMERA_TOOLTIP,"Inverse the movement of the camera","Inverse le mouvement de la caméra"
+
+SETTINGS_KEYBINDS_TOOLTIP_TEMPLATE,"The %s action","L'action %s"
 KEYBIND_FORWARD,"Go Forward","Avancer"
 KEYBIND_BACK,"Go Back","Reculer"
 KEYBIND_RIGHT,"Strafe Right","Se décaler vers la Droite"

@@ -11,6 +11,7 @@ class_name MouseFollowCamera
 
 @onready var screenshot_camera: ScreenshotCamera = %ScreenshotCamera
 
+@onready var settings: Settings = get_tree().root.get_node("Root").settings
 # @onready var sphere_indicator: Node3D = %ShpereIndicator
 
 signal is_colliding(is_colliding: bool)
@@ -28,8 +29,8 @@ func _ready():
 	character = owner as CharacterInstance
 
 func _unhandled_input(_event: InputEvent):
-	# Make mouse aiming speed resolution-independent
-	# (required when using the `canvas_items` stretch mode).
+	## Make mouse aiming speed resolution-independent
+	## (required when using the `canvas_items` stretch mode).
 	var scale_factor: float = min(
 			(float(get_viewport().size.x) / get_viewport().get_visible_rect().size.x),
 			(float(get_viewport().size.y) / get_viewport().get_visible_rect().size.y)
@@ -39,7 +40,11 @@ func _unhandled_input(_event: InputEvent):
 		_camera_input_direction = _event.screen_relative * (InputHandler.camera_sensitivity * parameters.CAMERA_MOUSE_SENSIBILITY) * scale_factor
 
 func rotate_camera(_delta) -> void:
-	#print(character.bullet_time_on)
+	## Inverse the input if the option is toggled on.
+	if settings.read_setting_value_by_key("INVERSE_CAMERA"):
+		_camera_input_direction = _camera_input_direction * -1
+
+	##	We scale the speed during bullet time, so they can move the camera faster during it.
 	if character.bullet_time_on:
 		self.rotation.x += self._camera_input_direction.y * (_delta * 5)
 	else:
@@ -63,6 +68,7 @@ func _physics_process(_delta):
 	else:
 		is_colliding.emit(false)
 
+	## input camera handling must be here because holding a stick in a direction does not trigger _unhandled_input somehow
 	var scale_factor: float = min(
 			(float(get_viewport().size.x) / get_viewport().get_visible_rect().size.x),
 			(float(get_viewport().size.y) / get_viewport().get_visible_rect().size.y)

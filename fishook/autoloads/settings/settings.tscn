@@ -83,16 +83,6 @@ tooltip = "LANGUAGE_TOOLTIP"
 possible_values = ["auto", "en", "fr"]
 possible_values_strings = ["LANGUAGE_SETTING_DETECT_LOCALE", "English", "Français"]
 
-[node name="Camera Sensitivity" type="Node" parent="SETTING_TAB_GAME"]
-script = ExtResource("9_8e0ev")
-type = 1
-key = "CAMERA_SENSITIVITY"
-tooltip = "CAMERA_SENSITIVITY_TOOLTIP"
-min_value_range = 0.5
-max_value_range = 10.0
-step_range = 0.5
-display_floating_precision = 1
-
 [node name="Disable Bullet Time Visuals Effects" type="Node" parent="SETTING_TAB_GAME"]
 script = ExtResource("10_6rgcf")
 key = "DISABLE_BULLET_TIME_VISUALS"
@@ -133,3 +123,21 @@ min_value_range = 0.5
 max_value_range = 5.0
 step_range = 0.5
 display_floating_precision = 1
+
+[node name="SETTING_TAB_CAMERA" type="Node" parent="."]
+
+[node name="Camera Sensitivity" type="Node" parent="SETTING_TAB_CAMERA"]
+script = ExtResource("9_8e0ev")
+type = 1
+key = "CAMERA_SENSITIVITY"
+tooltip = "CAMERA_SENSITIVITY_TOOLTIP"
+min_value_range = 0.5
+max_value_range = 10.0
+step_range = 0.5
+display_floating_precision = 1
+
+[node name="Inverse Camera" type="Node" parent="SETTING_TAB_CAMERA"]
+script = ExtResource("11_gokex")
+base_value = false
+key = "INVERSE_CAMERA"
+tooltip = "INVERSE_CAMERA_TOOLTIP"
