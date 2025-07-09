@@ -1,12 +1,12 @@
 extends BaseLevel
 class_name ProceduralLevel
 
-@onready var geometry_parent: Node3D = $Geometry
-
 @export var algorithm: ProceduralLevelAlgorithm = null
 
 @export var chunk_generating: bool = true
 @export var chunk_loading: bool = true
+
+@onready var geometry_parent: Node3D = $Geometry
 
 var current_tile: AlgorithmTileScene = null
 

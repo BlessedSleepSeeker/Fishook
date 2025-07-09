@@ -142,7 +142,7 @@ TUTORIAL_JUMP,"[ctrl]jump[/ctrl] to Jump !","[ctrl]jump[/ctrl] pour Sauter"
 TUTORIAL_DOUBLE_JUMP,"[ctrl]jump[/ctrl] while Airborne to [b]Double Jump[/b]","[ctrl]jump[/ctrl] en l'Air pour faire un [b]Double Saut[/b]"
 TUTORIAL_CONGRATS_1,"Congrats !", "Bravo !"
 TUTORIAL_CHECKPOINT,"This is a [b]checkpoint[/b]. You will respawn here if you fall too far down. [b]Walk on it to activate it[/b] !","Ceci est un [b]checkpoint[/b]. Vous vous retrouverez ici si vous tombez. Il suffit de [b]marcher dessus[/b] pour l'activer !"
-TUTORIAL_FISHOOK,"While AirBorne : [b]Releasing[/b] [ctrl]throw_hook[/ctrl] while aiming at something solid : Throw the Fishing Rod and start [b]Swinging[/b]\n[ctrl]jump[/ctrl] while Swinging : [b]Stop[/b] Swinging","En l'air, [b]Relacher[/b] [ctrl]throw_hook[/ctrl] en visant sur du solide : Envoie la canne à pêche et commence à se [b]Balancer[/b]\n[ctrl]jump[/ctrl] pendant le Balancement : [b]Arreter[/b] de se balancer"
+TUTORIAL_FISHOOK,"While AirBorne : [b]Releasing[/b] [ctrl]throw_hook[/ctrl] while aiming at something solid : Use the Fishook and start [b]Swinging[/b]\n[ctrl]jump[/ctrl] while Swinging : [b]Stop[/b] Swinging","En l'air, [b]Relacher[/b] [ctrl]throw_hook[/ctrl] en visant sur du solide : Utilise la Grappêche et commence à se [b]Balancer[/b]\n[ctrl]jump[/ctrl] pendant le Balancement : [b]Arreter[/b] de se balancer"
 TUTORIAL_YIPEE_1,"Yipeee !","Youpiii !"
 TUTORIAL_BULLET_TIME,"Holding [ctrl]bullet_time[/ctrl] down : [b]Bullet Time[/b]","Maintenir [ctrl]bullet_time[/ctrl] : [b]Bullet Time[/b]"
 TUTORIAL_YIPEE_2,"Yiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiipppppppppppppppppeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee!","Yooooooouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuupppppppppppiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
@@ -151,3 +151,9 @@ TUTORIAL_CANS,"Congratulations, you've reached the end of the tutorial ! Did you
 
 END_OF_LEVEL_COLLECTIBLES_TEMPLATE,"Collected %d of %d","Obtenu %d sur %d"
 END_OF_LEVEL_TIMER_FINAL,"Final Time : %02.0f:%02.0f:%02d","Temps Final : %02.0f:%02.0f:%02d"
+
+LOADING_SCREEN_TIP_HOOKSHOT_AIRBORNE,"You must be airborne to use the Fishook !","Tu dois être en l'air pour pouvoir lancer la Grappêche !"
+LOADING_SCREEN_TIP_BULLET_TIME,"Need to aim precisely ? Hold down [ctrl]bullet_time[/ctrl] to activate Bullet Time !","Besoin de viser précisément ? Maintiens [ctrl]bullet_time[/ctrl] pour activer le Bullet Time !"
+LOADING_SCREEN_TIP_REEL_IN,"You can reduce the length of the fishing line by pressing [ctrl]reel_in[/ctrl] to Reel In.","Tu peux réduire la longueur de la ligne en appuyant sur [ctrl]reel_in[/ctrl]."
+LOADING_SCREEN_MUSIC_CHANGE,"Wanna change the music ? Press [ctrl]music_prev[/ctrl] & [ctrl]music_next[/ctrl] !","Envie de changer de musique ?Appuie sur [ctrl]music_prev[/ctrl] & [ctrl]music_next[/ctrl] !"
+LOADING_SCREEN_GLIDER_FAST,"When riding the Flying-Fish, you can press [ctrl]forward[/ctrl] to Dive !","Losque tu pilotes le Poisson-Volant, tu peux appuyer sur [ctrl]forward[/ctrl] pour plonger !"

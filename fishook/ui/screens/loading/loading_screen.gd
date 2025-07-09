@@ -1,13 +1,21 @@
 extends Control
 class_name LoadingScreen
 
-@export var animation_speed: float = 0.8
+@export var animation_speed: float = 0.2
 @export var bar_color_tweak_with_progress: Gradient = Gradient.new()
 
+@export var base_text_label: String = "Loading"
 @export var bar_label_template: String = "[font_size=30][wave amp=40.0 freq=10 connected=1]%s[/wave][/font_size]"
+
+@export var tips_list: Array[String] = ["LOADING_SCREEN_TIP_HOOKSHOT_AIRBORNE", "LOADING_SCREEN_TIP_BULLET_TIME", "LOADING_SCREEN_TIP_REEL_IN",
+"LOADING_SCREEN_MUSIC_CHANGE", "LOADING_SCREEN_GLIDER_FAST"]
 
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var bar_label: RichTextLabel = %BarLabel
+
+@onready var tips_label: PlayerControlLabel = %TipsTricksLabel
+
+signal loading_finished
 
 func _ready():
 	pass# await get_tree().create_timer(2).timeout
@@ -30,3 +38,12 @@ func update_bar(amount: float, info: String) -> void:
 
 	var tween_label: Tween = get_tree().create_tween()
 	tween_label.tween_property(bar_label, "text", bar_label_template % info, animation_speed).set_ease(Tween.EASE_OUT)
+
+	if amount == 100:
+		await tween_bar_progress.finished
+		loading_finished.emit()
+
+func reset() -> void:
+	progress_bar.value = 0
+	bar_label.text = bar_label_template % base_text_label
+	tips_label.update_text(tr(tips_list.pick_random()))

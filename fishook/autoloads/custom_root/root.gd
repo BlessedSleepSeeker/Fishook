@@ -62,12 +62,15 @@ func add_scene_with_loading_screen(new_scene_path: String, scene_parameters: Dic
 		#print("progress = %d" % progress[0])
 		loading_screen.update_bar(progress[0] * 100, "Loading...")
 		ResourceLoader.load_threaded_get_status(new_scene_path, progress)
-		await get_tree().create_timer(0.01).timeout
+		await get_tree().create_timer(0.05).timeout
 	
 	var new_scene: PackedScene = ResourceLoader.load_threaded_get(new_scene_path)
 
+	loading_screen.update_bar(95, "Instanciating...")
 	#print("finished loading, now adding scene")
 	add_packed_scene_to_tree(new_scene, scene_parameters, true)
+	loading_screen.update_bar(100, "Finished !")
+	await loading_screen.loading_finished
 	await get_tree().create_timer(0.2).timeout
 
 
@@ -107,8 +110,9 @@ func _on_transition_by_path(new_scene_path: String, scene_parameters: Dictionary
 	if animation != "":
 		await play_transition(true)
 		if toggle_loading_screen:
+			loading_screen.reset()
 			loading_screen.show()
-			play_transition(false, false)
+			await play_transition(false, true)
 			await change_scene_with_loading_screen(new_scene_path, scene_parameters)
 			await play_transition(true)
 			loading_screen.hide()

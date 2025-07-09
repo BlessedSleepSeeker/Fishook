@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dunvbupwox01v"]
+[gd_scene load_steps=15 format=3 uid="uid://dunvbupwox01v"]
 
 [ext_resource type="Theme" uid="uid://b1hqt805ka1h0" path="res://ui/themes/end_level_screen.tres" id="1_tgtrx"]
 [ext_resource type="Script" uid="uid://d2xbdstvlo6a5" path="res://ui/screens/end_level_screen/end_level_screen.gd" id="1_x5frk"]
@@ -38,7 +38,17 @@ scale_max = 15.0
 color_initial_ramp = SubResource("GradientTexture1D_6vcs6")
 alpha_curve = SubResource("CurveTexture_6vcs6")
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l7sn7"]
+
+[sub_resource type="Sky" id="Sky_mr0ae"]
+sky_material = SubResource("ProceduralSkyMaterial_l7sn7")
+
+[sub_resource type="Environment" id="Environment_l7sn7"]
+background_mode = 2
+sky = SubResource("Sky_mr0ae")
+
 [sub_resource type="World3D" id="World3D_60hf2"]
+environment = SubResource("Environment_l7sn7")
 
 [node name="EndLevelScreen" type="CanvasLayer"]
 layer = 3
