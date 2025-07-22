@@ -94,6 +94,17 @@ base_value = false
 key = "SPEEDRUN_MODE"
 tooltip = "SPEEDRUN_MODE_TOOLTIP"
 
+[node name="Speedrun Mode Countdown Delay" type="Node" parent="SETTING_TAB_GAME"]
+script = ExtResource("13_4gjnl")
+base_value = 1.0
+type = 1
+key = "SPEEDRUN_MODE_COUNTDOWN_DELAY"
+tooltip = "SPEEDRUN_MODE_COUNTDOWN_DELAY_TOOLTIP"
+min_value_range = 0.1
+max_value_range = 5.0
+step_range = 0.1
+display_floating_precision = 1
+
 [node name="SETTING_TAB_HUD" type="Node" parent="."]
 
 [node name="Scale" type="Node" parent="SETTING_TAB_HUD"]

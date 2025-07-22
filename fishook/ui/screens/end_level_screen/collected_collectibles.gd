@@ -6,7 +6,8 @@ class_name CollectedCollectibles
 
 @export var initial_spawn_delay: float = 1
 ## Every spawned collectible will decrease the cooldown by this much
-@export var spawn_delay_accel: float = 0.02
+@export var spawn_delay_accel: float = 0.03
+@export var minimum_spawn_delay: float = 0.1
 
 var spawn_delay: float = 0:
 	set(value):
@@ -27,6 +28,8 @@ func animate_collectibles_spawn() -> void:
 		spawn_collectible()
 		await get_tree().create_timer(spawn_delay).timeout
 		spawn_delay -= spawn_delay_accel
+		if spawn_delay < minimum_spawn_delay:
+			spawn_delay = minimum_spawn_delay
 	finished_spawning.emit()
 
 func spawn_collectible() -> void:

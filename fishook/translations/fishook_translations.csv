@@ -50,6 +50,9 @@ DISABLE_BULLET_TIME_VISUALS_TOOLTIP,"Disable the visual effect when using bullet
 
 SPEEDRUN_MODE,"Speedrun Mode","Mode Speedrun"
 SPEEDRUN_MODE_TOOLTIP,"Speedrun Mode add a countdown at the start of a level, and your current level time stay displayed on top of the HUD","Le Mode Speedrun rajoute un compte à rebours au début des niveaux et un timer dans l'ATH"
+SPEEDRUN_MODE_GO,"Go !","Partez !"
+SPEEDRUN_MODE_COUNTDOWN_DELAY,"Speedrun Mode Countdown Delay","Délai du compte à rebours du Mode Speedrun"
+SPEEDRUN_MODE_COUNTDOWN_DELAY_TOOLTIP,"Adjust the delay between 3, 2, 1, GO","Modifie le délai entre 3, 2, 1, GO"
 
 HUD_SCALE,"HUD Scale","Taille de l'ATH"
 HUD_SCALE_TOOLTIP,"Scale the HUD size up","Augmente la taille de l'ATH"

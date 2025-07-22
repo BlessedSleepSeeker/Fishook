@@ -13,18 +13,20 @@ func apply_translation() -> void:
 	else:
 		TranslationServer.set_locale(language)
 
-#region Testing
-func _unhandled_input(_event):
-	if Input.is_action_just_pressed("test_toggle"):
-		test_toggle_lang()
+# #region Testing
+# func _unhandled_input(_event):
+# 	if Input.is_action_just_pressed("test_toggle"):
+# 		test_toggle_lang()
 
-var test_toggle: bool = false
-func test_toggle_lang():
-	test_toggle = !test_toggle
-	if test_toggle:
-		TranslationServer.set_locale("en")
-	else:
-		TranslationServer.set_locale("fr")
+# var test_toggle: bool = false
+# func test_toggle_lang():
+# 	test_toggle = !test_toggle
+# 	if test_toggle:
+# 		TranslationServer.set_locale("en")
+# 	else:
+# 		TranslationServer.set_locale("fr")
+# #endregion
+
 
 ## Find \[tr\]\[/tr\] enclosed text and call `tr()` on it
 func translate_rich(text: String, translation_tag_open: String = "[tr]", translation_tag_close: String = "[/tr]") -> String:

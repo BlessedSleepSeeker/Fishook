@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://cecvm3q1mqxqk" path="res://level/assets/decoration/models/flowers/flower_random_rotation_values.tres" id="2_uplwe"]
 [ext_resource type="PackedScene" uid="uid://b0emilkjr7k11" path="res://level/assets/decoration/models/flowers/glb/flower2.glb" id="3_76kka"]
 
-[node name="RandomFlower" type="Node3D" groups=["DecorativeFlower"]]
+[node name="RandomFlower" type="StaticBody3D" groups=["DecorativeFlower"]]
 script = ExtResource("1_uplwe")
 asset_models = Array[PackedScene]([ExtResource("2_76kka"), ExtResource("3_76kka")])
 random_rotation_values = ExtResource("2_uplwe")

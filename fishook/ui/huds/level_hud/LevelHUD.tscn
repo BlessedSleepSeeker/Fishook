@@ -30,11 +30,13 @@ cache/0/30/0/underline_position = 0.0
 cache/0/30/0/underline_thickness = 0.0
 cache/0/30/0/scale = 1.0
 
-[sub_resource type="World3D" id="World3D_sdvmq"]
-
 [sub_resource type="Environment" id="Environment_sdvmq"]
 
+[sub_resource type="World3D" id="World3D_sdvmq"]
+environment = SubResource("Environment_sdvmq")
+
 [node name="LevelHud" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_o1pp8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -160,7 +162,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 50
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
 fit_content = true
 horizontal_alignment = 1

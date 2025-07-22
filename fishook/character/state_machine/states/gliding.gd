@@ -95,6 +95,6 @@ func tilt_right_left(_delta: float) -> void:
 		tilt_amount = deg_to_rad(-tilt_amount_constant) if character.velocity.x <= 0 else deg_to_rad(tilt_amount_constant)
 	if character.direction.z == previous_dir:
 		tilt_amount = 0
-	character.skin.global_rotation.z = lerp_angle(character.skin.rotation.z, tilt_amount, _delta * 10)
+	character.skin.global_rotation.z = lerp_angle(character.skin.rotation.z, tilt_amount, smoothstep(0, 1, _delta * 10))
 	previous_dir = character.direction.z
 	return

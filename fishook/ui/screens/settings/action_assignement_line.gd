@@ -12,7 +12,9 @@ class_name ActionAssignementLine
 		input_event = value
 		current_input_lbl.add_text_icons("[img]%s[/img]" % InputHandler.convert_event_to_human_readable(input_event))
 
-signal rebind(input: InputEvent)
+var action: String = ""
+
+signal rebind(input: InputEvent, key: int)
 signal remove(input: InputEvent)
 
 func _ready():
@@ -20,7 +22,12 @@ func _ready():
 	remove_btn.pressed.connect(_on_remove_pressed)
 
 func _on_rebind_pressed():
-	rebind.emit(input_event)
+	var i = 0
+	for event in InputMap.action_get_events(action):
+		if input_event == event:
+			break
+		i += 1
+	rebind.emit(input_event, i)
 
 func _on_remove_pressed():
 	remove.emit(input_event)

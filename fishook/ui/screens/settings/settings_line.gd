@@ -138,12 +138,13 @@ func build_input() -> void:
 	input_plus_button.show()
 	setting_name.text = tr(setting.name)
 	setting_name.tooltip_text = tr(setting.tooltip) % tr(setting.name)
-	for action: InputEvent in InputMap.action_get_events(setting.action):
+	for event: InputEvent in InputMap.action_get_events(setting.action):
 		var inst: ActionAssignementLine = action_assignement_line.instantiate()
 		inst.remove.connect(_on_remove_input)
 		inst.rebind.connect(_on_rebind_input)
 		settings_container.add_child(inst)
-		inst.input_event = action
+		inst.input_event = event
+		inst.action = setting.action
 
 func _on_remove_input(input_event: InputEvent):
 	var action_name: String = setting.key.to_lower()
@@ -151,7 +152,7 @@ func _on_remove_input(input_event: InputEvent):
 	InputMap.action_erase_event(action_name, input_event)
 	remove_input_line(input_event)
 
-func _on_rebind_input(input_event: InputEvent):
+func _on_rebind_input(input_event: InputEvent, key: int):
 	var window: Window = Window.new()
 	window.initial_position = Window.WINDOW_INITIAL_POSITION_CENTER_MAIN_WINDOW_SCREEN
 	window.size = get_viewport().size / 2
@@ -159,19 +160,18 @@ func _on_rebind_input(input_event: InputEvent):
 	window.add_child(input_panel)
 	add_child(window)
 	input_panel.action_name = setting.key.to_lower()
-	input_panel.action_set.connect(update_input.bind(input_event))
+	input_panel.action_set.connect(update_input.bind(input_event, key))
 	input_panel.action_set.connect(close_window.bind(window))
 
-func update_input(new_input: InputEvent, old_input: InputEvent) -> void:
+func update_input(new_event: InputEvent, old_event: InputEvent, key: int) -> void:
 	var action_name: String = setting.key.to_lower()
-	InputMap.action_erase_event(action_name, old_input)
-	InputMap.action_add_event(action_name, new_input)
+	InputHandler.update_event(action_name, new_event, key)
 
-	var line: ActionAssignementLine = get_input_line_by_event(old_input)
+	var line: ActionAssignementLine = get_input_line_by_event(old_event)
 	if line:
-		line.input_event = new_input
+		line.input_event = new_event
 	else:
-		push_error("ActionAssignementLine not found : %s" % old_input.as_text())
+		push_error("ActionAssignementLine not found : %s" % old_event.as_text())
 
 func close_window(_new_input: InputEvent, window: Window) -> void:
 	window.queue_free()

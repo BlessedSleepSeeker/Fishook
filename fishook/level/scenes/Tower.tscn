@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bfvhhew1rxjs0"]
+[gd_scene load_steps=36 format=3 uid="uid://bfvhhew1rxjs0"]
 
 [ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_ehgmg"]
 [ext_resource type="Resource" uid="uid://xv8sj2ct4kb8" path="res://level/data/files/Tower.tres" id="2_21non"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://crxufspl5lqpb" path="res://level/assets/grabbable/clouds/GrababbleCloud.tscn" id="8_1booi"]
 [ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="8_4jlt8"]
 [ext_resource type="PackedScene" uid="uid://bufgfitu7r2tc" path="res://level/assets/decoration/models/rocks/Rock.glb" id="8_mq3vy"]
+[ext_resource type="PackedScene" uid="uid://bsssnsrsqpssb" path="res://ui/huds/dialog_hud/DialogHUD.tscn" id="8_o0wn6"]
 [ext_resource type="PackedScene" uid="uid://bkicetda7rjxa" path="res://level/utils/stopwatch/Stopwatch.tscn" id="9_21non"]
 [ext_resource type="PackedScene" uid="uid://br70t0g51amx8" path="res://level/assets/decoration/models/flowers/glb/flower1.glb" id="9_58hut"]
 [ext_resource type="PackedScene" uid="uid://c7pg5cdosq1p1" path="res://level/assets/decoration/AssetRandomRotator.tscn" id="10_8dqi2"]
@@ -125,6 +126,9 @@ unique_name_in_owner = true
 visible = false
 
 [node name="EndLevelScreen" parent="." instance=ExtResource("20_kohfh")]
+unique_name_in_owner = true
+
+[node name="DialogHUD" parent="." instance=ExtResource("8_o0wn6")]
 unique_name_in_owner = true
 
 [node name="Geometry" type="Node3D" parent="."]

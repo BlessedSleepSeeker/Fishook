@@ -451,6 +451,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91, -2, -4.45856e-06)
 [node name="BaseCollectiblePositionHack5" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10175e-14, -4, -4.80825e-07)
 
+[node name="BaseCollectiblePositionHack14" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 4, -1.22392e-06)
+
 [node name="BaseCollectiblePositionHack2" parent="Geometry/Collectibles" instance=ExtResource("11_016wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -228, 7, 8.30516e-07)
 
@@ -473,6 +476,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -333, 30, -8.83385e-06)
 
 [node name="RandomTree" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12, 0.5, -7)
+
+[node name="RandomTree13" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11, 1.5, -6)
 
 [node name="RandomTree2" parent="Geometry/Decorations" instance=ExtResource("10_6ainc")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.14561, 0.5, -7)

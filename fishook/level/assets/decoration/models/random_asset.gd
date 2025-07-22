@@ -1,4 +1,4 @@
-extends Node3D
+extends StaticBody3D
 class_name RandomAsset
 
 @export var asset_models: Array[PackedScene] = []
@@ -6,7 +6,8 @@ class_name RandomAsset
 
 func randomize_asset() -> void:
 	for child in get_children():
-		child.queue_free()
+		if not child is CollisionShape3D:
+			child.queue_free()
 	var index: int = RNGHandler.rng.randi_range(0, asset_models.size() - 1)
 	var asset = asset_models[index].instantiate()
 	add_child(asset)

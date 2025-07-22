@@ -13,6 +13,7 @@ asset_models = Array[PackedScene]([ExtResource("2_021ox")])
 random_rotation_values = ExtResource("3_021ox")
 
 [node name="Marker3D" type="Marker3D" parent="."]
+gizmo_extents = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

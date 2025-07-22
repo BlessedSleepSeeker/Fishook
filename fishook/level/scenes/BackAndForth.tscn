@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ctqppdq3quxc2"]
+[gd_scene load_steps=24 format=3 uid="uid://ctqppdq3quxc2"]
 
 [ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_n1q37"]
 [ext_resource type="Resource" uid="uid://cyp5wqkppcy6q" path="res://level/data/files/BackAndForth.tres" id="2_n1q37"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cvbkcnravdnej" path="res://level/utils/level_music_player/LevelMusicPlayer.tscn" id="4_g2rv6"]
 [ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/huds/level_hud/LevelHUD.tscn" id="5_6ehkp"]
 [ext_resource type="PackedScene" uid="uid://cbqvw8ulit3kj" path="res://level/assets/BaseCheckpoint.tscn" id="6_wvc8l"]
+[ext_resource type="PackedScene" uid="uid://bsssnsrsqpssb" path="res://ui/huds/dialog_hud/DialogHUD.tscn" id="7_1j0k5"]
 [ext_resource type="Material" uid="uid://h0r4shlt6jqo" path="res://level/template_assets/material/dark_grid_texture.tres" id="7_mh4q6"]
 [ext_resource type="Material" uid="uid://cm88joxmcriqi" path="res://level/template_assets/material/orange_grid_texture.tres" id="8_i4so5"]
 [ext_resource type="PackedScene" uid="uid://bufgfitu7r2tc" path="res://level/assets/decoration/models/rocks/Rock.glb" id="9_deo27"]
@@ -76,6 +77,9 @@ unique_name_in_owner = true
 visible = false
 
 [node name="EndLevelScreen" parent="." instance=ExtResource("16_pthaq")]
+unique_name_in_owner = true
+
+[node name="DialogHUD" parent="." instance=ExtResource("7_1j0k5")]
 unique_name_in_owner = true
 
 [node name="LevelMusicPlayer" parent="." instance=ExtResource("4_g2rv6")]

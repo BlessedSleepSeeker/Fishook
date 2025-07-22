@@ -5,7 +5,7 @@ class_name CustomRoot
 @onready var loading_screen: LoadingScreen = %LoadingScreen
 @export_range(0.1, 10, 0.1) var transition_speed: float = 0.5
 
-@onready var settings = $Settings
+@onready var settings: Settings = $Settings
 @onready var scene_root = $SceneRoot
 @onready var transition_color_rect: ColorRect = %Transition
 @onready var fade_to_black_color_rect: ColorRect = %FadeToBlack

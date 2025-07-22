@@ -159,6 +159,8 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../PlayButton")
+focus_neighbor_right = NodePath("../PlayButton")
 focus_neighbor_bottom = NodePath("../../../SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/LevelCarroussel/VBoxContainer/LeftButton")
 shortcut = SubResource("Shortcut_8tynd")
 text = "RETURN"
@@ -171,16 +173,19 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
+focus_neighbor_left = NodePath("../ReturnButton")
+focus_neighbor_right = NodePath("../ReturnButton")
 focus_neighbor_bottom = NodePath("../../../SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/LevelCarroussel/VBoxContainer2/RightButton")
 text = "PLAY"
 
 [node name="Control2" type="Control" parent="MC/VB/MarginContainer2/HB"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="RandomButton" type="Button" parent="MC/VB/MarginContainer2/HB"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_bottom = NodePath("../../../SettingsTab/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/LevelCarroussel/VBoxContainer2/RightButton")

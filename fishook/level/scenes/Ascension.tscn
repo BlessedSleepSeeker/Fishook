@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bgp0j7i4u3men"]
+[gd_scene load_steps=25 format=3 uid="uid://bgp0j7i4u3men"]
 
 [ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_0j7lo"]
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="1_cvcm1"]
@@ -11,8 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://du5lfj2lpryh8" path="res://ui/huds/level_hud/LevelHUD.tscn" id="7_alplb"]
 [ext_resource type="PackedScene" uid="uid://squnuur682wi" path="res://level/collectibles/scene/BaseCollectible.tscn" id="8_4rgwe"]
 [ext_resource type="PackedScene" uid="uid://khpkfqnos2o" path="res://level/utils/debug_ui/DebugCanvas.tscn" id="8_ffprm"]
+[ext_resource type="PackedScene" uid="uid://bsssnsrsqpssb" path="res://ui/huds/dialog_hud/DialogHUD.tscn" id="9_yufoy"]
 [ext_resource type="PackedScene" uid="uid://qn6ffcswfedb" path="res://level/assets/end_of_level/BaseEndOfLevel.tscn" id="10_alycv"]
 [ext_resource type="PackedScene" uid="uid://dunvbupwox01v" path="res://ui/screens/end_level_screen/EndLevelScreen.tscn" id="12_hdjop"]
+[ext_resource type="PackedScene" uid="uid://b3uqbsx2jiclt" path="res://level/procgen/tiles_scenes/rooms/tile_ring_launcher_vertical.tscn" id="14_b87hs"]
 
 [sub_resource type="Gradient" id="Gradient_cvcm1"]
 interpolation_mode = 2
@@ -97,6 +99,9 @@ unique_name_in_owner = true
 [node name="DebugCanvasLayer" parent="." instance=ExtResource("8_ffprm")]
 visible = false
 
+[node name="DialogHUD" parent="." instance=ExtResource("9_yufoy")]
+unique_name_in_owner = true
+
 [node name="Clouds" type="Node3D" parent="."]
 
 [node name="Checkpoint1" parent="." instance=ExtResource("6_x7o3b")]
@@ -113,9 +118,13 @@ collision_layer = 6
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Geometry/Platform"]
 transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, -4, 3.49691e-07)
-radius = 35.0
+radius = 4.0
 height = 10.0
 cone = true
+
+[node name="TileRingLauncherVertical" parent="." instance=ExtResource("14_b87hs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 85, 11)
+visible = false
 
 [node name="Hookables" type="Node3D" parent="."]
 

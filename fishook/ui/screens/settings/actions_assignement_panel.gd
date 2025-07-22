@@ -33,6 +33,5 @@ func _on_button_pressed():
 		error_lbl.show()
 		error_lbl.text = "No input detected"
 		return
-	#InputHandler.add_action_from_event(action_name, last_input_event)
 	action_set.emit(last_input_event)
 	queue_free()

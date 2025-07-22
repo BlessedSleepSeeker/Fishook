@@ -5,7 +5,7 @@ class_name LevelHUD
 @export var collectible_animation: String = "Spin"
 @export var collectible_amount_template: String = "%d/%d"
 @export var timer_template: String = "%02.0f:%02.0f:%02d"
-@export var speedrun_start_template: String = "-----%s-----"
+@export var speedrun_start_template: String = "[wave amp=50.0 freq=10 connected=1]%s[/wave]"
 
 @onready var model_holder: Node3D = %ModelHolder
 @onready var collectible_label: Label = %CollectibleLabel
@@ -49,19 +49,20 @@ func setup_speedrun_mode() -> void:
 
 
 func play_speedrun_animation() -> void:
+	var speedrun_delay: float = root.settings.read_setting_value_by_key("SPEEDRUN_MODE_COUNTDOWN_DELAY")
 	speedrun_start_label.text = speedrun_start_template % "3"
 	speedrun_start_player.play()
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(speedrun_delay).timeout
 
 	speedrun_start_label.text = speedrun_start_template % "2"
 	speedrun_start_player.play()
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(speedrun_delay).timeout
 
 	speedrun_start_label.text = speedrun_start_template % "1"
 	speedrun_start_player.play()
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(speedrun_delay).timeout
 
-	speedrun_start_label.text = speedrun_start_template % "GO !"
+	speedrun_start_label.text = speedrun_start_template % tr("SPEEDRUN_MODE_GO")
 	speedrun_ready_player.play()
 
 	speedrun_animation_finished.emit()

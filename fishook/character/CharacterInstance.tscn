@@ -228,8 +228,9 @@ radial_segments = 6
 rings = 6
 
 [sub_resource type="Curve" id="Curve_uh5tv"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(0.9, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.05, 1), 0.0, 0.0, 0, 0, Vector2(0.95, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
+metadata/_snap_count = 20
 metadata/_snap_enabled = true
 
 [sub_resource type="CurveTexture" id="CurveTexture_3in86"]
@@ -237,7 +238,7 @@ curve = SubResource("Curve_uh5tv")
 
 [sub_resource type="Gradient" id="Gradient_0y2cd"]
 offsets = PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1)
-colors = PackedColorArray(1, 0, 0, 1, 0.75, 0.45, 0, 1, 0.56, 0.7, 0, 1, 0, 1, 0.5, 1, 0, 0.504, 0.84, 1, 0, 0.166667, 1, 1)
+colors = PackedColorArray(0.933333, 0, 1, 1, 0.75, 0.075, 0, 1, 0.56, 0.7, 0, 1, 0, 1, 0.5, 1, 0, 0.504, 0.84, 1, 0, 0.166667, 1, 1)
 metadata/_snap_enabled = true
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_uh5tv"]
@@ -254,6 +255,7 @@ vertex_color_use_as_albedo = true
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_uh5tv"]
 material = SubResource("StandardMaterial3D_0y2cd")
+radius = 0.2
 radial_steps = 6
 sections = 2
 section_length = 0.1

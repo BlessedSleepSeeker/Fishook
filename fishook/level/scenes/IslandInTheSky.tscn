@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://n16wqmmxdo5x"]
+[gd_scene load_steps=29 format=3 uid="uid://n16wqmmxdo5x"]
 
 [ext_resource type="Script" uid="uid://bj1k5pv1qprri" path="res://level/base_level.gd" id="1_8a02v"]
 [ext_resource type="PackedScene" uid="uid://bcvho024kiqga" path="res://character/CharacterInstance.tscn" id="2_q602t"]
@@ -9,6 +9,7 @@
 [ext_resource type="Material" uid="uid://h0r4shlt6jqo" path="res://level/template_assets/material/dark_grid_texture.tres" id="6_53ejr"]
 [ext_resource type="Material" uid="uid://cm88joxmcriqi" path="res://level/template_assets/material/orange_grid_texture.tres" id="7_qubpa"]
 [ext_resource type="Material" uid="uid://bwr2uhkx8pf3h" path="res://level/template_assets/material/water.tres" id="8_ihxu6"]
+[ext_resource type="PackedScene" uid="uid://bsssnsrsqpssb" path="res://ui/huds/dialog_hud/DialogHUD.tscn" id="8_y7b5c"]
 [ext_resource type="PackedScene" uid="uid://bufgfitu7r2tc" path="res://level/assets/decoration/models/rocks/Rock.glb" id="9_dk6y5"]
 [ext_resource type="PackedScene" uid="uid://donkxcqkw68d4" path="res://level/assets/decoration/Tree.tscn" id="10_nikhg"]
 [ext_resource type="PackedScene" uid="uid://br70t0g51amx8" path="res://level/assets/decoration/models/flowers/glb/flower1.glb" id="11_57ogl"]
@@ -96,6 +97,9 @@ unique_name_in_owner = true
 visible = false
 
 [node name="EndLevelScreen" parent="." instance=ExtResource("18_sh0vh")]
+unique_name_in_owner = true
+
+[node name="DialogHUD" parent="." instance=ExtResource("8_y7b5c")]
 unique_name_in_owner = true
 
 [node name="Checkpoint1" parent="." instance=ExtResource("5_revhr")]

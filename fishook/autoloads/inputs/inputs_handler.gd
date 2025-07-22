@@ -10,9 +10,6 @@ var controls_file_path := "%s%s" % [settings_folder_path, controls_file_name]
 @onready var user_folder = DirAccess.open("user://")
 @onready var input_file = ConfigFile.new()
 
-# custom actions definition var
-#var possible_actions: Array = ["forward", "left", "down", "right", "jump", "throw_hook", "reel_in", "reel_out", "bullet_time", "music_prev", "music_next", "ui_debug_toggle"]
-
 @onready var possible_actions: Array[StringName] = InputMap.get_actions().filter(is_user_action)
 
 var camera_sensitivity: float = 0.5
@@ -62,38 +59,51 @@ func handle_mouse(mode: bool) -> void:
 func is_user_action(action: String) -> bool:
 	return not action.begins_with("ui_")
 
-## Need to convert string to input_event
-func add_action_from_string(action_name: String, action_value: String) -> void:
-	var action_value_input: InputEventKey = InputEventKey.new()
-	action_value_input.set_keycode(OS.find_keycode_from_string(action_value))
-	if not InputMap.has_action(action_name):
-		InputMap.add_action(action_name)
-	if not InputMap.action_has_event(action_name, action_value_input):
-		InputMap.action_add_event(action_name, action_value_input)
+func convert_json_to_input_event(json_string) -> InputEvent:
+	var json = JSON.new()
+	var error = json.parse(json_string)
+	if error == OK:
+		var data_received = json.data
+		var input_event = JSON.to_native(data_received, true)
+		if input_event is InputEvent:
+			return(input_event)
+		else:
+			printerr("Unexpected data of type %s with value %s" % [typeof(input_event), input_event])
+	else:
+		printerr("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+	return null
+
+func change_action_from_string(action_name: String, action_value: String, key: String) -> void:
+	var input_event: InputEvent = convert_json_to_input_event(action_value)
+	if input_event == null:
+		return printerr("Failed to create action %s with value %s" % [action_name, action_value])
+	## Create the input event if it doesn't exist
+	if InputMap.action_has_event(action_name, input_event):
+		return
+	update_event(action_name, input_event, int(key))
+	
+## Loop and recreate each event at the "end", replacing the one we want, so the order is still the same every time we run it.
+func update_event(action_name: String, new_event: InputEvent, key: int) -> void:
+	var events: Array[InputEvent] = InputMap.action_get_events(action_name)
+	if events.size() >= key:
+		var i = 0
+		for event in events:
+			InputMap.action_erase_event(action_name, event)
+			if i == key:
+				InputMap.action_add_event(action_name, new_event)
+			else:
+				InputMap.action_add_event(action_name, event)
+			i += 1
+	## If the key is bigger than the number of event, this means that we must add the event.
+	else:
+		InputMap.action_add_event(action_name, new_event)
+		
 
 func add_action_from_event(action_name: String, action_event: InputEvent) -> void:
 	if not InputMap.has_action(action_name):
 		InputMap.add_action(action_name)
 	if not InputMap.action_has_event(action_name, action_event):
 		InputMap.action_add_event(action_name, action_event)
-
-func create_player_actions() -> void:
-	for action in possible_actions:
-		if not get_value("CONTROLS", action):
-			set_value("CONTROLS", action, "")
-	save_file()
-
-func check_player_actions() -> String:
-	for action in possible_actions:
-		var act = check_player_action(action)
-		if act != "":
-			return act
-	return ""
-
-func check_player_action(action: String) -> String:
-	if InputMap.has_action(action) and InputMap.action_get_events(action).size() > 0:
-		return ""
-	return action
 
 func print_actions() -> void:
 	for act in InputMap.get_actions():
@@ -157,17 +167,17 @@ func localize_keyboard_input(event: InputEvent):
 func create_input_file() -> int:
 	if not DirAccess.open(settings_folder_path):
 		user_folder.make_dir(settings_folder_name)
-	return save_file()
+	return save_actions_to_file()
 
 func load_player_actions_from_file() -> void:
 	for action in possible_actions:
 		load_player_action_from_file(action)
 
 func load_player_action_from_file(action: String) -> void:
-	for inputevent in input_file.get_section_keys(action):
-		var action_value = get_value(action, inputevent)
+	for key in input_file.get_section_keys(action):
+		var action_value = get_value(action, key)
 		if action_value:
-			pass#add_action_from_string(action, action_value)
+			change_action_from_string(action, action_value, key)
 
 func get_value(section: String, setting: String) -> Variant:
 	return input_file.get_value(section, setting, false)
@@ -175,14 +185,14 @@ func get_value(section: String, setting: String) -> Variant:
 func set_value(section: String, setting: String, value: Variant) -> void:
 	input_file.set_value(section, setting, value)
 
-func save_actions_to_file() -> void:
-	for action_name in InputMap.get_actions():
+func save_actions_to_file() -> int:
+	for action_name: StringName in InputMap.get_actions():
 		if is_user_action(action_name):
 			var i := 0
 			for event: InputEvent in InputMap.action_get_events(action_name):
-				set_value(action_name, str(i), event.as_text())
+				set_value(action_name, str(i), JSON.stringify(JSON.from_native(event, true)))
 				i += 1
-	save_file()
+	return save_file()
 
 func save_file() -> int:
 	print_debug('Saving player controls file at %s.' % controls_file_path )
